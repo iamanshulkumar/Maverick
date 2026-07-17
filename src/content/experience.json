@@ -1,0 +1,70 @@
+[
+  {
+    "company": "Yuvmedia Pvt. Ltd.",
+    "role": "Project Manager",
+    "duration": "2024 - Present",
+    "location": "Remote",
+    "responsibilities": [
+      "Lead a 5-member engineering team delivering production applications",
+      "Define project roadmaps, sprint planning, and resource allocation",
+      "Bridge communication between stakeholders and development team",
+      "Ensure code quality, timely delivery, and client satisfaction"
+    ],
+    "achievements": [
+      "Promoted to Project Manager within 3 years",
+      "Delivered 15+ projects on time and under budget",
+      "Improved team velocity by 40% through process optimization"
+    ]
+  },
+  {
+    "company": "Yuvmedia Pvt. Ltd.",
+    "role": "React Native Developer",
+    "duration": "2023 - 2024",
+    "location": "Remote",
+    "responsibilities": [
+      "Built 7+ cross-platform mobile applications using React Native",
+      "Implemented complex UI components and native modules",
+      "Integrated AI/ML features including OpenAI and TensorFlow Lite",
+      "Optimized app performance achieving 60fps on mid-range devices"
+    ],
+    "achievements": [
+      "Developed Wealth Walk app serving 10K+ users",
+      "Reduced app bundle size by 45% through code optimization",
+      "Mentored 2 junior developers in React Native best practices"
+    ]
+  },
+  {
+    "company": "Yuvmedia Pvt. Ltd.",
+    "role": "Full Stack Developer",
+    "duration": "2022 - 2023",
+    "location": "Remote",
+    "responsibilities": [
+      "Developed end-to-end web applications using React, Next.js, Node.js, and Laravel",
+      "Designed and implemented RESTful APIs and database schemas",
+      "Integrated third-party services including payment gateways and cloud services",
+      "Conducted code reviews and maintained documentation"
+    ],
+    "achievements": [
+      "Architected scalable backend handling 1M+ daily requests",
+      "Implemented CI/CD pipeline reducing deployment time by 60%",
+      "Received 100% client satisfaction score on 10+ projects"
+    ]
+  },
+  {
+    "company": "Yuvmedia Pvt. Ltd.",
+    "role": "Frontend Developer",
+    "duration": "2021 - 2022",
+    "location": "Remote",
+    "responsibilities": [
+      "Built responsive web interfaces using React, TailwindCSS, and Framer Motion",
+      "Collaborated with designers to implement pixel-perfect UI components",
+      "Optimized website performance achieving 95+ Lighthouse scores",
+      "Integrated analytics and monitoring tools"
+    ],
+    "achievements": [
+      "Rebuilt legacy jQuery UI to modern React, improving load time by 70%",
+      "Created reusable component library used across 20+ projects",
+      "Won internal hackathon for best developer experience improvement"
+    ]
+  }
+]

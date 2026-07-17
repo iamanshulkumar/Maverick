@@ -1,0 +1,27 @@
+[
+  {
+    "year": "2021",
+    "title": "Web Developer",
+    "description": "Started my professional journey at Yuvmedia building responsive websites and learning the fundamentals of web development."
+  },
+  {
+    "year": "2022",
+    "title": "Frontend Developer",
+    "description": "Specialized in React ecosystem, building complex UIs and optimizing frontend performance."
+  },
+  {
+    "year": "2023",
+    "title": "Full Stack Developer",
+    "description": "Expanded to backend development with Node.js and Laravel, architecting end-to-end solutions."
+  },
+  {
+    "year": "2023",
+    "title": "React Native Developer",
+    "description": "Pivoted to mobile development, building cross-platform apps with React Native and integrating AI capabilities."
+  },
+  {
+    "year": "2024",
+    "title": "Project Manager",
+    "description": "Promoted to lead a 5-member engineering team while continuing hands-on development."
+  }
+]

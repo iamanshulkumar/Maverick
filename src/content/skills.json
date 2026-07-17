@@ -1,0 +1,65 @@
+[
+  {
+    "category": "Frontend Engineering",
+    "icon": "monitor",
+    "items": [
+      { "name": "React", "years": 4 },
+      { "name": "Next.js", "years": 3 },
+      { "name": "TypeScript", "years": 3 },
+      { "name": "TailwindCSS", "years": 3 },
+      { "name": "Framer Motion", "years": 2 }
+    ]
+  },
+  {
+    "category": "Backend Engineering",
+    "icon": "server",
+    "items": [
+      { "name": "Node.js", "years": 4 },
+      { "name": "Laravel", "years": 3 },
+      { "name": "PHP", "years": 3 },
+      { "name": "Python", "years": 2 },
+      { "name": "REST & GraphQL APIs", "years": 4 }
+    ]
+  },
+  {
+    "category": "Mobile Engineering",
+    "icon": "smartphone",
+    "items": [
+      { "name": "React Native", "years": 3 },
+      { "name": "Expo", "years": 2 },
+      { "name": "iOS", "years": 2 },
+      { "name": "Android", "years": 2 }
+    ]
+  },
+  {
+    "category": "AI & LLMs",
+    "icon": "brain",
+    "items": [
+      { "name": "OpenAI APIs", "years": 2 },
+      { "name": "LangChain", "years": 1 },
+      { "name": "RAG Systems", "years": 1 },
+      { "name": "Prompt Engineering", "years": 2 },
+      { "name": "TensorFlow", "years": 1 }
+    ]
+  },
+  {
+    "category": "Security",
+    "icon": "shield",
+    "items": [
+      { "name": "Penetration Testing", "years": 2 },
+      { "name": "OWASP Top 10", "years": 2 },
+      { "name": "Secure Architecture", "years": 2 },
+      { "name": "TryHackMe Top 1%", "years": 2 }
+    ]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "icon": "cloud",
+    "items": [
+      { "name": "Docker", "years": 2 },
+      { "name": "AWS", "years": 2 },
+      { "name": "CI/CD", "years": 2 },
+      { "name": "Vercel", "years": 3 }
+    ]
+  }
+]

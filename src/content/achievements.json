@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Projects Delivered",
+    "value": "60+",
+    "description": "Production web and mobile applications delivered for clients across fintech, real estate, automotive, and AI.",
+    "why": "Volume demonstrates reliability and breadth. Each project required understanding a different domain, tech stack, and stakeholder.",
+    "icon": "briefcase",
+    "color": "accent"
+  },
+  {
+    "title": "Mobile Applications",
+    "value": "7+",
+    "description": "Cross-platform React Native apps published on App Store and Play Store with real users.",
+    "why": "Mobile development requires different discipline — performance constraints, native APIs, app store compliance. Seven apps proves depth, not just experimentation.",
+    "icon": "smartphone",
+    "color": "accent-cyan"
+  },
+  {
+    "title": "TryHackMe Ranking",
+    "value": "Top 1%",
+    "description": "Ranked in the top 1% of 2M+ cybersecurity professionals on TryHackMe.",
+    "why": "Security is a competitive hobby that became a professional advantage. It means I build software with an understanding of how it could break.",
+    "icon": "shield",
+    "color": "accent-light"
+  },
+  {
+    "title": "Promotions",
+    "value": "4x",
+    "description": "Promoted four times in under three years at the same company.",
+    "why": "Each promotion required outgrowing my current role. The trajectory matters more than the current title — it shows I grow faster than my job description.",
+    "icon": "trending-up",
+    "color": "accent"
+  },
+  {
+    "title": "Team Leadership",
+    "value": "5",
+    "description": "Leading a cross-functional engineering team of 5 members.",
+    "why": "Leading while still coding means I understand the work deeply enough to earn my team's respect, not just their reporting line.",
+    "icon": "users",
+    "color": "accent-cyan"
+  },
+  {
+    "title": "Client Satisfaction",
+    "value": "100%",
+    "description": "Consistently rated 5/5 across all delivered client projects.",
+    "why": "Technical skill alone doesn't earn repeat clients. Communication, reliability, and delivery discipline matter just as much as code quality.",
+    "icon": "star",
+    "color": "accent-light"
+  }
+]

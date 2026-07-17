@@ -1,0 +1,86 @@
+---
+title: "React Native Performance Optimization Guide"
+date: "2025-11-20"
+description: "Learn proven techniques to optimize your React Native app performance from 45fps to 60fps."
+tags: ["React Native", "React"]
+readingTime: 12
+published: true
+---
+
+## The 45fps Problem
+
+When Wealth Walk first launched on iOS, the home screen scrolled at 45fps. Users noticed. Engagement metrics showed that 32% of users dropped off within the first 30 seconds.
+
+Here's how we got from 45fps to a consistent 60fps.
+
+## 1. Identify Bottlenecks
+
+Before optimizing, measure. React Native provides several profiling tools:
+
+- **Flipper** with React DevTools for component re-renders
+- **Perf Monitor** (`PerformanceOverlay`) for FPS tracking
+- **Hermes Profiler** for JS thread flamegraphs
+
+We discovered that FlatList re-rendered all visible rows on every scroll event — a classic unnecessary re-render problem.
+
+## 2. FlatList Optimization
+
+```tsx
+// Before: every row re-renders on scroll
+<FlatList
+  data={transactions}
+  renderItem={renderItem}
+/>
+
+// After: memoized, optimized
+<FlatList
+  data={transactions}
+  renderItem={renderItem}
+  initialNumToRender={10}
+  maxToRenderPerBatch={10}
+  windowSize={5}
+  removeClippedSubviews={true}
+  getItemLayout={getItemLayout}
+/>
+```
+
+Key wins:
+- `getItemLayout` eliminates measurement overhead
+- `windowSize={5}` limits off-screen rendering
+- `removeClippedSubviews` drops hidden views
+
+## 3. Image Optimization
+
+Images were the second largest bottleneck. Three changes made the difference:
+
+1. **Progressive loading** — show a 30px blur placeholder first
+2. **Cache-first strategy** — FastImage with LRU cache
+3. **Responsive images** — serve WebP at 3 sizes based on device DPI
+
+## 4. JS Thread Offloading
+
+Heavy computations blocked the JS thread, causing dropped frames. We moved:
+
+- Data transformation to **worklets** via react-native-reanimated
+- Crypto operations to a **native module**
+- Image processing to the **native thread** via react-native-vision-camera
+
+## 5. Memory Management
+
+- **Image cache** capped at 50MB
+- **FlatList items** recycled, never mounted fresh
+- **Navigation screens** unmounted after going 3 screens back
+- **Redux store** normalized, minimizing payload size
+
+## Results
+
+| Metric | Before | After |
+|--------|--------|-------|
+| FPS | 45 | 60 |
+| Time to Interactive | 3.2s | 1.4s |
+| Memory Usage | 180MB | 95MB |
+| Drop-off Rate | 32% | 11% |
+
+## Key Takeaway
+
+Performance optimization is a process, not a one-time fix. Profile, identify, optimize, repeat. The 45fps to 60fps journey took three weeks, but the improvement in user retention was immediate and measurable.

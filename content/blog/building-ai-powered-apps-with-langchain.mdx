@@ -1,0 +1,81 @@
+---
+title: "Building AI-Powered Apps with LangChain"
+date: "2025-12-15"
+description: "A practical guide to integrating LangChain with your Next.js applications for intelligent automation."
+tags: ["AI", "React"]
+readingTime: 8
+published: true
+---
+
+## Why LangChain?
+
+LLMs alone are powerful, but they lack memory, tool access, and the ability to reason over your own data. LangChain bridges that gap by providing a framework for building context-aware, reasoning applications.
+
+## The Architecture
+
+At its simplest, a LangChain application follows this flow:
+
+1. **User Input** → your application receives a query
+2. **Retrieval** → relevant context is fetched from your vector store
+3. **Prompt Construction** → the LLM receives a carefully crafted prompt with context
+4. **Generation** → the model produces a response
+5. **Post-processing** → results are formatted and returned
+
+## Key Components
+
+### Chains
+
+Chains let you compose multiple LLM calls or utility functions into a single pipeline. For example, a chain might: extract entities → look up data → generate a response → format it.
+
+### Agents
+
+Agents are chains where the LLM decides which tools to call. Instead of a hardcoded sequence, the model reasons about the next step and invokes the appropriate tool.
+
+### Memory
+
+Conversations need context. LangChain provides multiple memory types — buffer, summary, vector store-backed — so your app remembers what was said earlier.
+
+## Real-World Example
+
+In the AI Stock Analyser project, I used a LangChain agent that:
+
+1. Receives a stock ticker from the user
+2. Calls a financial data API tool to fetch metrics
+3. Retrieves recent news embeddings from Pinecone
+4. Synthesizes everything into a coherent analysis
+
+This replaced a fragile chain of separate API calls with a single reasoning loop.
+
+## Performance Considerations
+
+- **Stream responses** for better UX — LangChain supports streaming natively
+- **Cache repeated queries** with Redis to reduce API costs
+- **Use smaller models** for classification tasks and larger models for generation
+- **Batch embeddings** when processing documents
+
+## Getting Started
+
+```typescript
+import { ChatOpenAI } from "@langchain/openai";
+import { PromptTemplate } from "@langchain/core/prompts";
+
+const model = new ChatOpenAI({ model: "gpt-4", temperature: 0 });
+const prompt = PromptTemplate.fromTemplate(
+  "Answer the question based on the context: {context}\n\nQuestion: {question}"
+);
+
+const chain = prompt.pipe(model);
+const response = await chain.invoke({
+  context: "LangChain is a framework for building LLM applications.",
+  question: "What is LangChain?",
+});
+```
+
+## Lessons Learned
+
+1. **Start simple** — a basic chain beats an over-engineered agent every time
+2. **Monitor costs** — LLM calls add up fast; log token usage from day one
+3. **Handle errors gracefully** — LLMs are nondeterministic; always have a fallback
+4. **Test with realistic data** — unit tests with toy examples miss production edge cases
+
+LangChain is a powerful tool, but it's the thoughtful application of it that delivers real value.

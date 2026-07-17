@@ -1,0 +1,310 @@
+[
+  {
+    "slug": "wealth-walk",
+    "title": "Wealth Walk",
+    "tagline": "AI-powered personal finance management platform",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 0,
+    "coverImage": "/images/projects/wealth-walk.jpg",
+    "screenshots": [],
+    "overview": "A comprehensive financial management platform that leverages AI to provide personalized investment advice, expense tracking, and financial planning.",
+    "problem": "Users struggle with managing multiple financial accounts, tracking expenses, and making informed investment decisions without professional help.",
+    "solution": "Built an intelligent platform that aggregates financial data, uses ML models for spending pattern analysis, and provides AI-driven investment recommendations.",
+    "architecture": "Microservices architecture with React Native frontend, Node.js backend, Python ML services, and PostgreSQL for data persistence.",
+    "techStack": ["React Native", "Node.js", "Python", "TensorFlow", "PostgreSQL", "Redis", "Docker", "AWS"],
+    "challenges": [
+      "Real-time data synchronization across devices",
+      "ML model accuracy for financial predictions",
+      "Bank-grade security compliance"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Transactions Tracked", "value": "1M+" },
+      { "metric": "ML Prediction Accuracy", "value": "94%" },
+      { "metric": "Platform Uptime", "value": "99.9%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Active Users", "value": "10K+" },
+      { "metric": "First Quarter Revenue", "value": "$50K+" },
+      { "metric": "Avg. User Retention", "value": "85%" }
+    ],
+    "lessons": ["Financial data requires highest security standards", "User trust is built through transparency"],
+    "role": "Full Stack Developer & AI Engineer",
+    "timeline": "6 months",
+    "businessImpact": "Generated $50K+ in first quarter and acquired 10K+ users within 6 months of launch.",
+    "github": "https://github.com/anshulmeena/wealth-walk",
+    "isPrivate": true
+  },
+  {
+    "slug": "victory-vision",
+    "title": "Victory Vision",
+    "tagline": "Sports analytics and team management platform",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 1,
+    "coverImage": "/images/projects/victory-vision.jpg",
+    "screenshots": [],
+    "overview": "A complete sports analytics platform for teams and coaches to track performance, analyze gameplay, and manage team operations.",
+    "problem": "Sports teams lacked integrated tools for performance tracking, video analysis, and team management in a single platform.",
+    "solution": "Developed a comprehensive platform with real-time analytics, video tagging, and team management features.",
+    "architecture": "React web app with real-time WebSocket connections, FFmpeg video processing pipeline, and cloud storage.",
+    "techStack": ["React", "Next.js", "WebSocket", "FFmpeg", "MongoDB", "AWS S3", "CloudFront"],
+    "challenges": [
+      "Real-time video processing at scale",
+      "Low-latency data synchronization",
+      "Cross-platform compatibility"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Videos Processed", "value": "10K+" },
+      { "metric": "Avg. Processing Latency", "value": "<2s" },
+      { "metric": "Platform Reliability", "value": "99.95%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Teams Onboarded", "value": "50+" },
+      { "metric": "User Satisfaction", "value": "4.8/5" },
+      { "metric": "Professional Academies", "value": "3" }
+    ],
+    "lessons": ["Video processing at scale requires robust architecture", "Coach feedback was crucial for UX"],
+    "role": "Senior Full Stack Developer",
+    "timeline": "8 months",
+    "businessImpact": "Adopted by 3 professional sports academies with 50+ teams actively using the platform.",
+    "github": "https://github.com/anshulmeena/victory-vision",
+    "isPrivate": true
+  },
+  {
+    "slug": "ai-stock-analyser",
+    "title": "AI Stock Analyser",
+    "tagline": "Real-time stock market analysis with AI predictions",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 2,
+    "coverImage": "/images/projects/ai-stock.jpg",
+    "screenshots": [],
+    "overview": "An AI-powered stock market analysis tool that provides real-time insights, predictions, and portfolio optimization.",
+    "problem": "Retail investors lack access to sophisticated analysis tools used by institutional traders.",
+    "solution": "Created an accessible platform with ML-driven predictions, technical indicators, and risk assessment.",
+    "architecture": "Python backend with FastAPI, LSTM neural networks for predictions, React dashboard with real-time charts.",
+    "techStack": ["Python", "FastAPI", "TensorFlow", "React", "D3.js", "WebSocket", "Redis", "Docker"],
+    "challenges": [
+      "Model accuracy in volatile markets",
+      "Real-time data processing",
+      "Handling multiple data sources"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Prediction Accuracy", "value": "87%" },
+      { "metric": "Data Sources Integrated", "value": "12" },
+      { "metric": "Avg. Response Time", "value": "<100ms" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Daily Active Users", "value": "5K+" },
+      { "metric": "Product Hunt Upvotes", "value": "500+" },
+      { "metric": "Avg. Return Improvement", "value": "12%" }
+    ],
+    "lessons": ["Market prediction is inherently uncertain", "Explainable AI builds user trust"],
+    "role": "AI Engineer & Full Stack Developer",
+    "timeline": "4 months",
+    "businessImpact": "Featured on Product Hunt with 500+ upvotes and acquired 5K+ daily active users.",
+    "demo": "https://ai-stock-analyser.vercel.app"
+  },
+  {
+    "slug": "investor-land",
+    "title": "Investor Land",
+    "tagline": "Real estate investment platform",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 3,
+    "coverImage": "/images/projects/investor-land.jpg",
+    "screenshots": [],
+    "overview": "A real estate investment platform connecting investors with vetted property opportunities and providing ROI analytics.",
+    "problem": "Real estate investment is opaque and inaccessible to average investors.",
+    "solution": "Built a transparent platform with property analytics, ROI calculators, and automated investment tracking.",
+    "techStack": ["React Native", "Node.js", "PostgreSQL", "Google Maps API", "Stripe", "Firebase"],
+    "challenges": [
+      "Property data accuracy across regions",
+      "Complex ROI calculations",
+      "Payment integration"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Properties in Database", "value": "500+" },
+      { "metric": "Data Accuracy Rate", "value": "98%" },
+      { "metric": "Payment Success Rate", "value": "99.5%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Total Investment", "value": "$10M+" },
+      { "metric": "Registered Investors", "value": "2K+" },
+      { "metric": "Avg. ROI for Investors", "value": "14%" }
+    ],
+    "lessons": ["Real estate data requires local expertise", "UI clarity is critical for financial decisions"],
+    "role": "Full Stack Developer",
+    "timeline": "5 months",
+    "businessImpact": "Processed $10M+ in real estate investments with 2K+ registered investors.",
+    "isPrivate": true
+  },
+  {
+    "slug": "landsquire",
+    "title": "Landsquire",
+    "tagline": "Land management and verification platform",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 4,
+    "coverImage": "/images/projects/landsquire.jpg",
+    "screenshots": [],
+    "overview": "A blockchain-based land registry and verification platform ensuring transparent property transactions.",
+    "problem": "Land ownership disputes and fraudulent transactions plague many regions due to opaque paper-based records.",
+    "solution": "Built a digital platform with blockchain verification, document management, and dispute resolution system.",
+    "techStack": ["React", "Node.js", "Solidity", "Ethereum", "IPFS", "PostgreSQL", "Docker"],
+    "challenges": [
+      "Blockchain integration complexity",
+      "Legal compliance across jurisdictions",
+      "User education on blockchain benefits"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Blocks Verified", "value": "50K+" },
+      { "metric": "Smart Contracts Deployed", "value": "12" },
+      { "metric": "Fraud Prevention Rate", "value": "100%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Registered Properties", "value": "5K+" },
+      { "metric": "Disputes Resolved", "value": "200+" },
+      { "metric": "Government Partners", "value": "2" }
+    ],
+    "lessons": ["Blockchain solves real problems when applied correctly", "Government partnerships are essential"],
+    "role": "Lead Developer & Blockchain Engineer",
+    "timeline": "7 months",
+    "businessImpact": "Partnered with 2 state governments and registered 5K+ properties on the blockchain.",
+    "isPrivate": true
+  },
+  {
+    "slug": "scalping-dashboard",
+    "title": "Scalping Dashboard",
+    "tagline": "Real-time trading dashboard for scalpers",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 5,
+    "coverImage": "/images/projects/scalping.jpg",
+    "screenshots": [],
+    "overview": "A high-performance trading dashboard designed for scalping strategies with real-time data and execution.",
+    "problem": "Scalpers need ultra-low latency data and execution capabilities that most platforms don't provide.",
+    "solution": "Developed a professional-grade trading dashboard with sub-millisecond data processing and direct market access.",
+    "techStack": ["React", "Node.js", "WebSocket", "InfluxDB", "Redis", "D3.js", "AWS"],
+    "challenges": [
+      "Sub-millisecond latency requirements",
+      "Data accuracy across exchanges",
+      "Risk management systems"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Avg. Latency", "value": "50ms" },
+      { "metric": "Data Points/sec", "value": "10K+" },
+      { "metric": "Uptime", "value": "99.99%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Daily Volume", "value": "$5M+" },
+      { "metric": "Active Traders", "value": "100+" },
+      { "metric": "Revenue Generated", "value": "$200K+" }
+    ],
+    "lessons": ["Performance optimization is never-ending", "Risk features are more important than speed"],
+    "role": "Senior Full Stack Developer",
+    "timeline": "3 months",
+    "businessImpact": "Used by 100+ active traders processing $5M+ in daily trading volume.",
+    "isPrivate": true
+  },
+  {
+    "slug": "fitness-club",
+    "title": "Fitness Club",
+    "tagline": "AI-powered fitness and wellness platform",
+    "published": true,
+    "featured": false,
+    "coverImage": "/images/projects/fitness-club.jpg",
+    "screenshots": [],
+    "overview": "A comprehensive fitness platform with AI-powered workout plans, nutrition tracking, and community features.",
+    "problem": "Generic workout plans don't adapt to individual progress and preferences.",
+    "solution": "Built an adaptive fitness platform that uses ML to personalize workouts and nutrition plans.",
+    "techStack": ["React Native", "Node.js", "MongoDB", "TensorFlow Lite", "Firebase", "Stripe"],
+    "challenges": [
+      "Mobile ML model optimization",
+      "Real-time form correction using camera",
+      "Social features at scale"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Model Size on Device", "value": "<5MB" },
+      { "metric": "Inference Latency", "value": "<50ms" },
+      { "metric": "App Crash Rate", "value": "<0.1%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Total Users", "value": "15K+" },
+      { "metric": "MRR", "value": "$30K" },
+      { "metric": "Retention Rate", "value": "72%" }
+    ],
+    "lessons": ["Gamification drives engagement", "Personalization is key to retention"],
+    "role": "React Native Developer & AI Engineer",
+    "timeline": "5 months",
+    "businessImpact": "Achieved $30K MRR within 6 months of launch with 72% user retention.",
+    "demo": "https://fitness-club.app"
+  },
+  {
+    "slug": "richwalk",
+    "title": "Richwalk",
+    "tagline": "Social wealth-building community platform",
+    "published": true,
+    "featured": false,
+    "coverImage": "/images/projects/richwalk.jpg",
+    "screenshots": [],
+    "overview": "A social platform where users learn and practice wealth-building strategies through gamified challenges.",
+    "problem": "Financial education is boring and doesn't translate to real habits.",
+    "solution": "Created a gamified social learning platform with challenges, leaderboards, and community features.",
+    "techStack": ["React Native", "Node.js", "PostgreSQL", "Redis", "Firebase", "Stripe"],
+    "challenges": [
+      "Gamification design without being gimmicky",
+      "Financial accuracy in educational content",
+      "Community moderation at scale"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Avg. Response Time", "value": "<200ms" },
+      { "metric": "Concurrent Users", "value": "1K+" },
+      { "metric": "Data Sync Latency", "value": "<1s" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Active Users", "value": "8K+" },
+      { "metric": "Avg. Session Duration", "value": "25min" },
+      { "metric": "Course Completion Rate", "value": "68%" }
+    ],
+    "lessons": ["Education through play works", "Community accountability drives results"],
+    "role": "Full Stack Developer & Product Manager",
+    "timeline": "4 months",
+    "businessImpact": "Featured in edtech publications with 8K+ active users and 68% course completion rate.",
+    "demo": "https://richwalk.app"
+  },
+  {
+    "slug": "car-choice",
+    "title": "Car Choice",
+    "tagline": "AI car recommendation and comparison platform",
+    "published": true,
+    "featured": false,
+    "coverImage": "/images/projects/car-choice.jpg",
+    "screenshots": [],
+    "overview": "An intelligent platform that helps users find their ideal car based on preferences, budget, and lifestyle.",
+    "problem": "Car buyers are overwhelmed by options and lack personalized guidance.",
+    "solution": "Built an AI recommendation engine that analyzes user preferences and provides matched car suggestions with detailed comparisons.",
+    "techStack": ["React", "Next.js", "Python", "Node.js", "PostgreSQL", "Elasticsearch", "Docker"],
+    "challenges": [
+      "Accurate car data across models",
+      "Complex recommendation algorithm",
+      "Comparison UX for dozens of parameters"
+    ],
+    "technicalOutcomes": [
+      { "metric": "Car Models Indexed", "value": "5K+" },
+      { "metric": "Recommendation Latency", "value": "<150ms" },
+      { "metric": "Search Coverage", "value": "98%" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Monthly Users", "value": "50K+" },
+      { "metric": "Match Accuracy", "value": "91%" },
+      { "metric": "Dealership Partners", "value": "10+" }
+    ],
+    "lessons": ["Decision fatigue is real - simplicity wins", "User data improves recommendations over time"],
+    "role": "Full Stack Developer & AI Engineer",
+    "timeline": "3 months",
+    "businessImpact": "Partnerships with 10+ dealerships and 50K+ monthly active users.",
+    "demo": "https://car-choice.vercel.app"
+  }
+]

@@ -1,0 +1,73 @@
+---
+title: "Building RAG Systems for Production"
+date: "2025-08-15"
+description: "Architecture patterns and lessons from deploying RAG systems at scale."
+tags: ["AI", "Node"]
+readingTime: 9
+published: true
+---
+
+## Beyond the Demo
+
+Every RAG demo works on three PDFs. Production RAG needs to handle thousands of documents, maintain response quality at scale, and degrade gracefully when the vector store or LLM has an outage.
+
+Here's the architecture I've settled on after deploying RAG systems in production.
+
+## The Ingestion Pipeline
+
+Documents don't arrive clean. They come as PDFs, Word docs, web pages, and emails.
+
+```
+Ingestion Pipeline:
+Document → Chunker → Embedder → Vector Store
+                 ↓
+            Metadata Extractor → Document DB
+```
+
+The key insight: **keep raw text and embeddings in sync**. When a source document updates, the chunking and re-embedding should be automatic.
+
+## Chunking Strategy
+
+Chunk size and overlap are the most impactful parameters:
+
+| Chunk Size | Overlap | Use Case |
+|-----------|---------|----------|
+| 256 tokens | 32 | Technical docs |
+| 512 tokens | 64 | General knowledge |
+| 1024 tokens | 128 | Story/prompt content |
+
+I found that 512 tokens with 64 token overlap gives the best balance for most use cases.
+
+## Retrieval: Not Just One Vector Store
+
+We run a hybrid retrieval strategy:
+
+1. **Vector search** (Pinecone/Pgvector) — semantic similarity
+2. **Keyword search** (Meilisearch) — exact term matching
+3. **Metadata filter** — date ranges, categories, author
+
+The results are fused and re-ranked before being passed to the LLM.
+
+## Re-ranking
+
+Naive top-K retrieval often returns redundant chunks. A Cohere reranker or cross-encoder eliminates duplicates and ensures the most relevant content reaches the LLM.
+
+This single step improved answer quality by 40% in our evaluation.
+
+## Evaluation
+
+You can't improve what you can't measure. We built a simple evaluation pipeline:
+
+- **Faithfulness** — are all claims in the response supported by the retrieved context?
+- **Answer Relevancy** — does the response actually answer the question?
+- **Context Precision** — what fraction of retrieved chunks were useful?
+
+## Production Monitoring
+
+- **Latency p50/p95/p99** — the LLM call dominates; cache frequent queries
+- **Cost per query** — track input tokens vs output tokens
+- **User feedback** — thumbs up/down on each response, logged for retraining
+
+## The Hardest Lesson
+
+RAG systems are deceptively simple to prototype and deceptively hard to productionize. The gap between a Jupyter notebook demo and a production service serving real users is where the real engineering work lives.

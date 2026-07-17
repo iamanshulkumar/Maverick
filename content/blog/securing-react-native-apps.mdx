@@ -1,0 +1,69 @@
+---
+title: "Securing React Native Apps: A Penetration Testing Approach"
+date: "2025-09-10"
+description: "How I apply penetration testing methodologies to secure mobile applications."
+tags: ["Security", "React Native"]
+readingTime: 10
+published: true
+---
+
+## Security is a Process
+
+Most mobile app security advice focuses on specific vulnerabilities — SSL pinning, code obfuscation, secure storage. But without a methodology, you'll miss the gaps between these individual fixes.
+
+I apply penetration testing principles to every mobile app I build.
+
+## Step 1: Threat Modeling (Before Writing Code)
+
+Before writing a single line, ask:
+
+- **Who is the attacker?** Script kiddie? Competitor? State actor?
+- **What are the assets?** User data? API keys? Proprietary algorithms?
+- **What's the attack surface?** Network, storage, device, user?
+
+For a fintech app like Wealth Walk, the threat model identified the API layer and local storage as the two highest-risk surfaces.
+
+## Step 2: Runtime Analysis
+
+Static analysis only reveals what you intended to build. Runtime analysis reveals what actually happens.
+
+Tools I use:
+- **Burp Suite** — intercept and modify API traffic
+- **Frida** — hook into React Native's JavaScript engine at runtime
+- **objection** — bypass SSL pinning and explore the filesystem
+- **MobSF** — automated static and dynamic analysis
+
+## Critical Findings in Production Apps
+
+### API Key Exposure
+
+We found hardcoded API keys in the JavaScript bundle. Even with obfuscation, a motivated attacker can extract them.
+
+**Fix:** Move all sensitive keys server-side. Use a proxy API that injects credentials.
+
+### Insecure Data Storage
+
+AsyncStore, by default, stores data in plain text on Android (root accessible) and iOS (backup accessible).
+
+**Fix:** Use `react-native-keychain` for tokens and `react-native-encrypted-storage` for sensitive data.
+
+### Man-in-the-Middle
+
+Without certificate pinning, an attacker on the same network can intercept all traffic.
+
+**Fix:** Use `react-native-ssl-pinning` or OkHttp's certificate pinner on Android.
+
+## Step 3: Remediation & Verification
+
+For each finding:
+
+1. **Classify** by severity (Critical / High / Medium / Low)
+2. **Fix** with the engineering team
+3. **Verify** — re-run the test to confirm the vulnerability is closed
+4. **Document** for the next security review
+
+## The Mindset Shift
+
+The most important change isn't technical — it's cultural. Security can't be a checklist at the end of development. It has to be integrated into the development process from day one.
+
+Every PR should consider: "Does this change introduce a new attack surface?"
