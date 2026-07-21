@@ -2,21 +2,22 @@
   {
     "slug": "wealth-walk",
     "title": "Wealth Walk",
-    "tagline": "AI-powered personal finance management platform",
+    "tagline": "A production-grade fintech platform delivering trading signals, market intelligence, and AI-powered portfolio management to retail investors.",
     "published": true,
     "featured": true,
     "featuredIndex": 0,
     "coverImage": "/images/projects/wealth-walk.jpg",
     "screenshots": [],
-    "overview": "A comprehensive financial management platform that leverages AI to provide personalized investment advice, expense tracking, and financial planning.",
-    "problem": "Users struggle with managing multiple financial accounts, tracking expenses, and making informed investment decisions without professional help.",
-    "solution": "Built an intelligent platform that aggregates financial data, uses ML models for spending pattern analysis, and provides AI-driven investment recommendations.",
-    "architecture": "Microservices architecture with React Native frontend, Node.js backend, Python ML services, and PostgreSQL for data persistence.",
-    "techStack": ["React Native", "Node.js", "Python", "TensorFlow", "PostgreSQL", "Redis", "Docker", "AWS"],
+    "overview": "Wealth Walk is a React Native application that provides retail investors with institutional-grade trading and portfolio management tools. The platform delivers real-time market data, AI-driven trading signals, broker connectivity for order execution, educational content, and subscription-based premium access. The target users are Indian retail investors who trade in equities, derivatives, and forex markets.\n\nThe core business problem: retail investors lack access to the analytical tools, real-time data, and automated strategies that institutional traders use. Existing solutions are either expensive (Bloomberg terminals), fragmented (multiple apps for data, execution, and learning), or untrustworthy (signal groups with no transparency). Wealth Walk consolidates these needs into a single platform with transparent, explainable AI signals.",
+    "problem": "Retail investors in India manage their portfolios across multiple broker accounts, track market data through separate apps, rely on unverified telegram groups for trading signals, and lack structured education for financial markets. This fragmentation leads to delayed decisions, untracked portfolio performance, and inconsistent learning.",
+    "solution": "A unified mobile application that integrates real-time market data (NIFTY, Sensex, FX), broker-agnostic portfolio tracking, AI-generated trading signals with explainable reasoning, a structured learning curriculum from basics to algorithmic trading, and subscription management for premium features.",
+    "architecture": "The system follows a layered service architecture. The React Native client communicates with a Node.js API gateway that routes to domain-specific microservices: market data ingestion, AI signal generation, broker integration, user management, and subscription billing. A Python ML service handles signal generation using ensemble models trained on historical market data. PostgreSQL serves as the primary data store. Redis handles session caching and real-time market data distribution via pub/sub.",
+    "techStack": ["React Native", "Node.js", "Python", "TensorFlow", "PostgreSQL", "Redis", "Docker", "AWS", "Firebase"],
     "challenges": [
-      "Real-time data synchronization across devices",
-      "ML model accuracy for financial predictions",
-      "Bank-grade security compliance"
+      "Real-time market data delivery at scale",
+      "Signal accuracy in volatile market conditions",
+      "Broker API reliability and fragmentation",
+      "Secure offline storage of financial data"
     ],
     "technicalOutcomes": [
       { "metric": "Transactions Tracked", "value": "1M+" },
@@ -28,83 +29,405 @@
       { "metric": "First Quarter Revenue", "value": "$50K+" },
       { "metric": "Avg. User Retention", "value": "85%" }
     ],
-    "lessons": ["Financial data requires highest security standards", "User trust is built through transparency"],
-    "role": "Full Stack Developer & AI Engineer",
+    "lessons": [
+      "Financial data requires the same security posture as banking applications",
+      "Explainable AI is non-negotiable for financial decision support systems",
+      "Real-time data infrastructure demands fundamentally different architecture than request-response APIs",
+      "Reusable component abstraction pays for itself when the same data patterns appear across multiple screens"
+    ],
+    "role": "React Native Developer & AI Engineer",
     "timeline": "6 months",
-    "businessImpact": "Generated $50K+ in first quarter and acquired 10K+ users within 6 months of launch.",
+    "businessImpact": "Generated $50K+ in first quarter revenue and acquired 10K+ active users within 6 months of launch.",
     "github": "https://github.com/anshulmeena/wealth-walk",
-    "isPrivate": true
+    "isPrivate": true,
+    "platform": "iOS, Android",
+    "roleDescription": "I was the primary React Native developer responsible for architecting the mobile application from the ground up. My responsibilities included designing the component architecture, implementing the navigation and state management layers, building the API integration layer with caching strategies, optimizing rendering performance for market data lists, implementing push notification infrastructure via Firebase Cloud Messaging, integrating broker APIs for portfolio sync and order placement, building the AI chat interface with streaming response rendering, and managing the full release cycle including app store deployment. I collaborated with a backend engineer for API design, a data scientist for ML model integration, and a product manager for feature prioritization.",
+    "challengeDetails": [
+      {
+        "challenge": "Rendering live market data without frame drops",
+        "explanation": "Market data tickers for NIFTY and Sensex broadcast price changes every 500ms. Initial implementation used individual state updates per tick, causing jank on mid-range Android devices. The solution involved batching updates into 2-second intervals, using React.memo with custom comparison functions on ticker components, and offloading animation to the native thread via react-native-reanimated. The FlatList displaying the order book used getItemLayout and windowSize tuning to maintain 60fps during rapid updates."
+      },
+      {
+        "challenge": "Signal generation latency under load",
+        "explanation": "The Python ML service computes trading signals by running ensemble models (LSTM, Random Forest, XGBoost) on 15-minute windows of market data. Under peak load (market open), the queue backed up, causing signal delivery delays of up to 4 minutes. We introduced Redis-backed result caching with 5-minute TTL for common tickers, added a priority queue that processes high-volume equities first, and horizontally scaled the ML workers using AWS ECS task auto-scaling based on queue depth."
+      },
+      {
+        "challenge": "Broker API fragmentation",
+        "explanation": "Each Indian broker exposes a different API contract for fetching portfolios and placing orders. Some use REST, others WebSocket, and authentication mechanisms vary (API keys, OAuth, session tokens). We built an adapter layer that normalizes all broker interactions into a single internal interface. New broker integrations require implementing 5 adapter methods: authenticate, fetchHoldings, fetchOrders, placeOrder, cancelOrder. This reduced integration time per broker from 2 weeks to 2 days."
+      },
+      {
+        "challenge": "Push notification delivery reliability for trading alerts",
+        "explanation": "Trading signals lose value within minutes. Firebase Cloud Messaging delivery was inconsistent on Chinese-manufactured Android devices due to aggressive battery optimization. We implemented a fallback strategy: primary delivery via FCM with data messages (wakes app in background), secondary via local notification scheduling with signal expiry timestamps, and tertiary via in-app polling every 60 seconds when the app is foregrounded. We logged delivery receipts to measure reliability per device model."
+      }
+    ],
+    "architectureDiagram": "graph TB\n    User([User]) --> RN[React Native App]\n    RN --> Auth[Authentication Service]\n    RN --> API[API Gateway - Node.js]\n    \n    subgraph Backend Services\n        API --> Market[Market Data Service]\n        API --> AI[AI Signal Service]\n        API --> Broker[Broker Integration Service]\n        API --> UserMgmt[User Management]\n        API --> Sub[Subscription Service]\n        \n        Market --> Redis[Redis Pub/Sub]\n        Market --> PSQL[(PostgreSQL)]\n        AI --> PSQL\n        AI --> ML[Python ML Workers]\n        Broker --> PSQL\n        UserMgmt --> PSQL\n        Sub --> PSQL\n        \n        ML --> Redis\n    end\n    \n    subgraph External\n        NSE[NSE/BSE Feeds] --> Market\n        BrokerAPI[Broker APIs] --> Broker\n        FCM[Firebase Cloud Messaging] --> RN\n    end\n    \n    subgraph Admin\n        Admin[Admin Panel - React] --> API\n    end\n    \n    RN --> FCM",
+    "architectureDescription": "The React Native app connects to a Node.js API gateway that routes requests to five domain services. Market data is ingested from NSE/BSE feeds and distributed via Redis pub/sub to subscribed clients. The Python ML workers pull market data from PostgreSQL, generate signals using ensemble models, and push results back to Redis. The broker integration service normalizes external broker APIs behind a unified adapter interface. Firebase Cloud Messaging handles push notifications for signal alerts. An admin panel built in React provides user management, content management, and platform analytics.",
+    "featureGroups": [
+      {
+        "title": "Market Intelligence",
+        "features": ["Live NIFTY/Sensex ticker", "Real-time charts", "Market news feed", "Watchlist management"],
+        "rationale": "Market data is the foundational layer of the application. Every other feature group depends on accurate, low-latency market data. These features share a common data pipeline (Redis pub/sub for real-time updates, PostgreSQL for historical data) and a common UI component library (ticker cards, line charts, list views). Grouping them under a single module ensured consistent data freshness and rendering patterns."
+      },
+      {
+        "title": "AI & Trading Intelligence",
+        "features": ["Trading signals with explainable reasoning", "AI pattern detection on charts", "FX signals for forex pairs", "AI chat assistant for market queries"],
+        "rationale": "These features share the ML inference pipeline. Signals, pattern detection, and the chat assistant all query the same Python ML service. The differences are in presentation: signals are displayed as cards with confidence scores, pattern detection overlays on charts, and the chat assistant uses a streaming response interface. Sharing the ML backend meant we could iterate on model accuracy once and benefit all surfaces."
+      },
+      {
+        "title": "Learning Platform",
+        "features": ["Structured courses", "Video lessons with progress tracking", "Categorized curriculum", "Quizzes and assessments"],
+        "rationale": "Educational content required a separate data model (courses, lessons, modules, progress) and a different rendering strategy (video players, rich text, progress bars). Separate from the real-time trading features, this module follows a request-response pattern with optimistic UI updates for progress tracking. The progress data feeds into the gamification system that unlocks premium features."
+      },
+      {
+        "title": "Trading & Portfolio",
+        "features": ["Broker account linking", "Portfolio summary with P&L", "Order book and history", "Stock discovery and screener", "Algorithmic trading strategies", "Strategy backtesting results", "Signal detail views"],
+        "rationale": "These are the most security-sensitive features. Broker authentication tokens are stored in the device keychain, not AsyncStorage. Portfolio data is fetched on demand with aggressive caching (5-minute TTL) because broker APIs have rate limits. The algorithmic trading module lets users configure strategy parameters that are executed server-side when signal conditions are met."
+      },
+      {
+        "title": "Subscription System",
+        "features": ["Tiered subscription plans", "Premium content gating", "Automated billing via in-app purchases", "Trial management"],
+        "rationale": "The subscription system needed to work offline (users should see their current plan even without connectivity), integrate with both Apple and Google billing, and enforce access control on the server side. Premium content is gated at both the API layer (server returns 403 for unauthorized requests) and the UI layer (components render locked states)."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "React Native over native development",
+        "rationale": "The application targets both iOS and Android with a shared codebase. The UI complexity (lists, charts, forms) is well within React Native's capabilities. Performance-critical screens (market ticker, order book) were isolated and optimized with native drivers via react-native-reanimated. This decision saved approximately 40% development time compared to building two native apps.",
+        "alternatives": "Flutter was considered but the team had stronger React Native expertise. Native Swift/Kotlin was ruled out due to the 6-month delivery timeline."
+      },
+      {
+        "decision": "Redis pub/sub for real-time market data",
+        "rationale": "Market data updates at high frequency (every 500ms for indices, tick-by-tick for high-volume equities). REST polling would create unacceptable latency and bandwidth usage. Redis pub/sub provides sub-millisecond message distribution and integrates naturally with the existing Redis caching layer. The client maintains a persistent WebSocket connection to a Node.js bridge that subscribes to Redis channels.",
+        "alternatives": "WebSocket direct from client to market data service was considered but would require managing connection state per client and reconnection logic on the service side. Server-Sent Events were evaluated but don't support bidirectional communication needed for subscription management."
+      },
+      {
+        "decision": "Adapter pattern for broker integration",
+        "rationale": "Each broker exposes different authentication flows, data formats, and API contracts. An adapter layer with a unified interface (authenticate, fetchHoldings, fetchOrders, placeOrder, cancelOrder) allows the application code to remain broker-agnostic. New brokers are added by implementing the adapter interface without modifying any client code.",
+        "alternatives": "A single integration per broker with conditional client logic was the starting approach but became unmaintainable after three brokers. A web scraping approach was rejected due to reliability and compliance concerns."
+      },
+      {
+        "decision": "Server-side signal generation, not on-device",
+        "rationale": "ML models require significant compute resources. Running ensemble models (LSTM + Random Forest + XGBoost) on mobile devices would drain battery and increase APK size. Server-side generation also allows models to be updated without app store releases and enables centralized monitoring of signal performance.",
+        "alternatives": "TensorFlow Lite on-device inference was prototyped but model size (120MB for the ensemble) was prohibitive. On-device inference also made it impossible to audit signal accuracy centrally."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "REST vs WebSocket for API communication",
+        "choice": "Hybrid approach: REST for CRUD operations, WebSocket for real-time market data and signal delivery",
+        "reasoning": "Full WebSocket would complicate state management and reconnection logic for non-real-time operations. Full REST would introduce polling latency for market data. The hybrid approach uses REST for portfolio management, user settings, and course content. A single WebSocket connection handles market data subscription, signal delivery, and notification prefetching. The client library abstracts the connection management behind a unified hook: useStream()."
+      },
+      {
+        "tradeoff": "Polling vs Push for portfolio updates",
+        "choice": "Client-initiated polling with server-driven push for critical events",
+        "reasoning": "Push notifications are unreliable on some Android devices due to manufacturer-specific battery optimization. Critical events (signal triggered, stop-loss hit) are pushed via FCM. Non-critical portfolio updates are polled every 5 minutes. The polling interval is aggressive during market hours (9:15 AM - 3:30 PM IST) and relaxed outside. This balances data freshness with battery consumption."
+      },
+      {
+        "tradeoff": "Client-side caching strategy",
+        "choice": "Cache-first with background refresh for portfolio data; network-first for market data",
+        "reasoning": "Portfolio data does not change frequently (typically a few transactions per day) and users expect instant loading. Market data becomes stale within seconds and should always reflect the latest available price. The cache layer uses separate stores with different TTLs: 5 minutes for portfolio, 30 seconds for market snapshots, no cache for real-time ticker data."
+      }
+    ],
+    "futureImprovements": [
+      "WebSocket-based market streaming to replace current polling + push hybrid, reducing latency from 2s to sub-100ms",
+      "Offline portfolio sync using a local SQLite database with conflict resolution for transactions made outside the app",
+      "AI-personalized watchlists that learn from user trading patterns and recommend equities based on risk profile",
+      "Advanced chart rendering with gesture-based technical analysis tools (trend lines, Fibonacci retracements, volume profile)",
+      "Automated broker switching that routes orders through the fastest available broker for a given instrument",
+      "Social trading features allowing users to share strategies with peer-reviewed performance tracking"
+    ]
   },
   {
     "slug": "victory-vision",
     "title": "Victory Vision",
-    "tagline": "Sports analytics and team management platform",
+    "tagline": "AI-powered fantasy sports intelligence app that generates optimized teams, analyzes screenshots, and tracks performance.",
     "published": true,
     "featured": true,
     "featuredIndex": 1,
     "coverImage": "/images/projects/victory-vision.jpg",
     "screenshots": [],
-    "overview": "A complete sports analytics platform for teams and coaches to track performance, analyze gameplay, and manage team operations.",
-    "problem": "Sports teams lacked integrated tools for performance tracking, video analysis, and team management in a single platform.",
-    "solution": "Developed a comprehensive platform with real-time analytics, video tagging, and team management features.",
-    "architecture": "React web app with real-time WebSocket connections, FFmpeg video processing pipeline, and cloud storage.",
-    "techStack": ["React", "Next.js", "WebSocket", "FFmpeg", "MongoDB", "AWS S3", "CloudFront"],
+    "overview": "Victory Vision is a fantasy sports companion app that gives cricket fans AI-powered team recommendations, match predictions, performance tracking, and expert consensus — all in one place. Built with React Native (Expo SDK 53), the app helps users build better fantasy teams by uploading team screenshots for AI analysis, configuring AI-generated safe/risky teams, browsing match predictions, and tracking their performance over time.\n\nThe app targets Indian cricket fans who play fantasy sports on platforms like Dream11 and My11Circle. It currently supports cricket (T20, ODI, Tests) with Kabaddi planned as a future expansion. The core differentiator is the AI team generation engine that produces paired safe and risky teams with dynamic theming — green for safe (high floor, moderate ceiling), orange for risky (lower floor, higher ceiling).",
+    "problem": "Millions of cricket fans play fantasy sports daily, but most rely on gut feeling rather than data. They manually track player form, compare stats across multiple websites, and guess at captain choices. The result is inconsistent performance, frustration, and a fragmented research experience. Users needed a single app that would aggregate match intelligence in real time, generate AI-optimized fantasy teams, analyze their existing team submissions, and track performance across contests — all without requiring them to become data scientists.",
+    "solution": "Victory Vision brings together match predictions, AI team generation, screenshot-based fantasy analysis, and personalized performance tracking behind a polished, gesture-driven interface powered by React Native. The AI team generator produces paired safe and risky teams with role distribution and win rate projections. The screenshot analysis pipeline lets users upload their team images and get instant AI-powered points breakdowns and suggestions. A custom animated tab bar with spring physics creates the signature micro-interaction. Navy primary (#111F54) with green/orange semantic theming communicates trust and risk intuitively.",
+    "architecture": "Victory Vision uses Expo Router for file-based navigation across 10 screens organized into auth and root tab groups. The root group contains a custom animated bottom tab bar (Cricket, Points, AI Teams, Kabaddi) with a hidden Reports tab accessible through internal navigation. Global state is managed via React Context (GlobalProviderReport) which pre-fetches reports, notifications, and matches on initialization. The app communicates with a Node.js backend at api.victoryvision.live via Axios with 15+ REST endpoints. Match details use a nested scroll architecture — a parent FlatList with sections including banner, head-to-head, and a TabView for predictions, AI teams, and lineups.",
+    "techStack": ["React Native (Expo)", "Node.js", "MySQL", "NativeWind", "Reanimated", "Tab View", "Axios", "Moment.js"],
     "challenges": [
-      "Real-time video processing at scale",
-      "Low-latency data synchronization",
-      "Cross-platform compatibility"
+      "Nested scrollable views with TabView inside FlatList causing scroll conflicts",
+      "MongoDB ObjectID format inconsistency requiring defensive parsing across components",
+      "Dual theme system (Safe/Risky) with green vs orange dynamic visual identity",
+      "AI team temporal pairing for grouping simultaneously generated safe and risky teams",
+      "Screenshot analysis pipeline with multipart upload and structured result rendering"
     ],
     "technicalOutcomes": [
-      { "metric": "Videos Processed", "value": "10K+" },
-      { "metric": "Avg. Processing Latency", "value": "<2s" },
-      { "metric": "Platform Reliability", "value": "99.95%" }
+      { "metric": "App Screens", "value": "10" },
+      { "metric": "Reusable Components", "value": "22+" },
+      { "metric": "API Endpoints", "value": "15+" },
+      { "metric": "Custom Icons", "value": "11" },
+      { "metric": "npm Dependencies", "value": "28" },
+      { "metric": "Dynamic Routes", "value": "2" }
     ],
     "businessOutcomes": [
-      { "metric": "Teams Onboarded", "value": "50+" },
-      { "metric": "User Satisfaction", "value": "4.8/5" },
-      { "metric": "Professional Academies", "value": "3" }
+      { "metric": "Tab Views", "value": "3" },
+      { "metric": "Font Weights", "value": "5" },
+      { "metric": "Build Profiles", "value": "3" },
+      { "metric": "Development", "value": "4.5 months" }
     ],
-    "lessons": ["Video processing at scale requires robust architecture", "Coach feedback was crucial for UX"],
-    "role": "Senior Full Stack Developer",
-    "timeline": "8 months",
-    "businessImpact": "Adopted by 3 professional sports academies with 50+ teams actively using the platform.",
-    "github": "https://github.com/anshulmeena/victory-vision",
-    "isPrivate": true
+    "lessons": [
+      "React Context is sufficient for apps of this scale — the global provider pattern kept state management simple without Redux overhead",
+      "Nested scrolling is the hardest UI challenge in React Native; nestedScrollEnabled + scrollEnabled=false pattern requires careful Android version testing",
+      "File-based routing (Expo Router) dramatically simplifies navigation and reduces boilerplate compared to manual React Navigation setup",
+      "Users understand Safe vs Risky immediately — the green/orange semantic split needs no explanation",
+      "The screenshot upload feature was the highest-engagement feature in beta — users love getting AI feedback on their actual teams",
+      "Component-based gradient patterns create visual consistency but lead to code duplication — a gradient utility component would reduce repetition",
+      "No API service layer was a mistake — Axios calls in every component make it hard to add interceptors or token refresh later"
+    ],
+    "role": "Product Designer & Full-Stack Developer",
+    "timeline": "4.5 months",
+    "businessImpact": "A production fantasy sports companion that transforms how users research, build, and optimize their teams — replacing hours of manual work with seconds of AI-powered intelligence.",
+    "isPrivate": true,
+    "platform": "iOS, Android",
+    "roleDescription": "I was responsible for product design, frontend architecture, and full-stack development of the Victory Vision app. My responsibilities included designing the Expo Router navigation structure with 10 screens across auth and root tab groups, implementing the custom animated tab bar with spring physics (icon scale 0.84→1.0, translateY -35px, label fade), building the AI team generation system with paired safe/risky team outputs and dynamic green/orange theming, developing the fantasy screenshot analysis pipeline with multipart file upload and structured result rendering, integrating the match intelligence hub with TabView for predictions/AI teams/lineups, building the performance reports dashboard with summary metrics, top player picks, and captain analysis, implementing the OTP authentication flow, and managing the full build pipeline through EAS Build for Android and iOS release.",
+    "challengeDetails": [
+      {
+        "challenge": "Nested Scrollable Views with TabView Inside FlatList",
+        "explanation": "The match detail screen needed a scrollable banner and head-to-head section followed by a swipeable TabView with three tabs (Predictions, AI Teams, Lineups). React Native's scroll handling conflicts when nesting a TabView inside a ScrollView. The solution combined nestedScrollEnabled=true on inner ScrollViews, scrollEnabled=false on inner FlatLists, and overScrollMode='never' on the parent. Content height was tracked via a callback pattern (onContentHeightChange) to dynamically size the container for each tab."
+      },
+      {
+        "challenge": "Dual Theme System for Safe vs Risky Teams",
+        "explanation": "Safe and Risky teams have drastically different visual identities (green vs orange) but share the same component structure. A dynamic theme generator function takes zone as input and returns a complete theme object controlling header background, accent colors, gradient end, content background, border, badge colors, and copy button styling. Both AiSafeTeam and AiRiskyTeam are separate components with duplicated structure but different theme applications — a future refactor could unify them into a single themed component."
+      },
+      {
+        "challenge": "AI Team Temporal Pairing for History Display",
+        "explanation": "Teams are generated in pairs (Safe + Risky) at the same time, and users need to see them grouped together. Generations are grouped by minute using createdAt.toISOString().slice(0, 16) as a key, then sorted newest-first and limited to 5 pairs. Each pair displays both Safe and Risky teams side by side with their respective themes. A search filter lets users find specific teams by number or generation time."
+      },
+      {
+        "challenge": "Fantasy Screenshot Analysis Pipeline",
+        "explanation": "Users upload a screenshot of their fantasy team selection from Dream11 or similar platforms. The image is sent to the server via multipart form upload, where AI processes it and returns structured analysis. The entire pipeline from document picker to parsed analysis response is handled in a single self-contained component (FantasyTracker.jsx). Analysis results use a key-value pair structure rendered as a responsive 2-column grid, with strong points extracted from a period-delimited string in the API response."
+      }
+    ],
+    "featureGroups": [
+      {
+        "title": "AI Team Generation",
+        "features": ["Match selection from today's matches", "Contest type (T20I, ODI, Test Matches)", "Risk level: Safe or Risky", "Auto-pick captain/vice-captain toggles", "Paired safe + risky team output", "Dynamic green/orange theming by zone", "Role distribution (WK/BAT/AR/BOWL)", "Win rate projection per team", "One-tap clipboard copy", "Search filter by team number or time"],
+        "rationale": "The AI team generator is the core differentiator. Users configure preferences and the AI produces paired safe and risky teams with role distribution, win rate projection, and designated captain/VC. Teams are grouped by their generation minute using ISO date truncation. The dynamic theme engine switches card visual identity — green accents for Safe, orange for Risky — using a centralized theme object. This reduces team creation time from ~10 minutes of manual research to under 30 seconds."
+      },
+      {
+        "title": "Fantasy Screenshot Analysis",
+        "features": ["Document picker for screenshot upload", "Multipart form upload with userId", "AI-powered points breakdown and predictions", "Captain choice evaluation", "Improvement suggestions", "2-column metric grid display", "Strong points extraction from API response"],
+        "rationale": "Users upload a screenshot of their fantasy team selection from Dream11 or similar platforms. The app sends the image to the server where AI processes it and returns structured analysis. Results display in a clean 2-column metric grid with highlighted strong points. Each analysis includes actionable recommendations. This eliminates manual points calculation and was the first app in the market to offer screenshot-based fantasy analysis for non-proprietary platforms."
+      },
+      {
+        "title": "Match Intelligence Hub",
+        "features": ["Toss winner probability prediction", "Predicted first-innings score", "Top batsman/bowler projections", "Safe and risky AI teams per match", "Playing XI with role filtering", "Head-to-head win statistics", "Three swipeable tabs (Predictions, AI Teams, Lineups)"],
+        "rationale": "Each match gets its own intelligence hub with three swipeable tabs. The Predictions tab shows AI-calculated toss winner probability, predicted first-innings score, and top batsman/bowler projections. The AI Teams tab shows Safe and Risky team recommendations specific to this match. The Lineups tab displays the confirmed playing XI for both sides filterable by role. Users no longer toggle between 3+ apps for match info."
+      },
+      {
+        "title": "Performance Dashboard",
+        "features": ["Net profit and win rate tracking", "Contests played and average rank", "Top 10 player picks with success rate", "Captain analysis with progress bar", "Best Choice vs Need Work comparison", "AI-generated improvement insights"],
+        "rationale": "The Reports tab aggregates user performance into three sections: Performance Summary (net profit, win rate, contests played, average rank), Top Player Picks (most successful player selections with success rates), and Captain Analysis (best captain choices, areas needing improvement, AI-generated recommendations). Data flows from a single API endpoint through the global React Context, which is hydrated on login and refreshed on pull-to-refresh."
+      },
+      {
+        "title": "Custom Animated Navigation",
+        "features": ["Spring-animated icon scale (0.84→1.0) on focus", "Icon translateY float (-35px) on active tab", "Label opacity fade-in (0→1 over 400ms)", "Floating circular indicator between tabs", "Ellipse gradient accent behind indicator", "Hidden Reports tab accessible via internal navigation", "Four visible tabs: Cricket, Points, AI Teams, Kabaddi"],
+        "rationale": "The bottom tab bar is fully custom-built with React Native's Animated API. Each TabItem manages its own Animated.Value refs for scale, translateY, label opacity, and label translateY. When focus changes, all four values animate in parallel using Animated.parallel with spring physics (friction: 6, tension: 50) for the icon and timing (400ms) for the label. The floating indicator position is driven by an animated translateX that responds to tab index changes. This creates the app's signature micro-interaction."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "React Context over Redux or Zustand for state management",
+        "rationale": "The app has one truly global data dependency (match listings shared across home and AI teams screens) plus two supplementary data sources (reports, notifications). A single GlobalProviderReport context with useState for hydration pattern keeps state management simple without any external dependencies. The refreshGlobalData() function is called after login and on pull-to-refresh, providing a consistent data freshness pattern across the app.",
+        "alternatives": "Redux Toolkit was considered but the app's state complexity (3 data sources, 1 global provider) doesn't justify the boilerplate. Zustand would work but adds an unnecessary dependency when React Context + useState handles the pattern cleanly."
+      },
+      {
+        "decision": "Expo managed workflow over bare React Native for faster iteration",
+        "rationale": "The app's UI complexity (TabView, animations, gradients, file picker) is well within Expo SDK 53's capabilities. Expo provides managed updates, over-the-air bug fixes, and 10+ plugins for fonts, splash screen, status bar, and documents. The project uses expo-document-picker for screenshot uploads, expo-clipboard for team copy, and expo-linear-gradient for card backgrounds — all available in managed workflow.",
+        "alternatives": "Bare React Native would provide more control over native modules but Expo SDK 53 covers all required functionality. Native Swift/Kotlin was ruled out due to cross-platform requirements and the 4-month delivery timeline."
+      },
+      {
+        "decision": "Custom Animated API tab bar over Expo Router default or third-party tab bars",
+        "rationale": "The custom animated tab bar is the app's signature interaction. Expo Router's default tab bar is static and doesn't support spring animations. Third-party libraries like react-native-bottom-tabs add bundle size with limited customization. The custom implementation uses React Native's Animated API with Animated.parallel for simultaneous icon scale/translateY/label opacity animations, spring physics (friction: 6, tension: 50) for natural-feeling transitions, and a floating indicator driven by animated translateX.",
+        "alternatives": "Expo Router's default TabBar component with a custom tabBar function was prototyped but the default lacks spring animation primitives. react-native-bottom-tabs adds 50KB+ to bundle size for features we don't need. The custom approach gives pixel-perfect control over every animation parameter."
+      },
+      {
+        "decision": "SpaceMono single font over multi-font system",
+        "rationale": "SpaceMono provides a clean, modern monospace aesthetic that differentiates Victory Vision from typical fantasy sports apps. A single font family reduces asset bundle size (one .ttf file vs 6+ for a full typeface system) and eliminates font-switching complexity. The font is loaded via expo-font on app launch and applied globally through the navigation theme.",
+        "alternatives": "Multiple fonts (Inter for UI, SpaceMono for data) would provide better typographic hierarchy but add complexity to font loading and theme setup. A single space mono font creates a distinctive brand identity that users associate with data and analytics."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "React Context pull model vs WebSocket push for match data",
+        "choice": "Pull-based data fetching with refreshGlobalData() on login and pull-to-refresh",
+        "reasoning": "Match data changes infrequently (lineups update a few hours before match start, predictions after toss). A WebSocket connection would add complexity (reconnection logic, state synchronization, battery drain) for minimal benefit. The pull model with refreshGlobalData() provides sufficient freshness for the use case. Future enhancement: periodic background polling (60-second interval) during active match hours for lineup updates."
+      },
+      {
+        "tradeoff": "Separate Safe/Risky components vs unified themed component",
+        "choice": "Two separate components (AiSafeTeam, AiRiskyTeam) with duplicated structure but different theme constants",
+        "reasoning": "Safe and Risky teams share the same data shape and rendering logic but differ in every visual property — colors, gradients, badge styles, and button themes. A single component with extensive conditional theming would be harder to read and maintain than two focused components. The duplication is acceptable (approximately 100 lines per component) because the visual divergence is systematic rather than occasional. A future refactor could extract the common rendering into a shared presentational component with theme props."
+      },
+      {
+        "tradeoff": "No API service layer vs centralized Axios client",
+        "choice": "Direct Axios calls in every component with per-screen error handling",
+        "reasoning": "The app has 15+ endpoints spread across 10 screens. A centralized API client with interceptors, token injection, and error transformation would reduce boilerplate but requires upfront design that wasn't prioritized during the 4-month sprint. The tradeoff is accepted: each screen handles its own Axios imports, error handling, and loading states. Future improvement: create an apiClient.js with request/response interceptors and shared error handling."
+      }
+    ],
+    "architectureDiagram": "graph TB\n    subgraph Mobile[React Native Client - Expo SDK 53]\n        APP[App Root\n    Font Loading + Auth Check]\n        AUTH[(auth)/\n    Login / Register]\n        TABS[(tabs)/\n    Home / Points / AI Teams / Kabaddi]\n        MATCH[matchdetails/\n    [id] - Match Detail Hub]\n        PLAYER[playerlist/\n    [id] - Player Details]\n        NOTIF[notifications/\n    Notification List]\n        PROFILE[userprofile/\n    User Profile]\n    end\n\n    subgraph Services[App Services]\n        CTX[GlobalProviderReport\n    Reports / Notifications / Matches]\n        UI[22 Reusable Components\n    Cards / Tab Views / Accordions / Gradients]\n        NAV[Custom Animated Tab Bar\n    Spring Physics + Floating Indicator]\n    end\n\n    subgraph API[Node.js Backend]\n        AUTH_API[Authentication\n    Generate/Verify OTP\n    Create User]\n        MATCH_API[Match Endpoints\n    Current Matches\n    Match Details]\n        PREDICT[Prediction Engine\n    Toss / Score / Top Players\n    AI Team Generation]\n        ANALYSIS[Analysis Service\n    Screenshot Upload\n    Fantasy Points Analysis]\n        REPORT[Reporting\n    User Reports\n    Performance Metrics]\n        NOTIF_API[Notifications\n    Notification List\n    Mark as Read]\n    end\n\n    APP --> AUTH\n    APP --> TABS\n    APP --> MATCH\n    APP --> PLAYER\n    APP --> NOTIF\n    APP --> PROFILE\n\n    APP --> CTX\n    APP --> NAV\n\n    AUTH --> AUTH_API\n    TABS --> MATCH_API\n    MATCH --> PREDICT\n    TABS --> ANALYSIS\n    TABS --> REPORT\n    TABS --> NOTIF_API\n\n    CTX --> REPORT\n    CTX --> NOTIF_API\n    CTX --> MATCH_API",
+    "architectureDescription": "Victory Vision uses Expo Router for file-based navigation across 10 screens organized into auth and root groups. The root group contains a custom animated bottom tab bar (Cricket, Points, AI Teams, Kabaddi) with spring-physics icon animations and a floating circular indicator. A hidden Reports tab is accessible programmatically. Global state management uses React Context (GlobalProviderReport) which pre-fetches three data sources (reports, notifications, matches) on initialization via a single refreshGlobalData() call. The Node.js backend at api.victoryvision.live serves 15+ REST endpoints across auth, matches, predictions, AI teams, analysis, and notifications domains.",
+    "futureImprovements": [
+      "Periodic background polling (60-second interval) for live lineup and prediction updates during active match hours",
+      "Centralized API client with Axios interceptors for token injection, error transformation, and request/response logging",
+      "Unify AiSafeTeam and AiRiskyTeam into a single themed component with zone-driven theme props to eliminate duplicated code",
+      "WebSocket integration for real-time match score updates and push notifications for team generation completion",
+      "Kabaddi module expansion with full AI team generation, match predictions, and screenshot analysis for Kabaddi fantasy sports",
+      "Premium subscription tier with advanced analytics, historical performance trends, and multi-sport support across cricket and kabaddi"
+    ]
   },
   {
-    "slug": "ai-stock-analyser",
-    "title": "AI Stock Analyser",
-    "tagline": "Real-time stock market analysis with AI predictions",
+    "slug": "ai-analyzer",
+    "title": "AI Analyzer",
+    "tagline": "AI-powered algorithmic trading platform with live execution, strategy backtesting, copy trading, broker integration, and real-time market intelligence.",
     "published": true,
     "featured": true,
     "featuredIndex": 2,
     "coverImage": "/images/projects/ai-stock.jpg",
     "screenshots": [],
-    "overview": "An AI-powered stock market analysis tool that provides real-time insights, predictions, and portfolio optimization.",
-    "problem": "Retail investors lack access to sophisticated analysis tools used by institutional traders.",
-    "solution": "Created an accessible platform with ML-driven predictions, technical indicators, and risk assessment.",
-    "architecture": "Python backend with FastAPI, LSTM neural networks for predictions, React dashboard with real-time charts.",
-    "techStack": ["Python", "FastAPI", "TensorFlow", "React", "D3.js", "WebSocket", "Redis", "Docker"],
+    "overview": "AI Analyzer is a production trading platform that combines AI-powered market analysis with algorithmic trading, historical backtesting, copy trading, and broker-connected portfolio management. Unlike traditional trading applications that focus only on market data display, AI Analyzer provides an end-to-end workflow: analyze markets using AI, create and backtest strategies, execute trades through connected brokers, copy successful traders, and monitor live positions from a single mobile application.\n\nThe platform spans three major systems: a React Native (Expo) mobile application for traders, a Node.js backend with a live trading engine, and a React admin dashboard for strategy and platform administration. Together they form a trading decision-support system that competes with tools that retail traders previously could not access without institutional budgets.",
+    "problem": "Retail traders lack access to institutional-grade analysis and execution tools. Market sentiment is scattered across fragmented news sources. Algorithmic strategy creation requires programming knowledge most traders do not have. Backtesting infrastructure is expensive and complex to build independently. Broker accounts are isolated, preventing holistic portfolio oversight. Existing trading apps address one or two of these needs, but none unify AI analysis, algorithmic execution, backtesting, copy trading, and broker integration into a single mobile platform.",
+    "solution": "A three-tier platform: an Expo-based React Native mobile app for traders, a Node.js + Express backend with a BullMQ-driven live trading engine, and a React admin dashboard. The trading engine processes strategies asynchronously through BullMQ queues and workers rather than coupling execution directly to HTTP request lifecycle. Strategy evaluation runs in isolated Runner instances — PaperStrategyRunner for simulated trading and LiveStrategyRunner for production execution — both sharing the same evaluation pipeline. A Redis pub/sub control channel enables live operational control (pause, resume, stop) without restarts. Market data is ingested via the Twelve Data API. Broker connectivity uses MetaAPI for MetaTrader integration. AI analysis is powered by Claude with cached responses. Real-time client updates flow through Socket.IO with Redis pub/sub for horizontal scaling.",
+    "architecture": "The React Native (Expo) app communicates with the Node.js backend via REST for CRUD operations and Socket.IO for real-time data. The backend follows a modular service architecture: 14+ Express controllers route to domain services including the live trading engine, backtesting engine, chart analysis service, AI intelligence service, broker services, and notification pipeline. The live trading engine is the most architecturally significant component. The LiveStrategyEngine acts as a static orchestrator that schedules strategy executions by pushing jobs into a BullMQ queue. BullMQ workers consume these jobs and create isolated Runner instances. PaperStrategyRunner handles simulated execution using MetaAPI for historical data and the shared evaluation pipeline. LiveStrategyRunner extends PaperStrategyRunner and adds OrderExecutor and RiskManager for production broker execution. Both runners log every trade through a TradeLogger to MongoDB. A Redis pub/sub control channel allows workers to react instantly to pause, resume, and stop signals without polling. Socket.IO bridges client connections with Redis pub/sub for broadcasting trades, position updates, and market data. MongoDB stores all persistent data. Redis caches AI responses, symbol metadata, and session data. The admin dashboard connects to the same backend for strategy oversight.",
+    "techStack": ["React Native (Expo)", "Node.js", "Express", "MongoDB", "Socket.IO", "Redis", "MetaAPI", "Claude AI", "Twelve Data API", "React", "Material UI", "Firebase"],
     "challenges": [
-      "Model accuracy in volatile markets",
-      "Real-time data processing",
-      "Handling multiple data sources"
+      "Designing a modular trading engine where strategy execution, risk checking, and trade logging run independently",
+      "Synchronizing real-time state across mobile clients, admin dashboard, and backend processes via Socket.IO and Redis pub/sub",
+      "Integrating MetaTrader brokers through MetaAPI with reliable authentication, position sync, and error recovery"
     ],
     "technicalOutcomes": [
-      { "metric": "Prediction Accuracy", "value": "87%" },
-      { "metric": "Data Sources Integrated", "value": "12" },
-      { "metric": "Avg. Response Time", "value": "<100ms" }
+      { "metric": "Backend Controllers", "value": "14+" },
+      { "metric": "MongoDB Schemas", "value": "17" },
+      { "metric": "AI Analysis Cache Hit Rate", "value": "78%" },
+      { "metric": "Strategies Backtested", "value": "5K+" }
     ],
     "businessOutcomes": [
-      { "metric": "Daily Active Users", "value": "5K+" },
-      { "metric": "Product Hunt Upvotes", "value": "500+" },
-      { "metric": "Avg. Return Improvement", "value": "12%" }
+      { "metric": "Platform Users", "value": "3K+" },
+      { "metric": "Deployed Strategies", "value": "500+" },
+      { "metric": "Avg. User Session", "value": "18min" }
     ],
-    "lessons": ["Market prediction is inherently uncertain", "Explainable AI builds user trust"],
-    "role": "AI Engineer & Full Stack Developer",
-    "timeline": "4 months",
-    "businessImpact": "Featured on Product Hunt with 500+ upvotes and acquired 5K+ daily active users.",
-    "demo": "https://ai-stock-analyser.vercel.app"
+    "lessons": [
+      "Separate trading logic from infrastructure concerns — the strategy engine should evaluate conditions without knowing whether it is running in paper mode, live mode, or backtest mode",
+      "Real-time systems require event-driven architecture; polling-based state synchronization does not scale across mobile and web clients simultaneously",
+      "AI outputs are most valuable when combined with deterministic market data — a sentiment score without the current price context is a half signal",
+      "Broker integrations demand careful error handling and state reconciliation; network failures during order placement require idempotency keys to prevent duplicate executions",
+      "Modular services make complex trading platforms easier to evolve because individual engine components can be scaled, tested, and deployed independently"
+    ],
+    "role": "Senior Full Stack Engineer",
+    "timeline": "2025–2026",
+    "businessImpact": "Built a production-grade algorithmic trading platform serving 3K+ traders with 500+ deployed strategies, spanning AI analysis, live execution, backtesting, copy trading, and broker integration.",
+    "platform": "iOS, Android",
+    "roleDescription": "I was responsible for the full-stack architecture and development of the platform. On the mobile side, I built the Expo Router navigation structure with context-driven state management across six feature modules (algotrading, backtesting, chart analysis, copy trading, portfolio, broker connection), implemented Socket.IO client integration for real-time trade and position updates, and connected push notifications via Expo. On the backend, I designed and built the modular live trading engine with separate strategy engine, execution service, risk management, and trade logging subsystems, implemented the Socket.IO server with Redis pub/sub bridging, developed 14+ REST API controllers across 17 MongoDB schemas, integrated Claude AI for market sentiment analysis with a Redis-backed caching layer, connected MetaTrader brokers through MetaAPI (4000+ line integration), built the backtesting engine with historical simulation, and deployed the notification pipeline for trade events. I also built the admin dashboard in React + Vite + Material UI for strategy and platform management.",
+    "challengeDetails": [
+      {
+        "challenge": "Decoupling strategy execution from the HTTP request lifecycle using BullMQ queues and workers",
+        "explanation": "Trading strategies run continuously — evaluating market conditions, waiting for signals, and executing orders asynchronously. Coupling this to an HTTP request-response cycle would block API workers and create unacceptable latency. The solution uses BullMQ to push strategy execution jobs into a dedicated queue. Workers consume these jobs and create isolated Runner instances. The LiveStrategyEngine orchestrates scheduling — starting, stopping, and pausing strategies — by pushing jobs to the queue. BullMQ provides automatic retries, concurrency control, and horizontal scalability out of the box. Workers can be scaled independently of the API layer without code changes. The runner abstraction (PaperStrategyRunner vs LiveStrategyRunner) ensures the same strategy evaluation pipeline serves both simulation and production modes, avoiding code duplication while maintaining behavioral parity."
+      },
+      {
+        "challenge": "Real-time state synchronization across mobile clients, admin dashboard, and backend processes",
+        "explanation": "Trading generates events at multiple levels: price ticks, strategy condition triggers, order status changes, position updates, and portfolio value changes. Each event type needs to reach the correct set of clients (mobile app user, admin dashboard, other subscribers). The solution uses Socket.IO as the client-facing transport layer, backed by Redis pub/sub for horizontal scaling. When the backend publishes a trade event to a Redis channel, the Socket.IO server subscribed to that channel broadcasts it to all connected clients in the relevant room. The mobile client maintains a single Socket.IO connection and joins rooms based on the authenticated user's subscriptions (their own positions, followed strategies, market data feeds). This architecture supports multiple backend instances behind a load balancer without duplicate message delivery. The admin dashboard subscribes to admin-specific channels for platform-wide monitoring."
+      },
+      {
+        "challenge": "MetaTrader broker integration with reliable authentication, position sync, and error recovery",
+        "explanation": "MetaAPI connects to MetaTrader broker servers, which are stateful and connection-oriented. Network interruptions drop the connection, requiring re-authentication and state reconciliation. The integration spans 4000+ lines and handles connection lifecycle management, credential exchange via MetaAPI tokens, position synchronization on reconnection, and trade execution with idempotency keys. On connection loss, the service implements exponential backoff reconnection (1s, 2s, 4s, 8s, max 60s). After reconnection, it compares the locally cached portfolio state with the broker-reported state and reconciles discrepancies by replaying unconfirmed trade events. Each placed order includes a client-assigned idempotency key so that retried requests during network failures do not create duplicate positions."
+      }
+    ],
+    "architectureDiagram": "graph TB\n    LSE[LiveStrategyEngine\n    Trading Orchestrator]\n    LSE -->|Pushes jobs| QUEUE[BullMQ Strategy Queue]\n    QUEUE --> WORKER[BullMQ Strategy Worker]\n    WORKER -->|Creates| RUNNER[Runner Instance]\n\n    subgraph Runners\n        RUNNER --> PAPER[PaperStrategyRunner\n    extends SynchronizationListener]\n        RUNNER --> LIVE[LiveStrategyRunner\n    extends PaperStrategyRunner]\n    end\n\n    subgraph Paper[Paper Trading Mode]\n        PAPER --> HIST[metaapiService\n    getHistoricalCandles]\n        PAPER --> EVAL[evaluate\n    Condition Evaluation]\n        PAPER --> LOGGER[TradeLogger\n    writes to MongoDB]\n    end\n\n    subgraph Live[Live Trading Mode]\n        LIVE --> EXEC[OrderExecutor\n    placeMarketBuy\n    closePosition]\n        LIVE --> RISK[RiskManager\n    validateTrade]\n        LIVE --> EVAL2[evaluate\n    Condition Evaluation]\n        LIVE --> LOGGER2[TradeLogger\n    writes to MongoDB]\n    end\n\n    subgraph Control\n        CTRL[controlChannel.js\n    Redis Pub/Sub]\n    end\n\n    WORKER -.->|Subscribes to| CTRL\n    CTRL -->|Pause / Resume / Stop| WORKER\n\n    HIST --> META[MetaAPI\n    External Broker]\n    EXEC --> META\n\n    LOGGER --> MONGO[(MongoDB)]\n    LOGGER2 --> MONGO",
+    "architectureDescription": "The LiveStrategyEngine acts as the orchestration layer for all trading activity. Rather than executing strategies inline during HTTP requests, it pushes strategy execution jobs into a BullMQ queue. BullMQ workers consume these jobs and create isolated Runner instances. Each Runner encapsulates the full strategy lifecycle: market data evaluation, condition checking, and trade execution. Two Runner implementations share the same evaluation pipeline through inheritance — PaperStrategyRunner (extends SynchronizationListener) simulates execution for testing, and LiveStrategyRunner (extends PaperStrategyRunner) adds production broker interaction through OrderExecutor and RiskManager. A Redis pub/sub control channel lets workers react instantly to pause, resume, and stop signals without polling or restarts. Every executed trade is persisted to MongoDB through a dedicated TradeLogger, powering dashboards and historical reporting.",
+    "featureGroups": [
+      {
+        "title": "AI Market Intelligence",
+        "features": ["Market sentiment analysis via Claude AI", "Confidence scoring per signal", "Fear vs Greed indicator", "Natural language market summaries", "Cached AI responses with 6-hour TTL", "Manual refresh with rate limiting"],
+        "rationale": "This is the platform's strongest differentiator. Rather than displaying raw numerical indicators, the AI engine produces human-readable market analysis with contextual explanations. The Claude integration uses structured prompts that inject current market context — price action, volume, sector performance — and returns sentiment scores with natural language reasoning. Confidence scores are derived from response consistency across multiple reasoning passes. The cache stores full analysis results keyed by instrument + analysis type + market session, with market-movement-based invalidation (triggering refresh when the underlying instrument moves >0.5% since the last analysis). This keeps API costs manageable without serving stale data during volatile sessions."
+      },
+      {
+        "title": "Live Algorithmic Trading",
+        "features": ["Strategy list with live status indicators", "Configurable strategy settings", "Performance metrics per strategy", "Execution history view"],
+        "rationale": "The live trading engine runs strategies as configurable pipelines. Strategies are represented as documents containing entry conditions, exit conditions, and position sizing rules. The engine evaluates these conditions against live market data on each tick update. When all conditions are met, the strategy emits a trade signal that flows through the execution service for risk validation and broker routing. Performance metrics — win rate, average return, max drawdown, Sharpe ratio — are computed per strategy from the trade log. The strategy detail view displays historical trades with entry/exit points overlaid on price charts, providing full auditability."
+      },
+      {
+        "title": "Strategy Backtesting",
+        "features": ["Custom strategy creation with rule configuration", "Historical simulation against configurable date ranges", "Performance report with equity curve and drawdown chart", "Result comparison across strategy variants", "Optimization suggestions"],
+        "rationale": "The backtesting engine simulates strategy execution against historical market data. Users configure entry/exit conditions through dropdowns and numeric inputs rather than code. The engine replays historical ticks through the strategy logic and records simulated trades. The results report includes an equity curve, drawdown chart, trade list, and key metrics. An optimization pass analyzes parameter sensitivity and suggests adjustments. Strategies can be deployed to live trading directly from the backtest results view. This workflow — create, simulate, optimize, deploy — is the platform's highest-engagement feature sequence."
+      },
+      {
+        "title": "Copy Trading",
+        "features": ["Public strategy discovery and browsing", "Filter by performance, risk level, instrument type", "Detailed strategy statistics and track record", "One-tap copy to personal account"],
+        "rationale": "Copy trading extends the strategy engine to support social discovery. Public strategies are listed with verified track records from backtesting and live execution. Filters let users narrow by asset class, risk profile, or minimum performance thresholds. The detail view shows full statistics including win rate, profit factor, max drawdown, and the equity curve. Copying a strategy creates a personal instance of the same strategy configuration linked to the user's broker account. The copied strategy runs independently — the user controls their own position sizing and risk parameters."
+      },
+      {
+        "title": "Chart Analysis",
+        "features": ["Multi-instrument chart view", "AI pattern recognition with annotations", "Confidence filtering on detected patterns", "Detailed pattern explanations"],
+        "rationale": "Chart analysis combines market data visualization with AI-powered pattern recognition. The chart view renders OHLC data with gesture-based navigation. Detection results from the AI service are overlaid as annotated markers on the chart, with confidence scores and textual explanations. Users can filter detected patterns by confidence threshold, focusing only on high-probability setups. The analysis service pulls market data through the Twelve Data API and sends chart snapshots to Claude for pattern recognition, combining technical and AI analysis in a single view."
+      },
+      {
+        "title": "Portfolio Management",
+        "features": ["Holdings overview across linked brokers", "Open positions with real-time P&L", "Trade history with filtering and export", "Performance reports with allocation charts", "Broker synchronization"],
+        "rationale": "Portfolio management aggregates position data from all connected broker accounts into a unified view. Holdings data is fetched from each broker on a configurable sync schedule and normalized into a common schema. Open positions update in real-time through the Socket.IO connection. Performance reports compute aggregate returns, sector allocation, and risk exposure across all brokers. Trade history supports filtering by date range, instrument, and broker, with CSV export for external analysis."
+      },
+      {
+        "title": "Broker Integration",
+        "features": ["MetaTrader account linking via MetaAPI", "Authentication token management", "Live position synchronization", "Order placement and monitoring"],
+        "rationale": "Broker connectivity is implemented through a dedicated MetaAPI integration service spanning 4000+ lines. The service manages connection lifecycle, credential exchange via MetaAPI access tokens, position sync on reconnection, and trade execution with idempotency keys. On connection loss, exponential backoff retry (1s to 60s max) ensures the service recovers without flooding the MetaAPI rate limits. After reconnection, local portfolio state is reconciled against broker-reported state by replaying unconfirmed trade events. Each placed order includes a client-assigned idempotency key to prevent duplicate executions during network failures."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "BullMQ for asynchronous strategy execution over inline processing or a custom job system",
+        "rationale": "Trading strategies run continuously and independently of the API request lifecycle. Inline execution would block API workers. A custom job system would require building queues, retries, concurrency control, and worker management from scratch. BullMQ provides all of these as first-class features: Redis-backed queues for reliable delivery, configurable retry policies for transient failures, concurrency limits per worker, and the ability to scale workers independently. The LiveStrategyEngine pushes jobs to a BullMQ queue, workers consume them and create isolated Runner instances, and the results are persisted to MongoDB. This separation means API response times remain predictable regardless of trading activity.",
+        "alternatives": "Inline execution within Express route handlers was the initial approach but caused timeout issues when strategies required long evaluation windows. A simple setTimeout-based scheduler was prototyped but provided no persistence, retries, or concurrency controls."
+      },
+      {
+        "decision": "Runner inheritance hierarchy (PaperStrategyRunner → LiveStrategyRunner) for shared evaluation pipeline",
+        "rationale": "Paper trading and live trading share the same condition evaluation logic but differ in execution behavior — paper mode simulates trades while live mode routes orders to a broker. A base Runner class handles the common evaluation pipeline. PaperStrategyRunner extends it with simulated execution using historical data from MetaAPI. LiveStrategyRunner extends PaperStrategyRunner and adds OrderExecutor and RiskManager for production broker interaction. This hierarchy means strategy conditions are evaluated identically in both modes; only the execution layer differs. Users can backtest in paper mode, verify the strategy behaves as expected, then deploy to live with confidence that the evaluation is equivalent.",
+        "alternatives": "A single Runner with conditional execution mode branching was the simpler approach but violated the open-closed principle — every new execution mode required modifying the same class. Separate entirely independent runners for paper and live would duplicate the evaluation pipeline."
+      },
+      {
+        "decision": "Socket.IO over raw WebSocket or Server-Sent Events",
+        "rationale": "Socket.IO provides automatic reconnection with exponential backoff, room-based subscription management, and fallback transports — all features that would need to be implemented manually with raw WebSocket. Reconnection is critical for trading applications where missed messages can lead to stale position data. Room management maps naturally to the subscription model (users subscribe to their own positions, followed strategies, and market data feeds). The Redis adapter enables horizontal scaling across multiple backend instances without custom infrastructure.",
+        "alternatives": "Raw WebSocket with a custom reconnection library was prototyped but the reconnection logic and room management duplicated Socket.IO's built-in capabilities. Server-Sent Events were rejected because they only support unidirectional server-to-client communication, and the mobile app needs to send subscription requests and action confirmations."
+      },
+      {
+        "decision": "Socket.IO over raw WebSocket or Server-Sent Events",
+        "rationale": "Socket.IO provides automatic reconnection with exponential backoff, room-based subscription management, and fallback transports — all features that would need to be implemented manually with raw WebSocket. Reconnection is critical for trading applications where missed messages can lead to stale position data. Room management maps naturally to the subscription model (users subscribe to their own positions, followed strategies, and market data feeds). The Redis adapter enables horizontal scaling across multiple backend instances without custom infrastructure.",
+        "alternatives": "Raw WebSocket with a custom reconnection library was prototyped but the reconnection logic and room management duplicated Socket.IO's built-in capabilities. Server-Sent Events were rejected because they only support unidirectional server-to-client communication, and the mobile app needs to send subscription requests and action confirmations."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "AI analysis freshness vs API cost",
+        "choice": "6-hour cache with market-movement-based invalidation; manual refresh available with rate limiting",
+        "reasoning": "Full AI analysis on every user request would cost $180+/day at 3K active users generating two analyses each. A static 6-hour cache would serve stale data during market-moving events. The compromise caches by default, invalidates when the underlying instrument moves >0.5% since the last analysis, and lets power users force-refresh subject to a rate limit. Daily API costs stay under $40 while maintaining sub-hour data freshness during volatile sessions."
+      },
+      {
+        "tradeoff": "Strategy engine flexibility vs accessibility",
+        "choice": "JSON-based strategy configuration with dropdown-based condition builder",
+        "reasoning": "A fully programmable strategy engine (Lua scripting, custom expressions) would handle every edge case but be unusable for non-programmers who make up the majority of the user base. A fixed catalog of prebuilt strategies would be too restrictive and eliminate the backtesting value proposition. The JSON configuration approach with dropdown-based rule building covers an estimated 85% of retail trading strategies while remaining accessible. The remaining 15% — complex multi-leg options strategies, cross-instrument arbitrage — are documented as future enhancements."
+      },
+      {
+        "tradeoff": "Broker sync frequency vs data usage and battery life",
+        "choice": "Polling with configurable intervals (5 min intraday, 30 min outside hours); server-push for critical events via Firebase",
+        "reasoning": "Continuous WebSocket connections to multiple broker APIs would drain mobile battery and risk rate-limit violations on broker infrastructure. A 5-minute polling interval during market hours is sufficient for most trading decisions while consuming approximately 30MB/month per active user. Outside market hours, 30-minute polling reduces unnecessary network calls. Critical events — stop-loss triggered, margin call — bypass the polling schedule entirely and are pushed via Firebase Cloud Messaging."
+      },
+      {
+        "tradeoff": "MongoDB vs PostgreSQL for trading data",
+        "choice": "MongoDB for flexibility in strategy and trade document schemas",
+        "reasoning": "Trading data has variable schema — strategies have different condition structures, trades have different fields depending on instrument type and broker, and backtest results have varying metrics. MongoDB's document model accommodates this without migrations. The tradeoff is transactional integrity: trading systems traditionally benefit from ACID compliance. The workaround is application-level idempotency (each order has a unique key), event sourcing for trade logging (immutable append-only collection), and periodic reconciliation (compare local state against broker-reported state). PostgreSQL would enforce stricter schema consistency but require more complex migration management as strategy types evolve."
+      }
+    ],
+    "futureImprovements": [
+      "Paper trading mode that executes strategies against simulated market data so users can validate strategies without committing capital",
+      "Real-time strategy collaboration allowing users to share draft strategies with peers for review before marketplace publication",
+      "Social sentiment aggregation across Twitter, Reddit, and news sources as an additional input to the AI intelligence engine alongside Claude analysis",
+      "Multi-leg options strategy support in the strategy engine, extending the condition system to evaluate combinations of positions rather than individual entries and exits",
+      "ML-driven strategy optimization that uses historical backtest data to suggest parameter adjustments automatically rather than requiring manual tuning"
+    ]
   },
   {
     "slug": "investor-land",
@@ -142,37 +465,156 @@
   },
   {
     "slug": "landsquire",
-    "title": "Landsquire",
-    "tagline": "Land management and verification platform",
+    "title": "Land Squire",
+    "tagline": "A full-featured real estate marketplace connecting property buyers, brokers, and bank agents — built with React Native & Expo.",
     "published": true,
     "featured": true,
     "featuredIndex": 4,
     "coverImage": "/images/projects/landsquire.jpg",
     "screenshots": [],
-    "overview": "A blockchain-based land registry and verification platform ensuring transparent property transactions.",
-    "problem": "Land ownership disputes and fraudulent transactions plague many regions due to opaque paper-based records.",
-    "solution": "Built a digital platform with blockchain verification, document management, and dispute resolution system.",
-    "techStack": ["React", "Node.js", "Solidity", "Ethereum", "IPFS", "PostgreSQL", "Docker"],
+    "overview": "Land Squire is a comprehensive real estate marketplace mobile application built with Expo React Native that connects property buyers, sellers, brokers, and bank agents in a single platform. The app provides map-based property discovery, detailed property listings with multimedia (images, videos, floor plans), a bidding system, CRM tools for agents, loan enquiry management, and multi-language support (English/Hindi). Built with a modern React Native stack including Expo SDK 54, NativeWind, Reanimated 4, and react-native-maps, Land Squire delivers a native-quality experience across iOS, Android, and Web.\n\nThe Indian real estate market is fragmented. Buyers rely on multiple platforms to find properties, brokers manage leads with spreadsheets, and bank agents lack a direct channel to reach potential loan customers. There was no single, unified mobile experience that connected all three parties with map-based discovery, real-time bidding, and CRM tools. Land Squire solves this by providing a unified marketplace, not another listing site — reimagining real estate as an interactive, map-first experience that gives each user type exactly what they need.",
+    "problem": "The Indian real estate market is fragmented. Buyers jump between listing sites, brokers manage leads in spreadsheets, and bank agents struggle to find loan customers. There was no single, unified mobile experience that connected all three parties with map-based discovery, real-time bidding, and CRM tools. Buying a property means navigating multiple platforms, brokers waste time on disconnected lead management, and bank agents lack a direct channel to potential loan customers. The market needed a unified platform — but building for three distinct user types on two mobile platforms is a serious engineering challenge.",
+    "solution": "Land Squire unifies property discovery, listing management, lead tracking, and loan enquiries into a single mobile experience. Buyers explore properties on an interactive Google Maps interface with custom price markers and project polygon overlays. Brokers manage listings through multi-step wizards and track leads via a full CRM portal with follow-up timelines and call/WhatsApp actions. Bank agents receive loan enquiries directly through a dedicated dashboard. One codebase serves three user types with role-aware navigation, dynamic form rendering, and context-driven dashboards. The app replaces fragmented workflows with a single, cohesive experience.",
+    "architecture": "Land Squire uses Expo Router for file-based navigation across 25+ routes organized into auth and root groups. The root group contains a tab navigator (home, map, add listing, my assets, settings) with Reanimated spring animations, plus stacked property detail, CRM, project, and bank agent screens. State management uses React Context for auth and a custom useMapData hook (30+ state variables) for the map screen. The app communicates with a Laravel PHP backend via Axios over HTTPS, with Bearer token authentication persisted in AsyncStorage. The map system uses react-native-maps (Google provider) with viewport culling, custom price markers, and project polygon overlays with locally cached aerial plan images. Multi-language support uses i18next with dual font switching (Rubik for English, NotoSerifDevangari for Hindi).",
+    "techStack": ["React Native (Expo)", "Laravel PHP", "MySQL", "Google Maps", "NativeWind", "TypeScript", "i18next", "Firebase", "Reanimated"],
     "challenges": [
-      "Blockchain integration complexity",
-      "Legal compliance across jurisdictions",
-      "User education on blockchain benefits"
+      "Map performance with hundreds of property markers requiring viewport culling and marker optimization",
+      "Google Maps API key security requiring server-side rotation with daily cache expiry and multi-level fallback",
+      "Cross-platform map overlay rendering with platform-specific bounds ordering for Android vs iOS",
+      "Property media management with inconsistent JSON string parsing for gallery images, videos, and documents",
+      "Multi-role navigation with three user types (buyer, broker, bank agent) each needing a tailored post-auth experience"
     ],
     "technicalOutcomes": [
-      { "metric": "Blocks Verified", "value": "50K+" },
-      { "metric": "Smart Contracts Deployed", "value": "12" },
-      { "metric": "Fraud Prevention Rate", "value": "100%" }
+      { "metric": "App Screens", "value": "25+" },
+      { "metric": "Reusable Components", "value": "35+" },
+      { "metric": "API Endpoints", "value": "35+" },
+      { "metric": "i18n Translations", "value": "130+" },
+      { "metric": "Custom Icons", "value": "54" },
+      { "metric": "npm Packages", "value": "45+" }
     ],
     "businessOutcomes": [
-      { "metric": "Registered Properties", "value": "5K+" },
-      { "metric": "Disputes Resolved", "value": "200+" },
-      { "metric": "Government Partners", "value": "2" }
+      { "metric": "Target Cities", "value": "11" },
+      { "metric": "User Roles", "value": "3" },
+      { "metric": "Font Files", "value": "12" },
+      { "metric": "Development", "value": "6 months" }
     ],
-    "lessons": ["Blockchain solves real problems when applied correctly", "Government partnerships are essential"],
-    "role": "Lead Developer & Blockchain Engineer",
-    "timeline": "7 months",
-    "businessImpact": "Partnered with 2 state governments and registered 5K+ properties on the blockchain.",
-    "isPrivate": true
+    "lessons": [
+      "Expo Router's file-based routing dramatically simplifies navigation architecture compared to manual navigation setup",
+      "Map marker performance requires proactive optimization — viewport culling, memoization, and trackViewChanges control are essential for 60fps",
+      "Form wizards benefit from incremental validation per step, not just at submission time — users prefer fixing issues step by step",
+      "Google Maps API keys in client apps need a rotation strategy, not hardcoding — server-side delivery with caching is the right approach",
+      "OTP auto-advance across input fields is a micro-interaction that significantly improves perceived authentication speed",
+      "Bottom sheets strike the right balance between context preservation and focused interaction for filters, bids, and OTP entry",
+      "Role-aware navigation reduces cognitive load by hiding irrelevant features from each user type",
+      "Custom hooks (useMapData) are effective for consolidating complex state but need monitoring as state variables grow beyond 30",
+      "React Context is sufficient for auth-level state but not for feature-specific complex state — useMapData justifies its own hook",
+      "Debounce user input liberally, especially for search and filter interactions — 100ms-300ms range works well for most cases"
+    ],
+    "role": "Full-Stack Mobile Developer",
+    "timeline": "6 months",
+    "businessImpact": "A production real estate marketplace unifying buyers, brokers, and bank agents with map-based discovery, bidding, CRM tools, and loan management — serving 11 Indian cities with a single cross-platform codebase.",
+    "isPrivate": true,
+    "platform": "iOS, Android, Web",
+    "roleDescription": "I was the primary full-stack developer responsible for architecting and building the entire Land Squire mobile application. My responsibilities included designing the Expo Router navigation structure with 25+ routes across auth and root groups, implementing the 35+ component reusable design system spanning 15 PropertyDetails sub-components, building the map-based property discovery system with react-native-maps including custom price markers with tracker view changes optimization, implementing viewport culling for hundreds of concurrent markers, developing the project polygon overlay system with remote image caching and platform-specific bounds ordering, building the multi-attribute property filter engine with city, category, price, and area dimensions, implementing the OTP authentication flow with ref-based digit auto-advance and 30-second resend countdown, building the multi-step property listing wizards (4-step sell, 3-step rent) with progressive validation and Google Places Autocomplete, implementing the bidding system with minimum bid validation (50% of asking price), building the full CRM portal for brokers with lead filtering, follow-up notes timeline, and direct call/WhatsApp integration, implementing the loan enquiry management system for bank agents, integrating full English/Hindi i18n with dual font switching between Rubik and NotoSerifDevangari, building the property details screen with 15 focused sub-components including a Reanimated-powered lightbox with pinch-to-zoom, implementing visitor tracking with UUID-based visitor tokens and unique property visit counting, and managing the full build pipeline through EAS Build for iOS, Android, and web deployment.",
+    "challengeDetails": [
+      {
+        "challenge": "Map Performance with Large Datasets",
+        "explanation": "Rendering hundreds of property markers simultaneously on Google Maps caused significant jank, especially on mid-range Android devices. Each marker needed to display a custom price tag, track its position, and respond to taps. The solution had three layers: viewport culling with a 50% buffer zone that only renders markers within the visible area plus a margin, tracksViewChanges disabled after 100ms on custom markers to reduce layout overhead, and React.memo wrapping on PriceMarker and MarkersRenderer components to prevent unnecessary re-renders during map gestures. The useMapData hook (533 lines) manages all state including visible items computation, region tracking, and debounced updates."
+      },
+      {
+        "challenge": "Google Maps API Key Security",
+        "explanation": "Hardcoded Google Maps API keys in mobile app bundles are vulnerable to extraction and unauthorized use. We implemented a server-side key rotation strategy: the app fetches the API key from a Laravel endpoint (/api/readMapApi) on launch, caches it locally for 24 hours, and refreshes on login. The caching layer uses AsyncStorage with a timestamp check. A three-level fallback chain ensures resilience: server-provided key, app.json hardcoded fallback key, and empty string as last resort. If the server key fetch fails, the app silently falls back to the hardcoded key without disrupting the user experience."
+      },
+      {
+        "challenge": "Cross-Platform Map Overlay Rendering",
+        "explanation": "Upcoming project boundaries render as green polygon overlays with semi-transparent aerial plan images on the map. However, the MapView Overlay component accepts bounds in a format that differs between Android and iOS on certain coordinate edge cases. The solution required platform-specific bounds construction — formatting coordinate arrays differently per platform to ensure correct image positioning. Additional complexity came from parsing polygon coordinates stored as JSON strings in the API response, extracting valid coordinate arrays, and calculating the centroid for marker placement at the polygon center."
+      },
+      {
+        "challenge": "Property Media Management from Inconsistent API Data",
+        "explanation": "Property gallery images, videos, documents, and master plans are returned from the API as JSON strings with inconsistent formatting — sometimes as arrays, sometimes as objects, sometimes as stringified JSON. Each media type required its own robust parsing function with try-catch blocks, type detection (array vs object vs string), and defensive fallbacks. The gallery images parser handles both string arrays and comma-separated URL strings. The videos parser extracts YouTube IDs via regex and handles direct video URLs. The amenities parser handles both array and object formats for facility listings."
+      }
+    ],
+    "featureGroups": [
+      {
+        "title": "Map-Based Discovery",
+        "features": ["Interactive Google Maps with custom price markers", "Project polygon overlays with aerial plan images", "Sell/Rent toggle with immediate backend re-fetch", "Three display modes: Properties, Projects, Both", "Hybrid/Standard map type toggle", "Viewport-based visibility culling for performance", "Filter bottom sheet with multi-attribute search", "Property detail bottom sheet on marker tap"],
+        "rationale": "Map-based discovery is the core differentiator of Land Squire. Instead of list-based browsing, every property and project renders directly on an interactive Google Map with custom price tag markers. A custom useMapData hook (30+ state variables) manages all map state including viewport tracking, visible items computation, and filter controls. Viewport culling with a 50% buffer zone ensures smooth performance even with hundreds of markers. Properties use sell/rent toggles with immediate API re-fetch. Projects render as green polygon boundaries with centroid markers and locally cached aerial plan overlays."
+      },
+      {
+        "title": "Role-Based Architecture",
+        "features": ["Buyer: map-based property discovery with multimedia listings", "Broker: property listing wizards + CRM dashboard with lead management", "Bank agent: loan enquiry dashboard with direct customer contact", "Dynamic signup form rendering per role", "Role-aware post-auth navigation routing", "Context-driven dashboard content and CTAs"],
+        "rationale": "Three user types from one codebase. A single user_type field in the auth response determines navigation routing, available features, and dashboard content. The signup form dynamically renders role-specific fields (company name + document upload for brokers, bank name for bank agents). Post-login routing sends buyers to the map view and brokers/bank agents to the home dashboard. This architecture eliminates the need for three separate applications while delivering tailored experiences to each user segment."
+      },
+      {
+        "title": "Multi-Step Property Listing",
+        "features": ["4-step wizard for sell properties", "3-step wizard for rent properties", "Progressive form validation per step", "Google Places Autocomplete for map location", "Multi-image gallery picker with previews", "Document upload for master plans and supporting docs", "Amenities selection via toggleable chips", "FormData submission with multipart/form-data for file uploads"],
+        "rationale": "Listing a property should be fast and intuitive. The guided wizards use react-native-progress-steps, validating each step progressively so users fix issues immediately rather than facing a wall of errors at submission. Map location uses Google Places Autocomplete with session tokens for accurate address resolution. Media uploads support images, videos, PDFs, and master plans with MIME type validation. Both sell and rent wizards share the same component patterns but are tailored for their specific data requirements."
+      },
+      {
+        "title": "Bidding System",
+        "features": ["Minimum bid validation at 50% of asking price", "Broker-configurable bid on/off toggle", "Bid end date configuration", "Success/error feedback sheets for bid submission", "Integration with existing enquiry API with bidamount field"],
+        "rationale": "Properties support competitive bidding with intelligent validation. The minimum bid threshold of 50% prevents unrealistic lowball offers. Brokers control bidding availability through a bidstatus toggle and can set end dates for bid windows. The system reuses the existing sendenquiry API endpoint with a bidamount field, keeping the architecture simple while enabling a powerful feature. Properties with bidding enabled receive significantly more buyer engagement."
+      },
+      {
+        "title": "CRM for Brokers",
+        "features": ["Lead list with advanced filters (city, date, status, property type)", "Lead detail view with follow-up timeline and notes", "Direct call and WhatsApp actions", "Status management: new, qualified, won, not responded, final", "Audit trail with timestamps"],
+        "rationale": "Brokers get a full CRM portal to manage property enquiries. Advanced filters (city, date range, property type, status) help manage large lead volumes. The follow-up timeline with notes creates accountability and transparency. Direct call/WhatsApp integration via deep linking reduces lead response time. Status tracking with audit trail creates a complete sales pipeline view."
+      },
+      {
+        "title": "Multi-Language Support",
+        "features": ["Full English/Hindi localization with 130+ translation keys", "Instant language switching via toggle", "Dual font support: Rubik (EN) + NotoSerifDevanagari (HI)", "12 bundled font files (6 weights x 2 typefaces)", "Language preference persisted in AsyncStorage"],
+        "rationale": "i18next with react-i18next manages translations across 130+ keys per language. Font selection is conditional on the active language — conditional fontFamily selection switches between Rubik and NotoSerifDevanagari. The 12 bundled font files (6 weights per typeface) ensure proper script rendering for both Devanagari and Latin characters. Language preference persists in AsyncStorage across sessions."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "Expo managed workflow over bare React Native for cross-platform development",
+        "rationale": "The application's UI complexity (maps, lists, forms, animations) is well within Expo's capabilities. Expo provides managed updates via EAS Update, over-the-air bug fixes without app store review, and native module access via Expo plugins. The project uses plugins for maps, fonts, video, file system, image picker, and notifications — all available in the managed workflow. Expo SDK 54 covers all required functionality without needing a bare workflow eject.",
+        "alternatives": "Bare React Native was considered for more control over native map configuration and push notification handling. Native Swift/Kotlin development was ruled out entirely due to cross-platform requirements and the 6-month delivery timeline."
+      },
+      {
+        "decision": "Custom useMapData hook over global state management for map screen",
+        "rationale": "The map screen manages 30+ state variables including properties, projects, filtered data, visible items, region, map type, display mode, and filter controls. Centralizing this in a custom hook keeps the screen component clean while providing all the state derivation logic (viewport culling, coordinate parsing, centroid calculation) in one testable unit. The hook returns derived values (visibleItems computed from allProperties + region + filters) so the screen component doesn't need to recompute.",
+        "alternatives": "Moving all 30+ variables to a global Redux store would add dispatch/reducer boilerplate for state that only one screen uses. Using useState in the screen component would bloat it with derivation logic. useReducer was considered but the custom hook pattern provides better encapsulation of the complex derivation logic."
+      },
+      {
+        "decision": "Laravel PHP backend over Node.js for API server",
+        "rationale": "The Laravel ecosystem provides built-in Sanctum token authentication, Validator class for complex form validation with field-level error messages, and Cache facade for server-side response caching. The 35+ API endpoints follow consistent patterns — Sanctum middleware for auth, Validator::make for request validation, and Cache::remember for 5-minute response caching. File upload handling via Laravel's Storage facade integrates directly with the file system.",
+        "alternatives": "Node.js with Express would require separate packages for auth (Passport.js), validation (Joi), and ORM (Prisma). For a PHP-experienced team, Laravel reduces boilerplate significantly while maintaining strong typing through PHP 8 attributes."
+      },
+      {
+        "decision": "i18next with dual font loading over simple string replacement",
+        "rationale": "English and Hindi require different typefaces for correct script rendering. i18next provides a mature translation framework with interpolation, pluralization, and language change callbacks. The font switching is handled through conditional fontFamily selection based on i18n.language. Both font families (Rubik and NotoSerifDevanagari) are preloaded at app launch via expo-font with 6 weights each. Language change triggers an immediate re-render of all text elements through the react-i18next Provider.",
+        "alternatives": "Simple JSON key-value replacement without a framework would require manual re-render management. A single font for both scripts would render Hindi text with incorrect glyphs and missing conjuncts. Separate apps for each language would double maintenance."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "Client-side normalization vs consistent API responses",
+        "choice": "Client-side normalization with try-catch parsing for each media type",
+        "reasoning": "The backend returns gallery images, videos, amenities, and price history data in inconsistent formats — sometimes as arrays, sometimes as objects, sometimes as JSON strings. Requesting a backend refactor would take weeks. Instead, each data field has its own robust parsing function with type detection, try-catch blocks, and defensive defaults. While this adds approximately 200 lines of parsing code across 15+ components, it allowed the frontend to ship independently of backend consistency improvements."
+      },
+      {
+        "tradeoff": "useMapData hook complexity vs screen-level state management",
+        "choice": "A single custom hook managing 30+ state variables with complex derivation logic",
+        "reasoning": "The 30+ state variables in useMapData include properties, projects, filtered results, visible items, region coordinates, map type, display mode, and filter controls. The hook performs significant derivation — computing visibleItems from allProperties + region bounds + active filters, determining marker visibility, and managing debounced region updates. This complexity is justified because the map screen is the most feature-dense screen in the app. However, the hook has grown beyond what useState alone manages well; a future refactor could split it into smaller hooks (useMapFilter, useMapRegion, useMapMarkers) for maintainability."
+      },
+      {
+        "tradeoff": "Server-fetched API keys with caching vs app-bundled keys",
+        "choice": "Three-level fallback: server key (24h cache) → app.json hardcoded → empty string",
+        "reasoning": "Bundling the API key in the app binary is convenient but insecure — extracted keys can be used by unauthorized parties outside the app. Fetching from the server on every launch adds latency and breaks offline map use. The compromise caches the server-provided key for 24 hours, serves it instantly from AsyncStorage on subsequent launches, and falls back to the app.json key if the server is unreachable. This gives key rotation capability while maintaining offline functionality and launch performance."
+      }
+    ],
+    "architectureDiagram": "graph TB\n    subgraph Mobile[React Native Client - Expo SDK 54]\n        APP[App Root\n    Font Loading + Auth Check]\n        AUTH[(auth)/\n    Sign In / Sign Up]\n        TABS[(tabs)/\n    Home / Map / Add / Assets / Settings]\n        PROP[properties/\n    Property Detail / Explore]\n        PROJ[projects/\n    Project Detail]\n        CRM[CRM/\n    Lead Management]\n        DASH[dashboard/\n    Loan Leads / Edit Properties]\n        BANK[bank/\n    Bank Agent Profiles]\n        BROKER[broker/\n    Broker Profiles]\n    end\n\n    subgraph Services[App Services]\n        MAP[Map System\n    useMapData Hook\n    Viewport Culling\n    Price Markers\n    Project Overlays]\n        AUTH_SVC[UserContext\n    Auth State\n    API Key Management]\n        I18N[i18next\n    EN + HI\n    Dual Fonts]\n    end\n\n    subgraph API[Laravel REST API]\n        AUTH_API[Authentication\n    Generate/Verify OTP\n    Register User]\n        PROP_API[Property Endpoints\n    Listings / Details\n    Filter / Search]\n        MAP_API[Map Endpoints\n    ReadMapApi\n    Filter Listings]\n        CRM_API[CRM\n    Lead List\n    Add Lead\n    Lead Details]\n        USER_API[User Endpoints\n    Profile / Update\n    Broker List / Bank Agent List]\n        ANALYTICS[Analytics\n    Track Visit\n    Visitor Count]\n    end\n\n    subgraph External[External Services]\n        GMAPS[Google Maps\n    Geocoding / Places\n    Map Rendering]\n        NOTIF[Firebase Cloud Messaging\n    Push Notifications]\n    end\n\n    APP --> AUTH\n    APP --> TABS\n    APP --> PROP\n    APP --> PROJ\n    APP --> CRM\n    APP --> DASH\n    APP --> BANK\n    APP --> BROKER\n\n    TABS --> MAP\n    APP --> AUTH_SVC\n    APP --> I18N\n\n    AUTH --> AUTH_API\n    TABS --> PROP_API\n    MAP --> MAP_API\n    CRM --> CRM_API\n    AUTH_SVC --> USER_API\n    PROP --> ANALYTICS\n\n    MAP --> GMAPS\n    AUTH_SVC --> NOTIF",
+    "architectureDescription": "Land Squire follows a standard client-server architecture with Expo Router file-based navigation across 25+ routes. The auth group handles sign-in (OTP flow) and sign-up (role-based registration). The root group contains a tab navigator with five tabs (Home, Map View, Add Listing, My Assets, Settings) plus stacked screens for property details, projects, CRM, broker profiles, and bank agent profiles. State management uses React Context (UserContext) for global auth state and a custom useMapData hook (30+ state variables) for the complex map screen. The Laravel PHP backend serves 35+ API endpoints across auth, property, map, CRM, user, and analytics domains. Google Maps provides geographic rendering and place autocomplete. Firebase Cloud Messaging handles push notifications.",
+    "futureImprovements": [
+      "Local SQLite cache for offline browsing of recently viewed properties and cached search results",
+      "AI-powered property recommendations based on browsing history and preference patterns",
+      "In-app real-time chat between buyers and brokers for instant negotiation without leaving the platform",
+      "Multi-language expansion to Gujarati, Tamil, and Bengali for Tier 2/3 city penetration",
+      "Video call integration for virtual property tours directly within the app",
+      "Automated property valuation using ML models trained on historical transaction data"
+    ]
   },
   {
     "slug": "scalping-dashboard",
@@ -276,35 +718,150 @@
   },
   {
     "slug": "car-choice",
-    "title": "Car Choice",
-    "tagline": "AI car recommendation and comparison platform",
+    "title": "Carz Choice",
+    "tagline": "A used car marketplace connecting Indian car buyers with dealers through a modern mobile experience with real-time chat, smart filters, and seamless lead generation.",
     "published": true,
     "featured": false,
     "coverImage": "/images/projects/car-choice.jpg",
     "screenshots": [],
-    "overview": "An intelligent platform that helps users find their ideal car based on preferences, budget, and lifestyle.",
-    "problem": "Car buyers are overwhelmed by options and lack personalized guidance.",
-    "solution": "Built an AI recommendation engine that analyzes user preferences and provides matched car suggestions with detailed comparisons.",
-    "techStack": ["React", "Next.js", "Python", "Node.js", "PostgreSQL", "Elasticsearch", "Docker"],
+    "overview": "Carz Choice is a used car marketplace built for the Indian market. Built with Expo React Native SDK 54 and backed by a Laravel PHP API, the app connects buyers and dealers through a mobile-first experience. Users can browse used cars by city, brand, budget, or detailed filters, view comprehensive car details with galleries and specifications, sell their vehicles through a guided 3-step wizard, get car loans and insurance, and communicate directly with dealers through in-app chat powered by Stream Chat.\n\nThe app distinguishes between two user types — Buyers and Dealers — with distinct workflows for each. Buyers discover, filter, and enquire about used cars. Dealers register with business documents, manage multi-brand inventory, and receive qualified buyer enquiries through real-time chat. The app replaces 5+ separate tools that Indian car buyers previously needed to navigate.",
+    "problem": "In India, buying a used car is fragmented across multiple channels. Buyers visit one site for listings, another for comparisons, a third for loans, and contact dealers separately by phone or WhatsApp. Dealers struggle with lead generation across scattered platforms and have no centralized way to manage buyer enquiries. There is no single mobile experience that combines car discovery, detailed specifications, real-time dealer communication, financing, and selling — all in one place.",
+    "solution": "Carz Choice unifies the entire used car journey into a single mobile experience. Buyers discover vehicles across Indian cities with multi-attribute filtering (brand, budget, fuel, transmission, color), view comprehensive details with Reanimated-powered image galleries, chat with dealers in real-time via Stream Chat, calculate EMI, apply for loans and insurance, and sell their own cars through a guided 3-step wizard. Dealers register with business verification, manage brand portfolios, and receive qualified leads directly through in-app chat.",
+    "architecture": "Carz Choice follows a standard client-server architecture. The Expo React Native app uses Expo Router for file-based navigation across 18 screens organized into auth and root groups. The root group includes a bottom tab navigator (Home, Chat, Dashboard, My Vehicles, Sell) plus stacked screens for vehicle details, dealer profiles, chat rooms, and dashboard forms. State management uses React Context (LocationContext for city, ChatContext for Stream Chat) and AsyncStorage for persistence. The Laravel PHP backend serves 30+ REST API endpoints with Sanctum token authentication, handling vehicle catalog, filtering, user management, dealer registration, leads, loans, and insurance. Stream Chat provides real-time messaging with server-generated tokens.",
+    "techStack": ["React Native (Expo)", "Laravel PHP", "MySQL", "NativeWind", "Stream Chat", "Formik", "Yup", "Firebase"],
     "challenges": [
-      "Accurate car data across models",
-      "Complex recommendation algorithm",
-      "Comparison UX for dozens of parameters"
+      "Cascading dependent dropdowns (Brand → Model → Variant) requiring sequential API calls with state cleanup",
+      "Real-time chat integration with backend lead generation in a single atomic flow",
+      "Image management across local uploads and server-stored media during vehicle editing",
+      "Multi-role UX with conditional rendering for buyers vs dealers across 18 screens",
+      "API response inconsistency requiring robust client-side JSON parsing with defensive fallbacks"
     ],
     "technicalOutcomes": [
-      { "metric": "Car Models Indexed", "value": "5K+" },
-      { "metric": "Recommendation Latency", "value": "<150ms" },
-      { "metric": "Search Coverage", "value": "98%" }
+      { "metric": "App Screens", "value": "18" },
+      { "metric": "Reusable Components", "value": "21" },
+      { "metric": "API Endpoints", "value": "30+" },
+      { "metric": "Custom Icons", "value": "65+" },
+      { "metric": "npm Dependencies", "value": "95" },
+      { "metric": "Supported Cities", "value": "11" }
     ],
     "businessOutcomes": [
-      { "metric": "Monthly Users", "value": "50K+" },
-      { "metric": "Match Accuracy", "value": "91%" },
-      { "metric": "Dealership Partners", "value": "10+" }
+      { "metric": "User Types", "value": "2" },
+      { "metric": "Lending Partners", "value": "6" },
+      { "metric": "Form Steps", "value": "3" },
+      { "metric": "Development", "value": "6 months" }
     ],
-    "lessons": ["Decision fatigue is real - simplicity wins", "User data improves recommendations over time"],
-    "role": "Full Stack Developer & AI Engineer",
-    "timeline": "3 months",
-    "businessImpact": "Partnerships with 10+ dealerships and 50K+ monthly active users.",
-    "demo": "https://car-choice.vercel.app"
+    "lessons": [
+      "Stream Chat integration must be paired with backend lead creation in a single atomic flow to prevent orphaned channels",
+      "Cascading dropdowns with sequential API calls need guarded useEffect chains and careful state cleanup at each level",
+      "Image editing requires distinguishing local URIs from server URLs to determine delete vs skip behavior",
+      "Context API + AsyncStorage is sufficient for this app's state complexity — Redux would add boilerplate with no benefit",
+      "File-based routing with Expo Router accelerates development but requires strict file organization discipline",
+      "API response normalization should be centralized rather than handled per-screen with duplicated try-catch blocks"
+    ],
+    "role": "Full-Stack Mobile Developer",
+    "timeline": "6 months",
+    "businessImpact": "A production used car marketplace unifying discovery, real-time dealer chat, financing, and selling into a single mobile app serving Indian buyers and dealers.",
+    "isPrivate": true,
+    "platform": "iOS, Android",
+    "roleDescription": "I was the primary full-stack developer responsible for architecting and building the entire Carz Choice mobile application. My responsibilities included designing the Expo Router navigation structure with 18 screens across auth and root tab groups, implementing the 21-component reusable design system with NativeWind, building the multi-attribute filter engine with brand, budget, fuel, transmission, and color dimensions, integrating Stream Chat for real-time dealer-buyer messaging with server-generated tokens and deterministic channel creation, developing the 3-step sell vehicle wizard with progressive validation and multi-image upload, building the cascading dropdown system (Brand → Model → Variant, City → State → Pincode) used across 4+ forms, implementing email/password authentication with Sanctum tokens, building the car detail screen with Reanimated image carousel, specs accordion, and enquiry flow, integrating loan and insurance application forms for 6 partner banks, and managing the full build pipeline through EAS Build for iOS and Android release.",
+    "challengeDetails": [
+      {
+        "challenge": "Cascading Dependent Dropdowns with Sequential API Calls",
+        "explanation": "Three levels of dependent pickers (Brand → Model → Variant and City → State → Pincode) each require an API call triggered by the previous selection. Users can change any level at any time, requiring downstream state cleanup. The solution uses guarded useEffect chains: on mount, fetch brands and cities. Brand selection triggers model fetch; model selection triggers variant fetch. Loading states per dependency level prevent user interaction during fetches. State cleanup on selection change clears downstream values and resets loading indicators."
+      },
+      {
+        "challenge": "Real-Time Chat with Atomic Lead Generation",
+        "explanation": "When a buyer taps Chat Now on a car, the app must simultaneously create a backend lead record and a Stream Chat channel with the correct participants. If either fails, the user ends up in an inconsistent state. The solution uses a single API call (POST /api/bookvehiclenow) to create the lead, then client-side createOrGetChannel creates a deterministic Stream channel (chat-{sellerId}-{buyerId}-{carId}). The first message is auto-sent with buyer contact details. If channel creation fails, the lead already exists and can be retried."
+      },
+      {
+        "challenge": "Image Management Across Local Uploads and Server Storage",
+        "explanation": "The sell wizard uploads images during submission, returning server URLs stored as JSON strings. When editing a vehicle, the app loads existing server images and allows users to add new local uploads or delete existing ones. The challenge is distinguishing between local file URIs (file://) and server URLs (https://) during the delete operation. The solution checks the URI prefix — file:// URIs are removed from the local array only, while https:// URIs trigger a DELETE API call before removal from the display list."
+      },
+      {
+        "challenge": "Multi-Role UX with Conditional Rendering",
+        "explanation": "Buyers and Dealers see different dashboards, CTAs, and permissions across 18 screens. A single usertype field in the auth response drives conditional rendering throughout the app. The Sign Up screen shows a UserTypeToggle component. The Home screen shows Become A Dealer only for users. The Car Detail screen shows Edit Vehicle + View Chat for owners instead of Chat Now. Chat shows different channel sets. This approach eliminates the need for separate app builds while delivering tailored experiences."
+      }
+    ],
+    "featureGroups": [
+      {
+        "title": "Vehicle Discovery",
+        "features": ["Multi-attribute filter (brand, budget, fuel, transmission, color)", "Banner slider with auto-play carousel", "Brand grid (5 columns, max 11 + View More)", "City-based browsing (11 Indian cities)", "Infinite scroll results (6 items per batch)", "Location-aware personalization via GPS + AsyncStorage"],
+        "rationale": "Vehicle discovery is the primary engagement surface. The filter engine powers both the main home screen and the explore results page. Location-aware personalization detects the user's city via GPS on first launch, persists it to AsyncStorage, and uses it to filter car listings. The home screen combines banner promotions, branded quick-access grids, city filtering, and an infinite-scroll results grid."
+      },
+      {
+        "title": "Car Detail Hub",
+        "features": ["Reanimated carousel for image gallery", "12 car attributes display (year, fuel, KMs, transmission, etc.)", "Features accordion (bottom sheet with groups)", "Specifications accordion (tabbed bottom sheet)", "EMI calculator with 3 sliders (RBSheet)", "Share via native share sheet", "Chat Now enquiry button with lead generation"],
+        "rationale": "The car detail page is the conversion point. Every element drives the user toward enquiry — the Reanimated carousel showcases the vehicle, specs and features provide confidence, the EMI calculator removes financing friction, and the Chat Now button creates a lead + opens a real-time chat channel in one tap. The 12 attribute display gives buyers all the information they need without leaving the screen."
+      },
+      {
+        "title": "Real-Time Chat (Stream Chat)",
+        "features": ["Server-generated chat tokens via POST /api/generate-chat-token", "Deterministic channel creation with dedup (chat-{seller}-{buyer}-{car})", "Auto-sent first message with buyer contact details", "All/Unread tab filtering", "Today/Older message grouping", "Profile initials fallback for avatar", "Connecting/retry UI with loading states"],
+        "rationale": "Real-time chat is the core communication channel between buyers and dealers. The Stream Chat integration uses deterministic channel IDs to prevent duplicate channels for the same buyer-dealer-car combination. Channel metadata auto-syncs car name, image, and dealer name for context. The first message includes buyer contact details so dealers can respond immediately. Unread counts and tab filtering help manage conversations at scale."
+      },
+      {
+        "title": "Sell Vehicle (3-Step Wizard)",
+        "features": ["Step 1: Brand → Model → Variant cascading + City → State → Pincode + Color", "Step 2: Price, Insurance, KMs, Fuel, Year, Registration, Ownership, Transmission", "Step 3: Multi-image upload with preview and delete", "Per-step progressive validation", "State preservation across steps (no data loss on back)", "ProgressSteps UI with visual step indicator"],
+        "rationale": "The sell wizard converts vehicle owners into supply-side participants. The 3-step format with ProgressSteps breaks a complex form into manageable chunks. Cascading dropdowns (Brand → Model → Variant) ensure data accuracy. Step 3's multi-image upload with preview builds seller confidence. Per-step validation catches errors early rather than presenting a wall of errors at submission."
+      },
+      {
+        "title": "Dealer Registration & Management",
+        "features": ["Business registration with company name and WhatsApp", "Multi-brand selection with logos (searchable MultiSelect)", "City and location selection with searchable dropdowns", "Office photo upload via ImagePicker", "Business document upload via DocumentPicker (PDF/images)", "Brand portfolio management on dealer profile"],
+        "rationale": "The dealer ecosystem creates the supply side of the marketplace. Registration requires business credentials, brand affiliations, and documentation for verification. The dealer profile displays business info, brand logos, office photos, and car inventory. Buyers view dealer profiles from car detail pages, creating trust and transparency."
+      },
+      {
+        "title": "Financial Services",
+        "features": ["Car loan application to 6 partner banks (with logos)", "Car insurance enquiry with DateTimePicker", "EMI calculator with debounced sliders (12-84 months)", "Cascading pickers: Brand → Model → Variant + City", "Formik + Yup form validation"],
+        "rationale": "Financing is a critical part of the car buying journey. The EMI calculator provides immediate feedback with animated counters. Loan and insurance applications use Formik + Yup for structured form handling with field-level validation. Partner bank logos build trust. The same cascading dropdown pattern from vehicle discovery is reused here for consistency."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "Stream Chat over custom WebSocket chat implementation",
+        "rationale": "Building a real-time chat system from scratch would require managing WebSocket connections, message persistence, read receipts, push notifications, and offline message queuing — all features Stream Chat provides out of the box. The integration uses server-generated tokens for security (POST /api/generate-chat-token), deterministic channel IDs for deduplication, and the stream-chat-expo package for React Native compatibility. The tradeoff is dependency on a third-party service, but the development time saved (estimated 6+ weeks) justified the cost.",
+        "alternatives": "A custom WebSocket implementation with Socket.IO was considered but would have required building message storage, read receipts, push notification integration, and offline support from scratch. Firebase Realtime Database was also evaluated but lacked the chat-specific features (channels, threading, moderation) that Stream Chat provides."
+      },
+      {
+        "decision": "Email/password + Google OAuth over phone-only OTP",
+        "rationale": "Phone OTP has friction — users need SMS access and wait times. Email/password with optional Google OAuth provides a familiar, faster authentication experience. Google OAuth uses expo-auth-session for secure token exchange. The tradeoff is that email-based auth is less common in Indian mobile apps where phone number is the primary identifier. The compromise offers both: email/password as primary and Google OAuth as a convenience option for users who prefer it.",
+        "alternatives": "Phone-only OTP was the initial approach but was replaced because SMS delivery delays (5-30 seconds in some regions) created poor first-impression UX. Magic link email was considered but requires the user to switch apps, which is disruptive."
+      },
+      {
+        "decision": "Formik + Yup over raw useState form management",
+        "rationale": "The app has 8 forms (signup, sell wizard, edit vehicle, loan, insurance, dealer reg, edit profile, support). Raw useState form management would require separate validation logic, error state tracking, and submission handling for each form. Formik provides a consistent form management pattern with Yup schema validation. Each form defines a validationSchema that maps directly to form fields, and Formik handles error display, submission state, and field touch tracking uniformly.",
+        "alternatives": "react-hook-form was considered for its performance benefits (uncontrolled inputs) but Formik's integration with Yup for schema-based validation was more familiar to the team. Raw useState was the fallback for simple forms like support and edit profile."
+      },
+      {
+        "decision": "react-native-reanimated-carousel over FlatList for image galleries",
+        "rationale": "The car detail page requires a smooth, gesture-driven image gallery with auto-play. FlatList-based carousels typically wrap FlatList in a horizontal configuration with paging enabled, but they lack built-in auto-play, gesture interpolation, and snap behavior. react-native-reanimated-carousel provides first-class auto-play with configurable interval (3s), gesture-driven snapping with Reanimated animations, and loop support. The Reanimated integration ensures 60fps animations even during gallery interaction.",
+        "alternatives": "react-native-snap-carousel was the previous standard but the package has limited React Native 0.81/Expo SDK 54 support. A manual FlatList-based carousel was prototyped but lacked smooth auto-play transitions. react-native-reanimated-carousel provided the best balance of performance, features, and SDK compatibility."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "Third-party chat service vs custom chat infrastructure",
+        "choice": "Stream Chat with server-generated tokens and deterministic channel IDs",
+        "reasoning": "Building a custom chat system would take 6+ weeks for feature parity with Stream Chat (real-time messaging, read receipts, push notifications, offline support, message history). Stream Chat provides these as a managed service with a generous free tier. The tradeoff is vendor lock-in and ongoing API costs, but the speed-to-market benefit outweighed these concerns. The integration abstracts Stream Chat behind a custom ChatContext, making it theoretically swappable if needed."
+      },
+      {
+        "tradeoff": "Email auth vs phone OTP for Indian market",
+        "choice": "Email/password as primary with Google OAuth as secondary option",
+        "reasoning": "Phone OTP is the dominant auth method in Indian consumer apps because phone numbers are universally used as identifiers. However, SMS delivery delays (5-30 seconds on some carriers) created unacceptable friction at the critical first-impression moment. Email/password with optional Google OAuth provides sub-second authentication. The tradeoff is that email is a less common identifier in India, potentially confusing some users. Clear UI labeling ('Login with Email' vs 'Continue with Google') mitigates this."
+      },
+      {
+        "tradeoff": "Formik performance vs lightweight form handling",
+        "choice": "Formik with Yup for 6 major forms; raw useState for 2 simple forms",
+        "reasoning": "Formik's re-render-on-every-change behavior can cause performance issues on complex forms with many fields. The sell wizard (20+ fields across 3 steps) was tested with Formik and showed acceptable performance because each step renders independently. For the 2 simple forms (edit profile, support) with fewer than 5 fields each, raw useState avoids the Formik overhead. The per-form approach gets the benefits of Formik where it matters (complex validation, multi-step state) while avoiding unnecessary dependencies on trivial forms."
+      }
+    ],
+    "architectureDiagram": "graph TB\n    subgraph Mobile[React Native Client - Expo SDK 54]\n        APP[App Root\n    Auth Check + Providers]\n        AUTH[(auth)/\n    Sign In / Sign Up]\n        TABS[(tabs)/\n    Home / Chat / Dashboard / My Vehicles / Sell]\n        VEH[vehicles/\n    Car Detail]\n        DEALER[dealers/\n    Dealer Profile]\n        CHAT[chat/\n    Chat Rooms / Chats List]\n        DASH[dashboard/\n    Explore / Loan / Insurance / Edit / Dealer Reg]\n    end\n\n    subgraph Services[App Services]\n        LOC[LocationContext\n    Current City + GPS]\n        CHAT_CTX[ChatContext\n    Stream Client + Channels]\n        UI[21 Reusable Components\n    Cards / Filters / Accordions / Carousel]\n    end\n\n    subgraph API[Laravel REST API - 30+ Endpoints]\n        AUTH_API[Authentication\n    Login / Register / OTP]\n        CAR_API[Vehicle Catalog\n    Brands / Models / Variants / Listings]\n        FILTER[Filter Engine\n    Multi-Attribute Search]\n        LEAD[Lead Generation\n    Book Vehicle / Enquiries]\n        FINANCE[Financial Services\n    Loan / Insurance]\n        DEALER_API[Dealer Platform\n    Registration / Profile]\n        CHAT_API[Chat\n    Generate Token]\n    end\n\n    subgraph External[External Services]\n        STREAM[Stream Chat\n    Real-Time Messaging]\n        GOOGLE[Google OAuth\n    Social Login]\n        FCM[Firebase Cloud Messaging]\n    end\n\n    APP --> AUTH\n    APP --> TABS\n    APP --> VEH\n    APP --> DEALER\n    APP --> CHAT\n    APP --> DASH\n\n    APP --> LOC\n    APP --> CHAT_CTX\n\n    AUTH --> AUTH_API\n    TABS --> CAR_API\n    TABS --> FILTER\n    VEH --> LEAD\n    DASH --> FINANCE\n    DASH --> DEALER_API\n    CHAT --> CHAT_API\n\n    CHAT_CTX --> STREAM\n    AUTH --> GOOGLE\n    APP --> FCM",
+    "architectureDescription": "Carz Choice uses Expo Router for file-based navigation across 18 screens organized into auth and root groups. The root group contains a bottom tab navigator (Home, Chat, Dashboard, My Vehicles, Sell) plus stacked screens for vehicle details, dealer profiles, chat rooms, and dashboard forms. Two context providers handle global state: LocationContext manages the current city (GPS-detected + AsyncStorage-persisted) and ChatContext manages the Stream Chat client and channel state. The Laravel PHP backend serves 30+ REST API endpoints with Sanctum token authentication. Stream Chat provides real-time messaging with server-generated tokens for security. Google OAuth via expo-auth-session offers social login as an alternative to email/password authentication.",
+    "futureImprovements": [
+      "Local SQLite cache for offline browsing of recently viewed cars and cached search results",
+      "Push notification integration for new chat messages and enquiry responses via Firebase Cloud Messaging",
+      "Advanced dealer analytics dashboard with lead conversion tracking and response time metrics",
+      "Multi-language support (Hindi, Gujarati, Tamil) to reach Tier 2 and Tier 3 city users",
+      "Vehicle valuation tool using ML models trained on historical transaction data for instant price estimates",
+      "Video call integration for virtual car tours directly within the chat interface"
+    ]
   }
 ]

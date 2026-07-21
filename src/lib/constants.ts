@@ -10,7 +10,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/anshulmeena",
     linkedin: "https://linkedin.com/in/anshulmeena",
-    email: "anshul@example.com",
+    email: "anshulkm17@gmail.com",
     resume: "/resume/anshul-meena-resume.pdf",
   },
 };
@@ -26,6 +26,6 @@ export const navLinks: NavLink[] = [
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/anshulmeena", icon: "github" },
   { label: "LinkedIn", href: "https://linkedin.com/in/anshulmeena", icon: "linkedin" },
-  { label: "Email", href: "mailto:anshul@example.com", icon: "mail" },
+  { label: "Email", href: "mailto:anshulkm17@gmail.com", icon: "mail" },
   { label: "Twitter", href: "https://twitter.com/anshulmeena", icon: "twitter" },
 ];

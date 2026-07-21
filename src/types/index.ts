@@ -22,6 +22,15 @@ export interface Project {
   github?: string;
   demo?: string;
   isPrivate?: boolean;
+  platform?: string;
+  roleDescription?: string;
+  challengeDetails?: { challenge: string; explanation: string }[];
+  architectureDiagram?: string;
+  architectureDescription?: string;
+  featureGroups?: { title: string; features: string[]; rationale: string }[];
+  technicalDecisions?: { decision: string; rationale: string; alternatives: string }[];
+  tradeoffs?: { tradeoff: string; choice: string; reasoning: string }[];
+  futureImprovements?: string[];
 }
 
 export interface BlogPost {
