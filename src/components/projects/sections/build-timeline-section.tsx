@@ -22,7 +22,7 @@ export function BuildTimelineSection() {
         </div>
 
         <div className="relative">
-          <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2 md:-translate-x-px" />
+          <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2" />
 
           <div className="space-y-8">
             {timeline.map((item, i) => {
@@ -34,11 +34,11 @@ export function BuildTimelineSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className={`relative flex items-start gap-4 md:gap-0 md:flex-row ${
+                  className={`relative flex items-start gap-4 md:gap-0 ${
                     isLeft ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >
-                  <div className={`flex-1 ${isLeft ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
+                  <div className={`flex-1 order-2 md:order-none ${isLeft ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
                     <div className="rounded-xl border border-border bg-card p-4">
                       <span className="text-xs font-bold text-accent">Week {item.week}</span>
                       <h3 className="mt-1 text-sm font-semibold text-foreground">{item.title}</h3>
@@ -46,7 +46,7 @@ export function BuildTimelineSection() {
                     </div>
                   </div>
 
-                  <div className="relative z-10 flex shrink-0 items-center justify-center">
+                  <div className="order-1 md:order-none relative z-10 flex shrink-0 items-center justify-center">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-accent/30 bg-card">
                       <span className="text-xs font-bold text-accent">{item.week}</span>
                     </div>

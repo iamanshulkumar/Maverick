@@ -8,8 +8,8 @@ export const siteConfig = {
   url: "https://anshulmeena.dev",
   ogImage: "/images/og/default.jpg",
   links: {
-    github: "https://github.com/anshulmeena",
-    linkedin: "https://linkedin.com/in/anshulmeena",
+    github: "https://github.com/iamanshulkumar",
+    linkedin: "https://linkedin.com/in/itisanshulkumar",
     email: "anshulkm17@gmail.com",
     resume: "/resume/anshul-meena-resume.pdf",
   },
@@ -24,8 +24,8 @@ export const navLinks: NavLink[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/anshulmeena", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/anshulmeena", icon: "linkedin" },
+  { label: "GitHub", href: "https://github.com/iamanshulkumar", icon: "github" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/itisanshulkumar", icon: "linkedin" },
   { label: "Email", href: "mailto:anshulkm17@gmail.com", icon: "mail" },
   { label: "Twitter", href: "https://twitter.com/anshulmeena", icon: "twitter" },
 ];

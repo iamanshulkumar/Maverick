@@ -8,8 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { AiAnalyzerPage } from "@/components/projects/ai-analyzer-page";
 import { CarzChoicePage } from "@/components/projects/carz-choice-page";
+import { CarzchoiceAppPage } from "@/components/projects/carzchoice-app-page";
+import { CarzchoiceOldAppPage } from "@/components/projects/carzchoice-old-app-page";
 import { LandSquirePage } from "@/components/projects/land-squire-page";
 import { VictoryVisionPage } from "@/components/projects/victory-vision-page";
+import { WealthWalkPage } from "@/components/projects/wealth-walk-page";
 import type { Project } from "@/types";
 
 interface ProjectDetailContentProps {
@@ -23,11 +26,20 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
   if (project.slug === "car-choice") {
     return <CarzChoicePage project={project} />;
   }
+  if (project.slug === "carzchoice-app") {
+    return <CarzchoiceAppPage project={project} />;
+  }
+  if (project.slug === "carzchoice-old-app") {
+    return <CarzchoiceOldAppPage project={project} />;
+  }
   if (project.slug === "landsquire") {
     return <LandSquirePage project={project} />;
   }
   if (project.slug === "victory-vision") {
     return <VictoryVisionPage project={project} />;
+  }
+  if (project.slug === "wealth-walk") {
+    return <WealthWalkPage project={project} />;
   }
 
   return <LegacyLayout project={project} />;

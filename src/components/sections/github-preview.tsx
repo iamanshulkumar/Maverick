@@ -11,21 +11,21 @@ const repos = [
     description:
       "A production AI trading dashboard demonstrating real-time LSTM inference, WebSocket data pipelines, and React D3.js visualization at sub-100ms latency.",
     demonstrates: "Real-time ML inference · WebSocket architecture · Data visualization",
-    url: "https://github.com/anshulmeena/ai-stock-analyser",
+    url: "https://github.com/iamanshulkumar/ai-stock-analyser",
   },
   {
     name: "react-native-boilerplate",
     description:
       "A production-ready React Native starter with authentication flows, API integration patterns, AI module scaffolding, and CI/CD pipelines pre-configured.",
     demonstrates: "Mobile architecture · Auth patterns · CI/CD · AI integration",
-    url: "https://github.com/anshulmeena/react-native-boilerplate",
+    url: "https://github.com/iamanshulkumar/react-native-boilerplate",
   },
   {
     name: "wealth-walk",
     description:
       "Full-stack fintech application with microservices backend, TensorFlow forecasting models, and React Native frontend — processing 1M+ financial transactions.",
     demonstrates: "Microservices · ML in production · Secure fintech architecture",
-    url: "https://github.com/anshulmeena/wealth-walk",
+    url: "https://github.com/iamanshulkumar/wealth-walk",
   },
 ];
 

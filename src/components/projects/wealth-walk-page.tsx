@@ -5,14 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Car, Search, Users, Home, MessageCircle, Banknote, Smartphone, User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, Eye, TrendingUp, Clock, Globe, Cpu, Database, GitBranch, ArrowRight, ArrowDown } from "lucide-react";
+import { TrendingUp, Smartphone, User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, Fingerprint, Eye, Home, BookOpen, Search, GitBranch, Cpu, Shield, Database, Users, Clock, ArrowRight, ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PhoneMockup, OverviewCard, FeatureCard, ChallengeTimeline, OutcomeMetrics, ScreenshotGallery } from "./visual-components";
 import { FloatingNav } from "@/components/case-study/floating-nav";
 import { StorySection } from "@/components/case-study/story-section";
-import { FlowDiagram } from "@/components/case-study/flow-diagram";
-import { FeatureExplorer } from "@/components/case-study/feature-explorer";
 import { Architecture } from "@/components/case-study/architecture";
 import { DecisionAccordion } from "@/components/case-study/decision-accordion";
 import { MetricsGrid } from "@/components/case-study/metrics-grid";
@@ -22,39 +21,39 @@ import { TechStack } from "@/components/case-study/tech-stack";
 import { Results } from "@/components/case-study/results";
 import { LessonsAccordion } from "@/components/case-study/lessons-accordion";
 import { CTA } from "@/components/case-study/cta";
-import { carChoiceConfig } from "@/components/case-study/car-choice.config";
+import { wealthWalkConfig } from "@/components/case-study/wealth-walk.config";
 import type { Project } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const img = (name: string) => `/images/projects/Car%20choice%20website%20UI/${name.replace(/ /g, "%20")}`;
+const img = (name: string) => `/images/projects/Wealth%20Walk/${name.replace(/ /g, "%20")}`;
 
-const config = carChoiceConfig;
+const config = wealthWalkConfig;
 
 const heroStatChips = [
-  { label: "App Screens", value: 18, suffix: "", icon: <Smartphone size={14} /> },
-  { label: "Components", value: 21, suffix: "", icon: <GitBranch size={14} /> },
-  { label: "API Endpoints", value: 30, suffix: "+", icon: <Database size={14} /> },
-  { label: "User Types", value: 2, suffix: "", icon: <Users size={14} /> },
-  { label: "Cities", value: 11, suffix: "", icon: <Globe size={14} /> },
-  { label: "Partners", value: 6, suffix: "", icon: <Banknote size={14} /> },
+  { label: "Active Users", value: 10000, suffix: "+", icon: <Users size={14} /> },
+  { label: "Transactions", value: 1000000, suffix: "+", icon: <Activity size={14} /> },
+  { label: "AI Accuracy", value: 94, suffix: "%", icon: <Zap size={14} /> },
+  { label: "Q1 Revenue", value: 50000, suffix: "+", icon: <BarChart3 size={14} /> },
+  { label: "Brokers", value: 3, suffix: "", icon: <GitBranch size={14} /> },
+  { label: "Screens", value: 40, suffix: "+", icon: <Smartphone size={14} /> },
 ];
 
 const tourFeatures = [
-  { id: "home", number: "01", label: "Home", icon: <Home size={14} />, title: "Multi-Attribute Car Discovery", tagline: "Find any used car across 6 filter dimensions", screenshot: "Screenshot_1.jpg", description: "Banner carousels, brand grids, city-based browsing (11 Indian cities), and infinite-scroll results grid. Multi-attribute filters via bottom sheet with searchable FlatLists." },
-  { id: "browse", number: "02", label: "Browse", icon: <Search size={14} />, title: "Smart Browsing & Filtering", tagline: "Brand, budget, fuel, transmission, color", screenshot: "Screenshot_5.jpg", description: "Six filter dimensions with cascading dropdowns. Searchable FlatList pickers. City-based browsing with GPS location detection persisted to AsyncStorage." },
-  { id: "detail", number: "03", label: "Car Details", icon: <Car size={14} />, title: "Comprehensive Vehicle View", tagline: "Gallery, specs, features, and dealer info", screenshot: "Screenshot_8.jpg", description: "Reanimated image carousel with auto-play. 12 attribute display. Features and specs accordions as tabbed bottom sheets. EMI calculator via RBSheet." },
-  { id: "chat", number: "04", label: "Real-Time Chat", icon: <MessageCircle size={14} />, title: "Stream Chat Integration", tagline: "Buyers and dealers connect instantly", screenshot: "Screenshot_12.jpg", description: "Stream Chat with server-generated tokens. Deterministic channel creation. First message auto-sent with buyer contact. All/Unread tabs with Today/Older grouping." },
-  { id: "sell", number: "05", label: "Sell Wizard", icon: <TrendingUp size={14} />, title: "3-Step Vehicle Listing", tagline: "List your car in under 5 minutes", screenshot: "Screenshot_15.jpg", description: "Guided 3-step wizard with progressive validation. Brand/Model/Variant cascading. Multi-image upload with preview and delete. Per-step error catching." },
-  { id: "dealer", number: "06", label: "Dealer Platform", icon: <Users size={14} />, title: "Dealer Registration & Management", tagline: "Business verification and lead management", screenshot: "Screenshot_18.jpg", description: "Dealer registration with business name, WhatsApp validation, multi-brand selection, document upload. Dealer profile with brand logos and office photos." },
-  { id: "finance", number: "07", label: "Financing", icon: <Banknote size={14} />, title: "Loans, Insurance & EMI", tagline: "From browsing to financing in one flow", screenshot: "Screenshot_20.jpg", description: "6 partner banks integrated. Insurance enquiry with DateTimePicker. EMI calculator with debounced sliders. Formik + Yup forms with cascading pickers." },
+  { id: "dashboard", number: "01", label: "Dashboard", icon: <Activity size={14} />, title: "Live Market Dashboard", tagline: "Real-time portfolio and market overview", screenshot: "Home Screen.png", description: "Open positions, P&L tracking, market indices (NIFTY, Sensex, FX), and AI-curated news — all in a single scrollable feed." },
+  { id: "portfolio", number: "02", label: "Portfolio", icon: <BarChart3 size={14} />, title: "Multi-Broker Portfolio", tagline: "All your holdings, one place", screenshot: "My Portfolio Overview.png", description: "Broker-agnostic portfolio sync with holdings, positions, and trade history aggregated from multiple accounts with sector-wise allocation." },
+  { id: "signals", number: "03", label: "AI Signals", icon: <Zap size={14} />, title: "AI Trading Signals", tagline: "Explainable, not black-box", screenshot: "Signal details.png", description: "AI-generated signals with confidence scores, supporting rationale, and backtested performance across equity, derivatives, and FX." },
+  { id: "discovery", number: "04", label: "Discovery", icon: <Search size={14} />, title: "Smart Stock Discovery", tagline: "Screeners, patterns, AI picks", screenshot: "Screener Results.png", description: "Multi-criteria screener with AI pattern recognition, category-wise browsing, and pre-built strategy templates." },
+  { id: "algo", number: "05", label: "Algo Trading", icon: <Cpu size={14} />, title: "Algorithmic Trading", tagline: "Deploy strategies without coding", screenshot: "Algo Trading (Running Strategies).png", description: "Pre-built strategy templates configured via simple parameters. Cloud execution with 99.9% uptime and live monitoring." },
+  { id: "education", number: "06", label: "Education", icon: <BookOpen size={14} />, title: "Structured Learning", tagline: "From basics to algo trading", screenshot: "Course detail page.png", description: "Complete curriculum with category-wise courses, video lessons, articles, and progress tracking from beginner to algorithmic trader." },
+  { id: "broker", number: "07", label: "Broker", icon: <GitBranch size={14} />, title: "Broker Connection", tagline: "Connect, trade, track", screenshot: "Connect broker.png", description: "In-app broker connection with guided setup, one-tap order placement from signals, and full trade history with P&L per trade." },
 ];
 
-interface CarzChoicePageProps {
+interface WealthWalkPageProps {
   project: Project;
 }
 
-export function CarzChoicePage({ project }: CarzChoicePageProps) {
+export function WealthWalkPage({ project }: WealthWalkPageProps) {
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState(config.sections[0]?.id || "story");
   const [tourFeature, setTourFeature] = useState(0);
@@ -126,10 +125,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
   const active = tourFeatures[tourFeature];
 
   const floatingCards = [
-    { label: "Total Listings", value: "10K+", color: "text-accent", delay: 0, side: "right" as const, top: "8%" },
-    { label: "Active Dealers", value: "500+", color: "text-emerald-400", delay: 0.3, side: "left" as const, top: "22%" },
-    { label: "Chats Sent", value: "50K+", color: "text-amber-400", delay: 0.6, side: "right" as const, top: "52%" },
-    { label: "Cities Live", value: "11", color: "text-accent", delay: 0.9, side: "left" as const, top: "68%" },
+    { label: "Portfolio Value", value: "$12,450", color: "text-emerald-400", delay: 0, side: "right" as const, top: "8%" },
+    { label: "AI Signals Today", value: "156", color: "text-amber-400", delay: 0.3, side: "left" as const, top: "22%" },
+    { label: "Active Users", value: "10K+", color: "text-accent", delay: 0.6, side: "right" as const, top: "52%" },
+    { label: "Win Rate", value: "78%", color: "text-emerald-400", delay: 0.9, side: "left" as const, top: "68%" },
   ];
 
   return (
@@ -137,14 +136,13 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
       <FloatingNav sections={config.sections} visible={navVisible} activeSection={activeSection} onScrollTo={scrollTo} />
 
       {/* Hero */}
-      <section ref={heroRef} className="relative pt-20 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-800/20 via-background to-amber-500/5" />
-        <div className="mx-auto max-w-6xl px-4 relative">
+      <section ref={heroRef} className="relative pt-20 pb-16">
+        <div className="mx-auto max-w-6xl px-4">
           <Link href="/projects" className="mb-8 inline-flex items-center gap-1.5 text-md text-muted-foreground transition-colors hover:text-foreground">
             ← Back to projects
           </Link>
 
-          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <div className="mb-3">
                 <Badge variant="accent" className="text-xs">Featured Project</Badge>
@@ -173,12 +171,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative flex justify-center">
-              <div className="relative w-full max-w-[500px]">
-                <div className="rounded-xl border border-border bg-card p-2 shadow-2xl">
-                  <div className="overflow-hidden rounded-lg">
-                    <img src={img("Screenshot_1.jpg")} alt="Carz Choice Home" className="w-full object-cover" />
-                  </div>
-                </div>
+              <div className="relative">
+                <PhoneMockup gradient="from-emerald-500/20 via-amber-500/10 to-emerald-500/10">
+                  <img src={img("Home Screen.png")} alt="Wealth Walk Home" className="h-full w-full object-cover" />
+                </PhoneMockup>
                 {floatingCards.map((card) => (
                   <motion.div key={card.label}
                     className={`absolute rounded-lg border border-border bg-card px-3 py-2 shadow-lg ${card.side === "right" ? "-right-16" : "-left-16"}`}
@@ -210,12 +206,6 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
 
       <StorySection title={config.storyTitle} body={config.storyBody} coda={config.storyCoda} />
 
-      {config.flowSteps && config.flowSteps.length > 0 && config.flowTitle && (
-        <FlowDiagram title={config.flowTitle} steps={config.flowSteps} />
-      )}
-
-      <FeatureExplorer features={config.features} />
-
       {/* Product Tour */}
       <section ref={tourRef} id="experience" className="relative min-h-screen">
         <div ref={pinnedRef} className="mx-auto max-w-6xl px-4 py-20">
@@ -246,12 +236,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
               <AnimatePresence mode="wait">
                 <motion.div key={active.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}
                   className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
-                  <div className="relative shrink-0 w-full max-w-[400px]">
-                    <div className="rounded-xl border-2 border-border bg-card p-2 shadow-2xl">
-                      <div className="overflow-hidden rounded-lg">
-                        <img src={img(active.screenshot)} alt={active.label} className="w-full object-cover" />
-                      </div>
-                    </div>
+                  <div className="relative shrink-0">
+                    <PhoneMockup gradient="from-emerald-500/20 via-amber-500/10 to-emerald-500/10">
+                      <img src={img(active.screenshot)} alt={active.label} className="h-full w-full object-cover" />
+                    </PhoneMockup>
                   </div>
                   <div className="min-w-0 flex-1 space-y-4">
                     <div>

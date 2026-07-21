@@ -5,14 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Car, Search, Users, Home, MessageCircle, Banknote, Smartphone, User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, Eye, TrendingUp, Clock, Globe, Cpu, Database, GitBranch, ArrowRight, ArrowDown } from "lucide-react";
+import { Smartphone, User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, Eye, Home, Search, GitBranch, Cpu, Shield, Database, Users, Clock, Banknote, Car, MessageCircle, TrendingUp, Globe } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PhoneMockup } from "./visual-components";
 import { FloatingNav } from "@/components/case-study/floating-nav";
 import { StorySection } from "@/components/case-study/story-section";
-import { FlowDiagram } from "@/components/case-study/flow-diagram";
-import { FeatureExplorer } from "@/components/case-study/feature-explorer";
 import { Architecture } from "@/components/case-study/architecture";
 import { DecisionAccordion } from "@/components/case-study/decision-accordion";
 import { MetricsGrid } from "@/components/case-study/metrics-grid";
@@ -22,39 +21,68 @@ import { TechStack } from "@/components/case-study/tech-stack";
 import { Results } from "@/components/case-study/results";
 import { LessonsAccordion } from "@/components/case-study/lessons-accordion";
 import { CTA } from "@/components/case-study/cta";
-import { carChoiceConfig } from "@/components/case-study/car-choice.config";
+import { carzchoiceOldAppConfig } from "@/components/case-study/carzchoice-old-app.config";
 import type { Project } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const img = (name: string) => `/images/projects/Car%20choice%20website%20UI/${name.replace(/ /g, "%20")}`;
+const filenames = [
+  "Screenshot_2025-05-22-12-03-30-08_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-03-43-12_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-03-50-85_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-03-59-22_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-04-11-30_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-05-13-94_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-05-54-79_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-00-73_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-04-60_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-20-50_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-41-98_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-48-71_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-06-56-08_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-07-05-31_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-07-11-42_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-07-20-88_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-08-50-99_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-08-59-20_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-09-12-50_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-09-44-65_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-09-57-92_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-10-29-33_ef152c3a50f29aeadc120659b7736e32.jpg",
+  "Screenshot_2025-05-22-12-10-37-10_ef152c3a50f29aeadc120659b7736e32.jpg",
+];
 
-const config = carChoiceConfig;
+const img = (index: number) => `/images/projects/OLD%20CarzChoice%20App%20UI/${encodeURIComponent(filenames[index])}`;
+
+const config = carzchoiceOldAppConfig;
 
 const heroStatChips = [
-  { label: "App Screens", value: 18, suffix: "", icon: <Smartphone size={14} /> },
-  { label: "Components", value: 21, suffix: "", icon: <GitBranch size={14} /> },
-  { label: "API Endpoints", value: 30, suffix: "+", icon: <Database size={14} /> },
-  { label: "User Types", value: 2, suffix: "", icon: <Users size={14} /> },
-  { label: "Cities", value: 11, suffix: "", icon: <Globe size={14} /> },
-  { label: "Partners", value: 6, suffix: "", icon: <Banknote size={14} /> },
+  { label: "App Screens", value: 24, suffix: "", icon: <Smartphone size={14} /> },
+  { label: "Components", value: 18, suffix: "", icon: <GitBranch size={14} /> },
+  { label: "Endpoints", value: 15, suffix: "+", icon: <Database size={14} /> },
+  { label: "Chat", value: 1, suffix: "", icon: <MessageCircle size={14} /> },
+  { label: "Users", value: 1, suffix: "", icon: <Users size={14} /> },
+  { label: "Timeline", value: 3, suffix: "mo", icon: <Clock size={14} /> },
 ];
 
 const tourFeatures = [
-  { id: "home", number: "01", label: "Home", icon: <Home size={14} />, title: "Multi-Attribute Car Discovery", tagline: "Find any used car across 6 filter dimensions", screenshot: "Screenshot_1.jpg", description: "Banner carousels, brand grids, city-based browsing (11 Indian cities), and infinite-scroll results grid. Multi-attribute filters via bottom sheet with searchable FlatLists." },
-  { id: "browse", number: "02", label: "Browse", icon: <Search size={14} />, title: "Smart Browsing & Filtering", tagline: "Brand, budget, fuel, transmission, color", screenshot: "Screenshot_5.jpg", description: "Six filter dimensions with cascading dropdowns. Searchable FlatList pickers. City-based browsing with GPS location detection persisted to AsyncStorage." },
-  { id: "detail", number: "03", label: "Car Details", icon: <Car size={14} />, title: "Comprehensive Vehicle View", tagline: "Gallery, specs, features, and dealer info", screenshot: "Screenshot_8.jpg", description: "Reanimated image carousel with auto-play. 12 attribute display. Features and specs accordions as tabbed bottom sheets. EMI calculator via RBSheet." },
-  { id: "chat", number: "04", label: "Real-Time Chat", icon: <MessageCircle size={14} />, title: "Stream Chat Integration", tagline: "Buyers and dealers connect instantly", screenshot: "Screenshot_12.jpg", description: "Stream Chat with server-generated tokens. Deterministic channel creation. First message auto-sent with buyer contact. All/Unread tabs with Today/Older grouping." },
-  { id: "sell", number: "05", label: "Sell Wizard", icon: <TrendingUp size={14} />, title: "3-Step Vehicle Listing", tagline: "List your car in under 5 minutes", screenshot: "Screenshot_15.jpg", description: "Guided 3-step wizard with progressive validation. Brand/Model/Variant cascading. Multi-image upload with preview and delete. Per-step error catching." },
-  { id: "dealer", number: "06", label: "Dealer Platform", icon: <Users size={14} />, title: "Dealer Registration & Management", tagline: "Business verification and lead management", screenshot: "Screenshot_18.jpg", description: "Dealer registration with business name, WhatsApp validation, multi-brand selection, document upload. Dealer profile with brand logos and office photos." },
-  { id: "finance", number: "07", label: "Financing", icon: <Banknote size={14} />, title: "Loans, Insurance & EMI", tagline: "From browsing to financing in one flow", screenshot: "Screenshot_20.jpg", description: "6 partner banks integrated. Insurance enquiry with DateTimePicker. EMI calculator with debounced sliders. Formik + Yup forms with cascading pickers." },
+  { id: "listings", number: "01", label: "Listings", icon: <Search size={14} />, title: "Car Listings Grid", tagline: "Browse all listed cars at a glance", screenshot: 0, description: "Clean grid layout showing car photos, brand, price, and location. Simple filters for budget, brand, fuel type, and city." },
+  { id: "browse", number: "02", label: "Browse", icon: <Car size={14} />, title: "Browse & Filter", tagline: "Find the right car quickly", screenshot: 1, description: "Browse cars with basic filters — no promoted listings, no dealer interference. Just real people selling their cars." },
+  { id: "detail", number: "03", label: "Car Details", icon: <Smartphone size={14} />, title: "Vehicle Details", tagline: "Photos, specs, and seller info", screenshot: 3, description: "Minimal detail view showing car photos, key specs (year, fuel, KMs), seller info, and a direct Chat button." },
+  { id: "photos", number: "04", label: "Photos", icon: <Activity size={14} />, title: "Photo Gallery", tagline: "See the car from every angle", screenshot: 4, description: "Swipeable photo gallery with seller-uploaded images. Multi-photo listings get 3x more buyer interest." },
+  { id: "sell", number: "05", label: "Sell", icon: <TrendingUp size={14} />, title: "2-Step Sell Flow", tagline: "List your car in 2 minutes", screenshot: 6, description: "Straightforward sell form: upload photos, enter details (brand, model, year, price), add description, and publish. No multi-page wizards." },
+  { id: "chat", number: "06", label: "Chat", icon: <MessageCircle size={14} />, title: "Direct Buyer-Seller Chat", tagline: "Negotiate directly, no middlemen", screenshot: 10, description: "In-app chat with push notifications. Buyers ask questions, negotiate price, and arrange viewing — all without leaving the app." },
+  { id: "profile", number: "07", label: "Profiles", icon: <Users size={14} />, title: "User Profiles", tagline: "Trust through transparency", screenshot: 14, description: "Seller profiles show listing history, response time, and verification status. Verified phone badge builds buyer confidence." },
+  { id: "manage", number: "08", label: "My Cars", icon: <Home size={14} />, title: "Manage Listings", tagline: "Edit, mark sold, or delete", screenshot: 18, description: "Dashboard showing all active and sold listings. Mark cars as sold, edit details, or remove listings with one tap." },
+  { id: "messages", number: "09", label: "Messages", icon: <MessageCircle size={14} />, title: "Message Inbox", tagline: "All your conversations in one place", screenshot: 16, description: "Centralized inbox showing all buyer-seller conversations. Read receipts and typing indicators show engagement." },
+  { id: "settings", number: "10", label: "Settings", icon: <Zap size={14} />, title: "Account Settings", tagline: "Manage your profile and preferences", screenshot: 22, description: "Profile management, notification preferences, phone verification, and account settings in a simple menu." },
 ];
 
-interface CarzChoicePageProps {
+interface CarzchoiceOldAppPageProps {
   project: Project;
 }
 
-export function CarzChoicePage({ project }: CarzChoicePageProps) {
+export function CarzchoiceOldAppPage({ project }: CarzchoiceOldAppPageProps) {
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState(config.sections[0]?.id || "story");
   const [tourFeature, setTourFeature] = useState(0);
@@ -126,10 +154,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
   const active = tourFeatures[tourFeature];
 
   const floatingCards = [
-    { label: "Total Listings", value: "10K+", color: "text-accent", delay: 0, side: "right" as const, top: "8%" },
-    { label: "Active Dealers", value: "500+", color: "text-emerald-400", delay: 0.3, side: "left" as const, top: "22%" },
-    { label: "Chats Sent", value: "50K+", color: "text-amber-400", delay: 0.6, side: "right" as const, top: "52%" },
-    { label: "Cities Live", value: "11", color: "text-accent", delay: 0.9, side: "left" as const, top: "68%" },
+    { label: "Active Listings", value: "5K+", color: "text-accent", delay: 0, side: "right" as const, top: "8%" },
+    { label: "Cars Sold", value: "2K+", color: "text-emerald-400", delay: 0.3, side: "left" as const, top: "22%" },
+    { label: "Chats Sent", value: "20K+", color: "text-amber-400", delay: 0.6, side: "right" as const, top: "52%" },
+    { label: "Response Rate", value: "92%", color: "text-emerald-400", delay: 0.9, side: "left" as const, top: "68%" },
   ];
 
   return (
@@ -137,17 +165,16 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
       <FloatingNav sections={config.sections} visible={navVisible} activeSection={activeSection} onScrollTo={scrollTo} />
 
       {/* Hero */}
-      <section ref={heroRef} className="relative pt-20 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-800/20 via-background to-amber-500/5" />
-        <div className="mx-auto max-w-6xl px-4 relative">
+      <section ref={heroRef} className="relative pt-20 pb-16">
+        <div className="mx-auto max-w-6xl px-4">
           <Link href="/projects" className="mb-8 inline-flex items-center gap-1.5 text-md text-muted-foreground transition-colors hover:text-foreground">
             ← Back to projects
           </Link>
 
-          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <div className="mb-3">
-                <Badge variant="accent" className="text-xs">Featured Project</Badge>
+                <Badge variant="accent" className="text-xs">P2P Marketplace</Badge>
               </div>
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{project.title}</h1>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">{project.tagline}</p>
@@ -155,7 +182,7 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
                 <span className="flex items-center gap-1.5 text-md text-muted-foreground"><User size={14} /> <span className="text-foreground">{project.role}</span></span>
                 <span className="flex items-center gap-1.5 text-md text-muted-foreground"><Calendar size={14} /> <span className="text-foreground">{project.timeline}</span></span>
-                <span className="flex items-center gap-1.5 text-md text-muted-foreground"><Smartphone size={14} /> <span className="text-foreground">iOS + Android</span></span>
+                <span className="flex items-center gap-1.5 text-md text-muted-foreground"><Smartphone size={14} /> <span className="text-foreground">Android</span></span>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
@@ -173,12 +200,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative flex justify-center">
-              <div className="relative w-full max-w-[500px]">
-                <div className="rounded-xl border border-border bg-card p-2 shadow-2xl">
-                  <div className="overflow-hidden rounded-lg">
-                    <img src={img("Screenshot_1.jpg")} alt="Carz Choice Home" className="w-full object-cover" />
-                  </div>
-                </div>
+              <div className="relative">
+                <PhoneMockup gradient="from-sky-500/20 via-blue-500/10 to-sky-500/10">
+                  <img src={img(0)} alt="OLD CarzChoice App" className="h-full w-full object-cover" />
+                </PhoneMockup>
                 {floatingCards.map((card) => (
                   <motion.div key={card.label}
                     className={`absolute rounded-lg border border-border bg-card px-3 py-2 shadow-lg ${card.side === "right" ? "-right-16" : "-left-16"}`}
@@ -210,21 +235,15 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
 
       <StorySection title={config.storyTitle} body={config.storyBody} coda={config.storyCoda} />
 
-      {config.flowSteps && config.flowSteps.length > 0 && config.flowTitle && (
-        <FlowDiagram title={config.flowTitle} steps={config.flowSteps} />
-      )}
-
-      <FeatureExplorer features={config.features} />
-
       {/* Product Tour */}
       <section ref={tourRef} id="experience" className="relative min-h-screen">
         <div ref={pinnedRef} className="mx-auto max-w-6xl px-4 py-20">
           <div className="mb-10 text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-[11px] font-medium text-accent uppercase tracking-widest mb-4">
-              <Eye size={12} /> Experience the Platform
+              <Eye size={12} /> Explore the App
             </div>
-            <h2 className="text-2xl font-bold text-foreground">Product Experience</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Scroll to walk through every feature</p>
+            <h2 className="text-2xl font-bold text-foreground">App Screens</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Scroll to walk through every screen</p>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-5">
@@ -246,12 +265,10 @@ export function CarzChoicePage({ project }: CarzChoicePageProps) {
               <AnimatePresence mode="wait">
                 <motion.div key={active.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}
                   className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
-                  <div className="relative shrink-0 w-full max-w-[400px]">
-                    <div className="rounded-xl border-2 border-border bg-card p-2 shadow-2xl">
-                      <div className="overflow-hidden rounded-lg">
-                        <img src={img(active.screenshot)} alt={active.label} className="w-full object-cover" />
-                      </div>
-                    </div>
+                  <div className="relative shrink-0">
+                    <PhoneMockup gradient="from-sky-500/20 via-blue-500/10 to-sky-500/10">
+                      <img src={img(active.screenshot)} alt={active.label} className="h-full w-full object-cover" />
+                    </PhoneMockup>
                   </div>
                   <div className="min-w-0 flex-1 space-y-4">
                     <div>

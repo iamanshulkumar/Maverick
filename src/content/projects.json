@@ -38,7 +38,7 @@
     "role": "React Native Developer & AI Engineer",
     "timeline": "6 months",
     "businessImpact": "Generated $50K+ in first quarter revenue and acquired 10K+ active users within 6 months of launch.",
-    "github": "https://github.com/anshulmeena/wealth-walk",
+    "github": "https://github.com/iamanshulkumar/wealth-walk",
     "isPrivate": true,
     "platform": "iOS, Android",
     "roleDescription": "I was the primary React Native developer responsible for architecting the mobile application from the ground up. My responsibilities included designing the component architecture, implementing the navigation and state management layers, building the API integration layer with caching strategies, optimizing rendering performance for market data lists, implementing push notification infrastructure via Firebase Cloud Messaging, integrating broker APIs for portfolio sync and order placement, building the AI chat interface with streaming response rendering, and managing the full release cycle including app store deployment. I collaborated with a backend engineer for API design, a data scientist for ML model integration, and a product manager for feature prioritization.",
@@ -715,6 +715,78 @@
     "timeline": "4 months",
     "businessImpact": "Featured in edtech publications with 8K+ active users and 68% course completion rate.",
     "demo": "https://richwalk.app"
+  },
+  {
+    "slug": "carzchoice-old-app",
+    "title": "CarzChoice Old App",
+    "tagline": "A peer-to-peer used car marketplace for buying and selling old vehicles — the OLX of cars with listings, chat, and instant deals.",
+    "published": true,
+    "featured": false,
+    "coverImage": "/images/projects/car-choice.jpg",
+    "screenshots": [],
+    "overview": "CarzChoice Old App is a simplified, peer-to-peer used car marketplace focused purely on buying and selling pre-owned vehicles. Unlike the full-featured CarzChoice marketplace with dealer registrations and financing, this app is an OLX-style platform where individual owners list their old cars, buyers browse and contact sellers directly, and transactions happen through in-app chat. No dealers, no loans — just people selling cars to people.",
+    "problem": "Existing car selling platforms are cluttered with dealer listings, financing offers, and unnecessary features. Individual sellers want a straightforward way to list their old car and connect with genuine buyers — like OLX but purpose-built for cars.",
+    "solution": "A stripped-down, seller-first mobile app where owners can quickly list their old cars with photos and price, and buyers can browse, filter, and contact sellers directly through in-app chat. No dealer registration, no loan applications, no EMI calculators — just cars and conversations.",
+    "architecture": "React Native (Expo) client with a lightweight Laravel backend. Simple data model: users, listings, and messages. Push notifications via Firebase Cloud Messaging. Image upload with native camera/gallery integration.",
+    "techStack": ["React Native (Expo)", "Laravel PHP", "MySQL", "Firebase", "Stream Chat", "NativeWind"],
+    "challenges": [
+      "Building trust between individual buyers and sellers without a dealer intermediary",
+      "Preventing listing spam and fake posts on a peer-to-peer platform",
+      "Handling image uploads efficiently on older Android devices"
+    ],
+    "technicalOutcomes": [
+      { "metric": "App Screens", "value": "24" },
+      { "metric": "Components", "value": "18" },
+      { "metric": "API Endpoints", "value": "15+" },
+      { "metric": "Screenshots", "value": "23" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Model", "value": "P2P Only" },
+      { "metric": "Dealers", "value": "None" },
+      { "metric": "Platform", "value": "Android" }
+    ],
+    "lessons": [
+      "Peer-to-peer marketplaces need robust spam detection from day one",
+      "Simple is better — every feature request should justify itself against the core value proposition",
+      "Trust indicators (verified phone, profile age) significantly increase conversion on P2P platforms"
+    ],
+    "role": "React Native Developer",
+    "timeline": "3 months",
+    "businessImpact": "A purpose-built P2P used car marketplace that strips away dealer and financing complexity — just owners selling cars to buyers.",
+    "isPrivate": true,
+    "platform": "Android"
+  },
+  {
+    "slug": "carzchoice-app",
+    "title": "CarzChoice App",
+    "tagline": "The new-generation Android app for CarzChoice — used car marketplace with AI recommendations, streamlined chat, and instant financing in your pocket.",
+    "published": true,
+    "featured": false,
+    "coverImage": "/images/projects/car-choice.jpg",
+    "screenshots": [],
+    "overview": "CarzChoice App is the mobile-native version of the CarzChoice marketplace, rebuilt from the ground up as an Android-first experience. It delivers the full car buying and selling workflow — discovery, real-time dealer chat, financing, and listing management — in a streamlined app interface with push notifications, offline support, and AI-powered recommendations.",
+    "problem": "The web version of CarzChoice served desktop users well, but mobile users wanted a dedicated app experience with push notifications, camera integration for vehicle photos, and faster load times. The existing responsive web app couldn't provide the native feel that Indian mobile-first users expect.",
+    "solution": "A dedicated Android app built with React Native, delivering the complete marketplace experience with push notifications for chat messages, native camera/gallery integration for listing photos, AI-powered car recommendations based on browsing history, and offline-optimized browsing for low-connectivity areas.",
+    "architecture": "React Native (Expo) client communicating with the same Laravel PHP backend as the web version. Shared API layer ensures consistent data across both platforms. Push notifications via Firebase Cloud Messaging. Local caching with AsyncStorage for offline browsing.",
+    "techStack": ["React Native (Expo)", "Laravel PHP", "MySQL", "Stream Chat", "Firebase", "NativeWind"],
+    "challenges": ["Optimizing car image galleries for mobile data constraints", "Implementing reliable push notifications across Android manufacturers", "Reconciling shared backend data between web and mobile clients"],
+    "technicalOutcomes": [
+      { "metric": "App Screens", "value": "21" },
+      { "metric": "API Endpoints", "value": "30+" },
+      { "metric": "Push Notifications", "value": "FCM" },
+      { "metric": "Supported Cities", "value": "11" }
+    ],
+    "businessOutcomes": [
+      { "metric": "Platform", "value": "Android" },
+      { "metric": "Development", "value": "4 months" },
+      { "metric": "Type", "value": "App Native" }
+    ],
+    "lessons": ["Mobile-first development requires different UX decisions than responsive web", "Push notification delivery varies significantly across Android OEMs", "Shared backends between web and mobile need versioned API contracts"],
+    "role": "React Native Developer",
+    "timeline": "4 months",
+    "businessImpact": "A dedicated Android app extending the CarzChoice marketplace to mobile-first users with native features and offline support.",
+    "isPrivate": true,
+    "platform": "Android"
   },
   {
     "slug": "car-choice",
