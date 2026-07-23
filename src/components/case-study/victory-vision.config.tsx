@@ -158,7 +158,7 @@ export const victoryVisionConfig: CaseStudyConfig = {
       icon: <Image size={16} />, label: "Screenshot Analysis Pipeline",
       problem: "Users upload Dream11 team screenshots for AI analysis. Pipeline must handle file selection, multipart upload, async processing, and structured rendering in one flow.",
       solution: "Single self-contained component (FantasyTracker.jsx) manages entire pipeline: expo-document-picker, FormData multipart upload with userId, loading spinner, key-value results in 2-column grid, strong points extracted from period-delimited API response.",
-      result: "Highest-engagement feature in beta. Users love getting AI feedback on actual team selections.",
+      result: "Users get AI feedback on actual team selections. Combined upload + analysis pipeline in one component.",
       metrics: ["1 component", "multipart upload", "2-col grid"],
     },
   ],

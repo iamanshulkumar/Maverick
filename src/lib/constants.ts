@@ -2,9 +2,9 @@ import type { NavLink, SocialLink } from "@/types";
 
 export const siteConfig = {
   name: "Anshul Kumar Meena",
-  title: "Engineer · Product Builder · Technical Leader",
+  title: "Senior Full Stack Engineer · React Native · Node.js",
   description:
-    "I architect systems, build products, and lead teams. Senior Full Stack Engineer with 4+ years delivering production software across fintech, real estate, and AI.",
+    "Senior Full Stack Engineer specializing in React Native, React, Node.js, and real-time systems. Builds production-grade mobile apps, web platforms, and backend services.",
   url: "https://anshulmeena.dev",
   ogImage: "/images/og/default.jpg",
   links: {

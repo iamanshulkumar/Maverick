@@ -110,7 +110,7 @@ export const landSquireConfig: CaseStudyConfig = {
     { phase: "4", title: "Map Integration", desc: "Google Maps setup, custom price markers, useMapData hook, viewport culling, project overlays" },
     { phase: "5", title: "Property Features", desc: "Multi-step listing wizards, property detail screen, 15 sub-components, lightbox with pinch-zoom" },
     { phase: "6", title: "Bidding & CRM", desc: "Bidding system with validation, CRM portal with lead management, filters, notes timeline" },
-    { phase: "7", title: "Multi-Language & i18n", desc: "i18next setup, 260+ translations (EN + HI), dual font loading, language switching" },
+    { phase: "7", title: "Multi-Language & i18n", desc: "i18next setup, 130+ translations (EN + HI), dual font loading, language switching" },
     { phase: "8", title: "Dashboard & Admin", desc: "Loan enquiry management, bank agent profiles, edit/delete property workflows" },
     { phase: "9", title: "Testing & Polish", desc: "Cross-platform testing, map performance optimization, Reanimated animations" },
     { phase: "10", title: "Launch", desc: "EAS Build configuration, app store submission, expo-updates setup, monitoring" },
@@ -154,7 +154,7 @@ export const landSquireConfig: CaseStudyConfig = {
       icon: <Map size={16} />, label: "Map Performance at Scale",
       problem: "Rendering hundreds of property markers simultaneously caused jank. Each custom price tag marker needed position tracking, tap response, and visual polish.",
       solution: "Three-layer optimization: viewport culling with 50% buffer zone renders only visible markers, tracksViewChanges disabled after 100ms on custom markers, React.memo on PriceMarker and MarkersRenderer.",
-      result: "Smooth 60fps panning even with 500+ properties in viewport range.",
+      result: "Smooth panning with large property sets. Custom markers with optimized viewport culling.",
       metrics: ["60fps target", "50% buffer", "100ms optimization"],
     },
     {

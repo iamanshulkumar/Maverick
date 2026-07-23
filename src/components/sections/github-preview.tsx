@@ -9,22 +9,22 @@ const repos = [
   {
     name: "ai-stock-analyser",
     description:
-      "A production AI trading dashboard demonstrating real-time LSTM inference, WebSocket data pipelines, and React D3.js visualization at sub-100ms latency.",
-    demonstrates: "Real-time ML inference · WebSocket architecture · Data visualization",
+      "A React + D3.js dashboard that displays real-time LSTM inference results from a Python backend. Uses WebSocket for streaming predictions and Redis for caching historical data.",
+    demonstrates: "D3.js visualization · WebSocket streaming · Python ML backend",
     url: "https://github.com/iamanshulkumar/ai-stock-analyser",
   },
   {
     name: "react-native-boilerplate",
     description:
-      "A production-ready React Native starter with authentication flows, API integration patterns, AI module scaffolding, and CI/CD pipelines pre-configured.",
-    demonstrates: "Mobile architecture · Auth patterns · CI/CD · AI integration",
+      "React Native (Expo) starter template with pre-configured authentication, API integration layer, navigation structure, and reusable component patterns.",
+    demonstrates: "Expo · Auth flows · API architecture · Component patterns",
     url: "https://github.com/iamanshulkumar/react-native-boilerplate",
   },
   {
     name: "wealth-walk",
     description:
-      "Full-stack fintech application with microservices backend, TensorFlow forecasting models, and React Native frontend — processing 1M+ financial transactions.",
-    demonstrates: "Microservices · ML in production · Secure fintech architecture",
+      "React Native fintech application with real-time market data, broker-agnostic portfolio tracking, and AI signal display. Backend runs on Node.js with WebSocket-based live updates.",
+    demonstrates: "React Native · WebSocket · Broker API integration · Real-time data",
     url: "https://github.com/iamanshulkumar/wealth-walk",
   },
 ];

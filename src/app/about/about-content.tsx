@@ -39,12 +39,13 @@ export function AboutContent() {
               </p>
               <p>
                 My career has been a rapid progression from writing basic websites to architecting
-                AI-powered mobile applications used by tens of thousands of people. Along the way,
+                full-stack mobile applications spanning fintech, fantasy sports, real estate,
+                and automotive. Along the way,
                 I&apos;ve learned that the best engineering decisions are made with empathy — for
                 users, for teammates, and for future maintainers.
               </p>
               <p>
-                Today, as a Project Manager, I focus on creating environments where great
+                Today, as a Senior Full Stack Engineer, I focus on creating environments where great
                 engineering can happen. I still write code every day because I believe leaders
                 who build earn the trust of their teams.
               </p>

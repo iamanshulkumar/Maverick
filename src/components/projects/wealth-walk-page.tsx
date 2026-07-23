@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TrendingUp, Smartphone, User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, Fingerprint, Eye, Home, BookOpen, Search, GitBranch, Cpu, Shield, Database, Users, Clock, ArrowRight, ArrowDown } from "lucide-react";
+import { TrendingUp, Smartphone, User, Calendar, ExternalLink, Github, Lock, Activity, BarChart3, Fingerprint, Eye, BookOpen, Search, GitBranch, Cpu, Database, Clock, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -31,12 +31,11 @@ const img = (name: string) => `/images/projects/Wealth%20Walk/${name.replace(/ /
 const config = wealthWalkConfig;
 
 const heroStatChips = [
-  { label: "Active Users", value: 10000, suffix: "+", icon: <Users size={14} /> },
-  { label: "Transactions", value: 1000000, suffix: "+", icon: <Activity size={14} /> },
-  { label: "AI Accuracy", value: 94, suffix: "%", icon: <Zap size={14} /> },
-  { label: "Q1 Revenue", value: 50000, suffix: "+", icon: <BarChart3 size={14} /> },
-  { label: "Brokers", value: 3, suffix: "", icon: <GitBranch size={14} /> },
   { label: "Screens", value: 40, suffix: "+", icon: <Smartphone size={14} /> },
+  { label: "API Endpoints", value: 35, suffix: "+", icon: <BarChart3 size={14} /> },
+  { label: "Broker Integrations", value: 3, suffix: "", icon: <GitBranch size={14} /> },
+  { label: "User Auth Providers", value: 2, suffix: "", icon: <Fingerprint size={14} /> },
+  { label: "Market Data Providers", value: 3, suffix: "+", icon: <Activity size={14} /> },
 ];
 
 const tourFeatures = [
@@ -127,8 +126,8 @@ export function WealthWalkPage({ project }: WealthWalkPageProps) {
   const floatingCards = [
     { label: "Portfolio Value", value: "$12,450", color: "text-emerald-400", delay: 0, side: "right" as const, top: "8%" },
     { label: "AI Signals Today", value: "156", color: "text-amber-400", delay: 0.3, side: "left" as const, top: "22%" },
-    { label: "Active Users", value: "10K+", color: "text-accent", delay: 0.6, side: "right" as const, top: "52%" },
-    { label: "Win Rate", value: "78%", color: "text-emerald-400", delay: 0.9, side: "left" as const, top: "68%" },
+    { label: "Broker Integrations", value: "3", color: "text-accent", delay: 0.6, side: "right" as const, top: "52%" },
+    { label: "Screens Built", value: "40", color: "text-emerald-400", delay: 0.9, side: "left" as const, top: "68%" },
   ];
 
   return (

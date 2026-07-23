@@ -28,7 +28,7 @@ export function Hero() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="mb-6 inline-block rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent-light">
-            Engineer &middot; Product Builder &middot; Technical Leader
+            Senior Full Stack Engineer &middot; React Native &middot; Node.js
           </span>
         </motion.div>
 
@@ -38,12 +38,12 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          I architect systems.
+          I build production software.
           <br />
-          Build products.
+          Mobile apps. Web platforms.
           <br />
           <span className="bg-gradient-to-r from-accent to-accent-cyan bg-clip-text text-transparent">
-            Lead teams.
+            Real-time systems.
           </span>
         </motion.h1>
 
@@ -53,9 +53,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg"
         >
-          Senior Full Stack Engineer with 4+ years delivering production software
-          across fintech, real estate, and AI. I design, build, and lead — from
-          concept to production.
+          Senior Full Stack Engineer with 4+ years building production iOS, Android,
+          and web applications. Experience across fintech, real estate, and AI.
+          Specializes in React Native, React, Node.js, and real-time systems.
         </motion.p>
 
         <motion.div
@@ -102,7 +102,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-xs text-muted-foreground"
         >
-          Senior Full Stack Engineer · Currently leading engineering delivery at Yuvmedia
+          Senior Full Stack Engineer · Currently at Yuvmedia
         </motion.p>
       </div>
     </section>

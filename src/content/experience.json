@@ -1,19 +1,19 @@
 [
   {
     "company": "Yuvmedia Pvt. Ltd.",
-    "role": "Project Manager",
+    "role": "Senior Full Stack Engineer",
     "duration": "2024 - Present",
     "location": "Remote",
     "responsibilities": [
-      "Lead a 5-member engineering team delivering production applications",
+      "Lead a 5-member engineering team delivering production mobile and web applications",
       "Define project roadmaps, sprint planning, and resource allocation",
       "Bridge communication between stakeholders and development team",
-      "Ensure code quality, timely delivery, and client satisfaction"
+      "Ensure code quality, timely delivery, and production stability"
     ],
     "achievements": [
-      "Promoted to Project Manager within 3 years",
-      "Delivered 15+ projects on time and under budget",
-      "Improved team velocity by 40% through process optimization"
+      "Promoted to lead role within 3 years",
+      "Delivered 15+ production projects across fintech, real estate, automotive, and fantasy sports",
+      "Established code review processes and component library standards"
     ]
   },
   {
@@ -23,13 +23,13 @@
     "location": "Remote",
     "responsibilities": [
       "Built 7+ cross-platform mobile applications using React Native",
-      "Implemented complex UI components and native modules",
-      "Integrated AI/ML features including OpenAI and TensorFlow Lite",
-      "Optimized app performance achieving 60fps on mid-range devices"
+      "Implemented complex UI components and native module integrations",
+      "Integrated AI features including Claude API and on-device models",
+      "Optimized app performance with Reanimated and NativeWind"
     ],
     "achievements": [
-      "Developed Wealth Walk app serving 10K+ users",
-      "Reduced app bundle size by 45% through code optimization",
+      "Developed a fintech portfolio tracking and trading signal platform",
+      "Reduced app bundle size through Tree Shaking and dynamic imports",
       "Mentored 2 junior developers in React Native best practices"
     ]
   },
@@ -45,9 +45,9 @@
       "Conducted code reviews and maintained documentation"
     ],
     "achievements": [
-      "Architected scalable backend handling 1M+ daily requests",
-      "Implemented CI/CD pipeline reducing deployment time by 60%",
-      "Received 100% client satisfaction score on 10+ projects"
+      "Architected backend services with PostgreSQL, Redis, and queue-based job processing",
+      "Implemented CI/CD pipeline reducing manual deployment overhead",
+      "Built reusable API patterns and middleware for consistent error handling"
     ]
   },
   {
@@ -58,12 +58,12 @@
     "responsibilities": [
       "Built responsive web interfaces using React, TailwindCSS, and Framer Motion",
       "Collaborated with designers to implement pixel-perfect UI components",
-      "Optimized website performance achieving 95+ Lighthouse scores",
+      "Optimized website performance with code splitting and lazy loading",
       "Integrated analytics and monitoring tools"
     ],
     "achievements": [
-      "Rebuilt legacy jQuery UI to modern React, improving load time by 70%",
-      "Created reusable component library used across 20+ projects",
+      "Rebuilt legacy jQuery UI to modern React, improving maintainability and load time",
+      "Created reusable component library used across multiple projects",
       "Won internal hackathon for best developer experience improvement"
     ]
   }

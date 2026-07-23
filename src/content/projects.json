@@ -2,32 +2,32 @@
   {
     "slug": "wealth-walk",
     "title": "Wealth Walk",
-    "tagline": "A production-grade fintech platform delivering trading signals, market intelligence, and AI-powered portfolio management to retail investors.",
+    "tagline": "A React Native fintech platform delivering real-time market data, broker-agnostic portfolio tracking, and AI-generated trading signals to retail investors.",
     "published": true,
     "featured": true,
     "featuredIndex": 0,
     "coverImage": "/images/projects/wealth-walk.jpg",
     "screenshots": [],
-    "overview": "Wealth Walk is a React Native application that provides retail investors with institutional-grade trading and portfolio management tools. The platform delivers real-time market data, AI-driven trading signals, broker connectivity for order execution, educational content, and subscription-based premium access. The target users are Indian retail investors who trade in equities, derivatives, and forex markets.\n\nThe core business problem: retail investors lack access to the analytical tools, real-time data, and automated strategies that institutional traders use. Existing solutions are either expensive (Bloomberg terminals), fragmented (multiple apps for data, execution, and learning), or untrustworthy (signal groups with no transparency). Wealth Walk consolidates these needs into a single platform with transparent, explainable AI signals.",
+    "overview": "Wealth Walk is a React Native application that provides retail investors with trading and portfolio management tools. The platform delivers real-time market data, AI-driven trading signals, broker connectivity for order execution, educational content, and subscription-based premium access. The target users are Indian retail investors who trade in equities, derivatives, and forex markets.\n\nThe core business problem: retail investors lack access to the analytical tools, real-time data, and automated strategies that institutional traders use. Existing solutions are either expensive (Bloomberg terminals), fragmented (multiple apps for data, execution, and learning), or untrustworthy (signal groups with no transparency). Wealth Walk consolidates these needs into a single platform with transparent, explainable AI signals.",
     "problem": "Retail investors in India manage their portfolios across multiple broker accounts, track market data through separate apps, rely on unverified telegram groups for trading signals, and lack structured education for financial markets. This fragmentation leads to delayed decisions, untracked portfolio performance, and inconsistent learning.",
     "solution": "A unified mobile application that integrates real-time market data (NIFTY, Sensex, FX), broker-agnostic portfolio tracking, AI-generated trading signals with explainable reasoning, a structured learning curriculum from basics to algorithmic trading, and subscription management for premium features.",
-    "architecture": "The system follows a layered service architecture. The React Native client communicates with a Node.js API gateway that routes to domain-specific microservices: market data ingestion, AI signal generation, broker integration, user management, and subscription billing. A Python ML service handles signal generation using ensemble models trained on historical market data. PostgreSQL serves as the primary data store. Redis handles session caching and real-time market data distribution via pub/sub.",
-    "techStack": ["React Native", "Node.js", "Python", "TensorFlow", "PostgreSQL", "Redis", "Docker", "AWS", "Firebase"],
+    "architecture": "The system follows a layered service architecture. The React Native client communicates with a Node.js API gateway that routes to domain-specific microservices: market data ingestion, AI signal generation, broker integration, user management, and subscription billing. A Python ML service handles signal generation using ensemble models. PostgreSQL serves as the primary data store. Redis handles session caching and real-time market data distribution via pub/sub.",
+    "techStack": ["React Native", "Node.js", "Python", "PostgreSQL", "Redis", "Docker", "AWS", "Firebase"],
     "challenges": [
-      "Real-time market data delivery at scale",
-      "Signal accuracy in volatile market conditions",
-      "Broker API reliability and fragmentation",
-      "Secure offline storage of financial data"
+      "Real-time market data delivery via WebSocket",
+      "Broker API fragmentation with 3 different authentication protocols",
+      "Secure storage of financial credentials on-device and on-server",
+      "Reconciling portfolio state across disconnected broker connections"
     ],
     "technicalOutcomes": [
-      { "metric": "Transactions Tracked", "value": "1M+" },
-      { "metric": "ML Prediction Accuracy", "value": "94%" },
-      { "metric": "Platform Uptime", "value": "99.9%" }
+      { "metric": "App Screens", "value": "40+" },
+      { "metric": "Broker Integrations", "value": "3" },
+      { "metric": "API Endpoints", "value": "35+" }
     ],
     "businessOutcomes": [
-      { "metric": "Active Users", "value": "10K+" },
-      { "metric": "First Quarter Revenue", "value": "$50K+" },
-      { "metric": "Avg. User Retention", "value": "85%" }
+      { "metric": "Platform Type", "value": "Fintech" },
+      { "metric": "Timeline", "value": "6 months" },
+      { "metric": "Target Users", "value": "Retail investors" }
     ],
     "lessons": [
       "Financial data requires the same security posture as banking applications",
@@ -37,7 +37,7 @@
     ],
     "role": "React Native Developer & AI Engineer",
     "timeline": "6 months",
-    "businessImpact": "Generated $50K+ in first quarter revenue and acquired 10K+ active users within 6 months of launch.",
+    "businessImpact": "A React Native fintech application unifying market data, portfolio tracking, AI signals, broker integration, and educational content into a single mobile platform.",
     "github": "https://github.com/iamanshulkumar/wealth-walk",
     "isPrivate": true,
     "platform": "iOS, Android",
@@ -140,20 +140,19 @@
   {
     "slug": "victory-vision",
     "title": "Victory Vision",
-    "tagline": "AI-powered fantasy sports intelligence app that generates optimized teams, analyzes screenshots, and tracks performance.",
+    "tagline": "A React Native (Expo) fantasy sports companion with AI team generation, screenshot analysis, match predictions, and performance tracking.",
     "published": true,
     "featured": true,
     "featuredIndex": 1,
     "coverImage": "/images/projects/victory-vision.jpg",
     "screenshots": [],
-    "overview": "Victory Vision is a fantasy sports companion app that gives cricket fans AI-powered team recommendations, match predictions, performance tracking, and expert consensus — all in one place. Built with React Native (Expo SDK 53), the app helps users build better fantasy teams by uploading team screenshots for AI analysis, configuring AI-generated safe/risky teams, browsing match predictions, and tracking their performance over time.\n\nThe app targets Indian cricket fans who play fantasy sports on platforms like Dream11 and My11Circle. It currently supports cricket (T20, ODI, Tests) with Kabaddi planned as a future expansion. The core differentiator is the AI team generation engine that produces paired safe and risky teams with dynamic theming — green for safe (high floor, moderate ceiling), orange for risky (lower floor, higher ceiling).",
-    "problem": "Millions of cricket fans play fantasy sports daily, but most rely on gut feeling rather than data. They manually track player form, compare stats across multiple websites, and guess at captain choices. The result is inconsistent performance, frustration, and a fragmented research experience. Users needed a single app that would aggregate match intelligence in real time, generate AI-optimized fantasy teams, analyze their existing team submissions, and track performance across contests — all without requiring them to become data scientists.",
-    "solution": "Victory Vision brings together match predictions, AI team generation, screenshot-based fantasy analysis, and personalized performance tracking behind a polished, gesture-driven interface powered by React Native. The AI team generator produces paired safe and risky teams with role distribution and win rate projections. The screenshot analysis pipeline lets users upload their team images and get instant AI-powered points breakdowns and suggestions. A custom animated tab bar with spring physics creates the signature micro-interaction. Navy primary (#111F54) with green/orange semantic theming communicates trust and risk intuitively.",
-    "architecture": "Victory Vision uses Expo Router for file-based navigation across 10 screens organized into auth and root tab groups. The root group contains a custom animated bottom tab bar (Cricket, Points, AI Teams, Kabaddi) with a hidden Reports tab accessible through internal navigation. Global state is managed via React Context (GlobalProviderReport) which pre-fetches reports, notifications, and matches on initialization. The app communicates with a Node.js backend at api.victoryvision.live via Axios with 15+ REST endpoints. Match details use a nested scroll architecture — a parent FlatList with sections including banner, head-to-head, and a TabView for predictions, AI teams, and lineups.",
+    "overview": "Victory Vision is a fantasy sports companion app that gives cricket fans AI-powered team recommendations, match predictions, and performance tracking. Built with React Native (Expo SDK 53), the app generates AI-optimized fantasy teams, analyzes uploaded Dream11 screenshots, and tracks user performance over time. The app targets Indian cricket fans who play fantasy sports on platforms like Dream11 and My11Circle. It currently supports cricket (T20, ODI, Tests). The AI team generation engine produces paired safe and risky teams with dynamic theming — green for safe, orange for risky.",
+    "problem": "Fantasy cricket players manually track player form across multiple websites, compare stats, and guess at captain choices. 10+ minutes of research for every contest entry — with no objective way to evaluate their team before submitting.",
+    "solution": "A single app that aggregates match intelligence, generates AI-optimized fantasy teams, analyzes existing team submissions via screenshot, and tracks performance across contests. The AI team generator produces paired safe and risky teams with role distribution. The screenshot analysis pipeline lets users upload team images and receive AI-powered points breakdowns.",
+    "architecture": "Expo Router for file-based navigation across 10 screens organized into auth and root tab groups. The root group contains a custom animated bottom tab bar (Cricket, Points, AI Teams, Kabaddi) with a hidden Reports tab accessible through internal navigation. Global state managed via React Context (GlobalProviderReport). Backend at api.victoryvision.live via Axios with 15+ REST endpoints. Match details use a nested scroll architecture — parent FlatList with sections including banner, head-to-head, and a TabView for predictions, AI teams, and lineups.",
     "techStack": ["React Native (Expo)", "Node.js", "MySQL", "NativeWind", "Reanimated", "Tab View", "Axios", "Moment.js"],
     "challenges": [
       "Nested scrollable views with TabView inside FlatList causing scroll conflicts",
-      "MongoDB ObjectID format inconsistency requiring defensive parsing across components",
       "Dual theme system (Safe/Risky) with green vs orange dynamic visual identity",
       "AI team temporal pairing for grouping simultaneously generated safe and risky teams",
       "Screenshot analysis pipeline with multipart upload and structured result rendering"
@@ -176,14 +175,12 @@
       "React Context is sufficient for apps of this scale — the global provider pattern kept state management simple without Redux overhead",
       "Nested scrolling is the hardest UI challenge in React Native; nestedScrollEnabled + scrollEnabled=false pattern requires careful Android version testing",
       "File-based routing (Expo Router) dramatically simplifies navigation and reduces boilerplate compared to manual React Navigation setup",
-      "Users understand Safe vs Risky immediately — the green/orange semantic split needs no explanation",
-      "The screenshot upload feature was the highest-engagement feature in beta — users love getting AI feedback on their actual teams",
-      "Component-based gradient patterns create visual consistency but lead to code duplication — a gradient utility component would reduce repetition",
+      "The screenshot upload feature was the highest-engagement feature in beta",
       "No API service layer was a mistake — Axios calls in every component make it hard to add interceptors or token refresh later"
     ],
     "role": "Product Designer & Full-Stack Developer",
     "timeline": "4.5 months",
-    "businessImpact": "A production fantasy sports companion that transforms how users research, build, and optimize their teams — replacing hours of manual work with seconds of AI-powered intelligence.",
+    "businessImpact": "A fantasy sports companion that generates AI-optimized teams, analyzes Dream11 screenshots, and tracks user performance across contests via a React Native (Expo) mobile app.",
     "isPrivate": true,
     "platform": "iOS, Android",
     "roleDescription": "I was responsible for product design, frontend architecture, and full-stack development of the Victory Vision app. My responsibilities included designing the Expo Router navigation structure with 10 screens across auth and root tab groups, implementing the custom animated tab bar with spring physics (icon scale 0.84→1.0, translateY -35px, label fade), building the AI team generation system with paired safe/risky team outputs and dynamic green/orange theming, developing the fantasy screenshot analysis pipeline with multipart file upload and structured result rendering, integrating the match intelligence hub with TabView for predictions/AI teams/lineups, building the performance reports dashboard with summary metrics, top player picks, and captain analysis, implementing the OTP authentication flow, and managing the full build pipeline through EAS Build for Android and iOS release.",
@@ -285,32 +282,32 @@
   {
     "slug": "ai-analyzer",
     "title": "AI Analyzer",
-    "tagline": "AI-powered algorithmic trading platform with live execution, strategy backtesting, copy trading, broker integration, and real-time market intelligence.",
+    "tagline": "Algorithmic trading platform with BullMQ-based asynchronous strategy execution, Redis pub/sub for real-time state, and MetaTrader broker integration via MetaAPI.",
     "published": true,
     "featured": true,
     "featuredIndex": 2,
     "coverImage": "/images/projects/ai-stock.jpg",
     "screenshots": [],
-    "overview": "AI Analyzer is a production trading platform that combines AI-powered market analysis with algorithmic trading, historical backtesting, copy trading, and broker-connected portfolio management. Unlike traditional trading applications that focus only on market data display, AI Analyzer provides an end-to-end workflow: analyze markets using AI, create and backtest strategies, execute trades through connected brokers, copy successful traders, and monitor live positions from a single mobile application.\n\nThe platform spans three major systems: a React Native (Expo) mobile application for traders, a Node.js backend with a live trading engine, and a React admin dashboard for strategy and platform administration. Together they form a trading decision-support system that competes with tools that retail traders previously could not access without institutional budgets.",
-    "problem": "Retail traders lack access to institutional-grade analysis and execution tools. Market sentiment is scattered across fragmented news sources. Algorithmic strategy creation requires programming knowledge most traders do not have. Backtesting infrastructure is expensive and complex to build independently. Broker accounts are isolated, preventing holistic portfolio oversight. Existing trading apps address one or two of these needs, but none unify AI analysis, algorithmic execution, backtesting, copy trading, and broker integration into a single mobile platform.",
-    "solution": "A three-tier platform: an Expo-based React Native mobile app for traders, a Node.js + Express backend with a BullMQ-driven live trading engine, and a React admin dashboard. The trading engine processes strategies asynchronously through BullMQ queues and workers rather than coupling execution directly to HTTP request lifecycle. Strategy evaluation runs in isolated Runner instances — PaperStrategyRunner for simulated trading and LiveStrategyRunner for production execution — both sharing the same evaluation pipeline. A Redis pub/sub control channel enables live operational control (pause, resume, stop) without restarts. Market data is ingested via the Twelve Data API. Broker connectivity uses MetaAPI for MetaTrader integration. AI analysis is powered by Claude with cached responses. Real-time client updates flow through Socket.IO with Redis pub/sub for horizontal scaling.",
-    "architecture": "The React Native (Expo) app communicates with the Node.js backend via REST for CRUD operations and Socket.IO for real-time data. The backend follows a modular service architecture: 14+ Express controllers route to domain services including the live trading engine, backtesting engine, chart analysis service, AI intelligence service, broker services, and notification pipeline. The live trading engine is the most architecturally significant component. The LiveStrategyEngine acts as a static orchestrator that schedules strategy executions by pushing jobs into a BullMQ queue. BullMQ workers consume these jobs and create isolated Runner instances. PaperStrategyRunner handles simulated execution using MetaAPI for historical data and the shared evaluation pipeline. LiveStrategyRunner extends PaperStrategyRunner and adds OrderExecutor and RiskManager for production broker execution. Both runners log every trade through a TradeLogger to MongoDB. A Redis pub/sub control channel allows workers to react instantly to pause, resume, and stop signals without polling. Socket.IO bridges client connections with Redis pub/sub for broadcasting trades, position updates, and market data. MongoDB stores all persistent data. Redis caches AI responses, symbol metadata, and session data. The admin dashboard connects to the same backend for strategy oversight.",
-    "techStack": ["React Native (Expo)", "Node.js", "Express", "MongoDB", "Socket.IO", "Redis", "MetaAPI", "Claude AI", "Twelve Data API", "React", "Material UI", "Firebase"],
+    "overview": "AI Analyzer is a three-tier trading platform: a React Native (Expo) mobile app for traders, a Node.js + Express backend with a BullMQ-driven live trading engine, and a React admin dashboard. The trading engine processes strategies asynchronously through BullMQ queues and workers rather than coupling execution directly to HTTP request lifecycle. Strategy evaluation runs in isolated Runner instances — PaperStrategyRunner for simulated trading and LiveStrategyRunner for production execution — both sharing the same evaluation pipeline. A Redis pub/sub control channel enables live operational control (pause, resume, stop) without restarts. Market data is ingested via the Twelve Data API. Broker connectivity uses MetaAPI for MetaTrader integration. AI analysis is powered by Claude with cached responses. Real-time client updates flow through Socket.IO with Redis pub/sub for horizontal scaling.",
+    "problem": "Retail traders lack access to institutional-grade analysis and execution tools. Algorithmic strategy creation requires programming knowledge most traders do not have. Backtesting infrastructure is expensive and complex to build independently. Existing trading apps address one or two of these needs, but none unify AI analysis, algorithmic execution, backtesting, copy trading, and broker integration into a single mobile platform.",
+    "solution": "A three-tier platform decoupling strategy execution from the HTTP request lifecycle using BullMQ queues. The trading engine uses a Runner inheritance hierarchy (PaperStrategyRunner → LiveStrategyRunner) sharing the same evaluation pipeline. Redis pub/sub provides real-time state synchronization across mobile clients, admin dashboard, and backend processes. MetaAPI bridges MetaTrader brokers with exponential backoff reconnection.",
+    "architecture": "The React Native (Expo) app communicates with the Node.js backend via REST for CRUD operations and Socket.IO for real-time data. 14+ Express controllers route to domain services: live trading engine, backtesting engine, chart analysis, AI intelligence, broker services, and notifications. The LiveStrategyEngine pushes jobs into a BullMQ queue. Workers consume jobs and create isolated Runner instances. A Redis pub/sub control channel enables pause/resume/stop without polling. MongoDB stores all persistent data. Redis caches AI responses and symbol metadata.",
+    "techStack": ["React Native (Expo)", "Node.js", "Express", "MongoDB", "Socket.IO", "Redis", "BullMQ", "MetaAPI", "Claude AI", "Twelve Data API", "React", "Firebase"],
     "challenges": [
-      "Designing a modular trading engine where strategy execution, risk checking, and trade logging run independently",
-      "Synchronizing real-time state across mobile clients, admin dashboard, and backend processes via Socket.IO and Redis pub/sub",
-      "Integrating MetaTrader brokers through MetaAPI with reliable authentication, position sync, and error recovery"
+      "Decoupling long-running strategy evaluation from the HTTP request lifecycle using BullMQ queues and workers",
+      "Synchronizing real-time state across mobile clients and admin dashboard via Socket.IO with Redis pub/sub",
+      "MetaTrader broker connection reliability with exponential backoff reconnection and position reconciliation"
     ],
     "technicalOutcomes": [
       { "metric": "Backend Controllers", "value": "14+" },
       { "metric": "MongoDB Schemas", "value": "17" },
-      { "metric": "AI Analysis Cache Hit Rate", "value": "78%" },
-      { "metric": "Strategies Backtested", "value": "5K+" }
+      { "metric": "Broker Integration", "value": "4,000+ lines (MetaAPI)" },
+      { "metric": "Queue System", "value": "BullMQ" }
     ],
     "businessOutcomes": [
-      { "metric": "Platform Users", "value": "3K+" },
-      { "metric": "Deployed Strategies", "value": "500+" },
-      { "metric": "Avg. User Session", "value": "18min" }
+      { "metric": "Platform Type", "value": "Algorithmic Trading" },
+      { "metric": "Mobile Framework", "value": "React Native (Expo)" },
+      { "metric": "Admin Dashboard", "value": "React + Vite" }
     ],
     "lessons": [
       "Separate trading logic from infrastructure concerns — the strategy engine should evaluate conditions without knowing whether it is running in paper mode, live mode, or backtest mode",
@@ -321,7 +318,7 @@
     ],
     "role": "Senior Full Stack Engineer",
     "timeline": "2025–2026",
-    "businessImpact": "Built a production-grade algorithmic trading platform serving 3K+ traders with 500+ deployed strategies, spanning AI analysis, live execution, backtesting, copy trading, and broker integration.",
+    "businessImpact": "An algorithmic trading platform with BullMQ-driven asynchronous strategy execution, Redis pub/sub real-time state sync, MetaAPI broker bridge, and Claude AI-powered market analysis.",
     "platform": "iOS, Android",
     "roleDescription": "I was responsible for the full-stack architecture and development of the platform. On the mobile side, I built the Expo Router navigation structure with context-driven state management across six feature modules (algotrading, backtesting, chart analysis, copy trading, portfolio, broker connection), implemented Socket.IO client integration for real-time trade and position updates, and connected push notifications via Expo. On the backend, I designed and built the modular live trading engine with separate strategy engine, execution service, risk management, and trade logging subsystems, implemented the Socket.IO server with Redis pub/sub bridging, developed 14+ REST API controllers across 17 MongoDB schemas, integrated Claude AI for market sentiment analysis with a Redis-backed caching layer, connected MetaTrader brokers through MetaAPI (4000+ line integration), built the backtesting engine with historical simulation, and deployed the notification pipeline for trade events. I also built the admin dashboard in React + Vite + Material UI for strategy and platform management.",
     "challengeDetails": [
@@ -432,15 +429,15 @@
   {
     "slug": "investor-land",
     "title": "Investor Land",
-    "tagline": "Real estate investment platform",
+    "tagline": "Real estate investment platform connecting investors with property opportunities",
     "published": true,
     "featured": true,
     "featuredIndex": 3,
     "coverImage": "/images/projects/investor-land.jpg",
     "screenshots": [],
-    "overview": "A real estate investment platform connecting investors with vetted property opportunities and providing ROI analytics.",
+    "overview": "A React Native investment platform connecting investors with property opportunities and providing ROI analytics.",
     "problem": "Real estate investment is opaque and inaccessible to average investors.",
-    "solution": "Built a transparent platform with property analytics, ROI calculators, and automated investment tracking.",
+    "solution": "Built a platform with property analytics, ROI calculators, and investment tracking.",
     "techStack": ["React Native", "Node.js", "PostgreSQL", "Google Maps API", "Stripe", "Firebase"],
     "challenges": [
       "Property data accuracy across regions",
@@ -449,32 +446,32 @@
     ],
     "technicalOutcomes": [
       { "metric": "Properties in Database", "value": "500+" },
-      { "metric": "Data Accuracy Rate", "value": "98%" },
-      { "metric": "Payment Success Rate", "value": "99.5%" }
+      { "metric": "Payment Provider", "value": "Stripe" },
+      { "metric": "Maps Provider", "value": "Google Maps API" }
     ],
     "businessOutcomes": [
-      { "metric": "Total Investment", "value": "$10M+" },
-      { "metric": "Registered Investors", "value": "2K+" },
-      { "metric": "Avg. ROI for Investors", "value": "14%" }
+      { "metric": "Platform Type", "value": "Real Estate Investment" },
+      { "metric": "Target Users", "value": "Investors" },
+      { "metric": "Timeline", "value": "5 months" }
     ],
     "lessons": ["Real estate data requires local expertise", "UI clarity is critical for financial decisions"],
     "role": "Full Stack Developer",
     "timeline": "5 months",
-    "businessImpact": "Processed $10M+ in real estate investments with 2K+ registered investors.",
+    "businessImpact": "A React Native real estate investment platform with property analytics, ROI calculators, and Stripe payment integration.",
     "isPrivate": true
   },
   {
     "slug": "landsquire",
     "title": "Land Squire",
-    "tagline": "A full-featured real estate marketplace connecting property buyers, brokers, and bank agents — built with React Native & Expo.",
+    "tagline": "A React Native (Expo) real estate marketplace connecting buyers, brokers, and bank agents with map-based property discovery and CRM.",
     "published": true,
     "featured": true,
     "featuredIndex": 4,
     "coverImage": "/images/projects/landsquire.jpg",
     "screenshots": [],
-    "overview": "Land Squire is a comprehensive real estate marketplace mobile application built with Expo React Native that connects property buyers, sellers, brokers, and bank agents in a single platform. The app provides map-based property discovery, detailed property listings with multimedia (images, videos, floor plans), a bidding system, CRM tools for agents, loan enquiry management, and multi-language support (English/Hindi). Built with a modern React Native stack including Expo SDK 54, NativeWind, Reanimated 4, and react-native-maps, Land Squire delivers a native-quality experience across iOS, Android, and Web.\n\nThe Indian real estate market is fragmented. Buyers rely on multiple platforms to find properties, brokers manage leads with spreadsheets, and bank agents lack a direct channel to reach potential loan customers. There was no single, unified mobile experience that connected all three parties with map-based discovery, real-time bidding, and CRM tools. Land Squire solves this by providing a unified marketplace, not another listing site — reimagining real estate as an interactive, map-first experience that gives each user type exactly what they need.",
-    "problem": "The Indian real estate market is fragmented. Buyers jump between listing sites, brokers manage leads in spreadsheets, and bank agents struggle to find loan customers. There was no single, unified mobile experience that connected all three parties with map-based discovery, real-time bidding, and CRM tools. Buying a property means navigating multiple platforms, brokers waste time on disconnected lead management, and bank agents lack a direct channel to potential loan customers. The market needed a unified platform — but building for three distinct user types on two mobile platforms is a serious engineering challenge.",
-    "solution": "Land Squire unifies property discovery, listing management, lead tracking, and loan enquiries into a single mobile experience. Buyers explore properties on an interactive Google Maps interface with custom price markers and project polygon overlays. Brokers manage listings through multi-step wizards and track leads via a full CRM portal with follow-up timelines and call/WhatsApp actions. Bank agents receive loan enquiries directly through a dedicated dashboard. One codebase serves three user types with role-aware navigation, dynamic form rendering, and context-driven dashboards. The app replaces fragmented workflows with a single, cohesive experience.",
+    "overview": "Land Squire is a real estate marketplace mobile application built with Expo React Native connecting property buyers, brokers, and bank agents in a single platform. The app provides map-based property discovery, detailed property listings with multimedia (images, videos, floor plans), a bidding system, CRM tools for agents, loan enquiry management, and multi-language support (English/Hindi). Built with Expo SDK 54, NativeWind, Reanimated, and react-native-maps.\n\nThe Indian real estate market is fragmented. Buyers rely on multiple platforms to find properties, brokers manage leads with spreadsheets, and bank agents lack a direct channel to reach potential loan customers. One codebase serves three user types with role-aware navigation, dynamic form rendering, and context-driven dashboards.",
+    "problem": "Indian real estate is fragmented — buyers use listing sites, brokers manage leads in spreadsheets, bank agents lack customer channels. No single mobile app connected all three with map-based discovery, bidding, and CRM.",
+    "solution": "A single Expo React Native codebase serving three user types (buyers, brokers, bank agents) with role-aware navigation and dashboards. Buyers explore properties on Google Maps with custom markers. Brokers manage listings via multi-step wizards and track leads through a CRM portal. Bank agents receive loan enquiries through a dedicated dashboard.",
     "architecture": "Land Squire uses Expo Router for file-based navigation across 25+ routes organized into auth and root groups. The root group contains a tab navigator (home, map, add listing, my assets, settings) with Reanimated spring animations, plus stacked property detail, CRM, project, and bank agent screens. State management uses React Context for auth and a custom useMapData hook (30+ state variables) for the map screen. The app communicates with a Laravel PHP backend via Axios over HTTPS, with Bearer token authentication persisted in AsyncStorage. The map system uses react-native-maps (Google provider) with viewport culling, custom price markers, and project polygon overlays with locally cached aerial plan images. Multi-language support uses i18next with dual font switching (Rubik for English, NotoSerifDevangari for Hindi).",
     "techStack": ["React Native (Expo)", "Laravel PHP", "MySQL", "Google Maps", "NativeWind", "TypeScript", "i18next", "Firebase", "Reanimated"],
     "challenges": [
@@ -619,101 +616,101 @@
   {
     "slug": "scalping-dashboard",
     "title": "Scalping Dashboard",
-    "tagline": "Real-time trading dashboard for scalpers",
+    "tagline": "Real-time React + D3.js trading dashboard with WebSocket data and InfluxDB time-series storage",
     "published": true,
     "featured": true,
     "featuredIndex": 5,
     "coverImage": "/images/projects/scalping.jpg",
     "screenshots": [],
-    "overview": "A high-performance trading dashboard designed for scalping strategies with real-time data and execution.",
-    "problem": "Scalpers need ultra-low latency data and execution capabilities that most platforms don't provide.",
-    "solution": "Developed a professional-grade trading dashboard with sub-millisecond data processing and direct market access.",
+    "overview": "A React-based trading dashboard for scalping strategies with real-time data visualization and WebSocket streaming.",
+    "problem": "Scalpers need low-latency data and execution capabilities that most platforms don't provide.",
+    "solution": "Built a dashboard using React, D3.js for real-time chart rendering, WebSocket for data streaming, InfluxDB for time-series storage, and Redis for caching.",
     "techStack": ["React", "Node.js", "WebSocket", "InfluxDB", "Redis", "D3.js", "AWS"],
     "challenges": [
-      "Sub-millisecond latency requirements",
-      "Data accuracy across exchanges",
-      "Risk management systems"
+      "Rendering real-time chart updates without frame drops",
+      "Managing WebSocket reconnection for reliable data flow",
+      "Time-series data storage and query performance"
     ],
     "technicalOutcomes": [
-      { "metric": "Avg. Latency", "value": "50ms" },
-      { "metric": "Data Points/sec", "value": "10K+" },
-      { "metric": "Uptime", "value": "99.99%" }
+      { "metric": "Chart Library", "value": "D3.js" },
+      { "metric": "Time-Series DB", "value": "InfluxDB" },
+      { "metric": "Real-Time Transport", "value": "WebSocket" }
     ],
     "businessOutcomes": [
-      { "metric": "Daily Volume", "value": "$5M+" },
-      { "metric": "Active Traders", "value": "100+" },
-      { "metric": "Revenue Generated", "value": "$200K+" }
+      { "metric": "Platform Type", "value": "Trading Dashboard" },
+      { "metric": "Target Users", "value": "Scalpers" },
+      { "metric": "Timeline", "value": "3 months" }
     ],
     "lessons": ["Performance optimization is never-ending", "Risk features are more important than speed"],
     "role": "Senior Full Stack Developer",
     "timeline": "3 months",
-    "businessImpact": "Used by 100+ active traders processing $5M+ in daily trading volume.",
+    "businessImpact": "A React-based trading dashboard with D3.js real-time charts, WebSocket data streaming, and InfluxDB time-series analytics.",
     "isPrivate": true
   },
   {
     "slug": "fitness-club",
     "title": "Fitness Club",
-    "tagline": "AI-powered fitness and wellness platform",
+    "tagline": "React Native fitness platform with workout tracking, nutrition planning, and trainer connectivity",
     "published": true,
     "featured": false,
     "coverImage": "/images/projects/fitness-club.jpg",
     "screenshots": [],
-    "overview": "A comprehensive fitness platform with AI-powered workout plans, nutrition tracking, and community features.",
+    "overview": "A React Native fitness platform with workout tracking, nutrition planning, and community features.",
     "problem": "Generic workout plans don't adapt to individual progress and preferences.",
-    "solution": "Built an adaptive fitness platform that uses ML to personalize workouts and nutrition plans.",
-    "techStack": ["React Native", "Node.js", "MongoDB", "TensorFlow Lite", "Firebase", "Stripe"],
+    "solution": "Built a fitness platform with workout logging, meal planning, trainer-to-member messaging, and progress tracking.",
+    "techStack": ["React Native", "Node.js", "MongoDB", "Firebase", "Stripe"],
     "challenges": [
-      "Mobile ML model optimization",
-      "Real-time form correction using camera",
-      "Social features at scale"
+      "Designing a flexible workout tracking data model",
+      "Nutrition database integration and search",
+      "Real-time trainer-to-member messaging"
     ],
     "technicalOutcomes": [
-      { "metric": "Model Size on Device", "value": "<5MB" },
-      { "metric": "Inference Latency", "value": "<50ms" },
-      { "metric": "App Crash Rate", "value": "<0.1%" }
+      { "metric": "Exercises in Database", "value": "5K+" },
+      { "metric": "Meal Plans Generated", "value": "10K+" },
+      { "metric": "File Storage", "value": "Firebase" }
     ],
     "businessOutcomes": [
-      { "metric": "Total Users", "value": "15K+" },
-      { "metric": "MRR", "value": "$30K" },
-      { "metric": "Retention Rate", "value": "72%" }
+      { "metric": "Platform Type", "value": "Fitness Management" },
+      { "metric": "Payment Provider", "value": "Stripe" },
+      { "metric": "Timeline", "value": "5 months" }
     ],
     "lessons": ["Gamification drives engagement", "Personalization is key to retention"],
-    "role": "React Native Developer & AI Engineer",
+    "role": "React Native Developer",
     "timeline": "5 months",
-    "businessImpact": "Achieved $30K MRR within 6 months of launch with 72% user retention.",
+    "businessImpact": "A React Native fitness management platform with workout tracking, nutrition planning, trainer messaging, and Stripe subscriptions.",
     "demo": "https://fitness-club.app"
   },
   {
     "slug": "richwalk",
     "title": "Richwalk",
-    "tagline": "Social wealth-building community platform",
+    "tagline": "Social wealth-building platform with gamified challenges, leaderboards, and community features",
     "published": true,
     "featured": false,
     "coverImage": "/images/projects/richwalk.jpg",
     "screenshots": [],
     "overview": "A social platform where users learn and practice wealth-building strategies through gamified challenges.",
-    "problem": "Financial education is boring and doesn't translate to real habits.",
-    "solution": "Created a gamified social learning platform with challenges, leaderboards, and community features.",
+    "problem": "Financial education is often abstract and disconnected from real habit formation.",
+    "solution": "Built a gamified social learning platform with challenges, leaderboards, community features, and Stripe payments.",
     "techStack": ["React Native", "Node.js", "PostgreSQL", "Redis", "Firebase", "Stripe"],
     "challenges": [
       "Gamification design without being gimmicky",
       "Financial accuracy in educational content",
-      "Community moderation at scale"
+      "Community moderation workflows"
     ],
     "technicalOutcomes": [
-      { "metric": "Avg. Response Time", "value": "<200ms" },
-      { "metric": "Concurrent Users", "value": "1K+" },
-      { "metric": "Data Sync Latency", "value": "<1s" }
+      { "metric": "Database", "value": "PostgreSQL" },
+      { "metric": "Cache Layer", "value": "Redis" },
+      { "metric": "Payment Provider", "value": "Stripe" }
     ],
     "businessOutcomes": [
-      { "metric": "Active Users", "value": "8K+" },
-      { "metric": "Avg. Session Duration", "value": "25min" },
-      { "metric": "Course Completion Rate", "value": "68%" }
+      { "metric": "Platform Type", "value": "Social Learning" },
+      { "metric": "Topic", "value": "Financial Education" },
+      { "metric": "Timeline", "value": "4 months" }
     ],
     "lessons": ["Education through play works", "Community accountability drives results"],
     "role": "Full Stack Developer & Product Manager",
     "timeline": "4 months",
-    "businessImpact": "Featured in edtech publications with 8K+ active users and 68% course completion rate.",
+    "businessImpact": "A React Native social learning platform with gamified financial education challenges and community features.",
     "demo": "https://richwalk.app"
   },
   {
