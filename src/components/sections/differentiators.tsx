@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Code, Smartphone, Brain, Lightbulb, Users, Shield } from "lucide-react";
 
 const differentiators = [
@@ -50,15 +49,9 @@ const differentiators = [
 
 export function WhatMakesMeDifferent() {
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
-        >
+        <div className="mb-12 text-center">
           <span className="mb-4 inline-block text-xs font-medium uppercase tracking-widest text-accent">
             Why Me
           </span>
@@ -68,16 +61,12 @@ export function WhatMakesMeDifferent() {
           <p className="mt-3 text-base text-muted-foreground max-w-2xl mx-auto">
             Most engineers specialize in one area. I bring six — and each one reinforces the others.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {differentiators.map((item, i) => (
-            <motion.div
+          {differentiators.map((item) => (
+            <div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/20 hover:shadow-glow"
             >
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-accent/20 bg-accent/5 text-accent">
@@ -90,7 +79,7 @@ export function WhatMakesMeDifferent() {
               <p className="mt-4 text-xs text-accent/70 font-medium">
                 {item.evidence}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,17 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { SectionTitle } from "@/components/shared/section-title";
 import { getProjects } from "@/lib/data";
 
 const featuredTech = [
   { name: "React Native", slug: "react-native" },
-  { name: "Next.js", slug: "nextjs" },
   { name: "Node.js", slug: "nodejs" },
-  { name: "LangChain", slug: "langchain" },
-  { name: "TensorFlow", slug: "tensorflow" },
   { name: "PostgreSQL", slug: "postgresql" },
   { name: "Docker", slug: "docker" },
   { name: "TypeScript", slug: "typescript" },
@@ -43,23 +39,19 @@ function getProjectsForTech(techName: string): TechProject[] {
 
 export function FeaturedTechnologies() {
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           label="Stack Explorer"
           title="Technologies → Projects"
           description="Select a technology to see the projects that demonstrate it. Each project links to its full case study and repository."
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredTech.map((tech, i) => {
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {featuredTech.map((tech) => {
             const techProjects = getProjectsForTech(tech.name);
             return (
-              <motion.div
+              <div
                 key={tech.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-accent/20"
               >
                 <h3 className="font-semibold text-sm">{tech.name}</h3>
@@ -102,7 +94,7 @@ export function FeaturedTechnologies() {
                     <p className="text-xs text-muted-foreground/50">No featured projects</p>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

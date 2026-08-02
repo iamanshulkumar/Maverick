@@ -41,7 +41,6 @@ const sections = [
     items: [
       "Building an open-source AI chatbot SDK",
       "Developing a developer productivity VS Code extension",
-      "Writing a technical blog series on AI engineering",
       "Contributing to React Native community libraries",
     ],
   },

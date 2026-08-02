@@ -24,8 +24,7 @@ export function LessonsAccordion({ lessons }: LessonsAccordionProps) {
           {lessons.map((item, i) => {
             const [isOpen, setIsOpen] = useState(i === 0);
             return (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.05 }}
-                className="rounded-xl border border-border bg-card overflow-hidden">
+              <div key={i} className="rounded-xl border border-border bg-card overflow-hidden">
                 <button onClick={() => setIsOpen(!isOpen)}
                   className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-surface-hover">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
@@ -56,7 +55,7 @@ export function LessonsAccordion({ lessons }: LessonsAccordionProps) {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
         </div>

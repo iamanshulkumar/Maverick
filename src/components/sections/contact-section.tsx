@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 import { SectionTitle } from "@/components/shared/section-title";
@@ -9,20 +8,14 @@ import { siteConfig } from "@/lib/constants";
 
 export function ContactSection() {
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           label="Contact"
           title="Let's Work Together"
           description="Have a project in mind? Let's build something great."
         />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-lg text-center"
-        >
+        <div className="mx-auto max-w-lg text-center">
           <p className="mb-8 text-muted-foreground">
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your vision.
@@ -39,7 +32,7 @@ export function ContactSection() {
               </Button>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

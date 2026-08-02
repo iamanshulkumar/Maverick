@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface SectionTitleProps {
   label: string;
   title: string;
@@ -10,13 +8,7 @@ interface SectionTitleProps {
 
 export function SectionTitle({ label, title, description }: SectionTitleProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.4 }}
-      className="mb-12 text-center"
-    >
+    <div className="mb-8 md:mb-12 text-center">
       <span className="mb-4 inline-block text-xs font-medium uppercase tracking-widest text-accent">
         {label}
       </span>
@@ -24,6 +16,6 @@ export function SectionTitle({ label, title, description }: SectionTitleProps) {
       {description && (
         <p className="mt-3 text-base text-muted-foreground">{description}</p>
       )}
-    </motion.div>
+    </div>
   );
 }

@@ -8,10 +8,10 @@ import { siteConfig } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 pt-16">
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 pt-16 md:pt-20 lg:pt-24">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-accent-cyan/5 blur-[100px]" />
+        <div className="absolute top-1/4 left-1/2 h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px] md:blur-[100px] lg:blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px] rounded-full bg-accent-cyan/5 blur-[60px] md:blur-[80px] lg:blur-[100px]" />
         <div
           className="absolute inset-0 animate-gradient opacity-30"
           style={{

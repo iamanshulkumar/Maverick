@@ -12,8 +12,8 @@ export function InteractiveTimeline() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="py-16 md:py-20 lg:py-24">
+      <div className="mx-auto max-w-3xl lg:max-w-4xl px-4">
         <SectionTitle
           label="Career"
           title="Experience"
@@ -23,12 +23,8 @@ export function InteractiveTimeline() {
           <div className="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-accent via-accent-cyan to-transparent" />
           <div className="space-y-6">
             {experience.map((exp, i) => (
-              <motion.div
+              <div
                 key={`${exp.company}-${exp.role}`}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="relative pl-16"
               >
                 <button
@@ -93,7 +89,7 @@ export function InteractiveTimeline() {
                     )}
                   </AnimatePresence>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

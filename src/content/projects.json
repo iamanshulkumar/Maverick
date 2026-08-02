@@ -6,7 +6,8 @@
     "published": true,
     "featured": true,
     "featuredIndex": 0,
-    "coverImage": "/images/projects/wealth-walk.jpg",
+    "categories": ["Mobile"],
+    "coverImage": "/images/projects/Thumbnails/Wealth%20Walk.webp",
     "screenshots": [],
     "overview": "Wealth Walk is a React Native application that provides retail investors with trading and portfolio management tools. The platform delivers real-time market data, AI-driven trading signals, broker connectivity for order execution, educational content, and subscription-based premium access. The target users are Indian retail investors who trade in equities, derivatives, and forex markets.\n\nThe core business problem: retail investors lack access to the analytical tools, real-time data, and automated strategies that institutional traders use. Existing solutions are either expensive (Bloomberg terminals), fragmented (multiple apps for data, execution, and learning), or untrustworthy (signal groups with no transparency). Wealth Walk consolidates these needs into a single platform with transparent, explainable AI signals.",
     "problem": "Retail investors in India manage their portfolios across multiple broker accounts, track market data through separate apps, rely on unverified telegram groups for trading signals, and lack structured education for financial markets. This fragmentation leads to delayed decisions, untracked portfolio performance, and inconsistent learning.",
@@ -144,7 +145,8 @@
     "published": true,
     "featured": true,
     "featuredIndex": 1,
-    "coverImage": "/images/projects/victory-vision.jpg",
+    "categories": ["Mobile", "AI"],
+    "coverImage": "/images/projects/Thumbnails/Victory%20Vision.webp",
     "screenshots": [],
     "overview": "Victory Vision is a fantasy sports companion app that gives cricket fans AI-powered team recommendations, match predictions, and performance tracking. Built with React Native (Expo SDK 53), the app generates AI-optimized fantasy teams, analyzes uploaded Dream11 screenshots, and tracks user performance over time. The app targets Indian cricket fans who play fantasy sports on platforms like Dream11 and My11Circle. It currently supports cricket (T20, ODI, Tests). The AI team generation engine produces paired safe and risky teams with dynamic theming — green for safe, orange for risky.",
     "problem": "Fantasy cricket players manually track player form across multiple websites, compare stats, and guess at captain choices. 10+ minutes of research for every contest entry — with no objective way to evaluate their team before submitting.",
@@ -286,7 +288,8 @@
     "published": true,
     "featured": true,
     "featuredIndex": 2,
-    "coverImage": "/images/projects/ai-stock.jpg",
+    "categories": ["Mobile", "AI"],
+    "coverImage": "/images/projects/Thumbnails/Ai%20Analyser%20App.webp",
     "screenshots": [],
     "overview": "AI Analyzer is a three-tier trading platform: a React Native (Expo) mobile app for traders, a Node.js + Express backend with a BullMQ-driven live trading engine, and a React admin dashboard. The trading engine processes strategies asynchronously through BullMQ queues and workers rather than coupling execution directly to HTTP request lifecycle. Strategy evaluation runs in isolated Runner instances — PaperStrategyRunner for simulated trading and LiveStrategyRunner for production execution — both sharing the same evaluation pipeline. A Redis pub/sub control channel enables live operational control (pause, resume, stop) without restarts. Market data is ingested via the Twelve Data API. Broker connectivity uses MetaAPI for MetaTrader integration. AI analysis is powered by Claude with cached responses. Real-time client updates flow through Socket.IO with Redis pub/sub for horizontal scaling.",
     "problem": "Retail traders lack access to institutional-grade analysis and execution tools. Algorithmic strategy creation requires programming knowledge most traders do not have. Backtesting infrastructure is expensive and complex to build independently. Existing trading apps address one or two of these needs, but none unify AI analysis, algorithmic execution, backtesting, copy trading, and broker integration into a single mobile platform.",
@@ -431,9 +434,9 @@
     "title": "Investor Land",
     "tagline": "Real estate investment platform connecting investors with property opportunities",
     "published": true,
-    "featured": true,
-    "featuredIndex": 3,
-    "coverImage": "/images/projects/investor-land.jpg",
+    "featured": false,
+    "categories": ["Mobile"],
+    "coverImage": "/images/projects/Thumbnails/Investor%20Lands.webp",
     "screenshots": [],
     "overview": "A React Native investment platform connecting investors with property opportunities and providing ROI analytics.",
     "problem": "Real estate investment is opaque and inaccessible to average investors.",
@@ -466,8 +469,9 @@
     "tagline": "A React Native (Expo) real estate marketplace connecting buyers, brokers, and bank agents with map-based property discovery and CRM.",
     "published": true,
     "featured": true,
-    "featuredIndex": 4,
-    "coverImage": "/images/projects/landsquire.jpg",
+    "featuredIndex": 3,
+    "categories": ["Mobile"],
+    "coverImage": "/images/projects/Thumbnails/Land%20Squire.webp",
     "screenshots": [],
     "overview": "Land Squire is a real estate marketplace mobile application built with Expo React Native connecting property buyers, brokers, and bank agents in a single platform. The app provides map-based property discovery, detailed property listings with multimedia (images, videos, floor plans), a bidding system, CRM tools for agents, loan enquiry management, and multi-language support (English/Hindi). Built with Expo SDK 54, NativeWind, Reanimated, and react-native-maps.\n\nThe Indian real estate market is fragmented. Buyers rely on multiple platforms to find properties, brokers manage leads with spreadsheets, and bank agents lack a direct channel to reach potential loan customers. One codebase serves three user types with role-aware navigation, dynamic form rendering, and context-driven dashboards.",
     "problem": "Indian real estate is fragmented — buyers use listing sites, brokers manage leads in spreadsheets, bank agents lack customer channels. No single mobile app connected all three with map-based discovery, bidding, and CRM.",
@@ -614,112 +618,288 @@
     ]
   },
   {
-    "slug": "scalping-dashboard",
-    "title": "Scalping Dashboard",
-    "tagline": "Real-time React + D3.js trading dashboard with WebSocket data and InfluxDB time-series storage",
-    "published": true,
-    "featured": true,
-    "featuredIndex": 5,
-    "coverImage": "/images/projects/scalping.jpg",
-    "screenshots": [],
-    "overview": "A React-based trading dashboard for scalping strategies with real-time data visualization and WebSocket streaming.",
-    "problem": "Scalpers need low-latency data and execution capabilities that most platforms don't provide.",
-    "solution": "Built a dashboard using React, D3.js for real-time chart rendering, WebSocket for data streaming, InfluxDB for time-series storage, and Redis for caching.",
-    "techStack": ["React", "Node.js", "WebSocket", "InfluxDB", "Redis", "D3.js", "AWS"],
-    "challenges": [
-      "Rendering real-time chart updates without frame drops",
-      "Managing WebSocket reconnection for reliable data flow",
-      "Time-series data storage and query performance"
-    ],
-    "technicalOutcomes": [
-      { "metric": "Chart Library", "value": "D3.js" },
-      { "metric": "Time-Series DB", "value": "InfluxDB" },
-      { "metric": "Real-Time Transport", "value": "WebSocket" }
-    ],
-    "businessOutcomes": [
-      { "metric": "Platform Type", "value": "Trading Dashboard" },
-      { "metric": "Target Users", "value": "Scalpers" },
-      { "metric": "Timeline", "value": "3 months" }
-    ],
-    "lessons": ["Performance optimization is never-ending", "Risk features are more important than speed"],
-    "role": "Senior Full Stack Developer",
-    "timeline": "3 months",
-    "businessImpact": "A React-based trading dashboard with D3.js real-time charts, WebSocket data streaming, and InfluxDB time-series analytics.",
-    "isPrivate": true
-  },
-  {
-    "slug": "fitness-club",
-    "title": "Fitness Club",
-    "tagline": "React Native fitness platform with workout tracking, nutrition planning, and trainer connectivity",
+    "slug": "wealth-walk-dashboard",
+    "title": "Wealth Walk Dashboard",
+    "tagline": "Admin control panel for the Wealth Walk fintech platform — manage courses, subscription plans, trading signals, AI chart patterns, strategies, and users from one dashboard.",
     "published": true,
     "featured": false,
-    "coverImage": "/images/projects/fitness-club.jpg",
-    "screenshots": [],
-    "overview": "A React Native fitness platform with workout tracking, nutrition planning, and community features.",
-    "problem": "Generic workout plans don't adapt to individual progress and preferences.",
-    "solution": "Built a fitness platform with workout logging, meal planning, trainer-to-member messaging, and progress tracking.",
-    "techStack": ["React Native", "Node.js", "MongoDB", "Firebase", "Stripe"],
+    "categories": ["Web"],
+    "coverImage": "/images/projects/Wealth%20Walk/Admin%20panel/Admin%20Dashboard.png",
+    "screenshots": [
+      "/images/projects/Wealth%20Walk/Admin%20panel/Admin%20Dashboard.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/User%20panel.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Add%20new%20user.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20user.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Courses%20list%20view.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Add%20new%20course.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Add%20videos%20and%20lessons.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/List%20of%20plans.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Add%20new%20plan.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20plan.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Paid%20signals.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Add%20new%20signal.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20signal.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Ai%20chart%20list.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Ai%20Chart%20Patterns.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/list%20of%20strategies.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Create%20new%20strategy.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20strategy%201.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20strategy%202.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Edit%20strategy%203.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Backtesting.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Create%20notifications.png",
+      "/images/projects/Wealth%20Walk/Admin%20panel/Notification.png"
+    ],
+    "overview": "Wealth Walk Dashboard is the admin control panel for the Wealth Walk fintech application. Where the mobile app serves retail investors, this web dashboard is where the operations team runs the platform — managing the education catalog, subscription plans, trading signals, AI chart patterns, algorithmic strategies, backtesting jobs, push notifications, and users. It shares the same Node.js API and PostgreSQL data layer as the mobile app, giving the team a single operational surface for content, commerce, and trading content management.",
+    "problem": "Running a fintech platform with live trading signals, paid courses, and subscription plans requires constant content updates and user management. Without an admin panel, every change — a new signal, an updated lesson, a revised plan — would require direct database edits or app releases. The team needed a dedicated web console to publish content, configure billing plans, moderate users, and push notifications without touching code.",
+    "solution": "A React + Vite admin dashboard that connects to the same Node.js API gateway as the mobile app. It provides role-gated modules for course management (courses, lessons, videos), subscription plan CRUD with publishing state, trading signal management (free/paid, category, details), AI chart pattern curation, algorithmic strategy templates, backtesting job monitoring, Firebase push notification composer, and full user management. Every mutation flows through the shared API, so admin actions are immediately reflected on the mobile clients.",
+    "architecture": "The dashboard is a React + Vite SPA secured by a login flow that issues a scoped admin token. It talks to the existing Node.js API gateway over REST, reusing the same controllers and PostgreSQL schemas as the mobile app. Firebase Admin SDK is used server-side for composing and delivering push notifications. Media uploads (course thumbnails, lesson videos, signal images) are streamed to Firebase Storage. The admin token is short-lived with refresh support, and every administrative mutation is written through the shared API layer so auditability and validation stay consistent.",
+    "techStack": ["React", "Vite", "Node.js", "PostgreSQL", "Redis", "Firebase", "AWS"],
     "challenges": [
-      "Designing a flexible workout tracking data model",
-      "Nutrition database integration and search",
-      "Real-time trainer-to-member messaging"
+      "Keeping admin and mobile content consistent through a single shared API",
+      "Modeling subscription plan changes that are already active for existing users",
+      "Composing and scheduling push notifications across Android battery-optimized devices"
     ],
     "technicalOutcomes": [
-      { "metric": "Exercises in Database", "value": "5K+" },
-      { "metric": "Meal Plans Generated", "value": "10K+" },
-      { "metric": "File Storage", "value": "Firebase" }
+      { "metric": "Platform", "value": "Web Admin Panel" },
+      { "metric": "Managed Domains", "value": "Courses, Plans, Signals, AI, Users" },
+      { "metric": "Push Channel", "value": "Firebase Cloud Messaging" }
     ],
     "businessOutcomes": [
-      { "metric": "Platform Type", "value": "Fitness Management" },
-      { "metric": "Payment Provider", "value": "Stripe" },
-      { "metric": "Timeline", "value": "5 months" }
+      { "metric": "Project", "value": "Wealth Walk Platform" },
+      { "metric": "Frontend", "value": "React + Vite" },
+      { "metric": "Timeline", "value": "Ongoing" }
     ],
-    "lessons": ["Gamification drives engagement", "Personalization is key to retention"],
-    "role": "React Native Developer",
-    "timeline": "5 months",
-    "businessImpact": "A React Native fitness management platform with workout tracking, nutrition planning, trainer messaging, and Stripe subscriptions.",
-    "demo": "https://fitness-club.app"
+    "lessons": [
+      "An admin panel shares the same API contract as the client, which keeps content behavior identical everywhere",
+      "Plan edits need versioning or effective dates when subscribers are already active",
+      "Content management tools are only as good as their preview loop"
+    ],
+    "role": "Senior Full Stack Engineer",
+    "timeline": "Ongoing",
+    "businessImpact": "The operational control panel for the Wealth Walk fintech platform, unifying course, plan, signal, strategy, and user management behind the shared Node.js API.",
+    "isPrivate": true,
+    "platform": "Web",
+    "roleDescription": "I designed and built the admin dashboard for the Wealth Walk platform. I implemented the module structure across courses, subscription plans, signals, AI chart patterns, strategies, backtesting, notifications, and users; wired every screen to the existing Node.js API so admin actions propagate to mobile instantly; built the Firebase Cloud Messaging composer for push notifications; handled media uploads to Firebase Storage; and secured the panel with a scoped, refreshable admin token. I worked against the same PostgreSQL schema used by the mobile app so content created here is exactly what subscribers see.",
+    "challengeDetails": [
+      {
+        "challenge": "Content consistency across admin and mobile through one API",
+        "explanation": "The same signal, course, or plan is rendered in the mobile app and edited in the admin dashboard. Rather than building a parallel admin-only data path, every administrative mutation goes through the shared Node.js API controllers and PostgreSQL tables. This guarantees that what an editor publishes in the dashboard is byte-for-byte what a subscriber receives, and it keeps validation rules in a single place."
+      },
+      {
+        "challenge": "Editing subscription plans with active subscribers",
+        "explanation": "Plans power in-app purchases, so changing a plan that users already subscribed to is risky. The dashboard keeps plan state explicit — draft, active, paused — and only propagates edits to the store listing when a plan is republished. Pricing changes are reflected for new subscribers immediately while the billing service reconciles existing entitlements server-side."
+      },
+      {
+        "challenge": "Push notification reliability for trading content",
+        "explanation": "Trading signals lose value in minutes. The dashboard's notification composer supports title, body, deep link, and target audience selection, then sends through Firebase Cloud Messaging with data messages so the app can render the signal even if the process is backgrounded. Delivery receipts are logged to measure per-device-model reliability."
+      }
+    ],
+    "featureGroups": [
+      {
+        "title": "Course & Learning Management",
+        "features": ["Course list view", "Add new course", "Add videos and lessons", "Course thumbnails and media"],
+        "rationale": "The education catalog is created and maintained here. Editors manage course metadata, structured lessons, and video assets through the dashboard, and the mobile app renders the same content via the shared API."
+      },
+      {
+        "title": "Subscription Plan Management",
+        "features": ["List of plans", "Add new plan", "Edit plan", "Publish state control"],
+        "rationale": "Plans drive the fintech business model. The dashboard manages plan metadata, pricing, features, and publish state, keeping the store listing in sync with what the mobile billing flow shows."
+      },
+      {
+        "title": "Trading Signal & AI Content",
+        "features": ["Paid signals", "Add new signal", "Edit signal", "AI chart list", "AI Chart Patterns"],
+        "rationale": "Trading signals and AI chart patterns are the core content product. Editors publish free and paid signals, curate AI-generated chart patterns, and attach details — all immediately visible to mobile users."
+      },
+      {
+        "title": "Strategy & Backtesting",
+        "features": ["List of strategies", "Create new strategy", "Edit strategy (1/2/3)", "Backtesting"],
+        "rationale": "Algorithmic strategy templates and backtesting jobs are managed here so the operations team can add, update, or retire strategies without an app release."
+      },
+      {
+        "title": "Users & Notifications",
+        "features": ["User panel", "Add new user", "Edit user", "Create notifications", "Notification log"],
+        "rationale": "User management and broadcast tooling live together. Admins can view and edit users and compose targeted push notifications from one surface."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "Reuse the mobile API instead of a separate admin backend",
+        "rationale": "The mobile app and dashboard manage identical data. Routing both through the same Node.js controllers and PostgreSQL tables keeps validation and business rules in one place and eliminates drift between what editors publish and what users see.",
+        "alternatives": "A dedicated admin API was rejected because it would duplicate schema access, validation, and audit logic for no benefit."
+      },
+      {
+        "decision": "Scoped admin token with refresh",
+        "rationale": "Admin actions are high-privilege, so the dashboard uses a short-lived admin-scoped token with a refresh flow rather than a long-lived credential. This limits the blast radius if a token leaks while keeping editors logged in during a work session.",
+        "alternatives": "A long-lived static API key was rejected for security reasons."
+      },
+      {
+        "decision": "Firebase Admin SDK server-side for push",
+        "rationale": "Push delivery is composed in the dashboard but sent through Firebase Admin SDK on the server. This keeps the FCM server key out of the browser and lets the notification service apply consistent delivery and logging for all broadcast types.",
+        "alternatives": "Client-side FCM with exposed keys was rejected."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "Single shared API vs dedicated admin API",
+        "choice": "Single shared Node.js API with role-gated endpoints",
+        "reasoning": "A shared API keeps data behavior identical between admin and mobile and avoids duplicated validation. The cost is that admin requests share capacity with client traffic, which is acceptable for this operationally focused workload."
+      },
+      {
+        "tradeoff": "Immediate plan edits vs versioned plans",
+        "choice": "Publish-state gated plan edits with server-side entitlement reconciliation",
+        "reasoning": "Fully versioned plans add complexity beyond the current need. Gating edits behind a publish state plus server-side reconciliation for existing subscribers gives a safe middle ground."
+      }
+    ],
+    "futureImprovements": [
+      "Versioned subscription plans with effective dates for seamless subscriber migration",
+      "Content preview pane showing exactly how a signal or course renders in the mobile app",
+      "Audit log for every administrative action with before/after diffs",
+      "Scheduled push notifications with recurring broadcast templates",
+      "Analytics view aggregating mobile usage of each content item edited from the dashboard"
+    ]
   },
   {
-    "slug": "richwalk",
-    "title": "Richwalk",
-    "tagline": "Social wealth-building platform with gamified challenges, leaderboards, and community features",
+    "slug": "ai-analyzer-dashboard",
+    "title": "AI Analyzer Dashboard",
+    "tagline": "Admin control panel for the AI Analyzer algorithmic trading platform — manage strategies, backtests, users, notifications, and trade logs in real time.",
     "published": true,
     "featured": false,
-    "coverImage": "/images/projects/richwalk.jpg",
-    "screenshots": [],
-    "overview": "A social platform where users learn and practice wealth-building strategies through gamified challenges.",
-    "problem": "Financial education is often abstract and disconnected from real habit formation.",
-    "solution": "Built a gamified social learning platform with challenges, leaderboards, community features, and Stripe payments.",
-    "techStack": ["React Native", "Node.js", "PostgreSQL", "Redis", "Firebase", "Stripe"],
+    "categories": ["Web"],
+    "coverImage": "/images/projects/Ai%20analyser/admin%20panel/Admin%20panel%20Dashboard.png",
+    "screenshots": [
+      "/images/projects/Ai%20analyser/admin%20panel/Admin%20panel%20Dashboard.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Ai%20Strategy.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Create%20new%20strategy.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Edit%20strategy.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Admin%20backtesting%20Strategies.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Back%20testing.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Users%20(CRUD).png",
+      "/images/projects/Ai%20analyser/admin%20panel/Add%20new%20User.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Edit%20User.png",
+      "/images/projects/Ai%20analyser/admin%20panel/View%20User.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Send%20notification.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Notifications%20with%20firebase.png",
+      "/images/projects/Ai%20analyser/admin%20panel/Trade%20log.png"
+    ],
+    "overview": "AI Analyzer Dashboard is the admin control panel for the AI Analyzer algorithmic trading platform. It is the operations and support surface for a platform whose core is the BullMQ-driven live trading engine — this dashboard manages strategy templates, backtesting jobs, live strategy monitoring, user accounts, trade logs, and Firebase push notifications. It was built with React + Vite + Material UI and talks to the same Node.js backend and MongoDB store used by the mobile app.",
+    "problem": "An algorithmic trading platform needs continuous operational oversight — strategies must be configured, backtests run, users onboarded, and every trade audited. The mobile app is a trader-facing surface, not an administrative one. Without a dashboard, the team would have to touch the backend directly to create strategies, inspect trade logs, or broadcast platform notifications.",
+    "solution": "A React + Vite + Material UI admin dashboard that surfaces the platform's operational surface area. It provides strategy management (create, edit, view AI strategies), backtesting administration (run and review backtests), user CRUD with detail views, a real-time trade log feed, and a Firebase notification composer. Because the dashboard reads from the same MongoDB schemas the trading engine writes to, the operations team sees live trading activity as it happens.",
+    "architecture": "The dashboard is a React + Vite SPA with Material UI components. It authenticates against the Node.js backend and operates on the same 17 MongoDB schemas used by the mobile app and trading engine. Live views — trade logs and running strategies — subscribe to the same Socket.IO channel the mobile app uses, so the dashboard reflects real-time engine activity without polling. Notifications are composed here and dispatched through Firebase Admin on the server. All administrative endpoints are role-protected.",
+    "techStack": ["React", "Vite", "Material UI", "Node.js", "MongoDB", "Socket.IO", "Redis", "Firebase"],
     "challenges": [
-      "Gamification design without being gimmicky",
-      "Financial accuracy in educational content",
-      "Community moderation workflows"
+      "Surfacing live trading activity in the dashboard without polling",
+      "Reconciling strategy templates with running BullMQ jobs",
+      "Providing complete user management for a trading audience"
     ],
     "technicalOutcomes": [
-      { "metric": "Database", "value": "PostgreSQL" },
-      { "metric": "Cache Layer", "value": "Redis" },
-      { "metric": "Payment Provider", "value": "Stripe" }
+      { "metric": "Platform", "value": "Web Admin Panel" },
+      { "metric": "Live Feed", "value": "Socket.IO" },
+      { "metric": "UI Library", "value": "Material UI" }
     ],
     "businessOutcomes": [
-      { "metric": "Platform Type", "value": "Social Learning" },
-      { "metric": "Topic", "value": "Financial Education" },
-      { "metric": "Timeline", "value": "4 months" }
+      { "metric": "Project", "value": "AI Analyzer Platform" },
+      { "metric": "Frontend", "value": "React + Vite" },
+      { "metric": "Timeline", "value": "Ongoing" }
     ],
-    "lessons": ["Education through play works", "Community accountability drives results"],
-    "role": "Full Stack Developer & Product Manager",
-    "timeline": "4 months",
-    "businessImpact": "A React Native social learning platform with gamified financial education challenges and community features.",
-    "demo": "https://richwalk.app"
+    "lessons": [
+      "Admin dashboards should subscribe to the same real-time channels as clients, not poll",
+      "Strategy templates and live engine jobs need a clear state mapping",
+      "Trade logs are the single source of truth for support and reconciliation"
+    ],
+    "role": "Senior Full Stack Engineer",
+    "timeline": "Ongoing",
+    "businessImpact": "The operational and support console for the AI Analyzer trading platform, providing strategy, backtest, user, trade-log, and notification management over the shared Node.js backend.",
+    "isPrivate": true,
+    "platform": "Web",
+    "roleDescription": "I built the admin dashboard for the AI Analyzer algorithmic trading platform. I implemented strategy management (create, edit, AI strategy views), the backtesting administration module, full user CRUD with detail views, a live trade-log feed over Socket.IO, and a Firebase notification composer. I connected the dashboard to the same Node.js backend and MongoDB schemas used by the mobile app and the live trading engine, and secured every administrative endpoint behind role checks.",
+    "challengeDetails": [
+      {
+        "challenge": "Real-time operational views without polling",
+        "explanation": "Trade logs and running strategies change continuously as the BullMQ engine executes. The dashboard subscribes to the same Socket.IO channel as the mobile client instead of polling. This gives the operations team a live view of trading activity and keeps the dashboard consistent with what traders see, without adding load to the API."
+      },
+      {
+        "challenge": "Mapping strategy templates to running engine jobs",
+        "explanation": "The dashboard edits strategy templates, while the live trading engine runs strategy jobs through BullMQ workers. The views distinguish template state (draft, published) from runtime state (queued, running, paused, stopped) and present both clearly so operators know whether a change to a template affects running executions."
+      },
+      {
+        "challenge": "Complete user management for a trading audience",
+        "explanation": "Trading users need more than basic account tools — support must reset credentials, review a user's strategies, and inspect their trade history. The dashboard's user CRUD includes detail views that pull together account data, linked brokers, and trading activity from the same schemas the engine writes to."
+      }
+    ],
+    "featureGroups": [
+      {
+        "title": "Strategy Management",
+        "features": ["AI Strategy", "Create new strategy", "Edit strategy", "Strategy list"],
+        "rationale": "Operators create and maintain algorithmic strategy templates. Each template maps to configurable parameters that the live engine and backtester consume, keeping strategy configuration out of code."
+      },
+      {
+        "title": "Backtesting Administration",
+        "features": ["Back testing", "Admin backtesting Strategies", "Backtest result review"],
+        "rationale": "Backtests validate strategy behavior on historical data. The dashboard lets operators launch backtests and review results so only validated strategies reach the live trading engine."
+      },
+      {
+        "title": "User Management",
+        "features": ["Users (CRUD)", "Add new User", "Edit User", "View User"],
+        "rationale": "Full account administration for a trading audience — onboarding, edits, and detailed views that aggregate account, broker, and trading activity for support and reconciliation."
+      },
+      {
+        "title": "Trade Log & Monitoring",
+        "features": ["Trade log", "Live trade feed"],
+        "rationale": "The trade log is the source of truth for support and audit. Real-time delivery over Socket.IO keeps the feed current with engine execution."
+      },
+      {
+        "title": "Notifications",
+        "features": ["Send notification", "Notifications with Firebase"],
+        "rationale": "Platform broadcasts are composed here and dispatched through Firebase Admin on the server, keeping FCM credentials out of the browser."
+      }
+    ],
+    "technicalDecisions": [
+      {
+        "decision": "Material UI for the dashboard component system",
+        "rationale": "The dashboard needs dense data tables, forms, and real-time feeds. Material UI's data grid and form components accelerated building the CRUD surfaces and kept the UI consistent across strategies, users, and logs.",
+        "alternatives": "A custom Tailwind design system was rejected as slower to build for this admin-focused workload."
+      },
+      {
+        "decision": "Subscribe to Socket.IO for live views",
+        "rationale": "Trade logs and running strategies update continuously. Reusing the same Socket.IO channel as the mobile app gives operators a real-time view without polling overhead and without duplicating the real-time plumbing.",
+        "alternatives": "Polling was rejected because it adds API load and lags behind engine activity."
+      },
+      {
+        "decision": "Role-protected admin endpoints on the shared backend",
+        "rationale": "Administrative operations live on the same Node.js backend as client APIs, guarded by role checks. This keeps the data model and validation centralized while ensuring admin-only actions are never reachable by trader clients.",
+        "alternatives": "A physically separate admin service was rejected as premature for this platform's scale."
+      }
+    ],
+    "tradeoffs": [
+      {
+        "tradeoff": "Shared backend vs dedicated admin service",
+        "choice": "Shared Node.js backend with role-protected admin endpoints",
+        "reasoning": "Reusing the backend keeps strategy, user, and trade data consistent with the mobile app and engine. Role protection prevents trader clients from reaching admin operations. A dedicated service would add deployment and schema-sync overhead without a clear benefit at this scale."
+      },
+      {
+        "tradeoff": "Material UI density vs custom design",
+        "choice": "Material UI with dense data tables",
+        "reasoning": "Admin users need information density and fast access to actions. Material UI delivers that out of the box; a bespoke design system would trade operator efficiency for visual uniqueness."
+      }
+    ],
+    "futureImprovements": [
+      "Strategy version history with rollback for template changes",
+      "Live position and risk dashboard aggregated from the engine's real-time feed",
+      "Audit log for administrative actions with role attribution",
+      "Scheduled backtest runs with result comparison across strategy versions",
+      "Granular notification targeting by plan tier, broker, or strategy subscription"
+    ]
   },
   {
     "slug": "carzchoice-old-app",
     "title": "CarzChoice Old App",
     "tagline": "A peer-to-peer used car marketplace for buying and selling old vehicles — the OLX of cars with listings, chat, and instant deals.",
     "published": true,
-    "featured": false,
-    "coverImage": "/images/projects/car-choice.jpg",
+    "featured": true,
+    "featuredIndex": 5,
+    "categories": ["Mobile"],
+    "coverImage": "/images/projects/Thumbnails/Old%20Carz%20Choice%20App.webp",
     "screenshots": [],
     "overview": "CarzChoice Old App is a simplified, peer-to-peer used car marketplace focused purely on buying and selling pre-owned vehicles. Unlike the full-featured CarzChoice marketplace with dealer registrations and financing, this app is an OLX-style platform where individual owners list their old cars, buyers browse and contact sellers directly, and transactions happen through in-app chat. No dealers, no loans — just people selling cars to people.",
     "problem": "Existing car selling platforms are cluttered with dealer listings, financing offers, and unnecessary features. Individual sellers want a straightforward way to list their old car and connect with genuine buyers — like OLX but purpose-built for cars.",
@@ -758,8 +938,10 @@
     "title": "CarzChoice App",
     "tagline": "The new-generation Android app for CarzChoice — used car marketplace with AI recommendations, streamlined chat, and instant financing in your pocket.",
     "published": true,
-    "featured": false,
-    "coverImage": "/images/projects/car-choice.jpg",
+    "featured": true,
+    "featuredIndex": 4,
+    "categories": ["Mobile"],
+    "coverImage": "/images/projects/Thumbnails/New%20Carz%20Choice%20app.webp",
     "screenshots": [],
     "overview": "CarzChoice App is the mobile-native version of the CarzChoice marketplace, rebuilt from the ground up as an Android-first experience. It delivers the full car buying and selling workflow — discovery, real-time dealer chat, financing, and listing management — in a streamlined app interface with push notifications, offline support, and AI-powered recommendations.",
     "problem": "The web version of CarzChoice served desktop users well, but mobile users wanted a dedicated app experience with push notifications, camera integration for vehicle photos, and faster load times. The existing responsive web app couldn't provide the native feel that Indian mobile-first users expect.",
@@ -788,10 +970,11 @@
   {
     "slug": "car-choice",
     "title": "Carz Choice",
-    "tagline": "A used car marketplace connecting Indian car buyers with dealers through a modern mobile experience with real-time chat, smart filters, and seamless lead generation.",
+    "tagline": "A full-featured used car marketplace connecting buyers and dealers with real-time chat, multi-attribute search, financing, and a sell wizard.",
     "published": true,
     "featured": false,
-    "coverImage": "/images/projects/car-choice.jpg",
+    "categories": ["Web"],
+    "coverImage": "",
     "screenshots": [],
     "overview": "Carz Choice is a used car marketplace built for the Indian market. Built with Expo React Native SDK 54 and backed by a Laravel PHP API, the app connects buyers and dealers through a mobile-first experience. Users can browse used cars by city, brand, budget, or detailed filters, view comprehensive car details with galleries and specifications, sell their vehicles through a guided 3-step wizard, get car loans and insurance, and communicate directly with dealers through in-app chat powered by Stream Chat.\n\nThe app distinguishes between two user types — Buyers and Dealers — with distinct workflows for each. Buyers discover, filter, and enquire about used cars. Dealers register with business documents, manage multi-brand inventory, and receive qualified buyer enquiries through real-time chat. The app replaces 5+ separate tools that Indian car buyers previously needed to navigate.",
     "problem": "In India, buying a used car is fragmented across multiple channels. Buyers visit one site for listings, another for comparisons, a third for loans, and contact dealers separately by phone or WhatsApp. Dealers struggle with lead generation across scattered platforms and have no centralized way to manage buyer enquiries. There is no single mobile experience that combines car discovery, detailed specifications, real-time dealer communication, financing, and selling — all in one place.",

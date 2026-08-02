@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { CTAConfig } from "./types";
@@ -13,11 +12,11 @@ export function CTA({ config }: CTAProps) {
   return (
     <section className="py-24">
       <div className="mx-auto max-w-2xl px-4 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+        <div>
           <p className="text-sm text-muted-foreground/60 mb-8">Want to see another complex production system?</p>
-        </motion.div>
+        </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}>
+        <div>
           <Link href={config.href} className="group block">
             <div className="relative overflow-hidden rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/[0.03]">
               <div className="pointer-events-none absolute -inset-20 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
@@ -38,7 +37,7 @@ export function CTA({ config }: CTAProps) {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 interface Metric {
   value: number;
@@ -71,13 +70,9 @@ export function PerformanceSection() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {metrics.map((m, i) => (
-            <motion.div
+          {metrics.map((m) => (
+            <div
               key={m.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
               className="group relative rounded-xl border border-border bg-card p-4 overflow-hidden"
             >
               <div className="pointer-events-none absolute -inset-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -90,7 +85,7 @@ export function PerformanceSection() {
                 </span>
                 <p className="mt-1 text-xs text-muted-foreground">{m.label}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

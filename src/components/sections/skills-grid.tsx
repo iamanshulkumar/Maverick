@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/shared/section-title";
 import { getSkills } from "@/lib/data";
 import { Monitor, Server, Smartphone, Brain, Shield, Cloud } from "lucide-react";
@@ -18,7 +17,7 @@ export function TechnicalExpertise() {
   const skills = getSkills();
 
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           label="Expertise"
@@ -26,13 +25,9 @@ export function TechnicalExpertise() {
           description="Domains I work in and the technologies I use."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((domain, i) => (
-            <motion.div
+          {skills.map((domain) => (
+            <div
               key={domain.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/20"
             >
               <div className="mb-4 flex items-center gap-3">
@@ -50,7 +45,7 @@ export function TechnicalExpertise() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

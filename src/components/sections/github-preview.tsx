@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
 import { SectionTitle } from "@/components/shared/section-title";
 import { siteConfig } from "@/lib/constants";
@@ -31,7 +30,7 @@ const repos = [
 
 export function FeaturedEngineering() {
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           label="Engineering Work"
@@ -39,16 +38,12 @@ export function FeaturedEngineering() {
           description="Selected open-source work that demonstrates specific engineering decisions and architecture patterns."
         />
         <div className="space-y-4">
-          {repos.map((repo, i) => (
-            <motion.a
+          {repos.map((repo) => (
+            <a
               key={repo.name}
               href={repo.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
               className="group block rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-glow"
             >
               <div className="flex items-start justify-between">
@@ -75,7 +70,7 @@ export function FeaturedEngineering() {
                   className="mt-1.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
                 />
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
         <div className="mt-8 text-center">

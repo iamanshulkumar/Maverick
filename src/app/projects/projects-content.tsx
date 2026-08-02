@@ -6,14 +6,14 @@ import { SectionTitle } from "@/components/shared/section-title";
 import { ProjectCard } from "@/components/shared/project-card";
 import { getProjects } from "@/lib/data";
 
-const categories = ["All", "Mobile", "Web", "AI", "Security"];
+const categories = ["All", "Mobile", "Web", "AI"];
 
 export function ProjectsContent() {
   const projects = getProjects();
   const [active, setActive] = useState("All");
 
   const filtered = active === "All" ? projects : projects.filter(
-    (p) => p.techStack.some((t) => t.toLowerCase().includes(active.toLowerCase()))
+    (p) => p.categories?.includes(active)
   );
 
   return (

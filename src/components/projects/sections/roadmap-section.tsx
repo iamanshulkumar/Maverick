@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
@@ -19,23 +18,13 @@ export function RoadmapSection() {
   return (
     <section id="roadmap" className="py-24">
       <div className="mx-auto max-w-2xl px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <p className="text-sm text-muted-foreground/60 mb-8">
             Want to see another complex production system?
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
+        <div>
           <Link
             href={`/projects/${nextProject.slug}`}
             className="group block"
@@ -63,7 +52,7 @@ export function RoadmapSection() {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

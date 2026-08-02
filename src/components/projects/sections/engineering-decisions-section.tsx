@@ -70,12 +70,8 @@ export function EngineeringDecisionsSection() {
           {decisions.map((d, i) => {
             const isOpen = openIndex === i;
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
                 className="rounded-xl border border-border bg-card overflow-hidden"
               >
                 <button
@@ -128,7 +124,7 @@ export function EngineeringDecisionsSection() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
         </div>

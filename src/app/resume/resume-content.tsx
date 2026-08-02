@@ -1,11 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, ExternalLink, Briefcase, GraduationCap, Award } from "lucide-react";
+import { Download, ExternalLink, Briefcase, GraduationCap, Award, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { getExperience } from "@/lib/data";
 import { siteConfig } from "@/lib/constants";
+
+const certificates = [
+  { name: "TryHackMe - Advent of Cyber 3", file: "/images/Certificates/Advent%20of%20cyber%203.png", type: "image" },
+  { name: "TryHackMe - Advent of Cyber 4", file: "/images/Certificates/Advent%20of%20cyber%204.png", type: "image" },
+  { name: "Ethical Hacking Essentials (EHE) - CodeRed", file: "/images/Certificates/EHE%20-%20CodeRed.webp", type: "image" },
+  { name: "TryHackMe Certificate", file: "/images/Certificates/THM-IDUEV9BMGA.webp", type: "image" },
+  { name: "Rise Certificate", file: "/images/Certificates/Anshul%20Kumar%20Meena-Rise-certificate_page-0001.webp", type: "image" },
+  { name: "Burp Suite", file: "/images/Certificates/Burp%20Suite_pages-to-jpg-0001.webp", type: "image" },
+  { name: "Cybrary Orientation", file: "/images/Certificates/cybrary-cert-cybrary-orientation_page-0001.webp", type: "image" },
+  { name: "Cybrary - Introduction to IT and Cybersecurity", file: "/images/Certificates/cybrary-cert-introduction-to-it-and-cybersecurity_page-0001.webp", type: "image" },
+  { name: "Pen Testing - Certificate of Achievement", file: "/images/Certificates/Pen%20Testing_Certificate%20of%20Achievement_page-0001.webp", type: "image" },
+];
 
 export function ResumeContent() {
   const experience = getExperience();
@@ -41,13 +53,9 @@ export function ResumeContent() {
             <Briefcase size={20} className="text-accent" /> Experience
           </h2>
           <div className="space-y-6">
-            {experience.map((exp, i) => (
-              <motion.div
+            {experience.map((exp) => (
+              <div
                 key={`${exp.company}-${exp.role}`}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="rounded-xl border border-border bg-card p-6"
               >
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
@@ -76,7 +84,7 @@ export function ResumeContent() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -101,15 +109,32 @@ export function ResumeContent() {
             <Award size={20} className="text-accent" /> Certifications
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              "TryHackMe - Top 1%",
-              "OpenAI API Developer",
-              "Meta React Native Certificate",
-              "AWS Cloud Practitioner",
-            ].map((cert, i) => (
-              <div key={i} className="rounded-xl border border-border bg-card p-4">
-                <p className="text-sm font-medium">{cert}</p>
-              </div>
+            {certificates.map((cert) => (
+              <a
+                key={cert.file}
+                href={cert.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-accent/30 hover:shadow-glow"
+              >
+                {cert.type === "image" ? (
+                  <div className="mb-3 overflow-hidden rounded-lg border border-border/50">
+                    <img
+                      src={cert.file}
+                      alt={cert.name}
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div className="mb-3 flex aspect-[16/10] w-full items-center justify-center rounded-lg border border-border/50 bg-gradient-to-br from-accent/5 to-accent-cyan/5">
+                    <FileText size={28} className="text-muted-foreground/60" />
+                  </div>
+                )}
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-sm font-medium">{cert.name}</p>
+                  <ExternalLink size={14} className="shrink-0 text-muted-foreground/60 transition-colors group-hover:text-accent" />
+                </div>
+              </a>
             ))}
           </div>
         </div>

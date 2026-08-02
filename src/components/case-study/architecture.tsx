@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { GitBranch } from "lucide-react";
 import type { Project } from "@/types";
 
@@ -21,8 +20,7 @@ export function Architecture({ project }: ArchitectureProps) {
           )}
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
-          className="rounded-xl border border-border bg-card p-6">
+        <div className="rounded-xl border border-border bg-card p-6">
           {hasDiagram && (
             <div className="overflow-x-auto mb-4">
               <pre className="text-xs leading-relaxed text-muted-foreground font-mono">
@@ -41,7 +39,7 @@ export function Architecture({ project }: ArchitectureProps) {
               <span>{project.architecture}</span>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

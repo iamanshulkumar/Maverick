@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { ChallengeItem } from "./types";
 
 interface ChallengeCardsProps {
@@ -17,9 +16,8 @@ export function ChallengeCards({ challenges }: ChallengeCardsProps) {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {challenges.map((c, i) => (
-            <motion.div key={c.label} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.08 }}
-              className="rounded-xl border border-border bg-card overflow-hidden">
+          {challenges.map((c) => (
+            <div key={c.label} className="rounded-xl border border-border bg-card overflow-hidden">
               <div className="flex items-center gap-3 border-b border-border bg-surface-hover p-4">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">{c.icon}</div>
                 <h3 className="text-sm font-semibold">{c.label}</h3>
@@ -43,7 +41,7 @@ export function ChallengeCards({ challenges }: ChallengeCardsProps) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

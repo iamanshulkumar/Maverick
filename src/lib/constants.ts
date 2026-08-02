@@ -5,19 +5,19 @@ export const siteConfig = {
   title: "Senior Full Stack Engineer · React Native · Node.js",
   description:
     "Senior Full Stack Engineer specializing in React Native, React, Node.js, and real-time systems. Builds production-grade mobile apps, web platforms, and backend services.",
-  url: "https://anshulmeena.dev",
+  url: "https://ansh17.netlify.app/",
   ogImage: "/images/og/default.jpg",
   links: {
     github: "https://github.com/iamanshulkumar",
     linkedin: "https://linkedin.com/in/itisanshulkumar",
     email: "anshulkm17@gmail.com",
-    resume: "/resume/anshul-meena-resume.pdf",
+    resume: "/resume/Anshul_Kumar_Meena_Resume-2026.pdf",
   },
 };
 
 export const navLinks: NavLink[] = [
   { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
+  { label: "Reading", href: "/reading" },
   { label: "About", href: "/about" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },

@@ -23,34 +23,22 @@ export function PhoneMockup({ gradient = "from-accent/20 via-accent-cyan/20 to-a
   );
 }
 
-export function OverviewCard({ icon, label, value, description, delay = 0 }: { icon: React.ReactNode; label: string; value: string; description: string; delay?: number }) {
+export function OverviewCard({ icon, label, value, description }: { icon: React.ReactNode; label: string; value: string; description: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      className="rounded-xl border border-border bg-card p-5 hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.08)]"
-    >
+    <div className="rounded-xl border border-border bg-card p-5 hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.08)]">
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
         {icon}
       </div>
       <span className="block text-2xl font-bold text-foreground">{value}</span>
       <span className="mt-1 block text-xs font-medium text-muted-foreground">{label}</span>
       <p className="mt-2 text-[11px] text-muted-foreground/70 leading-relaxed">{description}</p>
-    </motion.div>
+    </div>
   );
 }
 
-export function FeatureCard({ icon, title, features, delay = 0 }: { icon: React.ReactNode; title: string; features: string[]; delay?: number }) {
+export function FeatureCard({ icon, title, features }: { icon: React.ReactNode; title: string; features: string[] }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      className="group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_20px_rgba(99,102,241,0.08)]"
-    >
+    <div className="group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_20px_rgba(99,102,241,0.08)]">
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
         {icon}
       </div>
@@ -60,7 +48,7 @@ export function FeatureCard({ icon, title, features, delay = 0 }: { icon: React.
           <Badge key={f} variant="accent" className="text-[10px]">{f}</Badge>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -69,12 +57,8 @@ export function ChallengeTimeline({ challenges }: { challenges: { challenge: str
     <div className="relative space-y-0">
       <div className="absolute left-[19px] top-0 h-full w-px bg-gradient-to-b from-accent via-accent-cyan to-transparent" />
       {challenges.map((item, i) => (
-        <motion.div
+        <div
           key={i}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: i * 0.1 }}
           className="relative flex gap-6 pb-10 last:pb-0"
         >
           <div className="relative z-10 flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-accent/30 bg-card shadow-[0_0_10px_rgba(99,102,241,0.15)]">
@@ -84,7 +68,7 @@ export function ChallengeTimeline({ challenges }: { challenges: { challenge: str
             <h4 className="text-sm font-semibold text-foreground mb-2">{item.challenge}</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">{item.explanation}</p>
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
@@ -154,18 +138,14 @@ export function TechExplorer({ techStack, highlightProject }: { techStack: strin
 export function OutcomeMetrics({ outcomes }: { outcomes: { metric: string; value: string }[] }) {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-      {outcomes.map((item, i) => (
-        <motion.div
+      {outcomes.map((item) => (
+        <div
           key={item.metric}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: i * 0.05 }}
           className="rounded-xl border border-border bg-card p-4 text-center hover:border-accent/30 transition-colors"
         >
           <span className="block text-xl font-bold text-accent">{item.value}</span>
           <span className="mt-1 block text-[10px] text-muted-foreground leading-tight">{item.metric}</span>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
@@ -181,12 +161,8 @@ export function LessonsAccordion({ lessons }: { lessons: string[] }) {
         const Icon = icons[i % icons.length];
         const isOpen = openIndex === i;
         return (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: i * 0.05 }}
             className="rounded-xl border border-border bg-card overflow-hidden"
           >
             <button
@@ -219,7 +195,7 @@ export function LessonsAccordion({ lessons }: { lessons: string[] }) {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         );
       })}
     </div>
@@ -248,7 +224,7 @@ export function getFeatureIcon(title: string): React.ReactNode {
   return iconsByTitle[title] || <Code2 size={16} />;
 }
 
-export function ScreenshotGallery({ screenshots }: { screenshots: string[] }) {
+export function ScreenshotGallery({ screenshots, aspect = "aspect-[9/16]" }: { screenshots: string[]; aspect?: string }) {
   const gradients = [
     "from-accent/20 via-accent-cyan/20 to-accent/10",
     "from-accent-cyan/20 via-accent/20 to-accent-cyan/10",
@@ -264,7 +240,7 @@ export function ScreenshotGallery({ screenshots }: { screenshots: string[] }) {
         {gradients.slice(0, 6).map((g, i) => (
           <div
             key={i}
-            className={`aspect-[9/16] rounded-xl bg-gradient-to-br ${g} flex items-center justify-center border border-border`}
+            className={`${aspect} rounded-xl bg-gradient-to-br ${g} flex items-center justify-center border border-border`}
           >
             <Smartphone size={24} className="text-foreground/20" />
           </div>
@@ -278,7 +254,7 @@ export function ScreenshotGallery({ screenshots }: { screenshots: string[] }) {
       {screenshots.map((src, i) => (
         <div
           key={i}
-          className="aspect-[9/16] rounded-xl bg-card border border-border overflow-hidden"
+          className={`${aspect} rounded-xl bg-card border border-border overflow-hidden`}
         >
           <img src={src} alt={`Screenshot ${i + 1}`} className="h-full w-full object-cover" />
         </div>

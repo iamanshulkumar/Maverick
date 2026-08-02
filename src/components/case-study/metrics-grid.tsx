@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import type { MetricItem } from "./types";
 
 interface MetricsGridProps {
@@ -33,9 +32,8 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {metrics.map((m, i) => (
-            <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="group relative rounded-xl border border-border bg-card p-4 overflow-hidden">
+          {metrics.map((m) => (
+            <div key={m.label} className="group relative rounded-xl border border-border bg-card p-4 overflow-hidden">
               <div className="relative">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent mb-3">{m.icon}</div>
                 <p className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-wider">{m.sublabel}</p>
@@ -44,7 +42,7 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
                 </span>
                 <p className="mt-1 text-xs text-muted-foreground">{m.label}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

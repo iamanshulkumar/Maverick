@@ -1,0 +1,49 @@
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3999
+- Network:       http://192.168.56.1:3999
+✓ Ready in 1900ms
+
+ GET /reading 200 in 2.4s (next.js: 766ms, application-code: 1677ms)
+ GET /reading 200 in 572ms (next.js: 10ms, application-code: 563ms)
+ GET /reading 200 in 984ms (next.js: 222ms, application-code: 762ms)
+ GET /reading 200 in 1662ms (next.js: 15ms, application-code: 1647ms)
+ GET /reading 200 in 1009ms (next.js: 14ms, application-code: 995ms)
+[browser] Image with src "/images/books/placeholder-cover.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /reading 200 in 946ms (next.js: 12ms, application-code: 934ms)
+ GET /api/projects 200 in 766ms (next.js: 651ms, application-code: 116ms)
+ GET /reading 200 in 871ms (next.js: 15ms, application-code: 857ms)
+ GET /api/projects 200 in 30ms (next.js: 13ms, application-code: 17ms)
+ GET /reading 200 in 1085ms (next.js: 15ms, application-code: 1070ms)
+ GET /api/projects 200 in 29ms (next.js: 11ms, application-code: 18ms)
+ GET /reading 200 in 845ms (next.js: 10ms, application-code: 835ms)
+ GET /api/projects 200 in 49ms (next.js: 28ms, application-code: 21ms)
+ GET /reading 200 in 983ms (next.js: 9ms, application-code: 974ms)
+[browser] Image with src "/images/books/placeholder-cover.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /api/projects 200 in 23ms (next.js: 8ms, application-code: 15ms)
+ GET /reading 200 in 1139ms (next.js: 9ms, application-code: 1130ms)
+ GET /api/projects 200 in 26ms (next.js: 10ms, application-code: 16ms)
+ GET /reading 200 in 1104ms (next.js: 15ms, application-code: 1089ms)
+ GET /api/projects 200 in 34ms (next.js: 18ms, application-code: 16ms)
+ GET /reading 200 in 1623ms (next.js: 13ms, application-code: 1609ms)
+[browser] Image with src "/images/books/placeholder-cover.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /api/projects 200 in 24ms (next.js: 7ms, application-code: 16ms)
+ GET /reading 200 in 1020ms (next.js: 8ms, application-code: 1012ms)
+ GET /api/projects 200 in 67ms (next.js: 31ms, application-code: 36ms)
+ GET /reading 200 in 1006ms (next.js: 8ms, application-code: 998ms)
+[browser] Image with src "/images/books/placeholder-cover.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /api/projects 200 in 27ms (next.js: 9ms, application-code: 18ms)
+ GET /reading 200 in 966ms (next.js: 15ms, application-code: 951ms)
+ GET /api/projects 200 in 26ms (next.js: 8ms, application-code: 18ms)
+ GET /reading 200 in 2.6s (next.js: 13ms, application-code: 2.6s)
+ GET /api/projects 200 in 20ms (next.js: 8ms, application-code: 13ms)
+✓ Compiled in 4.1s
+ GET /reading 200 in 3.5s (next.js: 1272ms, application-code: 2.2s)
+ GET /reading 200 in 1137ms (next.js: 52ms, application-code: 1085ms)
+ GET /reading 200 in 1148ms (next.js: 531ms, application-code: 617ms)
+ GET /reading 200 in 6.5s (next.js: 16ms, application-code: 6.5s)
+ GET /api/projects 200 in 233ms (next.js: 210ms, application-code: 23ms)
+[?25h

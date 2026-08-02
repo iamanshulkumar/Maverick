@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github, Lock, User, Calendar, Smartphone, Code2, GitBranch, Scale, Lightbulb, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft, ExternalLink, Github, Lock, User, Calendar, Smartphone, Code2, GitBranch, Scale, Lightbulb, ArrowRight } from "lucide-react";import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { ScreenshotGallery } from "@/components/projects/visual-components";
 import { AiAnalyzerPage } from "@/components/projects/ai-analyzer-page";
 import { CarzChoicePage } from "@/components/projects/carz-choice-page";
 import { CarzchoiceAppPage } from "@/components/projects/carzchoice-app-page";
@@ -57,11 +57,21 @@ function LegacyLayout({ project }: { project: Project }) {
         </Link>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="mb-8 aspect-video w-full rounded-xl bg-gradient-to-br from-accent/10 to-accent-cyan/10 flex items-center justify-center">
-            <div className="p-12 text-center">
-              <h1 className="text-3xl font-bold sm:text-4xl">{project.title}</h1>
-              <p className="mt-3 text-lg text-muted-foreground">{project.tagline}</p>
-            </div>
+          <div className="mb-8 aspect-video w-full overflow-hidden rounded-xl border border-border">
+            {project.coverImage ? (
+              <img
+                src={project.coverImage}
+                alt={project.title}
+                className="h-full w-full object-cover object-top"
+              />
+            ) : (
+              <div className="h-full w-full bg-gradient-to-br from-accent/10 to-accent-cyan/10 flex items-center justify-center">
+                <div className="p-12 text-center">
+                  <h1 className="text-3xl font-bold sm:text-4xl">{project.title}</h1>
+                  <p className="mt-3 text-lg text-muted-foreground">{project.tagline}</p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -108,6 +118,18 @@ function LegacyLayout({ project }: { project: Project }) {
         </motion.div>
 
         <div className="mt-16 space-y-12">
+          {project.screenshots.length > 0 && (
+            <AnimatedSection>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <div className="flex items-center gap-2 mb-6">
+                  <Smartphone size={18} className="text-accent" />
+                  <h2 className="text-xl font-semibold">Screenshots</h2>
+                </div>
+                <ScreenshotGallery screenshots={project.screenshots} aspect="aspect-video" />
+              </div>
+            </AnimatedSection>
+          )}
+
           <AnimatedSection>
             <div className="rounded-xl border border-border bg-card p-6">
               <h2 className="text-xl font-semibold">Overview</h2>

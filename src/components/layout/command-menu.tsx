@@ -31,7 +31,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     { label: "Home", href: "/", icon: File },
     { label: "About", href: "/about", icon: File },
     { label: "Projects", href: "/projects", icon: Folder },
-    { label: "Blog", href: "/blog", icon: File },
+    { label: "Reading", href: "/reading", icon: File },
     { label: "Resume", href: "/resume", icon: File },
     { label: "Contact", href: "/contact", icon: File },
     { label: "Uses", href: "/uses", icon: File },

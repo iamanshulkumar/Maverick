@@ -6,7 +6,6 @@ import { TechnicalExpertise } from "@/components/sections/skills-grid";
 import { Achievements } from "@/components/sections/achievements";
 import { FeaturedEngineering } from "@/components/sections/github-preview";
 import { FeaturedTechnologies } from "@/components/sections/featured-technologies";
-import { BlogPreview } from "@/components/sections/blog-preview";
 import { ContactSection } from "@/components/sections/contact-section";
 
 export default function HomePage() {
@@ -20,7 +19,6 @@ export default function HomePage() {
       <TechnicalExpertise />
       <FeaturedEngineering />
       <FeaturedTechnologies />
-      <BlogPreview />
       <ContactSection />
     </>
   );

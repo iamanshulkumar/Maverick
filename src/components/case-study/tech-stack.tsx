@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { TechItem } from "./types";
 
 interface TechStackProps {
@@ -19,12 +18,11 @@ export function TechStack({ title, items }: TechStackProps) {
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((tech) => (
-            <motion.div key={tech.name} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
-              className="rounded-xl border border-border bg-card p-4 hover:border-accent/20 transition-colors duration-300">
+            <div key={tech.name} className="rounded-xl border border-border bg-card p-4 hover:border-accent/20 transition-colors duration-300">
               <span className="text-xs font-bold text-accent">{tech.name}</span>
               <span className="block text-[10px] text-muted-foreground/60 mt-0.5">{tech.cat}</span>
               <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

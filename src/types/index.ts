@@ -5,6 +5,7 @@ export interface Project {
   published: boolean;
   featured: boolean;
   featuredIndex?: number;
+  categories?: string[];
   coverImage: string;
   screenshots: string[];
   overview: string;
@@ -31,17 +32,6 @@ export interface Project {
   technicalDecisions?: { decision: string; rationale: string; alternatives: string }[];
   tradeoffs?: { tradeoff: string; choice: string; reasoning: string }[];
   futureImprovements?: string[];
-}
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-  tags: string[];
-  published: boolean;
-  content: string;
-  readingTime: number;
 }
 
 export interface Skill {
@@ -73,6 +63,56 @@ export interface TimelineEvent {
   year: string;
   title: string;
   description: string;
+}
+
+export type BookStatus = "Reading" | "Completed" | "Wishlist";
+
+export interface Book {
+  id: string;
+  title: string;
+  author: string;
+  yearRead: number;
+  genre: string;
+  cover?: string;
+  thoughts?: string;
+  quote?: string;
+  tags: string[];
+  favorite?: boolean;
+  rating?: number;
+  status?: BookStatus;
+}
+
+export interface ReadingStats {
+  books: number;
+  years: number;
+  genres: number;
+  authorsRevisited: number;
+  currentRead: string;
+}
+
+export interface FavoriteAuthor {
+  name: string;
+  stars: number;
+}
+
+export interface ReadingInsight {
+  book: string;
+  why: string;
+  impact: string;
+}
+
+export interface ReadingJourneyPhase {
+  years: string;
+  focus: string[];
+  description: string;
+}
+
+export interface ReadingData {
+  stats: ReadingStats;
+  books: Book[];
+  favoriteAuthors: FavoriteAuthor[];
+  insights: ReadingInsight[];
+  journey: ReadingJourneyPhase[];
 }
 
 export interface NavLink {

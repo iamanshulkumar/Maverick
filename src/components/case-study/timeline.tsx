@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { TimelineItem } from "./types";
 
 interface TimelineProps {
@@ -21,8 +20,7 @@ export function Timeline({ title, items }: TimelineProps) {
           <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2" />
           <div className="space-y-8">
             {items.map((item, i) => (
-              <motion.div key={item.phase} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}
-                className={`relative flex items-start gap-4 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+              <div key={item.phase} className={`relative flex items-start gap-4 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                 <div className={`flex-1 order-2 md:order-none ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
                   <div className="rounded-xl border border-border bg-card p-4">
                     <span className="text-xs font-bold text-accent">Phase {item.phase}</span>
@@ -36,7 +34,7 @@ export function Timeline({ title, items }: TimelineProps) {
                   </div>
                 </div>
                 <div className="flex-1 hidden md:block" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

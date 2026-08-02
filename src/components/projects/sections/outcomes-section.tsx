@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Zap, Shield, Radio, Database, CheckCircle, GitBranch, TrendingUp, Clock, Users, BarChart3, Smartphone, Activity } from "lucide-react";
 
 const engineeringOutcomes = [
@@ -22,15 +21,6 @@ const businessOutcomes = [
 ];
 
 export function OutcomesSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
-
   return (
     <section id="outcomes" className="py-20">
       <div className="mx-auto max-w-6xl px-4">
@@ -47,17 +37,12 @@ export function OutcomesSection() {
               </div>
               <h3 className="text-base font-semibold">Engineering</h3>
             </div>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+            <div
               className="space-y-3"
             >
               {engineeringOutcomes.map((item) => (
-                <motion.div
+                <div
                   key={item.metric}
-                  variants={itemVariants}
                   className="flex items-start gap-3 rounded-lg border border-border bg-background p-3"
                 >
                   <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent">
@@ -70,9 +55,9 @@ export function OutcomesSection() {
                     </div>
                     <p className="mt-0.5 text-sm text-muted-foreground">{item.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
  
           <div className="rounded-xl border border-border bg-card p-6">
@@ -82,17 +67,12 @@ export function OutcomesSection() {
               </div>
               <h3 className="text-base font-semibold">Business</h3>
             </div>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+            <div
               className="space-y-3"
             >
               {businessOutcomes.map((item) => (
-                <motion.div
+                <div
                   key={item.metric}
-                  variants={itemVariants}
                   className="flex items-start gap-3 rounded-lg border border-border bg-background p-3"
                 >
                   <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent-cyan/10 text-accent-cyan">
@@ -105,9 +85,9 @@ export function OutcomesSection() {
                     </div>
                     <p className="mt-0.5 text-sm text-muted-foreground">{item.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const timeline = [
   { week: "1", title: "Architecture & Data Models", desc: "System design, 17 MongoDB schemas, Redis pub/sub channels, BullMQ queue topology" },
   { week: "2", title: "Trading Engine Core", desc: "LiveStrategyEngine, BullMQ workers, paper trading mode, TradeLogger service" },
@@ -28,12 +26,8 @@ export function BuildTimelineSection() {
             {timeline.map((item, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
+                <div
                   key={item.week}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
                   className={`relative flex items-start gap-4 md:gap-0 ${
                     isLeft ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -53,7 +47,7 @@ export function BuildTimelineSection() {
                   </div>
 
                   <div className="flex-1 hidden md:block" />
-                </motion.div>
+                </div>
               );
             })}
           </div>

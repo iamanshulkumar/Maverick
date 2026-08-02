@@ -61,12 +61,8 @@ export function AboutContent() {
             <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-accent via-accent-cyan to-transparent hidden md:block" />
             <div className="space-y-12">
               {timeline.map((event, i) => (
-                <motion.div
+                <div
                   key={event.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
                   className={`relative flex flex-col items-center md:flex-row ${
                     i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -80,7 +76,7 @@ export function AboutContent() {
                     <h3 className="text-lg font-semibold">{event.title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{event.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
