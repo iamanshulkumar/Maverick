@@ -11,21 +11,21 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PhoneMockup } from "../visual-components";
 import type { Project } from "@/types";
-import { ReactIcon, NodeIcon, MongoIcon, RedisIcon, SocketIOIcon, BullMQIcon, MetaAPIIcon, ClaudeIcon, ExpressIcon, TwelveDataIcon, FirebaseIcon } from "@/components/shared/tech-icons";
+import { TechIcon } from "@/components/shared/tech-icon";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const heroTechIcons: Record<string, React.ReactNode> = {
-  "React Native (Expo)": <ReactIcon size={24} />,
-  "Node.js": <NodeIcon size={24} />,
-  Express: <ExpressIcon size={24} />,
-  MongoDB: <MongoIcon size={24} />,
-  "Socket.IO": <SocketIOIcon size={24} />,
-  Redis: <RedisIcon size={24} />,
-  MetaAPI: <MetaAPIIcon size={24} />,
-  "Claude AI": <ClaudeIcon size={24} />,
-  "Twelve Data API": <TwelveDataIcon size={24} />,
-  BullMQ: <BullMQIcon size={24} />,
+  "React Native (Expo)": <TechIcon name="React Native (Expo)" size={24} />,
+  "Node.js": <TechIcon name="Node.js" size={24} />,
+  Express: <TechIcon name="Express" size={24} />,
+  MongoDB: <TechIcon name="MongoDB" size={24} />,
+  "Socket.IO": <TechIcon name="Socket.IO" size={24} />,
+  Redis: <TechIcon name="Redis" size={24} />,
+  MetaAPI: <TechIcon name="MetaAPI" size={24} />,
+  "Claude AI": <TechIcon name="Claude AI" size={24} />,
+  "Twelve Data API": <TechIcon name="Twelve Data API" size={24} />,
+  BullMQ: <TechIcon name="BullMQ" size={24} />,
 };
 
 const projectMeta = {

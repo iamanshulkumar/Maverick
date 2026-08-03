@@ -1,6 +1,7 @@
 "use client";
 
 import type { TechItem } from "./types";
+import { TechIcon } from "@/components/shared/tech-icon";
 
 interface TechStackProps {
   title: string;
@@ -19,7 +20,10 @@ export function TechStack({ title, items }: TechStackProps) {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((tech) => (
             <div key={tech.name} className="rounded-xl border border-border bg-card p-4 hover:border-accent/20 transition-colors duration-300">
-              <span className="text-xs font-bold text-accent">{tech.name}</span>
+              <span className="flex items-center gap-1.5 text-xs font-bold text-accent">
+                <TechIcon name={tech.name} size={14} />
+                {tech.name}
+              </span>
               <span className="block text-[10px] text-muted-foreground/60 mt-0.5">{tech.cat}</span>
               <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
             </div>

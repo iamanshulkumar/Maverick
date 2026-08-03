@@ -8,8 +8,17 @@ import { siteConfig } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 pt-16 md:pt-20 lg:pt-24">
+    <section className="relative flex min-h-[100vh] items-center justify-center overflow-hidden px-4 pt-16 md:pt-2 lg:pt-2">
       <div className="pointer-events-none absolute inset-0">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute inset-0 bg-background/50" />
         <div className="absolute top-1/4 left-1/2 h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px] md:blur-[100px] lg:blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px] rounded-full bg-accent-cyan/5 blur-[60px] md:blur-[80px] lg:blur-[100px]" />
         <div
@@ -36,7 +45,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+          className="text-2xl font-bold leading-tight tracking-tight sm:text-4xl md:text-4xl lg:text-6xl"
         >
           I build production software.
           <br />
@@ -51,7 +60,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-sm text-muted-foreground sm:text-lg"
         >
           Senior Full Stack Engineer with 4+ years building production iOS, Android,
           and web applications. Experience across fintech, real estate, and AI.
@@ -96,14 +105,14 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-xs text-muted-foreground"
         >
-          Senior Full Stack Engineer · Currently at Yuvmedia
-        </motion.p>
+          Senior Full Stack Engineer
+        </motion.p> */}
       </div>
     </section>
   );

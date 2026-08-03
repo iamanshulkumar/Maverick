@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronDown, CheckCircle, TrendingUp, Users, Clock, Zap, Shield, Cpu, Database, Activity, Code2, Smartphone, LineChart, BookOpen, GitBranch } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { TechIcon } from "@/components/shared/tech-icon";
 
 export function PhoneMockup({ gradient = "from-accent/20 via-accent-cyan/20 to-accent/10", children }: { gradient?: string; children?: React.ReactNode }) {
   return (
@@ -108,7 +109,7 @@ export function TechExplorer({ techStack, highlightProject }: { techStack: strin
               }`}
             >
               <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/60 mb-0.5">{desc.category}</span>
-              {tech}
+              <span className="flex items-center gap-1.5"><TechIcon name={tech} size={12} />{tech}</span>
             </button>
           );
         })}

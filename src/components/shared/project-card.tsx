@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { TechIcon } from "@/components/shared/tech-icon";
 import type { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -38,7 +39,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="mt-3 flex items-center justify-between">
           <div className="flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (
-              <Badge key={tech} variant="outline">
+              <Badge key={tech} variant="outline" className="flex items-center gap-1">
+                <TechIcon name={tech} size={12} />
                 {tech}
               </Badge>
             ))}

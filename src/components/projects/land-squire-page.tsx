@@ -6,6 +6,7 @@ import { User, Calendar, ExternalLink, Github, Lock, Zap, Activity, BarChart3, E
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TechIcon } from "@/components/shared/tech-icon";
 import { PhoneMockup } from "./visual-components";
 import { FloatingNav } from "@/components/case-study/floating-nav";
 import { StorySection } from "@/components/case-study/story-section";
@@ -133,7 +134,7 @@ export function LandSquirePage({ project }: LandSquirePageProps) {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.techStack.slice(0, 6).map((tech) => (
-                  <Badge key={tech} variant="accent">{tech}</Badge>
+                  <Badge key={tech} variant="accent" className="flex items-center gap-1"><TechIcon name={tech} size={12} />{tech}</Badge>
                 ))}
                 {project.techStack.length > 6 && <Badge variant="outline">+{project.techStack.length - 6}</Badge>}
               </div>

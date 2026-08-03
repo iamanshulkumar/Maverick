@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, Lock, User, Calendar, Smartphone, Code2, GitBranch, Scale, Lightbulb, ArrowRight } from "lucide-react";import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TechIcon } from "@/components/shared/tech-icon";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { ScreenshotGallery } from "@/components/projects/visual-components";
 import { AiAnalyzerPage } from "@/components/projects/ai-analyzer-page";
@@ -90,7 +91,10 @@ function LegacyLayout({ project }: { project: Project }) {
 
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
-              <Badge key={tech} variant="accent">{tech}</Badge>
+              <Badge key={tech} variant="accent" className="flex items-center gap-1">
+                <TechIcon name={tech} size={12} />
+                {tech}
+              </Badge>
             ))}
           </div>
 
