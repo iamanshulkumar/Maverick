@@ -109,7 +109,7 @@ export function TechExplorer({ techStack, highlightProject }: { techStack: strin
               }`}
             >
               <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/60 mb-0.5">{desc.category}</span>
-              <span className="flex items-center gap-1.5"><TechIcon name={tech} size={12} />{tech}</span>
+              <span className="flex items-center gap-1.5"><TechIcon name={tech} />{tech}</span>
             </button>
           );
         })}

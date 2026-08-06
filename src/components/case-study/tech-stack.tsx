@@ -21,7 +21,7 @@ export function TechStack({ title, items }: TechStackProps) {
           {items.map((tech) => (
             <div key={tech.name} className="rounded-xl border border-border bg-card p-4 hover:border-accent/20 transition-colors duration-300">
               <span className="flex items-center gap-1.5 text-xs font-bold text-accent">
-                <TechIcon name={tech.name} size={14} />
+                <TechIcon name={tech.name} />
                 {tech.name}
               </span>
               <span className="block text-[10px] text-muted-foreground/60 mt-0.5">{tech.cat}</span>

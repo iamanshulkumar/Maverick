@@ -45,6 +45,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  /* Scale up typography on larger screens for better desktop legibility */
+  @media (min-width: 1024px) {
+    html {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 1536px) {
+    html {
+      font-size: 18px;
+    }
+  }
   ::selection {
     background: var(--color-accent);
     color: white;

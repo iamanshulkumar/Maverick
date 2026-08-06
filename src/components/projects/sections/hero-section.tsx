@@ -16,16 +16,16 @@ import { TechIcon } from "@/components/shared/tech-icon";
 gsap.registerPlugin(ScrollTrigger);
 
 const heroTechIcons: Record<string, React.ReactNode> = {
-  "React Native (Expo)": <TechIcon name="React Native (Expo)" size={24} />,
-  "Node.js": <TechIcon name="Node.js" size={24} />,
-  Express: <TechIcon name="Express" size={24} />,
-  MongoDB: <TechIcon name="MongoDB" size={24} />,
-  "Socket.IO": <TechIcon name="Socket.IO" size={24} />,
-  Redis: <TechIcon name="Redis" size={24} />,
-  MetaAPI: <TechIcon name="MetaAPI" size={24} />,
-  "Claude AI": <TechIcon name="Claude AI" size={24} />,
-  "Twelve Data API": <TechIcon name="Twelve Data API" size={24} />,
-  BullMQ: <TechIcon name="BullMQ" size={24} />,
+  "React Native (Expo)": <TechIcon name="React Native (Expo)" />,
+  "Node.js": <TechIcon name="Node.js" />,
+  Express: <TechIcon name="Express" />,
+  MongoDB: <TechIcon name="MongoDB" />,
+  "Socket.IO": <TechIcon name="Socket.IO" />,
+  Redis: <TechIcon name="Redis" />,
+  MetaAPI: <TechIcon name="MetaAPI" />,
+  "Claude AI": <TechIcon name="Claude AI" />,
+  "Twelve Data API": <TechIcon name="Twelve Data API" />,
+  BullMQ: <TechIcon name="BullMQ" />,
 };
 
 const projectMeta = {

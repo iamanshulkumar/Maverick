@@ -134,7 +134,7 @@ export function LandSquirePage({ project }: LandSquirePageProps) {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.techStack.slice(0, 6).map((tech) => (
-                  <Badge key={tech} variant="accent" className="flex items-center gap-1"><TechIcon name={tech} size={12} />{tech}</Badge>
+                  <Badge key={tech} variant="accent" className="flex items-center gap-1"><TechIcon name={tech} />{tech}</Badge>
                 ))}
                 {project.techStack.length > 6 && <Badge variant="outline">+{project.techStack.length - 6}</Badge>}
               </div>

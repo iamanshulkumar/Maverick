@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (
               <Badge key={tech} variant="outline" className="flex items-center gap-1">
-                <TechIcon name={tech} size={12} />
+                <TechIcon name={tech} />
                 {tech}
               </Badge>
             ))}

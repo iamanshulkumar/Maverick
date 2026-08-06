@@ -19,7 +19,7 @@ export function TechBadge({ name, variant = "default", className, showIcon = tru
         className
       )}
     >
-      {showIcon && <TechIcon name={name} size={12} className="mr-1.5 shrink-0" />}
+      {showIcon && <TechIcon name={name} className="mr-1.5 shrink-0" />}
       {name}
     </span>
   );

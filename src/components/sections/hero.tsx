@@ -18,7 +18,7 @@ export function Hero() {
           muted
           playsInline
         />
-        <div className="absolute inset-0 bg-background/50" />
+        <div className="absolute inset-0 bg-background/30" />
         <div className="absolute top-1/4 left-1/2 h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px] md:blur-[100px] lg:blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px] rounded-full bg-accent-cyan/5 blur-[60px] md:blur-[80px] lg:blur-[100px]" />
         <div

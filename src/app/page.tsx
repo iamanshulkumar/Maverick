@@ -4,7 +4,6 @@ import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { InteractiveTimeline } from "@/components/sections/interactive-timeline";
 import { TechnicalExpertise } from "@/components/sections/skills-grid";
 import { Achievements } from "@/components/sections/achievements";
-import { FeaturedEngineering } from "@/components/sections/github-preview";
 import { FeaturedTechnologies } from "@/components/sections/featured-technologies";
 import { ContactSection } from "@/components/sections/contact-section";
 
@@ -17,7 +16,6 @@ export default function HomePage() {
       <Achievements />
       <InteractiveTimeline />
       <TechnicalExpertise />
-      <FeaturedEngineering />
       <FeaturedTechnologies />
       <ContactSection />
     </>

@@ -33,14 +33,14 @@ const ICONS: Record<string, SimpleIcon> = {
   Formik: siFormik,
 };
 
-function lighten(hex: string): string {
+function lighten(hex: string, amount = 0.72): string {
   const n = parseInt(hex, 16);
   const r = (n >> 16) & 255;
   const g = (n >> 8) & 255;
   const b = n & 255;
   const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  if (luminance > 90) return hex;
-  const mix = (c: number) => Math.round(c + (255 - c) * 0.55);
+  if (luminance > 110) return `#${hex}`;
+  const mix = (c: number) => Math.round(c + (255 - c) * amount);
   const to = (c: number) => c.toString(16).padStart(2, "0");
   return `#${to(mix(r))}${to(mix(g))}${to(mix(b))}`;
 }
@@ -51,7 +51,7 @@ interface TechIconProps {
   className?: string;
 }
 
-export function TechIcon({ name, size = 14, className }: TechIconProps) {
+export function TechIcon({ name, size = 25, className }: TechIconProps) {
   const icon = ICONS[name];
   if (!icon) return null;
   return (
@@ -61,6 +61,7 @@ export function TechIcon({ name, size = 14, className }: TechIconProps) {
       height={size}
       viewBox="0 0 24 24"
       fill={lighten(icon.hex)}
+      style={{ flexShrink: 0, display: "block" }}
       className={className}
       aria-label={icon.title}
     >

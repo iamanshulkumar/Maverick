@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maverick — Anshul Kumar Meena's Portfolio
+
+A production-grade personal website and developer portfolio built with the latest Next.js App Router. It showcases project case studies, an engineering timeline, reading log, and direct contact — designed as a living, fast, and content-driven site.
+
+**Live site:** https://ansh17.netlify.app/
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Framework | Next.js 16 (Turbopack, App Router) |
+| UI | React 19, Tailwind CSS v4, Radix UI |
+| Animation | framer-motion, GSAP + ScrollTrigger |
+| Diagrams | React Flow (@xyflow/react) |
+| Icons | lucide-react, simple-icons (brand marks) |
+| Contact | Resend (email API) |
+| Data | Local JSON content (`src/content`) |
+| Tooling | TypeScript, ESLint (next/core-web-vitals) |
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start the dev server (http://localhost:3000)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. Build for production
+npm run build
+
+# 4. Run the production build locally
+npm start
+
+# 5. Lint the codebase
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Note on this Next.js version:** This mirror of Next.js 16 ships intentional breaking changes (APIs, conventions, and file structure may differ from older training data / previous majors). Refer to `node_modules/next/dist/docs/` before writing code and heed any deprecation notices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── app/                  # App Router file-based routing
+│   ├── about/            # About page
+│   ├── api/              # API routes (e.g. contact/email)
+│   ├── contact/          # Contact page
+│   ├── now/              # "Now" / current status page
+│   ├── projects/         # Projects index + [slug] case studies
+│   ├── reading/          # Reading log
+│   ├── resume/           # Resume page
+│   ├── uses/             # "Uses" / tools page
+│   └── page.tsx          # Homepage
+├── components/
+│   ├── sections/         # Homepage sections
+│   ├── case-study/       # Project detail building blocks
+│   ├── projects/         # Project-specific UI
+│   ├── reading/          # Reading log UI
+│   ├── layout/           # Layout, nav, command menu
+│   ├── shared/           # Shared primitives (badges, icons, cards)
+│   └── ui/               # Reusable UI primitives
+├── content/              # Content-as-data (JSON)
+│   ├── achievements.json
+│   ├── experience.json
+│   ├── projects.json
+│   ├── reading.json
+│   ├── skills.json
+│   └── timeline.json
+└── lib/                  # Constants, data loaders, utils
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design & Engineering Decisions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Content as data** — sections like projects, reading, and the timeline are driven by typed JSON in `src/content`, keeping content maintainable and the components reusable.
+- **Performance-first animations** — interactive motion (hover, accordions, counters, route transitions) is kept while scroll-driven entrance animations were removed so core content renders statically and instantly.
+- **Authentic brand icons** — technology badges render official brand marks + brand colors via `simple-icons`, with luminance-aware lightening for near-black marks on the dark theme.
+- **Interactive project case studies** — selected projects include React Flow diagrams and GSAP-driven visuals for a richer technical narrative.
+- **SEO & social ready** — structured sitemap, JSON-LD-ready metadata, and Open Graph defaults configured in `src/lib/constants.ts` and `src/app/sitemap.ts`.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create an optimized production build |
+| `npm start` | Run the production build locally |
+| `npm run lint` | Lint the codebase with ESLint |
+
+---
+
+## Contact
+
+- GitHub: https://github.com/iamanshulkumar
+- LinkedIn: https://linkedin.com/in/itisanshulkumar
+- Email: anshulkm17@gmail.com
+- Resume: https://ansh17.netlify.app/resume
+
+---
+
+© Anshul Kumar Meena
