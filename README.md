@@ -21,29 +21,6 @@ A production-grade personal website and developer portfolio built with the lates
 
 ---
 
-## Getting Started
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start the dev server (http://localhost:3000)
-npm run dev
-
-# 3. Build for production
-npm run build
-
-# 4. Run the production build locally
-npm start
-
-# 5. Lint the codebase
-npm run lint
-```
-
-> **Note on this Next.js version:** This mirror of Next.js 16 ships intentional breaking changes (APIs, conventions, and file structure may differ from older training data / previous majors). Refer to `node_modules/next/dist/docs/` before writing code and heed any deprecation notices.
-
----
-
 ## Project Structure
 
 ```
@@ -85,17 +62,6 @@ src/
 - **Authentic brand icons** — technology badges render official brand marks + brand colors via `simple-icons`, with luminance-aware lightening for near-black marks on the dark theme.
 - **Interactive project case studies** — selected projects include React Flow diagrams and GSAP-driven visuals for a richer technical narrative.
 - **SEO & social ready** — structured sitemap, JSON-LD-ready metadata, and Open Graph defaults configured in `src/lib/constants.ts` and `src/app/sitemap.ts`.
-
----
-
-## Scripts
-
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run build` | Create an optimized production build |
-| `npm start` | Run the production build locally |
-| `npm run lint` | Lint the codebase with ESLint |
 
 ---
 
