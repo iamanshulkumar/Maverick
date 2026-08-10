@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { SectionTitle } from "@/components/shared/section-title";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { ScrollStagger } from "@/components/shared/scroll-stagger";
 import { getProjects } from "@/lib/data";
 
 const featuredTech = [
@@ -41,12 +43,14 @@ export function FeaturedTechnologies() {
   return (
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle
-          label="Stack Explorer"
-          title="Technologies → Projects"
-          description="Select a technology to see the projects that demonstrate it. Each project links to its full case study and repository."
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ScrollReveal>
+          <SectionTitle
+            label="Stack Explorer"
+            title="Technologies → Projects"
+            description="Select a technology to see the projects that demonstrate it. Each project links to its full case study and repository."
+          />
+        </ScrollReveal>
+        <ScrollStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {featuredTech.map((tech) => {
             const techProjects = getProjectsForTech(tech.name);
             return (
@@ -97,7 +101,7 @@ export function FeaturedTechnologies() {
               </div>
             );
           })}
-        </div>
+        </ScrollStagger>
       </div>
     </section>
   );

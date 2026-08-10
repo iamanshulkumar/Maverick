@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState, useEffect, useMemo } from "react";
+import { useTheme } from "next-themes";
 import {
   ReactFlow,
   Background,
@@ -68,6 +69,9 @@ function FlowingParticleEdge({
   animated,
   style,
 }: EdgeProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const edgeColor = isDark ? "#27272a" : "#dee2e6";
   const [edgePath] = getSmoothStepPath({
     sourceX, sourceY, sourcePosition,
     targetX, targetY, targetPosition,
@@ -82,7 +86,7 @@ function FlowingParticleEdge({
         className="react-flow__edge-path"
         style={{
           ...style,
-          stroke: selected ? "#818cf8" : style?.stroke || "#27272a",
+          stroke: selected ? "#818cf8" : style?.stroke || edgeColor,
           strokeWidth: selected ? 3 : style?.strokeWidth || 2,
           transition: "stroke 0.3s, stroke-width 0.3s",
         }}
@@ -186,7 +190,7 @@ function RunnerNode({ data, selected }: NodeProps) {
   const bgDim = isLive ? "rgba(14,165,233,0.04)" : "rgba(139,92,246,0.04)";
   return (
     <div
-      className="relative rounded-xl border-2 px-5 py-3 transition-all duration-500 hover:shadow-[0_0_15px_rgba(255,255,255,0.08)]"
+      className="relative rounded-xl border-2 px-5 py-3 transition-all duration-500"
       style={{
         borderColor: selected ? borderColor : borderDim,
         backgroundColor: selected ? bgColor : bgDim,
@@ -208,13 +212,20 @@ function RunnerNode({ data, selected }: NodeProps) {
 
 function ServiceNode({ data, selected }: NodeProps) {
   const d = data as ArchNodeData;
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const nodeBorder = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
+  const nodeBorderSelected = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.25)";
+  const nodeBg = isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)";
+  const nodeBgSelected = isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
+  const nodeShadow = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)";
   return (
     <div
-      className="relative rounded-xl border-2 px-5 py-3 transition-all duration-500 hover:shadow-[0_0_15px_rgba(255,255,255,0.08)]"
+      className="relative rounded-xl border-2 px-5 py-3 transition-all duration-500"
       style={{
-        borderColor: selected ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.1)",
-        backgroundColor: selected ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
-        boxShadow: selected ? "0 0 25px rgba(255,255,255,0.1)" : "none",
+        borderColor: selected ? nodeBorderSelected : nodeBorder,
+        backgroundColor: selected ? nodeBgSelected : nodeBg,
+        boxShadow: selected ? `0 0 15px ${nodeShadow}` : "none",
       }}
     >
       <Handle type="target" position={Position.Top} />
@@ -291,6 +302,11 @@ export function InteractiveArchitecture({
   highlightFilter?: string[] | null;
   onNodeSelect?: (nodeId: string | null) => void;
 }) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const borderColor = isDark ? "#27272a" : "#dee2e6";
+  const maskColor = isDark ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.6)";
+
   const initialNodes = useMemo(() => config.nodes, [config.nodes]);
   const initialEdges = useMemo(() => config.edges, [config.edges]);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -553,11 +569,11 @@ export function InteractiveArchitecture({
               selectionOnDrag={false}
               nodesDraggable={true}
               proOptions={{ hideAttribution: true }}
-              defaultEdgeOptions={{ style: { stroke: "#27272a", strokeWidth: 2 } }}
+              defaultEdgeOptions={{ style: { stroke: borderColor, strokeWidth: 2 } }}
             >
-              <Background color="#27272a" gap={20} size={1} />
+              <Background color={borderColor} gap={20} size={1} />
               <Controls className="!bg-card !border-border !text-muted-foreground [&_button]:!border-border [&_button]:!text-muted-foreground [&_button]:hover:!bg-surface-hover" />
-              <MiniMap className="!border-border !bg-card" nodeColor="#27272a" maskColor="rgba(0,0,0,0.6)" />
+              <MiniMap className="!border-border !bg-card" nodeColor={borderColor} maskColor={maskColor} />
             </ReactFlow>
           </div>
         </div>

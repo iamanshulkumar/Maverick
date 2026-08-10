@@ -1,14 +1,50 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Link from "next/link";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/constants";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sectionRef.current || !orb1Ref.current || !orb2Ref.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      gsap.to(orb1Ref.current, {
+        x: x * -30,
+        y: y * -30,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+      gsap.to(orb2Ref.current, {
+        x: x * 20,
+        y: y * 20,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+    };
+
+    sectionRef.current.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      sectionRef.current?.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, { scope: sectionRef });
+
   return (
-    <section className="relative flex min-h-[100vh] items-center justify-center overflow-hidden px-4 pt-16 md:pt-2 lg:pt-2">
+    <section ref={sectionRef} className="relative flex min-h-[100vh] items-center justify-center overflow-hidden px-4 pt-16 md:pt-2 lg:pt-2">
       <div className="pointer-events-none absolute inset-0">
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -19,8 +55,8 @@ export function Hero() {
           playsInline
         />
         <div className="absolute inset-0 bg-background/30" />
-        <div className="absolute top-1/4 left-1/2 h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px] md:blur-[100px] lg:blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px] rounded-full bg-accent-cyan/5 blur-[60px] md:blur-[80px] lg:blur-[100px]" />
+        <div ref={orb1Ref} className="absolute top-1/4 left-1/2 h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px] md:blur-[100px] lg:blur-[120px]" />
+        <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px] rounded-full bg-accent-cyan/5 blur-[60px] md:blur-[80px] lg:blur-[100px]" />
         <div
           className="absolute inset-0 animate-gradient opacity-30"
           style={{
@@ -104,15 +140,6 @@ export function Hero() {
             </a>
           </div>
         </motion.div>
-
-        {/* <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-xs text-muted-foreground"
-        >
-          Senior Full Stack Engineer
-        </motion.p> */}
       </div>
     </section>
   );

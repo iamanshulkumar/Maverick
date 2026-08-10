@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Briefcase } from "lucide-react";
 import { SectionTitle } from "@/components/shared/section-title";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { ScrollStagger } from "@/components/shared/scroll-stagger";
 import { getExperience } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -14,14 +16,16 @@ export function InteractiveTimeline() {
   return (
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl lg:max-w-4xl px-4">
-        <SectionTitle
-          label="Career"
-          title="Experience"
-          description="My professional journey — click each role for details."
-        />
+        <ScrollReveal>
+          <SectionTitle
+            label="Career"
+            title="Experience"
+            description="My professional journey — click each role for details."
+          />
+        </ScrollReveal>
         <div className="relative">
           <div className="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-accent via-accent-cyan to-transparent" />
-          <div className="space-y-6">
+          <ScrollStagger className="space-y-6">
             {experience.map((exp, i) => (
               <div
                 key={`${exp.company}-${exp.role}`}
@@ -91,7 +95,7 @@ export function InteractiveTimeline() {
                 </div>
               </div>
             ))}
-          </div>
+          </ScrollStagger>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground">
           Click each role to expand details

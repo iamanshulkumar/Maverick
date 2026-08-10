@@ -1,6 +1,8 @@
 "use client";
 
 import { SectionTitle } from "@/components/shared/section-title";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { ScrollStagger } from "@/components/shared/scroll-stagger";
 import { getAchievements } from "@/lib/data";
 import { Shield, Briefcase, Smartphone, TrendingUp, Users, Star } from "lucide-react";
 
@@ -25,12 +27,14 @@ export function Achievements() {
   return (
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle
-          label="Milestones"
-          title="Achievements"
-          description="Key milestones and what they actually mean."
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ScrollReveal>
+          <SectionTitle
+            label="Milestones"
+            title="Achievements"
+            description="Key milestones and what they actually mean."
+          />
+        </ScrollReveal>
+        <ScrollStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {achievements.map((achievement) => (
             <div
               key={achievement.title}
@@ -51,7 +55,7 @@ export function Achievements() {
               </p>
             </div>
           ))}
-        </div>
+        </ScrollStagger>
       </div>
     </section>
   );

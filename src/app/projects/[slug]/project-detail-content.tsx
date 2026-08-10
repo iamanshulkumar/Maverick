@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, Lock, User, Calendar, Smartphone, Code2, GitBranch, Scale, Lightbulb, ArrowRight } from "lucide-react";import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TechIcon } from "@/components/shared/tech-icon";
-import { AnimatedSection } from "@/components/shared/animated-section";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { ScreenshotGallery } from "@/components/projects/visual-components";
 import { AiAnalyzerPage } from "@/components/projects/ai-analyzer-page";
 import { CarzChoicePage } from "@/components/projects/carz-choice-page";
@@ -123,7 +123,7 @@ function LegacyLayout({ project }: { project: Project }) {
 
         <div className="mt-16 space-y-12">
           {project.screenshots.length > 0 && (
-            <AnimatedSection>
+            <ScrollReveal>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-6">
                   <Smartphone size={18} className="text-accent" />
@@ -131,18 +131,18 @@ function LegacyLayout({ project }: { project: Project }) {
                 </div>
                 <ScreenshotGallery screenshots={project.screenshots} aspect="aspect-video" />
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
-          <AnimatedSection>
+          <ScrollReveal>
             <div className="rounded-xl border border-border bg-card p-6">
               <h2 className="text-xl font-semibold">Overview</h2>
               <p className="mt-3 text-muted-foreground leading-relaxed whitespace-pre-line">{project.overview}</p>
             </div>
-          </AnimatedSection>
+          </ScrollReveal>
 
           {project.roleDescription && (
-            <AnimatedSection delay={0.05}>
+            <ScrollReveal delay={0.05}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <User size={18} className="text-accent" />
@@ -150,10 +150,10 @@ function LegacyLayout({ project }: { project: Project }) {
                 </div>
                 <p className="text-muted-foreground leading-relaxed">{project.roleDescription}</p>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
-          <AnimatedSection delay={0.1}>
+          <ScrollReveal delay={0.1}>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold">Problem</h2>
@@ -164,10 +164,10 @@ function LegacyLayout({ project }: { project: Project }) {
                 <p className="mt-3 text-muted-foreground leading-relaxed">{project.solution}</p>
               </div>
             </div>
-          </AnimatedSection>
+          </ScrollReveal>
 
           {project.architectureDiagram && (
-            <AnimatedSection delay={0.15}>
+            <ScrollReveal delay={0.15}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <GitBranch size={18} className="text-accent" />
@@ -182,11 +182,11 @@ function LegacyLayout({ project }: { project: Project }) {
                   <p className="text-muted-foreground leading-relaxed">{project.architectureDescription}</p>
                 )}
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {!project.architectureDiagram && (
-            <AnimatedSection delay={0.2}>
+            <ScrollReveal delay={0.2}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold">Architecture</h2>
                 <div className="mt-4 aspect-video w-full rounded-lg bg-gradient-to-br from-accent/5 to-accent-cyan/5 flex items-center justify-center">
@@ -194,11 +194,11 @@ function LegacyLayout({ project }: { project: Project }) {
                 </div>
                 <p className="mt-4 text-muted-foreground leading-relaxed">{project.architecture}</p>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {project.challengeDetails && project.challengeDetails.length > 0 && (
-            <AnimatedSection delay={0.2}>
+            <ScrollReveal delay={0.2}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold mb-6">Key Challenges</h2>
                 <div className="space-y-6">
@@ -210,11 +210,11 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {(!project.challengeDetails || project.challengeDetails.length === 0) && project.challenges.length > 0 && (
-            <AnimatedSection delay={0.3}>
+            <ScrollReveal delay={0.3}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold">Challenges</h2>
                 <ul className="mt-4 space-y-3">
@@ -226,11 +226,11 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </ul>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {project.featureGroups && project.featureGroups.length > 0 && (
-            <AnimatedSection delay={0.25}>
+            <ScrollReveal delay={0.25}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-6">
                   <Code2 size={18} className="text-accent" />
@@ -250,11 +250,11 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {project.technicalDecisions && project.technicalDecisions.length > 0 && (
-            <AnimatedSection delay={0.3}>
+            <ScrollReveal delay={0.3}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-6">
                   <GitBranch size={18} className="text-accent" />
@@ -270,11 +270,11 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
           {project.tradeoffs && project.tradeoffs.length > 0 && (
-            <AnimatedSection delay={0.35}>
+            <ScrollReveal delay={0.35}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-6">
                   <Scale size={18} className="text-accent-cyan" />
@@ -290,10 +290,10 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
 
-          <AnimatedSection delay={0.4}>
+          <ScrollReveal delay={0.4}>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold">Technical Outcomes</h2>
@@ -321,9 +321,9 @@ function LegacyLayout({ project }: { project: Project }) {
                 </p>
               </div>
             </div>
-          </AnimatedSection>
+          </ScrollReveal>
 
-          <AnimatedSection delay={0.5}>
+          <ScrollReveal delay={0.5}>
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Lightbulb size={18} className="text-accent" />
@@ -338,10 +338,10 @@ function LegacyLayout({ project }: { project: Project }) {
                 ))}
               </ul>
             </div>
-          </AnimatedSection>
+          </ScrollReveal>
 
           {project.futureImprovements && project.futureImprovements.length > 0 && (
-            <AnimatedSection delay={0.55}>
+            <ScrollReveal delay={0.55}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <ArrowRight size={18} className="text-accent" />
@@ -356,7 +356,7 @@ function LegacyLayout({ project }: { project: Project }) {
                   ))}
                 </ul>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
           )}
         </div>
       </div>

@@ -17,6 +17,7 @@ import { Results } from "./results";
 import { LessonsAccordion } from "./lessons-accordion";
 import { CTA } from "./cta";
 import { FlowDiagram } from "./flow-diagram";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
 
 interface CaseStudyLayoutProps {
   config: CaseStudyConfig;
@@ -56,33 +57,57 @@ export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutPr
 
       <Hero project={project} identity={config.identity} icon={config.icon} badgeLabel={config.badgeLabel} heroTags={config.heroTags} />
 
-      <StorySection title={config.storyTitle} body={config.storyBody} coda={config.storyCoda} />
+      <ScrollReveal>
+        <StorySection title={config.storyTitle} body={config.storyBody} coda={config.storyCoda} />
+      </ScrollReveal>
 
       {config.flowSteps && config.flowSteps.length > 0 && config.flowTitle && (
-        <FlowDiagram title={config.flowTitle} steps={config.flowSteps} />
+        <ScrollReveal>
+          <FlowDiagram title={config.flowTitle} steps={config.flowSteps} />
+        </ScrollReveal>
       )}
 
-      <FeatureExplorer features={config.features} />
+      <ScrollReveal>
+        <FeatureExplorer features={config.features} />
+      </ScrollReveal>
 
-      <Architecture project={project} />
+      <ScrollReveal>
+        <Architecture project={project} />
+      </ScrollReveal>
 
-      <DecisionAccordion decisions={config.decisions} />
+      <ScrollReveal>
+        <DecisionAccordion decisions={config.decisions} />
+      </ScrollReveal>
 
-      <MetricsGrid metrics={config.metrics} />
+      <ScrollReveal>
+        <MetricsGrid metrics={config.metrics} />
+      </ScrollReveal>
 
-      <Timeline title={config.timelineTitle} items={config.timeline} />
+      <ScrollReveal>
+        <Timeline title={config.timelineTitle} items={config.timeline} />
+      </ScrollReveal>
 
-      <ChallengeCards challenges={config.challenges} />
+      <ScrollReveal>
+        <ChallengeCards challenges={config.challenges} />
+      </ScrollReveal>
 
-      <TechStack title={config.techStackTitle} items={config.techStack} />
+      <ScrollReveal>
+        <TechStack title={config.techStackTitle} items={config.techStack} />
+      </ScrollReveal>
 
-      <Results title={config.resultsTitle} items={config.results} />
+      <ScrollReveal>
+        <Results title={config.resultsTitle} items={config.results} />
+      </ScrollReveal>
 
-      <LessonsAccordion lessons={config.lessons} />
+      <ScrollReveal>
+        <LessonsAccordion lessons={config.lessons} />
+      </ScrollReveal>
 
       {children}
 
-      <CTA config={config.cta} />
+      <ScrollReveal>
+        <CTA config={config.cta} />
+      </ScrollReveal>
     </div>
   );
 }

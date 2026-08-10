@@ -1,6 +1,8 @@
 "use client";
 
 import { SectionTitle } from "@/components/shared/section-title";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { ScrollStagger } from "@/components/shared/scroll-stagger";
 import { getSkills } from "@/lib/data";
 import { Monitor, Server, Smartphone, Brain, Shield, Cloud } from "lucide-react";
 
@@ -19,12 +21,14 @@ export function TechnicalExpertise() {
   return (
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle
-          label="Expertise"
-          title="Technical Expertise"
-          description="Domains I work in and the technologies I use."
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ScrollReveal>
+          <SectionTitle
+            label="Expertise"
+            title="Technical Expertise"
+            description="Domains I work in and the technologies I use."
+          />
+        </ScrollReveal>
+        <ScrollStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((domain) => (
             <div
               key={domain.category}
@@ -47,7 +51,7 @@ export function TechnicalExpertise() {
               </div>
             </div>
           ))}
-        </div>
+        </ScrollStagger>
       </div>
     </section>
   );

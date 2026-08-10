@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "next-themes";
 import { siAxios, siClaude, siDocker, siExpo, siExpress, siFirebase, siFormik, siGooglemaps, siI18next, siLaravel, siMongodb, siMui, siMysql, siNodedotjs, siPostgresql, siPython, siReact, siRedis, siSocketdotio, siStripe, siTypescript, siVite } from "simple-icons";
 
 interface SimpleIcon {
@@ -45,6 +48,16 @@ function lighten(hex: string, amount = 0.72): string {
   return `#${to(mix(r))}${to(mix(g))}${to(mix(b))}`;
 }
 
+function darken(hex: string, amount = 0.3): string {
+  const n = parseInt(hex, 16);
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
+  const mix = (c: number) => Math.round(c * (1 - amount));
+  const to = (c: number) => c.toString(16).padStart(2, "0");
+  return `#${to(mix(r))}${to(mix(g))}${to(mix(b))}`;
+}
+
 interface TechIconProps {
   name: string;
   size?: number;
@@ -52,15 +65,20 @@ interface TechIconProps {
 }
 
 export function TechIcon({ name, size = 25, className }: TechIconProps) {
+  const { resolvedTheme } = useTheme();
   const icon = ICONS[name];
   if (!icon) return null;
+
+  const isDark = resolvedTheme === "dark";
+  const fill = isDark ? lighten(icon.hex) : darken(icon.hex);
+
   return (
     <svg
       role="img"
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={lighten(icon.hex)}
+      fill={fill}
       style={{ flexShrink: 0, display: "block" }}
       className={className}
       aria-label={icon.title}

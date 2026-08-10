@@ -1,6 +1,8 @@
 "use client";
 
 import { Code, Smartphone, Brain, Lightbulb, Users, Shield } from "lucide-react";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { ScrollStagger } from "@/components/shared/scroll-stagger";
 
 const differentiators = [
   {
@@ -51,19 +53,21 @@ export function WhatMakesMeDifferent() {
   return (
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-12 text-center">
-          <span className="mb-4 inline-block text-xs font-medium uppercase tracking-widest text-accent">
-            Why Me
-          </span>
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            The combination is rare.
-          </h2>
-          <p className="mt-3 text-base text-muted-foreground max-w-2xl mx-auto">
-            Most engineers specialize in one area. I bring six — and each one reinforces the others.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-12 text-center">
+            <span className="mb-4 inline-block text-xs font-medium uppercase tracking-widest text-accent">
+              Why Me
+            </span>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              The combination is rare.
+            </h2>
+            <p className="mt-3 text-base text-muted-foreground max-w-2xl mx-auto">
+              Most engineers specialize in one area. I bring six — and each one reinforces the others.
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ScrollStagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {differentiators.map((item) => (
             <div
               key={item.title}
@@ -81,7 +85,7 @@ export function WhatMakesMeDifferent() {
               </p>
             </div>
           ))}
-        </div>
+        </ScrollStagger>
       </div>
     </section>
   );
