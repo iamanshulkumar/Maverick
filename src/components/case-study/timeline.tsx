@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import type { TimelineItem } from "./types";
 
 interface TimelineProps {
@@ -11,16 +12,29 @@ export function Timeline({ title, items }: TimelineProps) {
   return (
     <section id="timeline" className="py-20 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent">
       <div className="mx-auto max-w-4xl px-4">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <h2 className="text-2xl font-bold">Build Timeline</h2>
           <p className="mt-2 text-sm text-muted-foreground">{title}</p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2" />
           <div className="space-y-8">
             {items.map((item, i) => (
-              <div key={item.phase} className={`relative flex items-start gap-4 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+              <motion.div
+                key={item.phase}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className={`relative flex items-start gap-4 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+              >
                 <div className={`flex-1 order-2 md:order-none ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
                   <div className="rounded-xl border border-border bg-card p-4">
                     <span className="text-xs font-bold text-accent">Phase {item.phase}</span>
@@ -34,7 +48,7 @@ export function Timeline({ title, items }: TimelineProps) {
                   </div>
                 </div>
                 <div className="flex-1 hidden md:block" />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

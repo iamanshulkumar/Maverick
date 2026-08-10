@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { Project } from "@/types";
 import type { CaseStudyConfig } from "./types";
 import { FloatingNav } from "./floating-nav";
+import { ScrollProgress } from "./scroll-progress";
 import { Hero } from "./hero";
 import { StorySection } from "./story-section";
 import { FeatureExplorer } from "./feature-explorer";
@@ -22,16 +23,22 @@ import { ScrollReveal } from "@/components/shared/scroll-reveal";
 interface CaseStudyLayoutProps {
   config: CaseStudyConfig;
   project: Project;
+  customHero?: React.ReactNode;
+  afterStory?: React.ReactNode;
   children?: React.ReactNode;
 }
 
-export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutProps) {
+export function CaseStudyLayout({ config, project, customHero, afterStory, children }: CaseStudyLayoutProps) {
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState(config.sections[0]?.id || "story");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setNavVisible(window.scrollY > 400);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0);
       let current = config.sections[0]?.id || "story";
       for (const s of config.sections) {
         const el = document.getElementById(s.id);
@@ -43,6 +50,7 @@ export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutPr
       setActiveSection(current);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [config.sections]);
 
@@ -53,13 +61,16 @@ export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutPr
 
   return (
     <div>
-      <FloatingNav sections={config.sections} visible={navVisible} activeSection={activeSection} onScrollTo={scrollTo} />
+      <ScrollProgress progress={scrollProgress} />
+      <FloatingNav sections={config.sections} visible={navVisible} activeSection={activeSection} onScrollTo={scrollTo} scrollProgress={scrollProgress} />
 
-      <Hero project={project} identity={config.identity} icon={config.icon} badgeLabel={config.badgeLabel} heroTags={config.heroTags} />
+      {customHero || <Hero project={project} identity={config.identity} icon={config.icon} badgeLabel={config.badgeLabel} heroTags={config.heroTags} />}
 
       <ScrollReveal>
         <StorySection title={config.storyTitle} body={config.storyBody} coda={config.storyCoda} />
       </ScrollReveal>
+
+      {afterStory}
 
       {config.flowSteps && config.flowSteps.length > 0 && config.flowTitle && (
         <ScrollReveal>
@@ -70,6 +81,8 @@ export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutPr
       <ScrollReveal>
         <FeatureExplorer features={config.features} />
       </ScrollReveal>
+
+      {children}
 
       <ScrollReveal>
         <Architecture project={project} />
@@ -102,8 +115,6 @@ export function CaseStudyLayout({ config, project, children }: CaseStudyLayoutPr
       <ScrollReveal>
         <LessonsAccordion lessons={config.lessons} />
       </ScrollReveal>
-
-      {children}
 
       <ScrollReveal>
         <CTA config={config.cta} />

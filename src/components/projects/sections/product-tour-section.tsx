@@ -118,7 +118,7 @@ export function ProductTourSection() {
     if (!pinnedRef.current) return;
     ScrollTrigger.create({
       trigger: sectionRef.current,
-      start: "top 80px",
+      start: "top 0px",
       end: "bottom 80px",
       pin: true,
       pinSpacing: true,
@@ -140,7 +140,7 @@ export function ProductTourSection() {
 
   return (
     <section ref={sectionRef} id="features" className="relative min-h-screen">
-      <div ref={pinnedRef} className="mx-auto max-w-6xl px-4 py-20">
+      <div ref={pinnedRef} className="mx-auto max-w-6xl px-4 py-0">
         <div className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-[11px] font-medium text-accent uppercase tracking-widest mb-4">
             <Eye size={12} />

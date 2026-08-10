@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
 import type { FlowStep } from "./types";
 
 interface FlowDiagramProps {
@@ -12,14 +13,24 @@ export function FlowDiagram({ title, steps }: FlowDiagramProps) {
   return (
     <section id="flow" className="py-20">
       <div className="mx-auto max-w-4xl px-4">
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
+        >
           <h2 className="text-2xl font-bold">{title}</h2>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col items-center gap-0">
           {steps.map((step, i) => (
-            <div
+            <motion.div
               key={`${step.label}-${i}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="flex flex-col items-center"
             >
               <div className="rounded-xl border border-accent/20 bg-accent/5 px-6 py-3 text-center min-w-[200px]">
@@ -35,7 +46,7 @@ export function FlowDiagram({ title, steps }: FlowDiagramProps) {
                   <ArrowDown size={12} className="text-muted-foreground" />
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

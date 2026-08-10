@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import type { ChallengeItem } from "./types";
 
 interface ChallengeCardsProps {
@@ -10,14 +11,27 @@ export function ChallengeCards({ challenges }: ChallengeCardsProps) {
   return (
     <section id="challenges" className="py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <h2 className="text-2xl font-bold">Engineering Challenges</h2>
           <p className="mt-2 text-sm text-muted-foreground">Problems solved during development</p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {challenges.map((c) => (
-            <div key={c.label} className="rounded-xl border border-border bg-card overflow-hidden">
+          {challenges.map((c, i) => (
+            <motion.div
+              key={c.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="rounded-xl border border-border bg-card overflow-hidden"
+            >
               <div className="flex items-center gap-3 border-b border-border bg-surface-hover p-4">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">{c.icon}</div>
                 <h3 className="text-sm font-semibold">{c.label}</h3>
@@ -41,7 +55,7 @@ export function ChallengeCards({ challenges }: ChallengeCardsProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

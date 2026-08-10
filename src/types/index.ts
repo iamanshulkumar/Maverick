@@ -12,6 +12,7 @@ export interface Project {
   problem: string;
   solution: string;
   architecture: string;
+  architectureSummary?: string;
   techStack: string[];
   challenges: string[];
   technicalOutcomes: { metric: string; value: string }[];
