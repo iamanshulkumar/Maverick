@@ -705,7 +705,7 @@ export function InteractiveArchitecture({
             className="rounded-xl border border-border bg-card p-3"
           >
             <div className="flex items-center gap-2 mb-2">
-              <Clock size={12} className="text-accent-cyan" />
+              <Clock size={12} className="text-accent" />
               <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Performance</span>
             </div>
             <div className="grid grid-cols-2 gap-2">

@@ -1,48 +1,31 @@
 [
   {
     "company": "Yuvmedia Pvt. Ltd.",
-    "role": "Senior Full Stack Engineer",
-    "duration": "2024 - Present",
-    "location": "Remote",
+    "role": "Project Manager & Android App Developer",
+    "duration": "Apr 2026 – Present",
+    "location": "Ajmer, Rajasthan",
     "responsibilities": [
-      "Lead a 5-member engineering team delivering production mobile and web applications",
-      "Define project roadmaps, sprint planning, and resource allocation",
-      "Bridge communication between stakeholders and development team",
-      "Ensure code quality, timely delivery, and production stability"
+      "Lead a 5-engineer core IT team spanning mobile, backend, and QA — owning sprint planning, architecture reviews, and delivery across 60+ concurrent client projects",
+      "Architected and delivered 7+ production mobile applications across fintech, real estate, automotive marketplace, and fantasy sports domains",
+      "Designed and shipped an AI-powered stock analysis tool, integrating LLM APIs (Claude/OpenAI) with RAG-based retrieval over market data",
+      "Mentor engineers on implementation approach, code review standards, and architectural best practices"
     ],
     "achievements": [
-      "Promoted to lead role within 3 years",
-      "Delivered 15+ production projects across fintech, real estate, automotive, and fantasy sports",
-      "Established code review processes and component library standards"
+      "Promoted four times in three years (Frontend → Full-Stack → Android → Project Manager)",
+      "Delivered full-stack builds in-house, cutting third-party development costs",
+      "Hardened production infrastructure by identifying and remediating critical server-side security vulnerabilities"
     ]
   },
   {
     "company": "Yuvmedia Pvt. Ltd.",
-    "role": "React Native Developer",
-    "duration": "2023 - 2024",
-    "location": "Remote",
-    "responsibilities": [
-      "Built 7+ cross-platform mobile applications using React Native",
-      "Implemented complex UI components and native module integrations",
-      "Integrated AI features including Claude API and on-device models",
-      "Optimized app performance with Reanimated and NativeWind"
-    ],
-    "achievements": [
-      "Developed a fintech portfolio tracking and trading signal platform",
-      "Reduced app bundle size through Tree Shaking and dynamic imports",
-      "Mentored 2 junior developers in React Native best practices"
-    ]
-  },
-  {
-    "company": "Yuvmedia Pvt. Ltd.",
-    "role": "Full Stack Developer",
-    "duration": "2022 - 2023",
-    "location": "Remote",
+    "role": "Full-Stack Developer",
+    "duration": "Mar 2024 – Jan 2025",
+    "location": "Ajmer, Rajasthan",
     "responsibilities": [
       "Developed end-to-end web applications using React, Next.js, Node.js, and Laravel",
       "Designed and implemented RESTful APIs and database schemas",
       "Integrated third-party services including payment gateways and cloud services",
-      "Conducted code reviews and maintained documentation"
+      "Optimized real-time responsiveness across mobile applications by optimizing Socket.IO connections and API call efficiency"
     ],
     "achievements": [
       "Architected backend services with PostgreSQL, Redis, and queue-based job processing",
@@ -53,8 +36,8 @@
   {
     "company": "Yuvmedia Pvt. Ltd.",
     "role": "Frontend Developer",
-    "duration": "2021 - 2022",
-    "location": "Remote",
+    "duration": "Jan 2023 – Mar 2024",
+    "location": "Ajmer, Rajasthan",
     "responsibilities": [
       "Built responsive web interfaces using React, TailwindCSS, and Framer Motion",
       "Collaborated with designers to implement pixel-perfect UI components",
@@ -65,6 +48,22 @@
       "Rebuilt legacy jQuery UI to modern React, improving maintainability and load time",
       "Created reusable component library used across multiple projects",
       "Won internal hackathon for best developer experience improvement"
+    ]
+  },
+  {
+    "company": "ASF Digitals",
+    "role": "Web Developer",
+    "duration": "Dec 2021 – Jan 2023",
+    "location": "Anand, Gujarat",
+    "responsibilities": [
+      "Built responsive, production-grade interfaces in React.js across e-commerce, fitness, and industrial-supply client projects",
+      "Delivered ASF Nutrition, a WooCommerce storefront with an integrated UPI payment gateway",
+      "Built a React.js workout-recommendation app for Fitness Club",
+      "Implemented SEO improvements that measurably increased organic visibility for client websites"
+    ],
+    "achievements": [
+      "Delivered multiple production-grade React.js applications across diverse client domains",
+      "Integrated UPI payment gateway for WooCommerce storefront"
     ]
   }
 ]

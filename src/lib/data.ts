@@ -1,4 +1,5 @@
 import projectsData from "@/content/projects.json";
+import websitesData from "@/content/websites.json";
 import skillsData from "@/content/skills.json";
 import experienceData from "@/content/experience.json";
 import achievementsData from "@/content/achievements.json";
@@ -6,6 +7,7 @@ import timelineData from "@/content/timeline.json";
 import readingData from "@/content/reading.json";
 import type {
   Project,
+  WebsiteProject,
   Skill,
   Experience,
   Achievement,
@@ -27,6 +29,31 @@ export function getFeaturedProjects(): Project[] {
 
 export function getProject(slug: string): Project | undefined {
   return getProjects().find((p) => p.slug === slug);
+}
+
+export function getWebsites(): WebsiteProject[] {
+  return (websitesData as unknown as WebsiteProject[]).filter((w) => w.published);
+}
+
+export function getFeaturedWebsites(): WebsiteProject[] {
+  return getWebsites()
+    .filter((w) => w.featured)
+    .sort((a, b) => (a.featuredIndex ?? 99) - (b.featuredIndex ?? 99));
+}
+
+export function getWebsiteProject(slug: string): WebsiteProject | undefined {
+  return getWebsites().find((w) => w.slug === slug);
+}
+
+export function getAllSlugs(): string[] {
+  return [...getProjects().map((p) => p.slug), ...getWebsites().map((w) => w.slug)];
+}
+
+export function getAllPublishedSlugs(): { slug: string; kind: "mobile" | "website" }[] {
+  return [
+    ...getProjects().map((p) => ({ slug: p.slug, kind: "mobile" as const })),
+    ...getWebsites().map((w) => ({ slug: w.slug, kind: "website" as const })),
+  ];
 }
 
 export function getSkills(): Skill[] {

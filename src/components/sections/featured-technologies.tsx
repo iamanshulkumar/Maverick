@@ -1,42 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
-import { SectionTitle } from "@/components/shared/section-title";
+import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { ScrollStagger } from "@/components/shared/scroll-stagger";
-import { getProjects } from "@/lib/data";
+import { TechIcon } from "@/components/shared/tech-icon";
+import { getProjects, getWebsites } from "@/lib/data";
 
 const featuredTech = [
   { name: "React Native", slug: "react-native" },
   { name: "Node.js", slug: "nodejs" },
+  { name: "MySQL", slug: "mysql" },
+  { name: "Firebase", slug: "firebase" },
+  { name: "MongoDB", slug: "mongodb" },
+  { name: "Redis", slug: "redis" },
   { name: "PostgreSQL", slug: "postgresql" },
-  { name: "Docker", slug: "docker" },
   { name: "TypeScript", slug: "typescript" },
 ];
 
-const projects = getProjects();
-
-interface TechProject {
-  title: string;
-  slug: string;
-  github?: string;
-  demo?: string;
-  isPrivate?: boolean;
-}
-
-function getProjectsForTech(techName: string): TechProject[] {
-  return projects
+function getProjectsForTech(techName: string) {
+  const allProjects = [...getProjects(), ...getWebsites()];
+  return allProjects
     .filter((p) =>
       p.techStack.some((t) => t.toLowerCase().includes(techName.toLowerCase()))
     )
-    .map((p) => ({
-      title: p.title,
-      slug: p.slug,
-      github: p.github,
-      demo: p.demo,
-      isPrivate: p.isPrivate,
-    }));
+    .slice(0, 3);
 }
 
 export function FeaturedTechnologies() {
@@ -44,55 +32,42 @@ export function FeaturedTechnologies() {
     <section className="py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <ScrollReveal>
-          <SectionTitle
-            label="Stack Explorer"
-            title="Technologies → Projects"
-            description="Select a technology to see the projects that demonstrate it. Each project links to its full case study and repository."
-          />
+          <div className="mb-12">
+            <span className="mb-4 inline-block text-xs font-medium uppercase tracking-widest text-accent">
+              Stack Explorer
+            </span>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Technologies → Projects
+            </h2>
+            <p className="mt-3 text-base text-muted-foreground max-w-2xl">
+              Select a technology to see the projects that demonstrate it.
+            </p>
+          </div>
         </ScrollReveal>
-        <ScrollStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+        <ScrollStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featuredTech.map((tech) => {
             const techProjects = getProjectsForTech(tech.name);
             return (
               <div
                 key={tech.name}
-                className="rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-accent/20"
+                className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/20"
               >
-                <h3 className="font-semibold text-sm">{tech.name}</h3>
-                <div className="mt-4 space-y-3">
+                <div className="flex items-center gap-3">
+                  <TechIcon name={tech.name} size={20} />
+                  <h3 className="text-base font-semibold">{tech.name}</h3>
+                </div>
+                <div className="mt-4 space-y-2">
                   {techProjects.length > 0 ? (
-                    techProjects.slice(0, 3).map((proj) => (
-                      <div key={proj.slug} className="space-y-1">
-                        <Link
-                          href={`/projects/${proj.slug}`}
-                          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors group/link"
-                        >
-                          <ArrowRight size={10} className="shrink-0" />
-                          <span className="group-hover/link:underline">{proj.title}</span>
-                        </Link>
-                        <div className="flex items-center gap-2 pl-[18px]">
-                          {proj.github && !proj.isPrivate ? (
-                            <a
-                              href={proj.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[10px] text-muted-foreground/60 hover:text-accent transition-colors flex items-center gap-0.5"
-                            >
-                              <Github size={10} /> repo
-                            </a>
-                          ) : null}
-                          {proj.demo ? (
-                            <a
-                              href={proj.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[10px] text-muted-foreground/60 hover:text-accent transition-colors flex items-center gap-0.5"
-                            >
-                              <ExternalLink size={10} /> demo
-                            </a>
-                          ) : null}
-                        </div>
-                      </div>
+                    techProjects.map((proj) => (
+                      <Link
+                        key={proj.slug}
+                        href={`/projects/${proj.slug}`}
+                        className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors group/link"
+                      >
+                        <ArrowRight size={12} className="shrink-0" />
+                        <span className="group-hover/link:underline">{proj.title}</span>
+                      </Link>
                     ))
                   ) : (
                     <p className="text-xs text-muted-foreground/50">No featured projects</p>

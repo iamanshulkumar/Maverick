@@ -6,7 +6,7 @@ import { ArrowRight, ChevronDown, CheckCircle, TrendingUp, Users, Clock, Zap, Sh
 import { Badge } from "@/components/ui/badge";
 import { TechIcon } from "@/components/shared/tech-icon";
 
-export function PhoneMockup({ gradient = "from-accent/20 via-accent-cyan/20 to-accent/10", children }: { gradient?: string; children?: React.ReactNode }) {
+export function PhoneMockup({ gradient = "from-accent/20 via-accent/20 to-accent/10", children }: { gradient?: string; children?: React.ReactNode }) {
   return (
     <div className="relative mx-auto w-[280px]">
       <div className="relative rounded-[2.5rem] border-4 border-border bg-card p-3 shadow-2xl">
@@ -56,7 +56,7 @@ export function FeatureCard({ icon, title, features }: { icon: React.ReactNode; 
 export function ChallengeTimeline({ challenges }: { challenges: { challenge: string; explanation: string }[] }) {
   return (
     <div className="relative space-y-0">
-      <div className="absolute left-[19px] top-0 h-full w-px bg-gradient-to-b from-accent via-accent-cyan to-transparent" />
+      <div className="absolute left-[19px] top-0 h-full w-px bg-gradient-to-b from-accent via-accent to-transparent" />
       {challenges.map((item, i) => (
         <div
           key={i}
@@ -227,12 +227,12 @@ export function getFeatureIcon(title: string): React.ReactNode {
 
 export function ScreenshotGallery({ screenshots, aspect = "aspect-[9/16]" }: { screenshots: string[]; aspect?: string }) {
   const gradients = [
-    "from-accent/20 via-accent-cyan/20 to-accent/10",
-    "from-accent-cyan/20 via-accent/20 to-accent-cyan/10",
+    "from-accent/20 via-accent/20 to-accent/10",
+    "from-accent/20 via-accent/20 to-accent/10",
     "from-violet-500/20 via-accent/20 to-violet-500/10",
-    "from-emerald-500/20 via-accent-cyan/20 to-emerald-500/10",
+    "from-emerald-500/20 via-accent/20 to-emerald-500/10",
     "from-amber-500/20 via-accent/20 to-amber-500/10",
-    "from-rose-500/20 via-accent-cyan/20 to-rose-500/10",
+    "from-rose-500/20 via-accent/20 to-rose-500/10",
   ];
 
   if (screenshots.length === 0) {

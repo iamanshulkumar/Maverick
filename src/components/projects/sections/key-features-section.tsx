@@ -85,7 +85,7 @@ export function KeyFeaturesSection({ title, subtitle, features }: KeyFeaturesSec
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="min-w-[340px] max-w-[380px] flex-1 snap-start rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/20 hover:shadow-glow"
+                className="min-w-[340px] max-w-[380px] flex-1 snap-start rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/20"
               >
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
                   <span className="text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>

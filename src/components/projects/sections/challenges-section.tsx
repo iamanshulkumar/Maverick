@@ -212,8 +212,8 @@ export function ChallengesSection() {
                   {/* Implementation */}
                   <div>
                     <div className="mb-2 flex items-center gap-2">
-                      <GitBranch size={14} className="text-accent-cyan" />
-                      <span className="text-sm font-medium uppercase tracking-wider text-accent-cyan">
+                      <GitBranch size={14} className="text-accent" />
+                      <span className="text-sm font-medium uppercase tracking-wider text-accent">
                         Implementation
                       </span>
                     </div>

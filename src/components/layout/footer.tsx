@@ -24,7 +24,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-col items-center gap-2 md:items-start">
             <Link href="/" className="text-lg font-semibold tracking-tight">
-              Anshul<span className="text-accent">.</span>
+              its Anshul Kumar<span className="text-accent">.</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Architect systems. Build products. Lead teams.

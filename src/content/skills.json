@@ -3,63 +3,70 @@
     "category": "Frontend Engineering",
     "icon": "monitor",
     "items": [
-      { "name": "React", "years": 4 },
+      { "name": "React.js", "years": 4 },
       { "name": "Next.js", "years": 3 },
       { "name": "TypeScript", "years": 3 },
-      { "name": "TailwindCSS", "years": 3 },
-      { "name": "Framer Motion", "years": 2 }
-    ]
-  },
-  {
-    "category": "Backend Engineering",
-    "icon": "server",
-    "items": [
-      { "name": "Node.js", "years": 4 },
-      { "name": "Laravel", "years": 3 },
-      { "name": "PHP", "years": 3 },
-      { "name": "Python", "years": 2 },
-      { "name": "REST & GraphQL APIs", "years": 4 }
+      { "name": "Tailwind CSS", "years": 3 },
+      { "name": "Framer Motion", "years": 2 },
+      { "name": "Bootstrap", "years": 3 }
     ]
   },
   {
     "category": "Mobile Engineering",
     "icon": "smartphone",
     "items": [
-      { "name": "React Native", "years": 3 },
-      { "name": "Expo", "years": 2 },
-      { "name": "iOS", "years": 2 },
-      { "name": "Android", "years": 2 }
+      { "name": "React Native", "years": 4 },
+      { "name": "Expo", "years": 3 },
+      { "name": "Expo Router", "years": 2 },
+      { "name": "Reanimated", "years": 2 },
+      { "name": "NativeWind", "years": 2 },
+      { "name": "Stream Chat", "years": 2 }
     ]
   },
   {
-    "category": "AI & LLMs",
+    "category": "Backend & APIs",
+    "icon": "server",
+    "items": [
+      { "name": "Node.js", "years": 4 },
+      { "name": "Express", "years": 3 },
+      { "name": "Laravel", "years": 3 },
+      { "name": "PHP", "years": 3 },
+      { "name": "REST API Design", "years": 4 },
+      { "name": "Socket.IO", "years": 3 }
+    ]
+  },
+  {
+    "category": "Data & Infrastructure",
+    "icon": "database",
+    "items": [
+      { "name": "MySQL", "years": 4 },
+      { "name": "MongoDB", "years": 3 },
+      { "name": "Redis", "years": 3 },
+      { "name": "Firebase", "years": 4 },
+      { "name": "BullMQ", "years": 2 },
+      { "name": "PostgreSQL", "years": 2 }
+    ]
+  },
+  {
+    "category": "AI & LLM Engineering",
     "icon": "brain",
     "items": [
-      { "name": "OpenAI APIs", "years": 2 },
-      { "name": "LangChain", "years": 1 },
-      { "name": "RAG Systems", "years": 1 },
+      { "name": "Claude API", "years": 2 },
+      { "name": "OpenAI API", "years": 2 },
       { "name": "Prompt Engineering", "years": 2 },
-      { "name": "TensorFlow", "years": 1 }
+      { "name": "RAG Systems", "years": 1 },
+      { "name": "LLM Prediction", "years": 1 }
     ]
   },
   {
-    "category": "Security",
+    "category": "Security & DevOps",
     "icon": "shield",
     "items": [
+      { "name": "VAPT", "years": 2 },
       { "name": "Penetration Testing", "years": 2 },
-      { "name": "OWASP Top 10", "years": 2 },
-      { "name": "Secure Architecture", "years": 2 },
-      { "name": "TryHackMe Top 1%", "years": 2 }
-    ]
-  },
-  {
-    "category": "Cloud & DevOps",
-    "icon": "cloud",
-    "items": [
-      { "name": "Docker", "years": 2 },
+      { "name": "OWASP", "years": 2 },
       { "name": "AWS", "years": 2 },
-      { "name": "CI/CD", "years": 2 },
-      { "name": "Vercel", "years": 3 }
+      { "name": "CI/CD", "years": 2 }
     ]
   }
 ]

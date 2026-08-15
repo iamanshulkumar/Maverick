@@ -78,7 +78,7 @@ export function ResumeContent() {
                   <ul className="mt-2 space-y-1">
                     {exp.achievements.map((a, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
                         {a}
                       </li>
                     ))}
@@ -96,9 +96,9 @@ export function ResumeContent() {
             <GraduationCap size={20} className="text-accent" /> Education
           </h2>
           <div className="rounded-xl border border-border bg-card p-6">
-            <h3 className="font-semibold">Bachelor of Computer Applications</h3>
-            <p className="text-sm text-muted-foreground">University of Rajasthan</p>
-            <p className="text-xs text-accent mt-1">Graduated</p>
+            <h3 className="font-semibold">B.Tech, Computer Science & Engineering</h3>
+            <p className="text-sm text-muted-foreground">Rajasthan Technical University, Kota</p>
+            <p className="text-xs text-accent mt-1">2020 · CGPA: 7.25</p>
           </div>
         </div>
       </AnimatedSection>
@@ -115,7 +115,7 @@ export function ResumeContent() {
                 href={cert.file}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-accent/30 hover:shadow-glow"
+                className="group block rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-accent/30"
               >
                 {cert.type === "image" ? (
                   <div className="mb-3 overflow-hidden rounded-lg border border-border/50">
@@ -126,7 +126,7 @@ export function ResumeContent() {
                     />
                   </div>
                 ) : (
-                  <div className="mb-3 flex aspect-[16/10] w-full items-center justify-center rounded-lg border border-border/50 bg-gradient-to-br from-accent/5 to-accent-cyan/5">
+                  <div className="mb-3 flex aspect-[16/10] w-full items-center justify-center rounded-lg border border-border/50 bg-gradient-to-br from-accent/5 to-accent/5">
                     <FileText size={28} className="text-muted-foreground/60" />
                   </div>
                 )}

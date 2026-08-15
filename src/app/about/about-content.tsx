@@ -30,25 +30,39 @@ export function AboutContent() {
       <AnimatedSection className="py-16">
         <div className="mx-auto max-w-3xl px-4">
           <div className="rounded-xl border border-border bg-card p-8">
-            <h2 className="text-2xl font-semibold">My Philosophy</h2>
-            <div className="mt-4 space-y-4 text-muted-foreground">
-              <p>
-                I believe software is a tool for solving real human problems. Every line of code
-                I write is in service of making something work better, faster, or more
-                intuitively for the people using it.
-              </p>
-              <p>
-                My career has been a rapid progression from writing basic websites to architecting
-                full-stack mobile applications spanning fintech, fantasy sports, real estate,
-                and automotive. Along the way,
-                I&apos;ve learned that the best engineering decisions are made with empathy — for
-                users, for teammates, and for future maintainers.
-              </p>
-              <p>
-                Today, as a Senior Full Stack Engineer, I focus on creating environments where great
-                engineering can happen. I still write code every day because I believe leaders
-                who build earn the trust of their teams.
-              </p>
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
+              <div className="shrink-0">
+                <div className="relative">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-accent to-accent opacity-15 blur-md" />
+                  <img
+                    src="/images/anshul.jpeg"
+                    alt="Anshul Kumar Meena"
+                    className="relative h-28 w-28 rounded-full object-cover ring-2 ring-accent/20 ring-offset-2 ring-offset-card sm:h-32 sm:w-32"
+                  />
+                </div>
+              </div>
+              <div className="text-center sm:text-left">
+                <h2 className="text-2xl font-semibold">My Philosophy</h2>
+                <div className="mt-4 space-y-4 text-muted-foreground">
+                  <p>
+                    I believe software is a tool for solving real human problems. Every line of code
+                    I write is in service of making something work better, faster, or more
+                    intuitively for the people using it.
+                  </p>
+                  <p>
+                    My career has been a rapid progression from writing basic websites to architecting
+                    full-stack mobile applications spanning fintech, fantasy sports, real estate,
+                    and automotive. Along the way,
+                    I&apos;ve learned that the best engineering decisions are made with empathy — for
+                    users, for teammates, and for future maintainers.
+                  </p>
+                  <p>
+                    Today, as a Senior Full Stack Engineer, I focus on creating environments where great
+                    engineering can happen. I still write code every day because I believe leaders
+                    who build earn the trust of their teams.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -58,11 +72,11 @@ export function AboutContent() {
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="mb-12 text-center text-2xl font-semibold">The Journey</h2>
           <div className="relative">
-            <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-accent via-accent-cyan to-transparent hidden md:block" />
+            <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-accent via-accent to-transparent hidden md:block" />
             <div className="space-y-12">
               {timeline.map((event, i) => (
                 <div
-                  key={event.year}
+                  key={`${event.year}-${i}`}
                   className={`relative flex flex-col items-center md:flex-row ${
                     i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -85,7 +99,7 @@ export function AboutContent() {
 
       <AnimatedSection className="py-16">
         <div className="mx-auto max-w-3xl px-4">
-          <div className="rounded-xl border border-border bg-gradient-to-br from-accent/5 to-accent-cyan/5 p-8 text-center">
+          <div className="rounded-xl border border-border bg-gradient-to-br from-accent/5 to-accent/5 p-8 text-center">
             <h2 className="text-2xl font-semibold">Currently</h2>
             <p className="mt-4 text-muted-foreground">
               Leading a 5-member engineering team at Yuvmedia while building AI-powered

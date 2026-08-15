@@ -1,0 +1,568 @@
+[
+  {
+    "slug": "eniyaa-oil",
+    "title": "Eniyaa Oil",
+    "tagline": "Custom Shopify e-commerce experience with bundle add-on functionality for a cold-pressed oil brand.",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 0,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___www.eniyaaoil.com_1.webp",
+    "heroImage": "/images/projects/websites/https___www.eniyaaoil.com_.webp",
+    "screenshots": [],
+    "overview": "Eniyaa Oil is a Tamil Nadu-based manufacturer of premium cold-pressed oils — sesame, coconut, groundnut, and ginger garlic paste — trusted by 7,000+ happy customers since 1995. The brand offers free shipping across Tamil Nadu and operates both a consumer storefront with combo packs (discounts up to 63%) and a dedicated wholesale section. The Shopify storefront features clean brand storytelling around traditional chekku-pressed quality, a 'From Seed to Oil' process section, and a comparison table highlighting their manufacturer-owned, coldpressed, every-batch-freshness approach.",
+    "challenge": "The client needed a customized Shopify storefront that went beyond standard product listings — specifically, custom bundle add-on functionality that allowed customers to build combo packs dynamically, increasing average order value and multi-product purchases.",
+    "whatIBuilt": [
+      {
+        "title": "Custom Bundle Add-Ons",
+        "description": "Developed custom product bundle functionality allowing customers to combine sesame, coconut, and groundnut oils into combo packs with dynamic pricing."
+      },
+      {
+        "title": "Tailored UI Experience",
+        "description": "Created a custom shopping interface beyond the standard Shopify theme, with product discovery flows designed for the oil and FMCG category."
+      },
+      {
+        "title": "Product Collection Structure",
+        "description": "Organized product catalog into clear categories — Cold Pressed Oils, Combo Packs, Ginger Garlic Paste — with promotional banners for seasonal offers."
+      },
+      {
+        "title": "Wholesale Integration",
+        "description": "Built a dedicated wholesale/bulk-order section for B2B customers alongside the consumer storefront."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript", "Shopify CLI"],
+    "keyFeatures": [
+      "100% Cold Pressed quality assurance",
+      "Dynamic combo packs with discounts up to 63%",
+      "Wholesale / bulk order section",
+      "Brand comparison table vs competitors",
+      "From Seed to Oil process storytelling",
+      "Free shipping across Tamil Nadu"
+    ],
+    "contribution": "I was responsible for the development and customization of the Shopify storefront, including the implementation of custom bundle add-on functionality, product discovery UI, and integration of the required e-commerce features tailored to the client's sales requirements.",
+    "demo": "https://www.eniyaaoil.com/"
+  },
+  {
+    "slug": "desi-kicks",
+    "title": "Desi Kicks",
+    "tagline": "Premium sneaker-focused Shopify storefront built for India's streetwear audience.",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 1,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___desikicks.shop_1.webp",
+    "heroImage": "/images/projects/websites/https___desikicks.shop_.webp",
+    "screenshots": [],
+    "overview": "Desi Kicks is a premium sneaker e-commerce store built for India's streetwear audience, operating under the tagline '100% Authentic Kicks, Made for the Streets of India.' The platform showcases curated sneaker collections including Low Dunks, Air Force, Air Jordan, Travis Scott, Retro 4, and Adidas — with products priced accessibly between ₹1,449–₹1,499 (44-46% off). The dark-theme storefront features a streetwear marquee, trust-first messaging, and collection-based navigation tailored to India's fashion-conscious sneaker community.",
+    "challenge": "The client needed a visually premium Shopify store that captured sneaker culture aesthetics — bold product imagery, collection-based browsing by brand and model, and a shopping experience that felt premium rather than generic.",
+    "whatIBuilt": [
+      {
+        "title": "Premium Dark-Theme Storefront",
+        "description": "Designed and developed a visually striking Shopify storefront with a dark premium aesthetic, bold typography, and product-first layouts aligned with streetwear culture."
+      },
+      {
+        "title": "Collection-Based Navigation",
+        "description": "Structured collections around popular sneaker brands and models — Low Dunks, Air Force, Air Jordan, Travis Scott, Retro 4, Adidas — enabling easy browsing and discovery."
+      },
+      {
+        "title": "Trust-First Shopping Experience",
+        "description": "Integrated prominent trust signals — Free Shipping over ₹1,599, Cash on Delivery, and 7-Day Easy Exchange — to reduce purchase friction for India's COD-heavy market."
+      },
+      {
+        "title": "Product Presentation & Pricing",
+        "description": "Created product pages with hover-image effects, discount badges (44-46% off), size selection (UK6–UK10), and streetwear marquee for visual storytelling."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript", "HTML/CSS"],
+    "keyFeatures": [
+      "Premium dark-theme storefront",
+      "Collection-based navigation (Low Dunks, Air Force, Air Jordan, Travis Scott, Retro 4, Adidas)",
+      "Trust-first messaging (Free Shipping over ₹1,599, Cash on Delivery, 7-Day Easy Exchange)",
+      "Hover product image effects with discount badges (44-46% off)",
+      "Streetwear marquee and product-first hero layout",
+      "Size range UK6–UK10 with quick-add shopping"
+    ],
+    "contribution": "I was responsible for the design and development of the Shopify storefront, including the premium visual identity, collection structure, product presentation, and social proof sections that align with sneaker culture aesthetics.",
+    "demo": "https://desikicks.shop/"
+  },
+  {
+    "slug": "antrya",
+    "title": "Antrya",
+    "tagline": "High-volume festive jewellery and spiritual products e-commerce on Shopify.",
+    "published": true,
+    "featured": false,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___antrya.com_1.webp",
+    "heroImage": "/images/projects/websites/https___antrya.com_.webp",
+    "screenshots": [],
+    "overview": "Antrya is a Shopify e-commerce store serving 40,000+ spiritual seekers across India, specializing in temple-certified, energised Rudraksha, bracelets, anklets, malas, and spiritual accessories. The store features zodiac-based collections for all 12 rashis, intention-based shopping (Protection, Wealth, Love, Peace, Confidence, Luck), and lab-tested, certificate-backed authenticity. With cash on delivery, complimentary pan-India shipping, and products energised by temple priests, Antrya delivers a culturally rooted yet modern shopping experience.",
+    "challenge": "The client needed a scalable Shopify storefront that could handle large product catalogs across multiple festive and spiritual product categories, with easy browsing and discovery for a diverse audience.",
+    "whatIBuilt": [
+      {
+        "title": "Zodiac & Intention-Based Navigation",
+        "description": "Built zodiac collection browsing for all 12 rashis alongside intention-based shopping — Protection, Wealth & Abundance, Love & Harmony, Peace & Calm, Confidence & Success, Luck & Opportunity."
+      },
+      {
+        "title": "Sacred & Curated Collections",
+        "description": "Structured collections around 1–14 Mukhi Rudraksha, Karungli, Spiritual Tools, Meditation & Prayer Malas, Bracelets, Anklets, and Special Bundle Combos with curated selections."
+      },
+      {
+        "title": "Temple-Certified Trust Experience",
+        "description": "Implemented trust signals throughout the storefront — lab-tested certifications, temple priest energisation messaging, 40,000+ seekers social proof, and complimentary shipping messaging."
+      },
+      {
+        "title": "COD & Secure Checkout",
+        "description": "Integrated cash on delivery support alongside secure payment options, optimized for India-first e-commerce with fast delivery promises."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript"],
+    "keyFeatures": [
+      "Zodiac-based collection browsing (all 12 rashis)",
+      "Intention-based product discovery (Protection, Wealth, Love, etc.)",
+      "Lab-tested, certificate-backed product authenticity",
+      "Cash on delivery support across India",
+      "Temple-certified energised spiritual products",
+      "Complimentary pan-India shipping"
+    ],
+    "contribution": "I was responsible for the development of the Shopify storefront, including the scalable product catalog structure, festive commerce experience, and collection-based browsing optimized for the client's product range.",
+    "demo": "https://antrya.com/"
+  },
+  {
+    "slug": "nutrisiya",
+    "title": "Nutri Siya",
+    "tagline": "Handcrafted dry fruits, snacks and gift boxes — made the Indian way, with global standards of quality.",
+    "published": true,
+    "featured": false,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___nutrisiya.com_1.webp",
+    "heroImage": "/images/projects/websites/https___nutrisiya.com_.webp",
+    "screenshots": [],
+    "overview": "Nutri Siya is a D2C Shopify storefront for a health-focused FMCG and snack brand serving 10Lac+ happy customers. The store showcases handcrafted dry fruits, desserts, snacks and gift boxes — made the Indian way, with global standards of quality. Product lines include Crunchy Coconut Mix, Dryfruits Chatkhara Mix, Hot N Tangy Trail Mix, and Sweet Trail Mix, with collections spanning Everyday Snacking, Healthy Snacks, Nuts & Mixes, Gifting, and Combos. Trust signals include FSSAI certification, 6-layer quality checks, lab-tested nutrition, no palm oil, and free shipping on orders over ₹999.",
+    "challenge": "The client needed a premium, product-focused Shopify D2C store that communicated the handcrafted Indian snacking positioning — balancing traditional product storytelling with modern e-commerce features including festive gifting, collection-based browsing, and trust-driven checkout.",
+    "whatIBuilt": [
+      {
+        "title": "Premium D2C Storefront",
+        "description": "Built a brand-forward Shopify storefront with trust signals, festive gifting banners, and product-first layouts emphasizing handcrafted quality."
+      },
+      {
+        "title": "Collection-Based Navigation",
+        "description": "Structured collections for easy discovery — Everyday Snacking, Healthy Snacks, Nuts & Mixes, Gifting, Combos — with footer categories for Dates, Gifts, Makhana, Mixes, Nuts, and Roasted."
+      },
+      {
+        "title": "Product Quality Storytelling",
+        "description": "Designed the storefront to communicate FSSAI certification, 6-layer quality checks, lab-tested nutrition, and the no-palm-oil commitment."
+      },
+      {
+        "title": "Gifting & Festive Experience",
+        "description": "Implemented festive gifting promotion with code-driven discounts (SIYA10), gift box product lines, and seasonal gifting collection pages."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript"],
+    "keyFeatures": [
+      "FSSAI certified & lab-tested positioning",
+      "6-layer quality check messaging",
+      "No palm oil commitment",
+      "Festive gifting with promo code support",
+      "Collection-based product browsing",
+      "Trust-driven D2C checkout flow"
+    ],
+    "contribution": "I was responsible for building the Shopify storefront, including the premium D2C storefront design, collection-based navigation structure, product quality storytelling sections, and festive gifting experience with promo code integration.",
+    "demo": "https://nutrisiya.com/"
+  },
+  {
+    "slug": "madhaviya",
+    "title": "Madhaviya Jewels",
+    "tagline": "Handcrafted silver jewellery from Rajasthan's royal artistry on Shopify.",
+    "published": true,
+    "featured": false,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___madhaviya.com_1.webp",
+    "heroImage": "/images/projects/websites/https___madhaviya.com_.webp",
+    "screenshots": [],
+    "overview": "Madhaviya Jewels is a Shopify e-commerce store specializing in 99.5% pure silver jewellery handcrafted in Rajasthan. The brand positions itself around traditional Rajasthani artistry with a skin-friendly, nickel-free product range including anklets, bangles, bracelets, chains, pendants, toe rings, silver kadas, and rakhis. The store supports occasion-based shopping with dedicated sections for Raksha Bandhan, daily wear, office wear, festive collections, and wedding gifts. Trust signals include purity certification, free shipping across India, and handmade authenticity.",
+    "challenge": "The client needed a Shopify store that could handle diverse silver jewellery categories with strong trust and purity messaging, while supporting both everyday and festive/seasonal shopping occasions like Raksha Bandhan and Sawan celebrations.",
+    "whatIBuilt": [
+      {
+        "title": "Rajasthan Artistry Storefront",
+        "description": "Developed the Shopify storefront with brand storytelling around Rajasthan's royal artistry and handcrafted traditions, featuring trust signals for 99.5% purity certification, skin-friendly materials, and free shipping."
+      },
+      {
+        "title": "Occasion-Based Shopping Experience",
+        "description": "Built a structured shopping experience organized by occasion — Wedding Gifts, Sawan Celebrations, Raksha Bandhan, Daily Wear, Office Elegance, and Festive Rajwadi — alongside standard category browsing."
+      },
+      {
+        "title": "Rakhi Collection & Promotions",
+        "description": "Implemented a dedicated Rakhi collection with Mens Rakhi and Kids Rakhi sub-categories, seasonal promotional banners, and discount code integration for the Rakhi Grand Sale."
+      },
+      {
+        "title": "Blog & Social Integration",
+        "description": "Integrated a blog for purity and brand storytelling content, alongside social media links across Facebook, Pinterest, Instagram, and YouTube for community engagement."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript"],
+    "keyFeatures": [
+      "99.5% pure silver certification messaging",
+      "Occasion-based product browsing",
+      "Rakhi collection with seasonal promotions",
+      "Blog content integration",
+      "Social media presence (Facebook, Pinterest, Instagram, YouTube)",
+      "Free shipping and skin-friendly trust signals",
+      "Responsive mobile-optimized design"
+    ],
+    "contribution": "I was responsible for the development of the Shopify storefront, including the jewellery category structure, festive commerce support, and clean product discovery experience.",
+    "demo": "https://madhaviya.com/"
+  },
+  {
+    "slug": "gauri-satva",
+    "title": "Gauri Satva",
+    "tagline": "Premium Ayurvedic skincare Shopify storefront for Gaurisatva's Shata Dhauta Ghrita product line.",
+    "published": true,
+    "featured": false,
+    "categories": ["Shopify", "E-commerce"],
+    "platform": "Shopify",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___gaurisatva.com_1.webp",
+    "heroImage": "/images/projects/websites/https___gaurisatva.com_.webp",
+    "screenshots": [],
+    "overview": "Gaurisatva (a brand of Prakriti Wellness Products) is a premium Ayurvedic skincare Shopify storefront offering Shata Dhauta Ghrita-based formulations for face and body care. The product line spans five products — Hydrating Body Lotion, Cooling Emollient Cream, Body Wash, Hydrating & Oil-Balancing Face Wash, and Hydrating & Oil-Control Face Cream — with prices ranging from ₹899–₹999. The storefront is positioned as 'Premium Ayurvedic Beauty Products for Healthy Skin' and targets specific skin concerns including acne, dry skin, oily skin, pigmentation, skin brightening, and tan removal.",
+    "challenge": "The client needed a premium Shopify storefront that communicated the unique ghee elixir-based skincare positioning, with clear product categorization across face and body care lines.",
+    "whatIBuilt": [
+      {
+        "title": "Premium Ayurvedic Storefront",
+        "description": "Developed a clean Shopify storefront positioned around premium Ayurvedic beauty products with wellness brand storytelling and Shata Dhauta Ghrita formulation emphasis."
+      },
+      {
+        "title": "Collection-Based Navigation",
+        "description": "Structured product discovery across three collection sections — Our Ayurvedic Skincare Collections, Our Face Care Products, Our Body Care Products — with navigation for Cooling Emollient, Face Cream, Body Wash, Body Lotion, and Face Wash."
+      },
+      {
+        "title": "Skin Concern Targeting",
+        "description": "Organized the shopping experience around specific skin concerns — Acne, Dry Skin, Oily Skin, Night Care, Pigmentation, Skin Brightening, Tan Removal — helping customers find products by their needs."
+      },
+      {
+        "title": "Promo & Discount System",
+        "description": "Implemented promotional sections including 'Buy 2 Shata Dhauta Ghrita & Pay for 1' (no code required) and 10% off with discount code GS10, along with trust-building certifications (10 visible) and multi-payment support (Amex, Diners, Maestro, Mastercard, RuPay, Visa)."
+      }
+    ],
+    "techStack": ["Shopify", "Liquid", "JavaScript"],
+    "keyFeatures": [
+      "Ayurvedic Shata Dhauta Ghrita formulations",
+      "Skin concern-based product discovery",
+      "Face & body care collection navigation",
+      "Promotional discount system with codes",
+      "10 certifications trust display",
+      "Multi-payment gateway support (Amex, RuPay, Visa, etc.)",
+      "Facebook & Instagram social integration",
+      "Responsive mobile-first design"
+    ],
+    "contribution": "I was responsible for the development of the Shopify storefront, including the Ayurvedic brand positioning, collection-based navigation structure, skin concern targeting, and promotional discount system with multi-payment gateway integration.",
+    "demo": "https://gaurisatva.com/"
+  },
+  {
+    "slug": "rumani-india",
+    "title": "Rumani India",
+    "tagline": "Custom WordPress/WooCommerce jewellery e-commerce with dynamic market-rate pricing.",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 2,
+    "categories": ["WordPress", "E-commerce"],
+    "platform": "WordPress",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___rumaniindia.in_1.webp",
+    "heroImage": "/images/projects/websites/https___rumaniindia.in_.webp",
+    "screenshots": [],
+    "overview": "Rumani India is a custom WordPress/WooCommerce e-commerce platform for a certified diamond jewellery brand based in India, operating under the tagline 'Certified Diamond Jewellery India.' The store hosts 500+ products across 10+ categories — Rings (112 products with sub-categories like Engagement, Daily Wear, Cocktail, Men's), Earrings (115), Pendants (75), Mangalsutras (116), Bracelets (8), Bangles (17), Necklaces (5), Nosepins (30), Accessories (10), and Kids (7). The platform features WPML-powered multi-currency support (USD, EUR, JPY) with country-specific storefronts for the United States, Deutschland, and Japan, alongside INR. Featured collections include Royal Layers, Heritage Gold, Diamond Radiance, Soulful Bond Mangalsutras, The High End Collection, and His & Hers. Trust signals span Certified Authenticity, Lifetime Exchange Assurance, Crafted by Master Artisans, Bespoke Customisation, and Secure & Seamless Experience. Free shipping is offered on orders above $150.",
+    "challenge": "The client required a jewellery e-commerce platform where product pricing could dynamically reflect changing gold, diamond, and metal rates — a critical business requirement since jewellery prices fluctuate with market rates daily.",
+    "whatIBuilt": [
+      {
+        "title": "Dynamic Market-Rate Pricing Engine",
+        "description": "Developed custom WooCommerce pricing logic that dynamically calculates product prices based on live gold, diamond, and metal rates — critical for a jewellery business where prices fluctuate daily."
+      },
+      {
+        "title": "Multi-Currency & Internationalization",
+        "description": "Implemented WPML-powered multi-currency support with USD, EUR, JPY, and INR, enabling country-specific storefronts for the United States, Deutschland, and Japan with automatic currency switching."
+      },
+      {
+        "title": "500+ Product Catalog Architecture",
+        "description": "Structured a large jewellery catalog into 10+ categories with deep sub-categories — Rings alone have sub-categories for Engagement, Daily Wear, Cocktail, Colour Stones, High End, Trendy Ladies, Men's, and Occasional Wear."
+      },
+      {
+        "title": "Trust & Certification Experience",
+        "description": "Built product pages and site-wide sections emphasizing Certified Authenticity, Lifetime Exchange Assurance, Crafted by Master Artisans, and Bespoke Customisation messaging."
+      },
+      {
+        "title": "Featured Collections & Discovery",
+        "description": "Created curated collection experiences — Royal Layers, Heritage Gold, Diamond Radiance, Soulful Bond Mangalsutras, The High End Collection, and His & Hers — alongside wishlist and product compare functionality."
+      }
+    ],
+    "techStack": ["WordPress", "WooCommerce", "PHP", "JavaScript", "MySQL", "WPML"],
+    "keyFeatures": [
+      "Dynamic market-rate pricing based on live gold and diamond rates",
+      "Multi-currency support (USD, EUR, JPY, INR) with WPML integration",
+      "500+ certified diamond jewellery products across 10+ categories",
+      "Certified Authenticity & Lifetime Exchange Assurance badges",
+      "Wishlist and product compare functionality",
+      "Featured collections (Royal Layers, Heritage Gold, Diamond Radiance, Soulful Bond, His & Hers)",
+      "Country-specific storefronts for US, Deutschland, and Japan",
+      "Free shipping on orders above $150"
+    ],
+    "contribution": "I was responsible for the development and customization of the WordPress/WooCommerce platform, including the implementation of custom dynamic pricing functionality based on live market rates, WooCommerce customization for jewellery-specific requirements, and the complete e-commerce experience.",
+    "demo": "https://rumaniindia.in/"
+  },
+  {
+    "slug": "the-swachh-pani",
+    "title": "The Swachh Pani",
+    "tagline": "Brand and B2B platform for a premium mineral water brand on WordPress.",
+    "published": true,
+    "featured": false,
+    "categories": ["WordPress", "E-commerce"],
+    "platform": "WordPress",
+    "projectType": "Brand Platform",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___theswachhpani.com_1.webp",
+    "heroImage": "/images/projects/websites/https___theswachhpani.com_.webp",
+    "screenshots": [],
+    "overview": "The Swachh Pani is a brand platform for a premium Himalayan mineral water brand, built to communicate the science-backed quality and sustainability of their water sourced from 4,500m+ altitude in the Himalayas. The site promotes 'Beyond Pure SWACHH PANI Natural Himalayan Mineral Water' — naturally alkaline (pH 8+), rich in calcium (75.63mg/l), magnesium (18mg/l), and bicarbonates (270mg/l). With ISO 17025 accredited lab certifications, microplastics-verified-zero purity, and a reusable glass bottle program, the platform targets B2B partnerships with cafes, restaurants, sports events, and a BYOB (Be Your Own Brand) white-label partner program.",
+    "challenge": "The client needed a brand-forward website that communicated scientific credibility and Himalayan sourcing in an accessible way, while positioning the platform for B2B collaborations rather than just consumer marketing.",
+    "whatIBuilt": [
+      {
+        "title": "Premium Brand UI",
+        "description": "Designed and developed a clean, premium UI aligned with the brand's 'Beyond Pure' Himalayan positioning with Nature's Perfect Balance section showcasing mineral content."
+      },
+      {
+        "title": "3-Step Process Storytelling",
+        "description": "Structured the site around the water's journey: Glacial Origin (4,500m+ altitude), Natural Alkalinity (pH 8+), and Bottled at Source."
+      },
+      {
+        "title": "Product & Health Sections",
+        "description": "Created product showcase (aluminum cans with 71% recycle rate, reusable glass bottles) and health benefit sections for mothers, athletes, and neural health."
+      },
+      {
+        "title": "Certifications & B2B Platform",
+        "description": "Integrated ISO 17025 lab certifications, batch certificates, TDS/nitrate/microplastic data, and BYOB partner program for cafes, restaurants, and sports events."
+      }
+    ],
+    "techStack": ["WordPress", "PHP", "JavaScript", "HTML/CSS"],
+    "keyFeatures": [
+      "Himalayan mineral water brand storytelling (pH 8+, 4,500m+ source altitude)",
+      "3-step process visualization (Glacial Origin, Natural Alkalinity, Bottled at Source)",
+      "Nature's Perfect Balance section (Calcium, Magnesium, Potassium, Bicarbonates)",
+      "Health benefits sections (For Mothers, Athletes, Neural Health)",
+      "Product showcase (250-500ml Aluminum Cans, Glass Bottles)",
+      "BYOB (Be Your Own Brand) partner program for B2B collaborations",
+      "ISO 17025 accredited lab certifications and batch certificate presentation",
+      "Sustainability messaging (reusable glass bottles, 71% aluminum recycle rate)",
+      "Contact details (SCO 262 Basement, Sector 14, Panchkula, Haryana)",
+      "Responsive modern design"
+    ],
+    "contribution": "I was responsible for the design and development of the WordPress website, including the premium brand UI, Himalayan sourcing storytelling, health benefits presentation, product credibility sections, and B2B-facing platform optimization with BYOB partner program.",
+    "demo": "https://theswachhpani.com/"
+  },
+  {
+    "slug": "yog-bhoomi",
+    "title": "Yog Bhoomi Ayurveda Gurukul",
+    "tagline": "Integrated LMS, e-commerce, and appointment booking platform for yoga and Ayurveda education.",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 3,
+    "categories": ["WordPress", "E-commerce"],
+    "platform": "WordPress",
+    "projectType": "LMS + E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___yogbhoomiayurvedagurukul.com_1.webp",
+    "heroImage": "/images/projects/websites/https___yogbhoomiayurvedagurukul.com_.webp",
+    "screenshots": [],
+    "overview": "Yog Bhoomi Ayurveda Gurukul is a comprehensive digital platform for a yoga and Ayurveda education institution with 9+ years of expertise across 7+ countries and 25+ states, having trained 3,500+ students. Founded by Dr. Ram Mahalle, the platform offers Yoga Anatomy TTC (Levels 1-3, Rs. 5,000-15,000), Face Yoga TTC (Rs. 11,000), Pranayam courses (Rs. 2,000), Chakra Meditation (Rs. 4,500), Ayurveda courses (Rs. 15,000), and Ayurveda products like Chyawanprash (Rs. 2,500/kg) and Herbal Mouth Cleanser (Rs. 300). The site features consultation booking (Rs. 1,000 initial, Rs. 500 follow-up), an Alumni Verification Portal, free resources, and the publication 'Essentials of Anatomy, Physiology & Diseases for Yogi' (Rs. 350).",
+    "challenge": "The client needed a single platform that combined learning management, e-commerce for courses, appointment booking for consultations, and live online education — all unified under one digital experience for students and clients.",
+    "whatIBuilt": [
+      {
+        "title": "Learning Management System",
+        "description": "Developed an integrated LMS for Yoga Anatomy TTC (3 levels), Face Yoga TTC, Pranayam, and Chakra Meditation courses with enrollment, progress tracking, and live lecture support."
+      },
+      {
+        "title": "Course & Product E-commerce",
+        "description": "Implemented e-commerce for courses (Rs. 2,000-15,000 range), Ayurveda products (Chyawanprash, Herbal Mouth Cleanser), and publications with secure payment processing."
+      },
+      {
+        "title": "Consultation & Alumni Portal",
+        "description": "Integrated doctor consultation booking (Rs. 1,000/500 tiered pricing) and an Alumni Verification Portal for certificate validation across 7+ countries and 25+ states."
+      },
+      {
+        "title": "Faculty & Content Hub",
+        "description": "Created faculty profiles (Dr. Ram Mahalle, Dr. Renuka Mahalle, and team), free resources, student testimonials, and gallery sections for community engagement."
+      }
+    ],
+    "techStack": ["WordPress", "WooCommerce", "PHP", "JavaScript", "LMS Plugin"],
+    "keyFeatures": [
+      "Learning Management System with course e-commerce",
+      "Yoga Anatomy TTC Levels 1-3 with tiered pricing (Rs. 5,000-15,000)",
+      "Face Yoga TTC, Pranayam, Chakra Meditation, and Ayurveda courses",
+      "Consultation booking with tiered pricing (Rs. 1,000 initial, Rs. 500 follow-up)",
+      "Alumni Verification Portal for certificate validation",
+      "Ayurveda product store (Chyawanprash, Herbal Mouth Cleanser)",
+      "Free resources, student testimonials, and gallery",
+      "Faculty profiles (Dr. Ram Mahalle, Dr. Renuka Mahalle, and others)",
+      "Publication showcase ('Essentials of Anatomy, Physiology & Diseases for Yogi')",
+      "Live lecture support and student enrollment & progress tracking"
+    ],
+    "contribution": "I was responsible for the development of the integrated platform, including the LMS implementation, e-commerce functionality for courses, appointment booking integration, and the unified digital experience connecting education, consultations, and commerce.",
+    "demo": "https://yogbhoomiayurvedagurukul.com/"
+  },
+  {
+    "slug": "bev9",
+    "title": "Bev9",
+    "tagline": "Gen Z-focused e-commerce experience for trend-driven drinkware and lifestyle products.",
+    "published": true,
+    "featured": false,
+    "categories": ["WordPress", "E-commerce"],
+    "platform": "WordPress",
+    "projectType": "E-commerce",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___bev9.com_1.webp",
+    "heroImage": "/images/projects/websites/https___bev9.com_.webp",
+    "screenshots": [],
+    "overview": "Bev9 is a trend-driven drinkware e-commerce brand with the tagline 'Carry the Thunder. Explore the Unseen.' The store features 7 product categories: Best Sellers, Coffee & Sippers (11), Insulated Bottles (10), Kids Collection (5), Plastic Bottles (8), Premium & Gift Collection (7), and Straw & Handle Bottles (5). Products range from Rs. 695 to Rs. 1,595, including items like the Artistic Coffee Bottle 520ML (Rs. 1,395), Aurora Insulated 700ML (Rs. 1,595), and Camera Style Bottle (Rs. 1,395). The platform targets Gen Z with bold aesthetics, offers a 5% prepaid discount, and includes a referral program alongside blog and payment/delivery information.",
+    "challenge": "The client needed a visually energetic e-commerce site that resonated with Gen Z preferences — bold aesthetics, social-media-driven product discovery, and an impulse-friendly shopping experience for trend-driven products.",
+    "whatIBuilt": [
+      {
+        "title": "7-Category Product Catalog",
+        "description": "Built a structured product catalog with 7 categories — Best Sellers, Coffee & Sippers, Insulated Bottles, Kids Collection, Plastic Bottles, Premium & Gift Collection, Straw & Handle Bottles — with 51+ products."
+      },
+      {
+        "title": "Gen Z Visual Identity",
+        "description": "Designed a modern, energetic UI aligned with Gen Z visual preferences — bold colors, contemporary layouts, product-first presentation, and 'Carry the Thunder' brand identity."
+      },
+      {
+        "title": "E-commerce with Offers",
+        "description": "Implemented WooCommerce e-commerce with 5% prepaid discount, referral program, blog integration, and payment/delivery information pages."
+      },
+      {
+        "title": "Social-Media-Driven Discovery",
+        "description": "Structured the website to support social-media and UGC-driven product discovery with trend-focused browsing and visual-first product cards."
+      }
+    ],
+    "techStack": ["WordPress", "WooCommerce", "PHP", "JavaScript"],
+    "keyFeatures": [
+      "7 product categories (Best Sellers, Coffee & Sippers, Insulated, Kids, Plastic, Premium & Gift, Straw & Handle)",
+      "51+ products across drinkware categories (Rs. 695-1,595 range)",
+      "Gen Z-optimized visual design with 'Carry the Thunder' brand identity",
+      "5% discount on prepaid orders and referral program",
+      "Blog, payment and delivery information pages",
+      "Home, About, Shop, Contact navigation structure",
+      "Social-media-driven product discovery",
+      "Mobile-first responsive design"
+    ],
+    "contribution": "I was responsible for the design and development of the WordPress e-commerce website, including the 7-category product catalog, Gen Z-targeted visual identity, prepaid discount and referral program features, and the 'Carry the Thunder' brand experience.",
+    "demo": "https://bev9.com/"
+  },
+  {
+    "slug": "rich-walk",
+    "title": "Rich Walk",
+    "tagline": "Tourism and experience-booking platform for walking tours across Jaipur and Rajasthan.",
+    "published": true,
+    "featured": false,
+    "categories": ["WordPress", "E-commerce"],
+    "platform": "WordPress",
+    "projectType": "Booking Platform",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___richwalk.in_1.webp",
+    "heroImage": "/images/projects/websites/https___richwalk.in_.webp",
+    "screenshots": [],
+    "overview": "Rich Walk is a tourism and experience-booking platform for guided walking tours and cultural experiences across Jaipur and Udaipur. The site offers free tours (Rich Pink City Walk, Heritage Walk, Religious Walk, Museum Walk, Food Walk, Trekking Adventures, E-Cycle Tours), free experiences (Cultural Meal, Cooking Class, Clarity sessions with Abhijit Singh Bhati), and paid options (Customized Tour, Wildlife Safari). Features include Rich Stay accommodation at Rs. 4,000 flat for 1-8 guests, 'No Hidden Costs' policy, 'Become A Host' program, verified tour leaders, and international traveler reviews. Contact: +918619576028, booking@richwalk.in, located at Devi Marg, Banipark, Jaipur.",
+    "challenge": "The client needed a tourism platform that combined strong Rajasthani visual identity with practical booking functionality, catering to international tourists looking for authentic cultural experiences like heritage walks, food tours, and cooking classes.",
+    "whatIBuilt": [
+      {
+        "title": "Rajasthan-Inspired Design",
+        "description": "Designed a Rajasthan-inspired visual identity capturing Jaipur and Udaipur cultural richness, with tour details including durations and start points."
+      },
+      {
+        "title": "Free & Paid Tour Catalog",
+        "description": "Structured 7 free tour categories (Pink City, Heritage, Religious, Museum, Food, Trekking, E-Cycle), free experiences, and paid tour options with descriptions and booking details."
+      },
+      {
+        "title": "Rich Stay & Host Program",
+        "description": "Built the Rich Stay accommodation section (Rs. 4,000 flat for 1-8 guests), 'Become A Host' program, and 'Our Verified Tour Leaders' showcase."
+      },
+      {
+        "title": "Social Proof & Contact Integration",
+        "description": "Integrated international traveler reviews, social media links (Instagram, YouTube), contact details (+918619576028, booking@richwalk.in), and Devi Marg, Banipark location."
+      }
+    ],
+    "techStack": ["WordPress", "WooCommerce", "PHP", "JavaScript", "Booking Plugin"],
+    "keyFeatures": [
+      "7 free tour categories (Pink City, Heritage, Religious, Museum, Food, Trekking, E-Cycle)",
+      "Free experiences (Cultural Meal, Cooking Class, Clarity sessions)",
+      "Paid tours (Customized Tour, Wildlife Safari)",
+      "Rich Stay accommodation (Rs. 4,000 flat for 1-8 guests)",
+      "No Hidden Costs policy with verified tour leaders",
+      "Become A Host program for local community involvement",
+      "International traveler reviews and social proof (Instagram, YouTube)",
+      "Responsive mobile design with contact integration"
+    ],
+    "contribution": "I was responsible for the design and development of the WordPress platform, including the Rajasthan-inspired visual identity, tour and experience catalog structure with free and paid categories, Rich Stay accommodation section, and booking functionality for international and domestic travelers.",
+    "demo": "https://richwalk.in/"
+  },
+  {
+    "slug": "the-yellow-book-house",
+    "title": "The Yellow Book House",
+    "tagline": "Community-driven book club platform built with Wix Vibe and React.js customization.",
+    "published": true,
+    "featured": true,
+    "featuredIndex": 4,
+    "categories": ["Wix", "E-commerce"],
+    "platform": "Wix",
+    "projectType": "Community Platform",
+    "role": "Developer",
+    "coverImage": "/images/projects/websites/https___www.theyellowbookhouse.com_1.webp",
+    "heroImage": "/images/projects/websites/https___www.theyellowbookhouse.com_.webp",
+    "screenshots": [],
+    "overview": "The Yellow Book House is a community-driven digital platform built for India's online book club community, combining literary content, personalized experiences, consultation services, interactive games, and gifting-related content. The project was built using Wix Vibe with React.js customization, extending the platform beyond a conventional Wix website.",
+    "challenge": "The client needed a community platform that combined literary content, personalization, consultation, and interactive experiences — going beyond what standard Wix templates could offer, requiring React.js customization on top of Wix Vibe.",
+    "whatIBuilt": [
+      {
+        "title": "Wix Vibe + React.js Platform",
+        "description": "Built and customized the platform using Wix Vibe with React.js, extending the platform beyond conventional Wix capabilities."
+      },
+      {
+        "title": "Personalized Literary Experiences",
+        "description": "Implemented customized letters, personalized poetry experiences, and mood-based content for individual readers."
+      },
+      {
+        "title": "Interactive Book Features",
+        "description": "Developed online book consultation, interactive book games, trivia, and quizzes for community engagement."
+      },
+      {
+        "title": "Content & Community Hub",
+        "description": "Structured articles, literary content, quote-based experiences, and gifting sections for community engagement."
+      }
+    ],
+    "techStack": ["Wix", "Wix Vibe", "React.js", "JavaScript", "HTML/CSS"],
+    "keyFeatures": [
+      "Wix Vibe + React.js customization",
+      "Personalized poetry & letters",
+      "Book consultation booking",
+      "Interactive games & trivia",
+      "Mood-based content experiences",
+      "Community literary content"
+    ],
+    "contribution": "I was responsible for building and customizing the platform using Wix Vibe and React.js, including the personalized literary experiences, interactive book features, consultation functionality, and community engagement sections.",
+    "demo": "https://theyellowbookhouse.com/"
+  }
+]

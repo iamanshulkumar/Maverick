@@ -62,7 +62,7 @@ export function OutcomesSection() {
  
           <div className="rounded-xl border border-border bg-card p-6">
             <div className="flex items-center gap-2 mb-6">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-cyan/10 text-accent-cyan">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">
                 <TrendingUp size={16} />
               </div>
               <h3 className="text-base font-semibold">Business</h3>
@@ -75,13 +75,13 @@ export function OutcomesSection() {
                   key={item.metric}
                   className="flex items-start gap-3 rounded-lg border border-border bg-background p-3"
                 >
-                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent-cyan/10 text-accent-cyan">
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent">
                     {item.icon}
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
                       <span className="text-sm font-semibold text-foreground">{item.metric}</span>
-                      <span className="text-xs font-mono text-accent-cyan">{item.value}</span>
+                      <span className="text-xs font-mono text-accent">{item.value}</span>
                     </div>
                     <p className="mt-0.5 text-sm text-muted-foreground">{item.desc}</p>
                   </div>

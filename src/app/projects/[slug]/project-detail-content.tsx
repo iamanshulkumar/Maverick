@@ -14,13 +14,21 @@ import { CarzchoiceOldAppPage } from "@/components/projects/carzchoice-old-app-p
 import { LandSquirePage } from "@/components/projects/land-squire-page";
 import { VictoryVisionPage } from "@/components/projects/victory-vision-page";
 import { WealthWalkPage } from "@/components/projects/wealth-walk-page";
-import type { Project } from "@/types";
+import { WebsiteCaseStudyLayout } from "@/components/website-case-study/website-case-study-layout";
+import type { Project, WebsiteProject } from "@/types";
 
 interface ProjectDetailContentProps {
-  project: Project;
+  project?: Project;
+  website?: WebsiteProject;
 }
 
-export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
+export function ProjectDetailContent({ project, website }: ProjectDetailContentProps) {
+  if (website) {
+    return <WebsiteCaseStudyLayout project={website} />;
+  }
+
+  if (!project) return null;
+
   if (project.slug === "ai-analyzer") {
     return <AiAnalyzerPage project={project} />;
   }
@@ -66,7 +74,7 @@ function LegacyLayout({ project }: { project: Project }) {
                 className="h-full w-full object-cover object-top"
               />
             ) : (
-              <div className="h-full w-full bg-gradient-to-br from-accent/10 to-accent-cyan/10 flex items-center justify-center">
+              <div className="h-full w-full bg-gradient-to-br from-accent/10 to-accent/10 flex items-center justify-center">
                 <div className="p-12 text-center">
                   <h1 className="text-3xl font-bold sm:text-4xl">{project.title}</h1>
                   <p className="mt-3 text-lg text-muted-foreground">{project.tagline}</p>
@@ -189,7 +197,7 @@ function LegacyLayout({ project }: { project: Project }) {
             <ScrollReveal delay={0.2}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <h2 className="text-xl font-semibold">Architecture</h2>
-                <div className="mt-4 aspect-video w-full rounded-lg bg-gradient-to-br from-accent/5 to-accent-cyan/5 flex items-center justify-center">
+                <div className="mt-4 aspect-video w-full rounded-lg bg-gradient-to-br from-accent/5 to-accent/5 flex items-center justify-center">
                   <p className="text-sm text-muted-foreground">Architecture Diagram</p>
                 </div>
                 <p className="mt-4 text-muted-foreground leading-relaxed">{project.architecture}</p>
@@ -277,13 +285,13 @@ function LegacyLayout({ project }: { project: Project }) {
             <ScrollReveal delay={0.35}>
               <div className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 mb-6">
-                  <Scale size={18} className="text-accent-cyan" />
+                  <Scale size={18} className="text-accent" />
                   <h2 className="text-xl font-semibold">Tradeoffs</h2>
                 </div>
                 <div className="space-y-4">
                   {project.tradeoffs.map((t, i) => (
                     <div key={i} className="rounded-lg border border-border bg-background p-4">
-                      <h3 className="font-medium mb-1 text-accent-cyan">{t.tradeoff}</h3>
+                      <h3 className="font-medium mb-1 text-accent">{t.tradeoff}</h3>
                       <p className="text-sm mb-2"><span className="font-medium text-foreground">Chosen:</span> <span className="text-muted-foreground">{t.choice}</span></p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{t.reasoning}</p>
                     </div>
@@ -312,7 +320,7 @@ function LegacyLayout({ project }: { project: Project }) {
                   {project.businessOutcomes.map((result, i) => (
                     <div key={i} className="flex items-center justify-between rounded-lg border border-border bg-background p-3">
                       <span className="text-sm text-muted-foreground">{result.metric}</span>
-                      <span className="text-lg font-bold text-accent-cyan">{result.value}</span>
+                      <span className="text-lg font-bold text-accent">{result.value}</span>
                     </div>
                   ))}
                 </div>
@@ -332,7 +340,7 @@ function LegacyLayout({ project }: { project: Project }) {
               <ul className="space-y-3">
                 {project.lessons.map((lesson, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {lesson}
                   </li>
                 ))}

@@ -22,7 +22,7 @@ export function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link href="/" className="text-lg font-semibold tracking-tight">
-            Anshul<span className="text-accent">.</span>
+            it's Anshul Kumar<span className="text-accent">.</span>
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">

@@ -17,7 +17,7 @@ export function BookCard({ book, onSelect }: BookCardProps) {
       aria-label={`View details for ${book.title}`}
       className="group block w-full rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
-      <div className="flex gap-4 rounded-xl border border-border bg-card p-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-glow md:block md:overflow-hidden md:p-0">
+      <div className="flex gap-4 rounded-xl border border-border bg-card p-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 md:block md:overflow-hidden md:p-0">
         <div
           className={cn(
             "relative h-32 w-24 shrink-0 overflow-hidden border border-border shadow-md transition-transform duration-300 md:h-auto md:w-full md:aspect-[2/3] md:rounded-none md:border-0"

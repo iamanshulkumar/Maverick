@@ -132,7 +132,7 @@ export function ContactContent() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-xl border border-border bg-gradient-to-br from-accent/5 to-accent-cyan/5 p-5">
+              <div className="rounded-xl border border-border bg-gradient-to-br from-accent/5 to-accent/5 p-5">
                 <h3 className="font-medium mb-2">Availability</h3>
                 <p className="text-sm text-muted-foreground">
                   Currently open to freelance projects and full-time opportunities.

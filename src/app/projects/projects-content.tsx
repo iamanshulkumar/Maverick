@@ -4,17 +4,25 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionTitle } from "@/components/shared/section-title";
 import { ProjectCard } from "@/components/shared/project-card";
-import { getProjects } from "@/lib/data";
+import { getProjects, getWebsites } from "@/lib/data";
+import type { AnyProject } from "@/types";
 
-const categories = ["All", "Mobile", "Web", "AI"];
+const categories = ["All", "Mobile", "Dashboards", "Shopify", "WordPress", "Wix", "E-commerce"];
 
 export function ProjectsContent() {
-  const projects = getProjects();
+  const mobileProjects = getProjects().map((p) => ({ ...p, projectKind: "mobile" as const }));
+  const websiteProjects = getWebsites().map((w) => ({ ...w, projectKind: "website" as const }));
+  const allProjects: AnyProject[] = [...mobileProjects, ...websiteProjects];
+
   const [active, setActive] = useState("All");
 
-  const filtered = active === "All" ? projects : projects.filter(
-    (p) => p.categories?.includes(active)
-  );
+  const filtered = active === "All"
+    ? allProjects.sort((a, b) => (a.featuredIndex ?? 99) - (b.featuredIndex ?? 99))
+    : allProjects.filter((p) => {
+        if (active === "Mobile") return p.projectKind === "mobile";
+        if (active === "E-commerce") return p.projectKind === "website";
+        return p.categories?.includes(active);
+      }).sort((a, b) => (a.featuredIndex ?? 99) - (b.featuredIndex ?? 99));
 
   return (
     <section className="pt-32 pb-24">
@@ -22,7 +30,7 @@ export function ProjectsContent() {
         <SectionTitle
           label="Projects"
           title="Projects"
-          description="Production software I've architected, built, and delivered. Each project includes a full case study."
+          description="Production software I've architected, built, and delivered — mobile apps and website projects. Each project includes a full case study."
         />
 
         <div className="mb-10 flex flex-wrap justify-center gap-2">

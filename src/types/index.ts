@@ -116,6 +116,35 @@ export interface ReadingData {
   journey: ReadingJourneyPhase[];
 }
 
+export interface WebsiteProject {
+  slug: string;
+  title: string;
+  tagline: string;
+  published: boolean;
+  featured?: boolean;
+  featuredIndex?: number;
+  categories: string[];
+  platform: string;
+  projectType: string;
+  role: string;
+  coverImage: string;
+  heroImage?: string;
+  screenshots: { src: string; caption?: string }[];
+  overview: string;
+  challenge: string;
+  whatIBuilt: { title: string; description: string }[];
+  techStack: string[];
+  keyFeatures: string[];
+  contribution: string;
+  demo?: string;
+  liveUnavailable?: boolean;
+  note?: string;
+}
+
+export type AnyProject =
+  | (Project & { projectKind?: "mobile" })
+  | (WebsiteProject & { projectKind: "website" });
+
 export interface NavLink {
   label: string;
   href: string;

@@ -1,26 +1,32 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ProjectDetailContent } from "./project-detail-content";
-import { getProjects, getProject } from "@/lib/data";
+import { getProjects, getProject, getWebsites, getWebsiteProject } from "@/lib/data";
 
 export async function generateStaticParams() {
-  return getProjects().map((p) => ({ slug: p.slug }));
+  const mobileSlugs = getProjects().map((p) => ({ slug: p.slug }));
+  const websiteSlugs = getWebsites().map((w) => ({ slug: w.slug }));
+  return [...mobileSlugs, ...websiteSlugs];
 }
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await props.params;
   const project = getProject(slug);
-  if (!project) return {};
+  const website = getWebsiteProject(slug);
+  const item = project ?? website;
+  if (!item) return {};
   return {
-    title: project.title,
-    description: project.tagline,
+    title: item.title,
+    description: item.tagline,
   };
 }
 
 export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
   const project = getProject(slug);
-  if (!project) notFound();
+  const website = getWebsiteProject(slug);
 
-  return <ProjectDetailContent project={project} />;
+  if (!project && !website) notFound();
+
+  return <ProjectDetailContent project={project ?? undefined} website={website ?? undefined} />;
 }

@@ -1,7 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { siAxios, siClaude, siDocker, siExpo, siExpress, siFirebase, siFormik, siGooglemaps, siI18next, siLaravel, siMongodb, siMui, siMysql, siNodedotjs, siPostgresql, siPython, siReact, siRedis, siSocketdotio, siStripe, siTypescript, siVite } from "simple-icons";
+import { siAxios, siClaude, siDocker, siExpo, siExpress, siFirebase, siFormik, siGooglemaps, siI18next, siLaravel, siMongodb, siMui, siMysql, siNodedotjs, siPostgresql, siPython, siReact, siRedis, siShopify, siSocketdotio, siStripe, siTypescript, siVite, siWix, siWordpress, siFramer, siTailwindcss, siNextdotjs, siPhp, siBootstrap } from "simple-icons";
 
 interface SimpleIcon {
   path: string;
@@ -13,6 +12,7 @@ const ICONS: Record<string, SimpleIcon> = {
   "React Native": siReact,
   "React Native (Expo)": siExpo,
   React: siReact,
+  "React.js": siReact,
   "Node.js": siNodedotjs,
   Python: siPython,
   PostgreSQL: siPostgresql,
@@ -25,8 +25,11 @@ const ICONS: Record<string, SimpleIcon> = {
   MongoDB: siMongodb,
   "Socket.IO": siSocketdotio,
   "Claude AI": siClaude,
+  "Claude API": siClaude,
+  "OpenAI API": siReact,
   Vite: siVite,
   "Laravel PHP": siLaravel,
+  Laravel: siLaravel,
   "Google Maps": siGooglemaps,
   "Google Maps API": siGooglemaps,
   TypeScript: siTypescript,
@@ -34,29 +37,24 @@ const ICONS: Record<string, SimpleIcon> = {
   "Material UI": siMui,
   Stripe: siStripe,
   Formik: siFormik,
+  Shopify: siShopify,
+  WordPress: siWordpress,
+  Wix: siWix,
+  AWS: siReact,
+  Framer: siFramer,
+  "Framer Motion": siFramer,
+  "Tailwind CSS": siTailwindcss,
+  TailwindCSS: siTailwindcss,
+  "Next.js": siNextdotjs,
+  PHP: siPhp,
+  Bootstrap: siBootstrap,
+  Expo: siExpo,
+  "Expo Router": siExpo,
+  BullMQ: siReact,
+  Reanimated: siReact,
+  NativeWind: siReact,
+  "Stream Chat": siReact,
 };
-
-function lighten(hex: string, amount = 0.72): string {
-  const n = parseInt(hex, 16);
-  const r = (n >> 16) & 255;
-  const g = (n >> 8) & 255;
-  const b = n & 255;
-  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  if (luminance > 110) return `#${hex}`;
-  const mix = (c: number) => Math.round(c + (255 - c) * amount);
-  const to = (c: number) => c.toString(16).padStart(2, "0");
-  return `#${to(mix(r))}${to(mix(g))}${to(mix(b))}`;
-}
-
-function darken(hex: string, amount = 0.3): string {
-  const n = parseInt(hex, 16);
-  const r = (n >> 16) & 255;
-  const g = (n >> 8) & 255;
-  const b = n & 255;
-  const mix = (c: number) => Math.round(c * (1 - amount));
-  const to = (c: number) => c.toString(16).padStart(2, "0");
-  return `#${to(mix(r))}${to(mix(g))}${to(mix(b))}`;
-}
 
 interface TechIconProps {
   name: string;
@@ -64,13 +62,9 @@ interface TechIconProps {
   className?: string;
 }
 
-export function TechIcon({ name, size = 25, className }: TechIconProps) {
-  const { resolvedTheme } = useTheme();
+export function TechIcon({ name, size = 16, className }: TechIconProps) {
   const icon = ICONS[name];
   if (!icon) return null;
-
-  const isDark = resolvedTheme === "dark";
-  const fill = isDark ? lighten(icon.hex) : darken(icon.hex);
 
   return (
     <svg
@@ -78,10 +72,11 @@ export function TechIcon({ name, size = 25, className }: TechIconProps) {
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={fill}
+      fill="currentColor"
       style={{ flexShrink: 0, display: "block" }}
-      className={className}
+      className={`text-muted-foreground ${className || ""}`}
       aria-label={icon.title}
+      suppressHydrationWarning
     >
       <path d={icon.path} />
     </svg>
