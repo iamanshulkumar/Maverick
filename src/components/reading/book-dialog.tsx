@@ -54,7 +54,7 @@ export function BookDialog({ book, books, onSelect, onClose }: BookDialogProps) 
               </div>
 
               <div className="flex min-h-0 flex-1 flex-col p-6 sm:max-h-[80vh]">
-                <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+                <div className="min-h-0 flex-1 overflow-y-auto pr-1" data-lenis-prevent>
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge variant="accent">{book.genre}</Badge>
                     {book.status === "Reading" && <Badge>Reading</Badge>}

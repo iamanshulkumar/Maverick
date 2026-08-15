@@ -51,7 +51,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
               className="flex h-11 w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
           </div>
-          <Command.List className="max-h-72 overflow-y-auto p-2">
+          <Command.List className="max-h-72 overflow-y-auto p-2" data-lenis-prevent>
             <Command.Empty className="py-6 text-center text-sm text-muted-foreground">
               No results found.
             </Command.Empty>

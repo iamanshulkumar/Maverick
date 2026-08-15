@@ -607,6 +607,7 @@ export function InteractiveArchitecture({
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.2 }}
                 className="h-[420px] overflow-y-auto rounded-xl border border-border bg-card p-4"
+                data-lenis-prevent
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
@@ -682,7 +683,7 @@ export function InteractiveArchitecture({
               <Terminal size={12} className="text-accent" />
               <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Execution Log</span>
             </div>
-            <div className="space-y-1 font-mono max-h-32 overflow-y-auto">
+            <div className="space-y-1 font-mono max-h-32 overflow-y-auto" data-lenis-prevent>
               {logs.map((log, i) => (
                 <motion.div
                   key={i}

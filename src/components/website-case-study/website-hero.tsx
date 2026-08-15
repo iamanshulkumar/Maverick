@@ -53,6 +53,7 @@ export function WebsiteHero({ project }: WebsiteHeroProps) {
             {/* Scrollable image area */}
             <div
               ref={scrollRef}
+              data-lenis-prevent
               className="relative h-[50vh] sm:h-[60vh] overflow-y-auto overflow-x-hidden rounded-t-lg scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent"
             >
               {project.heroImage ? (
